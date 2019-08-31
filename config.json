@@ -1,7 +1,7 @@
 {
-  "additionalFooterText": "All content and images &copy; by Virtualsquare - CC-BY-SA&nbsp;",
+  "additionalFooterText": "&copy; by Virtualsquare - GNU Free Documentation License 1.3 or later&nbsp; --&nbsp;",
   "anchorCharacter": "#",
-  "lineBreaks": "gfm",
+  "lineBreaks": "original",
   "title": "VirtualSquare",
   "useSideMenu": true
 }
