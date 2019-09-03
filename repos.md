@@ -97,7 +97,7 @@ Parse options from a string (supports quotation, option arguments, no malloc nee
  * [libpam-net](https://github.com/rd235/libpam-net)
 LIBPAM-NET: create/join network namespaces at login
 
- * [virtualsquare](https://github.com/virtualsquare/virtualsquare)
+ * [virtualsquare](https://github.com/virtualsquare/virtualsquare.github.io)
 VirtualSquare wiki (the source code of this web site!)
 
  * [v2utils](https://github.com/rd235/(https://github.com/virtualsquare/v2utils)

@@ -75,3 +75,7 @@ The kernel is unaware of the virtualization provided by UMVU, so the attack surf
 
 During the design and development of the ideas of VirtualSquare several convenient general purpose tools, libraries have been created. It is the case of CADO: Capability DO (like a sudo providing users with just the capabilities they need). Another example is libnlq: a netlink library that can be used by programmers to configure the networking services (using functions, not external commands) and by designers of user-level networking stack libraries to provide their stack with netlink configuration support.
 Many other utilities in terms of programs and libraries are valuable side effects of VirtualSquare projects.
+
+## How to contribute to this Wiki
+
+Note: contributions to this wiki are welcome. Send pull requests to [https://github.com/virtualsquare/virtualsquare.github.io](https://github.com/virtualsquare/virtualsquare.github.io)
