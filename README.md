@@ -2,6 +2,6 @@
 VirtualSquare wiki
 
 This is the markdown source for the web site:
-[https://virtualsquare.github.io/virtualsquare](https://virtualsquare.github.io/virtualsquare).
+[http://wiki.virtualsquare.org/](http://wiki.virtualsquare.org/)
 
 It is based on [MDwiki](https://dynalon.github.io/mdwiki)
