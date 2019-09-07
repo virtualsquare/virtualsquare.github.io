@@ -21,7 +21,7 @@ deb-src http://security.debian.org/debian-security testing-security main contrib
 
 ## step 2: download and run the install scripts
 
-The scripts are available [here](/archive/install_scripts)
+The scripts are available [here](https://github.com/virtualsquare/virtualsquare.github.io/tree/master/archive/install_scripts)
 
 Run the script as root as follows. 
 ```

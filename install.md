@@ -46,7 +46,7 @@ service procps restart
 this _step one_. You can run it, adapt it to your needs or simply cut/paste the commands.
 
 
-### step one: install the projects
+### step two: install the projects
 
 All the projects provide specific installation instructions in the README of their [repositories](repos.md).
 
