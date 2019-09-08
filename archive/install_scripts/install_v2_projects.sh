@@ -72,6 +72,7 @@ install_repo https://github.com/rd235/vdeplug_vlan.git
 install_repo https://github.com/rd235/cado.git
 install_repo https://github.com/alperakcan/fuse-ext2.git
 install_repo https://github.com/rd235/vdeplug_agno.git
+install_repo https://github.com/rd235/userbindmount.git
 install_repo https://github.com/rd235/vdens.git
 install_repo https://github.com/virtualsquare/vuos.git
 

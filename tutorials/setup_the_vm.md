@@ -31,7 +31,15 @@ The number of cores (``-smp 8``) and the amount of memory (``-m 1G``) should be 
 
 the password is ``virtualsquare``
 
-## step 4: install the required debian packets
+## step 4: download the latest install scripts
+
+run:
+```
+./wget_install_scripts
+```
+This script gets the latest versions of the scripts for the steps 5 and 6 here below.
+
+## step 5: install the required debian packets
 
 run:
 ```
@@ -42,7 +50,7 @@ This script downloads and installs several debian packets needed by the virtuals
 This operation may require some minutes (the actual time needed depends on the bandwidth of your internet 
 connection and the performance of your processor).
 
-## step 5: install the VirtualSquare projects
+## step 6: install the VirtualSquare projects
 
 run
 ```
@@ -59,15 +67,17 @@ now you can logout as root.
 logout
 ```
 
-## step 6: login as _user_
+## step 7: login as _user_
 
 Type `user` at the login prompt, the password is `virtualsquare`
 
-## step 7: The VM is ready!
+## step 8: The VM is ready!
 
 Now you can choose the tutorial experiment you like from the menu and run it.
 
-## step 8: shut down the VM
+... when you have completed your experiments:
+
+## step 9: shut down the VM
 
 type:
 
@@ -82,6 +92,6 @@ Now the VM and all the VirtualSquare tools have been installed.
 When you want to try more tutorial experiments you can run just the following steps:
 
 * step 2: run the VM
-* step 6: login as _user_
-* step 7: The VM is ready!
-* step 8: shut down the VM
+* step 7: login as _user_
+* step 8: The VM is ready!
+* step 9: shut down the VM
