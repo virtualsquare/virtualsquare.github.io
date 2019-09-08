@@ -68,7 +68,9 @@ install_repo https://github.com/rd235/libstropt.git
 install_repo https://github.com/rd235/libfduserdata.git
 install_repo https://github.com/rd235/libvpoll-eventfd.git
 install_repo https://github.com/rd235/libvdestack.git
+install_repo https://github.com/rd235/libslirp.git
 install_repo https://github.com/rd235/vdeplug_vlan.git
+install_repo https://github.com/rd235/vdeplug_slirp.git
 install_repo https://github.com/rd235/cado.git
 install_repo https://github.com/alperakcan/fuse-ext2.git
 install_repo https://github.com/rd235/vdeplug_agno.git
