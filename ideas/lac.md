@@ -7,7 +7,7 @@ The scenario is a set of host computers connected by a Local Area Network (LAN).
 A Local Area Cloud (LAC) is a virtual network. Virtual Machines, Namespaces or [IoTh](ioth.md) processes 
 can be connected directly to the LAC. They do not need any specific infrastructure or configuration on the hosting computer.
 
-All Virtual Machines, Namespaces or [IoTh](ioth.md) processes using the same LAC address communicate on the same virtual (VDE) nework.
+All Virtual Machines, Namespaces or [IoTh](ioth.md) processes using the same LAC address communicate on the same virtual (VDE) network.
 
 Process or VM migration is as simple as stopping the program on one host and restarting on the other.
 
@@ -15,17 +15,17 @@ why
 ----
 Because LACs are very convenient, flexible and fast.
 
-It is a very effective support for the idea of [Internet of threads](ioth.md). Processes (or virtual machines or namesapces) can run
+It is a very effective support for the idea of [Internet of threads](ioth.md). Processes (or virtual machines or namespaces) can run
 on any host of the LAN. They will use their own IP address to communicate.
 
 how
 ----
 vxvde implements Local Area Clouds. vxvde creates a distributed virtual switch,
-All the virtual machines, nemespaces or IoTh processes on the same LAC bind the same IP multicast address of the real network.
+All the virtual machines, namespaces or IoTh processes on the same LAC bind the same IP multicast address of the real network.
 Broadcast, multicast packets as well as packets addressed to unknown receipients sent on the LAC are delivered using the IP
 multicast address from a socket bound to a unicast socket, so it is received by all the LAC nodes.
 When a packet is received, the sender's MAC address can be paired with the IP address and port of the sender on the real network
-and stored in a hash table (similarly to what happens in an ethernet switch device where a hash teble stores
+and stored in a hash table (similarly to what happens in an ethernet switch device where a hash table stores
 		the pairing between MAC addresses and physical port numbers).
 
 Unicast packets sent on the LAC to already known MAC addresses are sent as UDP unicast packets to the

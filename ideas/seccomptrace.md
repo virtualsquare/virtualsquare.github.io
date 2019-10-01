@@ -16,7 +16,8 @@ completed to get the return value (and maybe to change it).
 
 Without this idea (1) is implemented changing the system call to a harmless and relatively fast call like `getpid`.
 Ptrace always provides a second tracing event when the kernel has completed the system call. This event can be ignored
-in (1) and (2). There are useless interactions between the kernel and the hypervisor, this idea soves this problem.
+in (1) and (2). So, there are useless (and time consuming) interactions between the kernel and the hypervisor, 
+	 this idea solves that problem.
 
 how
 ----
@@ -59,6 +60,6 @@ The three cases above can be handled as follows:
 where
 ----
 It is implemented in umvu, the source file is [`umvu_tracer.c`](https://github.com/virtualsquare/vuos/blob/master/umvu/src/umvu_tracer.c).
-(Actually the seccomp program here includes a second trick to combine this idea with the [guardian angels](partrace.md) technique.)
+(Actually the seccomp program in the tracer includes a second trick to combine this idea with the [guardian angels](partrace.md) technique.)
 
 <!-- references: -->

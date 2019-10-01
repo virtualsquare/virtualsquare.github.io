@@ -36,7 +36,7 @@ where
 The support is provided by [vdens](https://github.com/rd235/vdens).
 Actually, the VDE namespace provides just the support for several VDE plugs the same time.
 Network functions virtualization software runs in the namespace as it would run on the bare O.S.
-(except from the fact that root access or specific capabilities are not required to manage and run NFV user namespaces).
+(except from the fact that root access or specific capabilities are not required to manage and run NFV in user namespaces).
 
 references:
 ----

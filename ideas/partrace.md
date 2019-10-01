@@ -3,7 +3,7 @@ Parallel Tracing of Concurrent Threads (guardian angels)
 
 what
 ----
-When several processes/threads must be tracked for debugging or for virtualization, the tracer/hypervisor spawn a thread for each process or thread.
+When several processes/threads must be tracked for debugging or for virtualization, the tracer/hypervisor spawns a thread for each process or thread.
 
 There is a one-to-one relationship between each traced process/thread and each tracee's thread (each tracee's thread is the _guardian angel_ of a 
 traced process or thread).

@@ -12,13 +12,13 @@ why
 Because people are interested in services, it does not matter which computer is currently hosting
 that service.
 
-dsing IP addresses assigned to hardware network controllers is as obsolete as using telephone fixed lines.
-Portable phones are very convenient because they _address_ people, fixed line _point_ to geographical
+Using IP addresses assigned to hardware network controllers is as obsolete as using telephone fixed lines.
+Portable phones are very convenient because they _address_ people, fixed lines _point_ to geographical
 places. 
 
 how
 ----
-processes (or groups of processes) must have their own netowrking support. There are two methods:
+processes (or groups of processes) must have their own networking support. There are two methods:
 kernel provided namespaces or networking stacks implemented as user-space libraries.
 
 where
@@ -32,5 +32,3 @@ Several projects in VirtualSquare implement the idea of IoTh:
 references:
 ----
 Renzo Davoli, _Internet of Threads: Processes as Internet Nodes_, in International Journal on Advances in Internet Technology, 2014, 1-2, pp. 17 - 28
-
-

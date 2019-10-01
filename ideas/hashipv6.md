@@ -18,7 +18,7 @@ manageable by human beings.
 Autoconfiguration methods can give addresses to interfaces but
 do not provide any means of configuring the DNS.
 So autoconfiguration is suitable for clients. If a host has to
-act as a server, it must have fully qualified domain name and 
+act as a server, it must have a fully qualified domain name and 
 the DNS service has to map its name to its IP address.
 
 In the [Internet of Thread](ioth.md) scenario, the number of network _nodes_
@@ -37,7 +37,7 @@ of any hostname in a sub-domain provided the network prefix of that sub-domain.
 The installation of a new node of the network (computer, [namespace](non.md), [IoTh process](ioth.md))
 is as simple as providing it with its IPv6 address
 (the one obtained by concatenating the network prefix and the
- host address computedby the hash function).
+ host address computed by the hash function).
 
 There is no need to change the configuration of the DNS.
 

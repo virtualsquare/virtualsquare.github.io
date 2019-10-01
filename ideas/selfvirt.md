@@ -12,7 +12,7 @@ Because in this way it is possible to extend the scope of existing libraries.
 how
 ----
 The current implementation named [purelibc](https://github.com/virtualsquare/purelibc) is based on an overlay library loaded over libc (it uses `LD_PRELOAD`).
-A specific "pure" target for the libc is in the future challegdes of VirtualSquare. (A pure C library does not include the interface functions to the system calls,
+A specific "pure" target for the libc is in the future challenges of VirtualSquare. (A pure C library does not include the interface functions to the system calls,
 a process can provide its own implementation of the system calls).
 
 where
