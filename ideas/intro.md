@@ -20,6 +20,7 @@ General purpose ideas implemented in VirtualSquare projects.
 * [per user networking definition (pam\_net)](pamnet.md)
 * [hybrid library/executable ELF files](hybrid_elf.md)
 * [network configuration: must be simple, inlined and via netlink](nlinline.md)
+* [execs is (was) missing](execs.md)
 
 Tip&Techniques
 -----
