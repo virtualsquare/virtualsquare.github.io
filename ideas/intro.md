@@ -19,6 +19,7 @@ General purpose ideas implemented in VirtualSquare projects.
 * [vpoll: synthesize virtual event for poll/select/ppoll/pselect/ppoll](vpoll.md)
 * [per user networking definition (pam\_net)](pamnet.md)
 * [hybrid library/executable ELF files](hybrid_elf.md)
+* [network configuration: must be simple, inlined and via netlink](nlinline.md)
 
 Tip&Techniques
 -----
@@ -28,4 +29,4 @@ Solution to practical problems we have solved during the development of the proj
 * [Netlink client and server support](nlq.md)
 * [user bind mount](userbindmount.md)
 * [C streams as volatile buffers: volatilestreams](volatilestream.md)
-
+* [man pages: write in Markdown, maintain by Git, release in nroff](v2ronn.md)

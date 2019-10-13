@@ -40,6 +40,9 @@ A GTK frontend for VDE and QEMU/KVM. Supports multiple network on the same host,
  * [libnlq](https://github.com/virtualsquare/libnlq)
 Netlink Queue Library: managing network configuration via netlink (client and server side)
 
+ * [nlinline](https://github.com/virtualsquare/nlinline)
+NLINLINE (netlink inline) is a library of inline functions implementing a quick and clean API for networking configuration via netlink.
+
  * [&#9785; vde-2](https://github.com/virtualsquare/vde-2)
 The vde-2 vde\_switch is fully compatible with vdeplug4. Although it has not been rewritten yet, it includes
 several tools that are actual like vde\switch and wirefilter.
