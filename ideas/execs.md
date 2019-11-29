@@ -27,6 +27,9 @@ int execspe(const char *args, char *const envp[]);
 
 Notes:
 
+* Command  arguments in args are delimited by space characters (blank, tabs or new lines).  Single or
+double quotes can be used to delimitate command arguments including spaces and a non  quoted  back‐
+slash (`\`) is the escape character to protect the next char.
 * `execsp` does not need any pathname, it uses `argv[0]` as parsed from `args`.
 * args is const, i.e. `exec*` functions do not modify it.
 * `execs*` functions do not use dynamic allocation (allocate memory on the stack)
