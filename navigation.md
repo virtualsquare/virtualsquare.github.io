@@ -43,8 +43,8 @@
   * [vpoll: synthesize virtual event for poll/select/ppoll/pselect/ppoll](ideas/vpoll.md)
   * [per user networking definition (pam\_net)](ideas/pamnet.md)
   * [hybrid library/executable ELF files](ideas/hybrid_elf.md)
-	* [network configuration: must be simple, inlined and via netlink](ideas/nlinline.md)
-	* [execs is (was) missing](ideas/execs.md)
+  * [network configuration: must be simple, inlined and via netlink](ideas/nlinline.md)
+  * [execs is (was) missing](ideas/execs.md)
   - - - -
 
   * # Tips&Techniques
@@ -52,8 +52,12 @@
   * [Netlink client and server support](ideas/nlq.md)
   * [user bind mount](ideas/userbindmount.md)
   * [C streams as volatile buffers: volatilestreams](ideas/volatilestream.md)
-	* [man pages: write in Markdown, maintain by Git, release in nroff](ideas/v2ronn.md)
+  * [man pages: write in Markdown, maintain by Git, release in nroff](ideas/v2ronn.md)
 
+[We do V better!]()
+
+  * [let us fix the World](vbetter/intro.md)
+  - - - -
 
 
 [*old v2 site*](http://wiki.v2.cs.unibo.it)
