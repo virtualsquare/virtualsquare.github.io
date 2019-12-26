@@ -13,11 +13,11 @@ Fully backwards compatible with vdeplug of vde2.
  * [vdens](https://github.com/rd235/vdens)
 Create User Namespaces connected to VDE networks
 
- * [libslirp](https://github.com/rd235/libslirp)
-A TCP-IP emulator as a library.
+ * [libvdeslirp](https://github.com/virtualsquare/libvdeslirp)
+Libslirp (A TCP-IP emulator as a library) made easy peasy for Linux (this library obsolets virtualsquare's [old libslirp](https://github.com/rd235/libslirp)).
 
- * [vdeplug\_slirp](https://github.com/rd235/vdeplug_slirp)
-A slirp plugin for vdeplug4
+ * [vdeplug\_slirp](https://github.com/virtualsquare/vdeplug_slirp)
+A slirp plugin for vdeplug4. (this obsoletes the [old vdeplug\_slirp plugin](https://github.com/rd235/vdeplug_slirp) based on the deprecated [old libslirp](https://github.com/rd235/libslirp) library).
 
  * [vdeplug\_agno](https://github.com/rd235/vdeplug_agno)
 agnostic encryption nested plugin for vdeplug4

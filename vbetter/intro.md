@@ -14,6 +14,11 @@ obsolete concepts in programs, libraries and protocols.
 * [the mount command is a *censor*](freemount.md)
 * [ptrace's `SYSCALL_EMU` is for User-Mode Linux only](nosyscall_emu.md)
 
+<!-- TBD
+linux does not provide synthesized events for poll/select etc.
+glibc uses the wrong type of sockets for if_nametoindex
+-->
+
 ## We do V better
 
 VirtualSquare tools can be seen as general purpose solutions,
