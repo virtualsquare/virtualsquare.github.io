@@ -15,14 +15,14 @@ apt-get install qemu-kvm
 
 Download it from [http://www.cs.unibo.it/renzo/virtualsquare/tutorial/](http://www.cs.unibo.it/renzo/virtualsquare/tutorial/).
 
-It is approximately 0.5GB.
+It is approximately 0.8GB.
 
 ## step 2: run the VM
 
 We suggest the following command:
 
 ```
-kvm -smp 8 -drive file=v2tutorial.img -m 1G -monitor stdio -net user,hostfwd=tcp::2222-:22 -net nic
+kvm -smp 8 -drive file=v2tutorial.img,format=raw -m 1G -monitor stdio -net user,hostfwd=tcp::2222-:22 -net nic
 ```
 
 The number of cores (``-smp 8``) and the amount of memory (``-m 1G``) should be adapted to your environment.
