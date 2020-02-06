@@ -15,11 +15,9 @@ obsolete concepts in programs, libraries and protocols.
 * [ptrace's `SYSCALL_EMU` is for User-Mode Linux only](nosyscall_emu.md)
 * [eBPF for seccomp is useful (and harmless)!](seccomp_ebpf.md)
 * [We need to synthesize poll/select events](vpoll.md)
-
-<!-- TBD
-linux does not provide synthesized events for poll/select etc.
-glibc uses the wrong type of sockets for if_nametoindex
--->
+* [iproute: `ip link add` for generic interfaces](iplinkadd.md)
+* [Linux netlink bug: negative ip interfaces](nlnegativeif.md)
+* [qemu/kvm: all interfaces have the same default MAC](qemudefmac.md)
 
 ## We do V better
 
