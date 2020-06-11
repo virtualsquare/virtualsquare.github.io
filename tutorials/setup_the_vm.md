@@ -13,52 +13,55 @@ apt-get install qemu-kvm
 
 ## step 1: download the disk image 
 
-Download it from [http://www.cs.unibo.it/renzo/virtualsquare/tutorial/](http://www.cs.unibo.it/renzo/virtualsquare/tutorial/).
+Download the latest [Daily brewed Debian disk images for VirtualSquare](/daily_brewed.md).
 
-It is approximately 0.8GB.
+It is approximately 0.45GB.
 
-## step 2: run the VM
+## step 2: uncompress the image:
+
+```bash
+$ bunzip2 debian-sid-v2-amd64-daily-????????-???.qcow2.bz2
+```
+
+question marks should be changed with the actual date and version number of the disk image.
+e.g.:
+
+```bash
+$ bunzip2 debian-sid-v2-amd64-daily-20200528-277.qcow2.bz2
+```
+
+
+## step 3: run the VM
 
 We suggest the following command:
 
-```
-kvm -smp 8 -drive file=v2tutorial.img,format=raw -m 1G -monitor stdio -net user,hostfwd=tcp::2222-:22 -net nic
+``` bash
+$ kvm -smp 8 -drive file=$(echo debian-sid-v2-amd64-daily-????????-???.qcow2)\
+    -m 1G -monitor stdio -netdev type=user,id=net,hostfwd=tcp::2222-:22 \
+    -device virtio-net-pci,netdev=net
 ```
 
 The number of cores (``-smp 8``) and the amount of memory (``-m 1G``) should be adapted to your environment.
+It is possible to name the actual file name including the date and version number in this way"
 
-## step 3: log in as root
+``` bash
+$ kvm -smp 8 -drive file=debian-sid-v2-amd64-daily-20200611-294.qcow2\
+    -m 1G -monitor stdio -netdev type=user,id=net,hostfwd=tcp::2222-:22 \
+    -device virtio-net-pci,netdev=net
+```
+
+## step 4: log in as root
 
 the password is ``virtualsquare``
 
-## step 4: download the latest install scripts
+## step 5: run the `get_v2all` script
 
-run:
-```
-./wget_install_scripts
-```
-This script gets the latest versions of the scripts for the steps 5 and 6 here below.
+This command installs all the packets needed by the virtualsquare projects and then downloads, builds and installs all the altest versions of the projects directly from the development repositories.
 
-## step 5: install the required debian packets
-
-run:
-```
-./install_packets_for_v2.sh
+``` bash
+# ./get_v2all
 ```
 
-This script downloads and installs several debian packets needed by the virtualsquare projects.
-This operation may require some minutes (the actual time needed depends on the bandwidth of your internet 
-connection and the performance of your processor).
-
-## step 6: install the VirtualSquare projects
-
-run
-```
-./install_v2_projects.sh
-```
-
-This script downloads the source code of the projects from the repositories, it compiles and installs
-all the VirtualSquare tools required for the tutorials.
 This operation may require some minutes (the actual time needed depends on the bandwidth of your internet 
 connection and the performance of your processor).
 now you can logout as root.
@@ -67,17 +70,17 @@ now you can logout as root.
 logout
 ```
 
-## step 7: login as _user_
+## step 6: login as _user_
 
 Type `user` at the login prompt, the password is `virtualsquare`
 
-## step 8: The VM is ready!
+## step 7: The VM is ready!
 
 Now you can choose the tutorial experiment you like from the menu and run it.
 
 ... when you have completed your experiments:
 
-## step 9: shut down the VM
+## step 8: shut down the VM
 
 type:
 
@@ -92,6 +95,10 @@ Now the VM and all the VirtualSquare tools have been installed.
 When you want to try more tutorial experiments you can run just the following steps:
 
 * step 2: run the VM
-* step 7: login as _user_
-* step 8: The VM is ready!
-* step 9: shut down the VM
+* step 6: login as _user_
+* step 7: The VM is ready!
+* step 8: shut down the VM
+
+
+### Note:
+Images before June 17, 2020 may use `virtualsquare` instead of `user` as login name in step 6.
