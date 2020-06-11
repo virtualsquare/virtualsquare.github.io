@@ -14,9 +14,9 @@ it gets, builds and installs all the V2 projects at their latest version
 
 You can download the latest images from here:
 
- * [daily images](daily.html)
- * [weekly images](weekly.html)
- * [monthly images](monthly.html)
+ * [daily images](daily_brewed/daily.html)
+ * [weekly images](daily_brewed/weekly.html)
+ * [monthly images](daily_brewed/monthly.html)
 
 Images has names like:
 ```
@@ -29,7 +29,7 @@ debian-sid-v2-amd64-daily-20200610-292.qcow2.bz2
 is  the image #292 generated on June 10th 2020.
 
 Further explanation on how to use these images to run a tutorial on the VirtualSquare projects
-can be found in [this](/tutorials/setup_the_vm.md) page.
+can be found in [this](tutorials/setup_the_vm.md) page.
 
 This service has been implemented using the 
 [freshly brewed VirtualSquare](https://github.com/virtualsquare/freshly_brewed_virtualsquare)
