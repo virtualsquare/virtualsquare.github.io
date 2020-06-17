@@ -10,7 +10,7 @@ This images provide an updated Debian SID installation including:
 * in root's home directory: `get_v2all` script. It downloads and installs all the 
 packages needed by the V2 projects as well as
 it gets, builds and installs all the V2 projects at their latest version
-* a user account `virtualsquare` (password `virtualsquare`)
+* a user account `user` (password `virtualsquare`)
 
 You can download the latest images from here:
 
