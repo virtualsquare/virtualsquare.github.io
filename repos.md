@@ -34,6 +34,9 @@ VXVDEX: connect distributed private network namespaces
  * [vdeplug\_pcap](https://github.com/rd235/vdeplug_pcap)
 A pcap plugin for vdeplug4
 
+ * [vdeplug\_vdesl](https://github.com/virtualsquare/vdeplug_vdesl)
+VDE point to point nets over serial links
+
  * [virtualbricks](https://github.com/virtualsquare/virtualbricks)
 A GTK frontend for VDE and QEMU/KVM. Supports multiple network on the same host, tunneling between hosts networks, a fully featured configuration interface.
 

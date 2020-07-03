@@ -4,7 +4,10 @@
 
 [![](v2.png)](index.md)
 
-[VirtualSquare](index.md)
+[VirtualSquare]()
+
+  * [home](index.md)
+  * [status](status.md)
 
 [Docs]()
 
@@ -58,6 +61,12 @@
 
   * [let us fix the World](vbetter/intro.md)
   - - - -
+
+[V² for EDU]()
+
+  * [VirtualSquare for Computer Science Education](v2edu.md)
+   - - -
+  * [µMPS](umps/umps.md)
 
 
 [*old v2 site*](http://wiki.v2.cs.unibo.it)
