@@ -103,6 +103,9 @@ Parse options from a string (supports quotation, option arguments, no malloc nee
  * [libpam-net](https://github.com/rd235/libpam-net)
 LIBPAM-NET: create/join network namespaces at login
 
+ * [randmac](https://github.com/virtualsquare/randmac)
+Create random MAC addresses for Virtual Machines.
+
  * [virtualsquare](https://github.com/virtualsquare/virtualsquare.github.io)
 VirtualSquare wiki (the source code of this web site!)
 
