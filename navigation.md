@@ -68,5 +68,8 @@
    - - -
   * [µMPS](umps/umps.md)
 
+[V² in distros]()
+
+  * [V² in Debian](distros/debian.md)
 
 [*old v2 site*](http://wiki.v2.cs.unibo.it)
