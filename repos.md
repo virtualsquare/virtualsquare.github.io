@@ -109,10 +109,6 @@ Create random MAC addresses for Virtual Machines.
  * [virtualsquare](https://github.com/virtualsquare/virtualsquare.github.io)
 VirtualSquare wiki (the source code of this web site!)
 
- * [v2utils](https://github.com/rd235/(https://github.com/virtualsquare/v2utils)
-v2utils: virtualsquare libraries and utilities. It is for Debian packaging of small general
-purpose libraries and tools.
-
  * [v2glossary](https://github.com/virtualsquare/v2glossary)
 VirtualSquare Glossary
 
