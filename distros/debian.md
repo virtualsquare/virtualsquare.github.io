@@ -128,7 +128,7 @@ and a watch file to check the synchronization with new releases on GitHub.
 
 * `watch`
 
-The file [`debian_xxxxx.tzr.gz`](https://raw.githubusercontent.com/virtualsquare/virtualsquare.github.io/master/archive/debian/debian_xxxxx.tgz)
+The file [`debian_xxxxx.tgz`](https://raw.githubusercontent.com/virtualsquare/virtualsquare.github.io/master/archive/debian/debian_xxxxx.tgz)
 (click on it to download) contains an example of debian dir contents to be customized for the actual repository.
 
 The timestamp in the `changelog` file can be updated by edding a fake entry using `dch` and the editing the `changelog` file.
