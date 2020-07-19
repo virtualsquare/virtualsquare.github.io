@@ -14,7 +14,7 @@ $ mkdir xxxxx
 $ cd xxxxx
 ```
 
-Clone the repoi using https:
+Clone the repo using https:
 ```bash
 $ git clone https://salsa.debian.org/virtualsquare-team/xxxxx.git
 ```
@@ -49,16 +49,16 @@ on the development repo, then exported/pushed to the packaging repo
 
 The _debian/sid_ branch is the default branch of the repository on salsa (to ease the
 clone/buildpackage process).
-This branch adds teh `debian` directory to the contents of _upstream_.
+This branch adds the `debian` directory to the contents of _upstream_.
 
 We use git tags to label the source and debian snapshots:
 
 * `upstream/0.1` is the tag of the code for `xxxxx_0.1.orig.tar.gz`
 * `debian/0.2-1` is the tag of the snapshot to generate `xxxxx_0.2-1_yyy.deb` and `xxxxx_0.2-1.debian.tar.xz`.
 
-## Virtualsquare tutorial for Debian packaging
+## VirtualSquare tutorial for Debian packaging
 
-The following recipe for Debian packaging is just a hint. All thr process should be applied
+The following recipe for Debian packaging is just a hint. All the process should be applied
 _cum grano salis_ and paying attention to _mutadis mutandis_.
 
 ### Create the project on Salsa
@@ -131,7 +131,7 @@ and a watch file to check the synchronization with new releases on GitHub.
 The file [`debian_xxxxx.tgz`](https://raw.githubusercontent.com/virtualsquare/virtualsquare.github.io/master/archive/debian/debian_xxxxx.tgz)
 (click on it to download) contains an example of debian dir contents to be customized for the actual repository.
 
-The timestamp in the `changelog` file can be updated by edding a fake entry using `dch` and the editing the `changelog` file.
+The timestamp in the `changelog` file can be updated by adding a fake entry using `dch` and the editing the `changelog` file.
 (or create a new `changelog` by `dch --create`).
 
 ```bash
