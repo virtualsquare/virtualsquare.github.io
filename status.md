@@ -37,7 +37,7 @@ and all the other plugs we can package has to wait in experimental.
 Note: still in experimental, it collides with current vde2 on unstable
 
 ### purelibc
-newrepo on github, the code has been ported to cmake, this is ready to be packaged, it should *not* need to enter the NEW-BYHAND queue as it is just an update of an existing package
+purelibc 1.0.2 is in sid and testing. SOme work must be done to port on some architectures.
 
 ### vdeplug\_slirp, vdeplug\_vdesl, vdeplug\_vlan
 Ready to be packaged.
@@ -45,16 +45,16 @@ Ready to be packaged.
 Note: can enter experimental only as it needs vdeplug4
 
 ### libpam-net
-Ready to be packaged (check the multiple ITPs)
+Packaged. Need some final checks and can enter the NEW queue.
 
 ### strcase, userbindmount, libvolatilestream, libfduserdata, libstropt, nlinline
-Ready to be packaged (split v2utils)
+Packaged and waiting in the NEW queue.
 
 ### libvpoll-eventfd
-To be packaged: it includes a kernel module
+Packaged. Some checks needed for the kernel module. Almost ready for the NEW queue.
 
 ### lwipv6 (old)
-There is ftbfs with glibc-2.31 (doko)
+There is ftbfs with glibc-2.31 (doko). `lwipv6_1.5a-6` is going to be upladed.
 
 ## Open Suse
 [... add status here]
