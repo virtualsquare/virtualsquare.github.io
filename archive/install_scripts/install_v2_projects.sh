@@ -80,6 +80,8 @@ install_repo https://github.com/rd235/vdens.git
 install_repo https://github.com/virtualsquare/vuos.git
 install_repo https://github.com/virtualsquare/nlinline.git
 install_repo https://github.com/virtualsquare/libnlq.git
+install_repo https://github.com/virtualsquare/randmac.git
+install_repo https://github.com/rd235/libpam-net.git
 
 rm -f /usr/local/lib/vu/modules/vufuseext2.so
 ln -s  /usr/local/lib/umview/modules/umfuseext2.so /usr/local/lib/vu/modules/vufuseext2.so
