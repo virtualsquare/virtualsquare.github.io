@@ -186,13 +186,16 @@ From the project homepage: _Settings-->Repository-->Default Branch_.
 
 ## Debian Packaging on Arch Linux
 
-As mentioned in the [Packaging/Pre-Requisites](https://wiki.debian.org/Packaging/Pre-Requisites) section of the Debian Wiki, you need a [Debian unstable](https://wiki.debian.org/DebianUnstable) environment to create packages suitable for uploading to Debian, but you don't have to maintain a whole Debian system to achieve this.\
-The ArchWiki gives us some tips at [Creating packages for other distributions](https://wiki.archlinux.org/index.php/Creating_packages_for_other_distributions).\
+As mentioned in the [Packaging/Pre-Requisites](https://wiki.debian.org/Packaging/Pre-Requisites) section of the Debian Wiki, you need a [Debian unstable](https://wiki.debian.org/DebianUnstable) environment to create packages suitable for uploading to Debian, but you don't have to maintain a whole Debian system to achieve this.
+
+The ArchWiki gives us some tips at [_Creating packages for other distributions_](https://wiki.archlinux.org/index.php/Creating_packages_for_other_distributions).
+
 Here is an example of how to reproduce the VirtualSquare's Debian Packaging workflow on Arch-based systems.
 
 ### Setting up the environment
 
-To set up a minimal working Debian Packaging environment you need at least [build-essential](https://packages.debian.org/sid/build-essential), [devscripts](https://packages.debian.org/sid/devscripts) and [debhelper](https://packages.debian.org/sid/debhelper) on your system.\
+To set up a minimal working Debian Packaging environment you need at least [build-essential](https://packages.debian.org/sid/build-essential), [devscripts](https://packages.debian.org/sid/devscripts) and [debhelper](https://packages.debian.org/sid/debhelper) on your system.
+
 On Arch Linux, you can obtain these tools by installing:
 
 * [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/)
@@ -200,8 +203,10 @@ On Arch Linux, you can obtain these tools by installing:
 * [devscripts](https://aur.archlinux.org/packages/devscripts/)
 * [dh-autoreconf](https://aur.archlinux.org/packages/dh-autoreconf/)
 
-As mentioned before, VirtualSquare uses [git-buildpackage](https://packages.debian.org/sid/git-buildpackage) to integrate the package build system with Git.\
-Furthermore, we will test the package against [pbuilder](https://packages.debian.org/sid/pbuilder), since building it inside a clean-room environment ensure us that it will build properly in most Debian installations.\
+As previously mentioned, VirtualSquare uses [git-buildpackage](https://packages.debian.org/sid/git-buildpackage) to integrate the package build system with Git.
+
+Furthermore, we will test the package against [pbuilder](https://packages.debian.org/sid/pbuilder), since building it inside a clean-room environment ensure us that it will build properly in most Debian installations.
+
 You can obtain both tools by installing:
 
 * [git-buildpackage](https://aur.archlinux.org/packages/git-buildpackage/)
@@ -209,7 +214,8 @@ You can obtain both tools by installing:
 
 ### Building the package
 
-While the packaging process remains [the same](#VirtualSquare_tutorial_for_Debian_packaging), on Arch Linux [we are forced](https://wiki.archlinux.org/index.php/Creating_packages_for_other_distributions#Override_dependency_handling) to use the `-d` ("_Do not check build dependencies and conflicts_") flag while building the package because _dpkg_ does not recognize dependencies installed by [pacman](https://wiki.archlinux.org/index.php/Pacman).\
+While the packaging process remains [the same](#VirtualSquare_tutorial_for_Debian_packaging), on Arch Linux [we are forced](https://wiki.archlinux.org/index.php/Creating_packages_for_other_distributions#Override_dependency_handling) to use the `-d` ("_Do not check build dependencies and conflicts_") flag while building the package because _dpkg_ does not recognize dependencies installed by [pacman](https://wiki.archlinux.org/index.php/Pacman).
+
 The [_Test the packaging process_](#Test_the_packaging_process) step will become:
 ```bash
 $ gbp buildpackage -us -uc -d
@@ -217,7 +223,8 @@ $ gbp buildpackage -us -uc -d
 
 ### Testing the package
 
-Since we used the `-d` flag, our newly built package is very far from being foolproof.\
+Since we used the `-d` flag, our newly built package is far from being foolproof.
+
 _Pbuilder_ comes to our rescue, allowing us to build the package inside a clean Debian chroot environment.
 You can learn more about its usage [here](https://wiki.ubuntu.com/PbuilderHowto) and [here](https://pbuilder-team.pages.debian.net/pbuilder/).
 
