@@ -12,7 +12,7 @@ obsolete concepts in programs, libraries and protocols.
 * [IP multicast supports only one server per IP address](multimulticast.md)
 * [VXLAN's VTEP is a bottleneck](novtep.md)
 * [the mount command is a *censor*](freemount.md)
-* [ptrace's `SYSCALL_EMU` is for User-Mode Linux only](nosyscall_emu.md)
+* [`PTRACE_SYSEMU` is for User-Mode Linux only](nosyscall_emu.md)
 * [eBPF for seccomp is useful (and harmless)!](seccomp_ebpf.md)
 * [We need to synthesize poll/select events](vpoll.md)
 * [iproute: `ip link add` for generic interfaces](iplinkadd.md)

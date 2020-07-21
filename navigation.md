@@ -55,7 +55,7 @@
   * [Netlink client and server support](ideas/nlq.md)
   * [user bind mount](ideas/userbindmount.md)
   * [C streams as volatile buffers: volatilestreams](ideas/volatilestream.md)
-  * [man pages: write in Markdown, maintain by Git, release in nroff](ideas/v2ronn.md)
+  * [man pages: write in Markdown, maintain by Git, release in \*roff](ideas/v2ronn.md)
 
 [We do V better!]()
 

@@ -30,4 +30,4 @@ Solution to practical problems we have solved during the development of the proj
 * [Netlink client and server support](nlq.md)
 * [user bind mount](userbindmount.md)
 * [C streams as volatile buffers: volatilestreams](volatilestream.md)
-* [man pages: write in Markdown, maintain by Git, release in nroff](v2ronn.md)
+* [man pages: write in Markdown, maintain by Git, release in \*roff](v2ronn.md)
