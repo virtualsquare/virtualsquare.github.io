@@ -1,14 +1,29 @@
 # VirtualSquare in Debian
 
-The [Debian VirtualSquare Team](https://salsa.debian.org/virtualsquare-team) is actively working
-to bring new VirtualSquare projects to the Debian distribution and to update the
-[already available packages](https://qa.debian.org/developer.php?login=virtualsquare%40cs.unibo.it).
+The [Debian VirtualSquare Team](https://salsa.debian.org/virtualsquare-team) is actively working to bring new VirtualSquare projects to the Debian distribution and to update the [already available packages](https://qa.debian.org/developer.php?login=virtualsquare%40cs.unibo.it).
 
 VirtualSquare's repositories for Debian packaging are on [Salsa](https://salsa.debian.org/virtualsquare-team).
 
-## How to Build the packages from Salsa
+## Structure of VirtualSquare repositories on Salsa
 
-Create a directory and cd into it (just not to spread packges in the current dir).
+The repo has two types of branches: _upstream_ and _debian_ (some repos have also a _pristine-tar_ branch).
+
+The _upstream_ branch is synchronized with the repo we use for the project development (generally on [GitHub](https://github.com/virtualsquare) for VirtualSquare's projects).
+
+Warning: never commit changes to this branch! Changes should be proposed, tested and committed on the development repo, then exported/pushed to the packaging repo.
+
+The _debian/sid_ branch is the default branch of the repository on Salsa (to ease the clone/buildpackage process).
+This branch adds the `debian` directory to the contents of _upstream_.
+
+We use [git tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to label the source and Debian snapshots:
+* `upstream/0.1` is the tag of the code for `xxxxx_0.1.orig.tar.gz`
+* `debian/0.2-1` is the tag of the snapshot to generate `xxxxx_0.2-1_yyy.deb` and `xxxxx_0.2-1.debian.tar.xz`.
+
+[Learn more about PackagingWithGit](https://wiki.debian.org/PackagingWithGit)
+
+## How to build packages from Salsa
+
+Create a directory and `cd` into it (just to avoid spreading files in the current dir):
 ```bash
 $ mkdir xxxxx
 $ cd xxxxx
@@ -17,6 +32,10 @@ $ cd xxxxx
 Clone the repo using https:
 ```bash
 $ git clone https://salsa.debian.org/virtualsquare-team/xxxxx.git
+```
+or ssh:
+```bash
+$ git clone git@salsa.debian.org:virtualsquare-team/xxxxx.git
 ```
 or git:
 ```bash
@@ -28,47 +47,26 @@ Enter the just cloned repo:
 cd xxxxx
 ```
 
-and use _git-buildpackage_ to make the packages:
+and use [_git-buildpackage_](https://packages.debian.org/sid/git-buildpackage) to build the package:
 ```bash
 $ gbp buildpackage -us -uc
 ```
-(omit `-us -uc` to sign the packages).
+Note: `-us` ("_Do not sign the source package._") and `-uc` ("_Do not sign the .changes file._") are _dpkg-buildpackage_ flags which are passed from _debuild_ to _dpkg-buildpackage_.
 
 The source and binary packages are ready in the parent directory.
 
-## Structure of VirtualSquare repositories on Salsa
-
-The repo has two types of branches: _upstream_ and _debian_.
-(Some repos have also a _pristine-tar_ branch)
-
-The _upstream_ branch is synchronized with the repo we use for the project
-development (generally on GitHub for VirtualSquare projects).
-
-Warning: never commit changes to this branch! Changes should be proposed, tested and committed
-on the development repo, then exported/pushed to the packaging repo
-
-The _debian/sid_ branch is the default branch of the repository on salsa (to ease the
-clone/buildpackage process).
-This branch adds the `debian` directory to the contents of _upstream_.
-
-We use git tags to label the source and debian snapshots:
-
-* `upstream/0.1` is the tag of the code for `xxxxx_0.1.orig.tar.gz`
-* `debian/0.2-1` is the tag of the snapshot to generate `xxxxx_0.2-1_yyy.deb` and `xxxxx_0.2-1.debian.tar.xz`.
-
 ## VirtualSquare tutorial for Debian packaging
 
-The following recipe for Debian packaging is just a hint. All the process should be applied
-_cum grano salis_ and paying attention to _mutadis mutandis_.
+The following recipe for Debian packaging is just a hint. All the process should be applied _cum grano salis_ and paying attention to _mutadis mutandis_.
 
-### Create the project on Salsa
+### Create the project repo on Salsa
 
-make it public and do not add a README (create an empty project)
+Make it public and do not add a README (create an empty project).
 
-### Push the dev repo
+### Push the development repo
 
-`cd` to the dir where you have your local copy of the dev repo (or clone the repo from GitHub)
-(in this example the local copy of the project `xxxxx` is in `~/GITHUB/xxxxx/xxxxx`).
+`cd` to the dir where you have your local copy of the development repo (or clone the repo from GitHub).
+In this example the local copy of the project `xxxxx` is in `~/GITHUB/xxxxx/xxxxx`:
 
 ```bash
 $ cd ~/GITHUB/xxxxx/xxxxx
@@ -120,7 +118,7 @@ For each binary package xxxbin:
 
 * `xxxbin_install`
 
-Virtualsquare repos include git buildpackage configuration:
+Virtualsquare repos include _git-buildpackage_ configuration:
 
 * `gbp.conf`
 
@@ -129,17 +127,16 @@ and a watch file to check the synchronization with new releases on GitHub.
 * `watch`
 
 The file [`debian_xxxxx.tgz`](https://raw.githubusercontent.com/virtualsquare/virtualsquare.github.io/master/archive/debian/debian_xxxxx.tgz)
-(click on it to download) contains an example of debian dir contents to be customized for the actual repository.
+(click on it to download) contains an example of `debian` dir contents to be customized for the actual repository.
 
-The timestamp in the `changelog` file can be updated by adding a fake entry using `dch` and the editing the `changelog` file.
-(or create a new `changelog` by `dch --create`).
+The timestamp in the `changelog` file can be updated by adding a fake entry using `dch` and the editing the `changelog` file (or create a new `changelog` by `dch --create`).
 
 ```bash
 $ git add debian
 $ git commit
 ```
 
-The standard comment for this commit is "add debian packaging support".
+The standard comment for this commit is "_Add Debian Packaging support_".
 
 ### Test the packaging process
 
@@ -147,7 +144,7 @@ The standard comment for this commit is "add debian packaging support".
 $ gbp buildpackage -us -uc
 ```
 
-check the packages and read carefully the comments from lintian.
+Check the packages and read carefully the comments from lintian.
 
 ### Clean the repo contents
 
@@ -155,7 +152,7 @@ check the packages and read carefully the comments from lintian.
 $ debuild -- clean
 ```
 
-In case byproducts of packaging has been left around
+In case byproducts of packaging has been left around:
 ```bash
 $ git reset --hard
 $ git clean -f -d
@@ -163,28 +160,27 @@ $ git clean -f -d
 
 ### In case something is wrong
 
-Change the contents of debian directory files.
+Change the contents of debian directory files:
 ```bash
-$ git add -u 
+$ git add -u
 ```
 .... `git add`/`git rm`/`git mv`... whatever needed
 ```bash
 $ git commit --amend
 ```
-and jump back to "Test the packaging process" step here above.
+and jump back to [Test the packaging process](#Test_the_packaging_process).
 
-### Push the `debian/sid` branch on salsa
+### Push the `debian/sid` branch on Salsa
 ```bash
 $ git push -u origin debian/sid
 ```
-### (optional) create the pristine-tar 
+### (optional) Create the pristine-tar
 ```bash
-$ gbp pristine-tar commit ../xxxxx_0,1.orig.tar.gz
+$ gbp pristine-tar commit ../xxxxx_0.1.orig.tar.gz
 $ git push origin -u pristine-tar:pristine-tar
 ```
 
-### make `debian/sid` the deault branch on salsa
+### Set `debian/sid` as the default branch on Salsa
 
-On the web site of the repo on Select Settings/Repository.
-The first item is "Default Branch"
+From the project homepage: _Settings-->Repository-->Default Branch_.
 
