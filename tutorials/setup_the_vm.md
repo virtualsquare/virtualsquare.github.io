@@ -36,19 +36,19 @@ $ bunzip2 debian-sid-v2-amd64-daily-20200528-277.qcow2.bz2
 We suggest the following command:
 
 ``` bash
-$ kvm -smp $(nproc) -drive file=$(echo debian-sid-v2-amd64-daily-????????-???.qcow2)\
-    -m 1G -monitor stdio -netdev type=user,id=net,hostfwd=tcp::2222-:22 \
-    -device virtio-net-pci,netdev=net
+$ qemu-system-x86_64 -enable-kvm -smp $(nproc) -m 2G -monitor stdio \
+		-netdev type=user,id=net,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net \
+    -drive file=$(echo debian-sid-v2-amd64-daily-????????-???.qcow2)
 ```
 
-The number of cores (``-smp $(nproc)``) and the amount of memory (``-m 1G``) should be adapted to 
-your environment. (This command uses all the cores available in the hosting computer -- the output of the `nproc` command)
-It is possible to name the actual file name including the date and version number in this way"
+The number of cores (``-smp $(nproc)``) and the amount of memory (``-m 2G``) should be adapted to 
+your environment. (This command uses all the cores available in the hosting computer -- the output of the `nproc` command).
+It is possible to name the actual file name including the date and version number in this way:
 
 ``` bash
-$ kvm -smp $(nproc) -drive file=debian-sid-v2-amd64-daily-20200611-294.qcow2\
-    -m 1G -monitor stdio -netdev type=user,id=net,hostfwd=tcp::2222-:22 \
-    -device virtio-net-pci,netdev=net
+$ qemu-system-x86_64 -enable-kvm -smp $(nproc) -m 2G -monitor stdio \
+		-netdev type=user,id=net,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net \
+    -drive file=debian-sid-v2-amd64-daily-20200611-294.qcow2
 ```
 
 ## step 4: log in as root
