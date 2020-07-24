@@ -37,7 +37,7 @@ We suggest the following command:
 
 ``` bash
 $ qemu-system-x86_64 -enable-kvm -smp $(nproc) -m 2G -monitor stdio -cpu host\
-		-netdev type=user,id=net,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net \
+    -netdev type=user,id=net,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net \
     -drive file=$(echo debian-sid-v2-amd64-daily-????????-???.qcow2)
 ```
 
@@ -47,7 +47,7 @@ It is possible to name the actual file name including the date and version numbe
 
 ``` bash
 $ qemu-system-x86_64 -enable-kvm -smp $(nproc) -m 2G -monitor stdio -cpu host\
-		-netdev type=user,id=net,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net \
+    -netdev type=user,id=net,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net \
     -drive file=debian-sid-v2-amd64-daily-20200611-294.qcow2
 ```
 
