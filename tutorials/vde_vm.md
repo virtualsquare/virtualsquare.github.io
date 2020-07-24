@@ -122,7 +122,7 @@ Start the VMs as described above.
 Now it is possible to ping `10.0.0.254` from the VM and `10.0.0.1/10.0.0.2` from the tutorial machine.
 This three node VDE is up and running.
 
-## Join User-Mode-Linux machines to VDE netwrks
+## Join User-Mode-Linux machines to VDE networks
 
 The command line parameter to create a VDE virtual interface of a User-Mode Linux machine is: `eth`n`=vde,`UVDEL. For example:
 `eth0=vde:///tmp/mysw` create the virtual interface eth0 connected to the switch `/tmp/mysw`
@@ -171,7 +171,7 @@ $ linux ubd0=cowfile0,BusyBox-1.21.1-amd64-root_fs eth0=vde,/tmp/mysw
 ```
 The new syntax (if supported by the `linux` command) is:
 ```
-$ linux_vdeplug4 ubd0=cowfile1,BusyBox-1.21.1-amd64-root_fs eth0=vde,vde:///tmp/mysw
+$ ./linux_vdeplug4 ubd0=cowfile1,BusyBox-1.21.1-amd64-root_fs eth0=vde,vde:///tmp/mysw
 ```
 This latter syntax enables the support of all the VDEplug4 plugins. 
 
@@ -211,19 +211,65 @@ We have provided (in [the tutorial resource page](tutorial_resources.html) as us
 `vmlinuz_qemu`. Download it and start a VM as follows:
 ```
 $ cp BusyBox-1.21.1-amd64-root_fs minfs0
-$ qemu-system-x86_64 -enable-kvm -m 512M -kernel vmlinuz_qemu -append "root=/dev/sda" -drive file=minfs0
+$ qemu-system-x86_64 -enable-kvm -m 512M -kernel vmlinuz_qemu -append "root=/dev/sda" \
+    -drive file=minfs0 \
+    -device e1000,netdev=vde0,mac=$(randmac -q) -netdev vde,id=vde0,sock=vde:///tmp/mysw
 ```
 or in text-only mode:
 ```
 $ cp BusyBox-1.21.1-amd64-root_fs minfs1
 $ qemu-system-x86_64 -enable-kvm -nographic -m 512M -k en-us\
-    -kernel vmlinuz_qemu -append "root=/dev/sda  console=ttyS0,9600n8" -drive file=minfs1
+    -kernel vmlinuz_qemu -append "root=/dev/sda  console=ttyS0,9600n8" -drive file=minfs1 \
+    -device e1000,netdev=vde0,mac=$(randmac -q) -netdev vde,id=vde0,sock=vde:///tmp/mysw
 ```
-(remove `-enable-kvm` to run `qemu` instead of `kvm`).
+(remove `-enable-kvm` to run `qemu` instead of `kvm`) 
 
 Hint: You can build your own kernel for qemu/kvm. Download the Linux Kernel sources (e.g. from kernel.org), 
 copy the file config4AEMU (available in the tutorial resources page) in the linux source tree root changing the name to .config. 
 Run `make menuconfig` and modify the configuration to fit your needs. Then build the kernel: `make`. 
 At the end the file `arch/x86_64/boot/bzImage` is the kernel (in compressed format). Copy it with a suitable name (like `vmlinuz_qemu`)
 
-## Join VIrtualBOX machines to VDE netwrks
+## Join VirtualBox virtual machines to VDE networks
+
+Unfortunately VirtualBox cannot run nested VMs inside Kvm. So this tutorial can be tested only on a Linux host.
+
+### install VirtualBox
+```
+$ su -
+# apt-get update
+# apt-get install virtualbox
+# exit
+```
+
+Note: virtualbox is not in the _main_ Debian distribution, it is in the _contribution_. The file `/etc/apt/sources.list`
+must be cofnigure to allow the installation of packages from the _contribution_ repository
+
+### configure VirtualBox
+
+The following picture shows an example of configuration of a VDE network interface.
+
+![virtualbox: vde configuration](pictures/vde_vbox.png)
+
+The Alpine image used for qemu/kvm can be used to test VirtualBox.
+
+Warning: there are compatibility issues. Debian packages are consistent: if you install both VDE and VirtualBOX from 
+Debian they are compatible (any version, stable, testing, unstable), but only VDE2 syntax is supported
+(so in the example above `network=/tmp/mysw` must be used instead of `network=vde:///tmp/mysw`.
+VirtualBox does __not__ support VDEplug4 if installed in /usr/local (e.g. if installed from GITHUB).(\*)
+An inelegant workaround that can be used to test VDEplug4 is to copy all the plugins in /usr/lib.
+`mkdir /usr/lib/vdeplug; cp /usr/local/lib/vdeplug/* /usr/lib/vdeplug`
+
+Note: (\*) This is a limitation of VirtualBox: 
+_"
+In addition to what the dynamic linker does for us, the VirtualBox code will
+not directly be calling either RTLdrLoad or dlopen to load dynamic link
+libraries into the process. Instead it will call \#SUPR3HardenedLdrLoad,
+\#SUPR3HardenedLdrLoadAppPriv and \#SUPR3HardenedLdrLoadPlugIn to do the
+loading. These functions will perform the same validations on the file being
+loaded as #SUPR3HardenedMain did in its validation step.  So, anything we
+load must be installed with root/wheel as owner/group, the directory we load
+it from must also be owned by root:wheel and now allow for renaming the file.
+Similar ownership restrictions applies to all the parent directories (except
+on darwin).
+"_
+(SUPR3HardenedMain.cpp lines 143 and following)
