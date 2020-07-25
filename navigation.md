@@ -21,10 +21,21 @@
   * [Set up a Linux host](tutorials/setup_a_host.md)
   - - - -
   * # VDE
-<!--  * [TBD](tutorial/intro.md) -->
+	* [VDE Basic Networking](tutorials/vdebasics.md)
+	* [VDE and Virtual Machines](tutorials/vde_vm.md)
+	* [VDE namespaces and NFV](tutorials/vde_ns.md)
+	* [VDE Local Area Cloud (vxvde)](tutorials/vde_lac.md)
+	* [VDE based Internet of threads](tutorials/vde_ioth.md)
+	* [VDE slirp](tutorials/vde_slirp.md)
   - - - -
   * # VUOS
-<!--  * [TBD](tutorial/intro.md) -->
+	* [VUOS/umvu basic usage](tutorial/vuosbasics.md)
+	* [vufuse: VUOS FUSE](tutorial/vufuse.md)
+	* [vudev: VUOS virtual devices](tutorial/vudev.md)
+	* [vunet: VUOS virtual networking](tutorial/vunet.md)
+	* [vufs: VUOS virtual filesystems](tutorial/vufs.md)
+	* [VUOS virtual user/group ids](tutorial/umvu_uidgid.md)
+	* [VUOS virtual time, uname etc](tutorial/vumisc.md)
 
 [Ideas, T&T]()
 

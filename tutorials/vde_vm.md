@@ -62,6 +62,8 @@ VirtualSquare provides `vde_switch` which supports all these features.
 Note: The _name_ of the switch is `/tmp/mysw`. All the VDE clients using the UVDEL `vde:///tmp/mysw` will be connected
 by a virtual ethernet.
 
+Note: The `vde_plug` runs in foreground in the example, so it runs until it is terminated (e.g. typing ctrl-C). `vde_plug` provides
+options (like `-d`/`--daemon` and `-p`/`--pidfile` suitable to integrate the activation of the switch in strartup scripts.
 ### start the qemu/kvm virtual machines:
 
 Open two more terminals and start the qemu/kvm VMs.
