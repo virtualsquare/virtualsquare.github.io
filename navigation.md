@@ -24,9 +24,10 @@
 	* [VDE Basic Networking](tutorials/vdebasics.md)
 	* [VDE and Virtual Machines](tutorials/vde_vm.md)
 	* [VDE namespaces and NFV](tutorials/vde_ns.md)
-	* [VDE Local Area Cloud (vxvde)](tutorials/vde_lac.md)
-	* [VDE based Internet of threads](tutorials/vde_ioth.md)
+	* [VDE Local Area Cloud: vxvde](tutorials/vde_vxvde.md)
 	* [VDE slirp](tutorials/vde_slirp.md)
+	* [VDE nested plugins](tutorials/vde_nested.md)
+	* [VDE based Internet of threads](tutorials/vde_ioth.md)
   - - - -
   * # VUOS
 	* [VUOS/umvu basic usage](tutorial/vuosbasics.md)

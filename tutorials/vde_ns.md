@@ -46,6 +46,12 @@ a tool of `cado`, another project by VirtualSquare.
 Note: `vdens` starts a shell unless otherwise instructed. As clearly stated in the man page trailing arguments in the command line
 can be used to run a specific program in the namespace.
 
+Warning: due to a limitation of [glibc](/vbetter/vresolvconf.md), the IP address of the server for name resolution (DNS server)
+cannot be configured by a user, the systemwide definition is in the file `/etc/resolv/conf`. Using virtual networks the addresses
+in `/etc/resolv.conf` can be undefined (e.g. 127.0.0.1) or unreachable. `vdens` provides two options `-R` and `-r`
+to solve this problem. For example use `-R 80.80.80.80` to define 80.80.80.80 as the DNS server. This option uses a mount namespace and
+a file bind mount to redefine the contents of `/etc/resolv.conf`.
+
 ## Scenario: two vdens and a switch
 
 ![two vdens + switch](pictures/vde_2vdens_sw.png)
