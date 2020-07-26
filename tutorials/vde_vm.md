@@ -9,7 +9,7 @@ Note: many examples require to use several virtual terminals. On a Linux Box jus
 x-terminals. No GUI has been installed in the virtual machine configured for the VirtualSquare tutorials.
 It is clearly possible to install your favorite GUI (like as _gnome_, _kde_, _lxde_...).
 It is also possible for the processes of the VM to have their GUIs through the X-server of the hosting computer.
-If the VM has been using the commands suggested in the [_Set up the Virtual Machine_](setup_the_vm.md) 
+If the VM has been using the commands suggested in the [_Set up the Virtual Machine_](setup_the_vm.md)
 run (on the hosting computer):
 `ssh -X -p 2222 user@localhost xterm`.
 The resulting `xterm` is running on the virtual machine and from there it is possible to start other virtual
@@ -19,7 +19,7 @@ terminals (`xterm &`) or other X-window clients (e.g. `qemu-system-x86_64`).
 This tutorial is not meant to be a guide to implement projects based on VirtualSquare tools but
 to provide users with examples to explain how to use VDE.
 
-This tutorial uses minimal Linux distributions in the Virtual Machines of the examples and if  
+This tutorial uses minimal Linux distributions in the Virtual Machines of the examples and if
 the tutorial in a VM the examples will start a second layer of virtualization.
 
 The goal here is to show how to use VDE, all the commands can be applied to more realistic
@@ -175,9 +175,9 @@ The new syntax (if supported by the `linux` command) is:
 ```
 $ ./linux_vdeplug4 ubd0=cowfile1,BusyBox-1.21.1-amd64-root_fs eth0=vde,vde:///tmp/mysw
 ```
-This latter syntax enables the support of all the VDEplug4 plugins. 
+This latter syntax enables the support of all the VDEplug4 plugins.
 
-Warning: do not start two or more VM using the same disk image. 
+Warning: do not start two or more VM using the same disk image.
 The file system structure of the disk image would be corrupted.
 Use different copies of the disk image or use the _copy-on-write_ (COW) feature as in the command lines of the examples here above.
 In fact: `ubd0=cowfile0,BusyBox-1.21.1-amd64-root_fs` means that `BusyBox-1.21.1-amd64-root_fs` will be accesses in read-only mode
@@ -224,11 +224,11 @@ $ qemu-system-x86_64 -enable-kvm -nographic -m 512M -k en-us\
     -kernel vmlinuz_qemu -append "root=/dev/sda  console=ttyS0,9600n8" -drive file=minfs1 \
     -device e1000,netdev=vde0,mac=$(randmac -q) -netdev vde,id=vde0,sock=vde:///tmp/mysw
 ```
-(remove `-enable-kvm` to run `qemu` instead of `kvm`) 
+(remove `-enable-kvm` to run `qemu` instead of `kvm`)
 
-Hint: You can build your own kernel for qemu/kvm. Download the Linux Kernel sources (e.g. from kernel.org), 
-copy the file config4AEMU (available in the tutorial resources page) in the linux source tree root changing the name to .config. 
-Run `make menuconfig` and modify the configuration to fit your needs. Then build the kernel: `make`. 
+Hint: You can build your own kernel for qemu/kvm. Download the Linux Kernel sources (e.g. from kernel.org),
+copy the file config4AEMU (available in the tutorial resources page) in the linux source tree root changing the name to .config.
+Run `make menuconfig` and modify the configuration to fit your needs. Then build the kernel: `make`.
 At the end the file `arch/x86_64/boot/bzImage` is the kernel (in compressed format). Copy it with a suitable name (like `vmlinuz_qemu`)
 
 ## Join VirtualBox virtual machines to VDE networks
@@ -254,14 +254,14 @@ The following picture shows an example of configuration of a VDE network interfa
 
 The Alpine image used for qemu/kvm can be used to test VirtualBox.
 
-Warning: there are compatibility issues. Debian packages are consistent: if you install both VDE and VirtualBOX from 
+Warning: there are compatibility issues. Debian packages are consistent: if you install both VDE and VirtualBOX from
 Debian they are compatible (any version, stable, testing, unstable), but only VDE2 syntax is supported
 (so in the example above `network=/tmp/mysw` must be used instead of `network=vde:///tmp/mysw`.
 VirtualBox does __not__ support VDEplug4 if installed in /usr/local (e.g. if installed from GITHUB).(\*)
 An inelegant workaround that can be used to test VDEplug4 is to copy all the plugins in /usr/lib.
 `mkdir /usr/lib/vdeplug; cp /usr/local/lib/vdeplug/* /usr/lib/vdeplug`
 
-Note: (\*) This is a limitation of VirtualBox: 
+Note: (\*) This is a limitation of VirtualBox:
 _"
 In addition to what the dynamic linker does for us, the VirtualBox code will
 not directly be calling either RTLdrLoad or dlopen to load dynamic link

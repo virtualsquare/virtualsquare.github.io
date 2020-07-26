@@ -48,7 +48,7 @@ Examples:
 
   ![slirp://](pictures/vdeplug_slirp.png)
 
-* `hub://` create a hub 
+* `hub://` create a hub
 
   ![hub://](pictures/vdeplug_hub.png)
 

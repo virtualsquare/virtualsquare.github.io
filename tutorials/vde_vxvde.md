@@ -19,8 +19,8 @@ join the same VDE. This is a Loxal Area Cloud of VDE clients.
 
 Pros of `vxvde`:
 
-* requires no configuration. `vxvde` implements the idea of distributed virtual ethernet switch. There are no other 
-deamons/servers/virtual switches involved. 
+* requires no configuration. `vxvde` implements the idea of distributed virtual ethernet switch. There are no other
+deamons/servers/virtual switches involved.
 * it is fast. Unicast ethernet packets sent on the virtual network geet sent directly from the Virtual MAchine monitors
 incapsulated in UDP unicast packets.  The sole overhead is the UDP header required for the encapsulation. There are no extra costs
 of synchronization with other processes.
@@ -40,6 +40,9 @@ Hint: VirtualSquare has designed tools that can be used to solve the problems of
 and increased architecural complexity): `libpam-net`: support the creation of users havinig no or limited network access,
 `libvdeplug_agno`: a nested plugin for encryption, `vxvdex`: a kernel module provididng access control for `vxvde` networks.
 
+Warning: if `vxvde` runs on hosts with several network controllers (multi homed hosts) a specific option may be needed to specify
+the controller to use. e.g. `vxvde://234.0.0.1/if=eth1`.
+
 ![vxvde based LAC](pictures/vde_vxvde_lac.png)
 
 ### hands on: let us build a Local Area Cloud
@@ -52,7 +55,7 @@ This example creates a local area cloud to conenct:
 
 ![vxvde based example](pictures/vde_vxvde_example.png)
 
-The implementation of this example requires three virtual terminals. 
+The implementation of this example requires three virtual terminals.
 It is possible to use terminals of the same host (e.g. of the virtual machine configured for this tutorial).
 A more interesting scenario would be to take terminals of different hosts of the same local area network.
 Clearly all the hosts involved in this experiment must have VDEplug4 installed.

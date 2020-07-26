@@ -90,7 +90,7 @@ $ vdens ptp:///tmp/myptp
 $# ip addr add 10.0.0.15/24 dev vde0
 $# ip link set vde0 up
 ```
-In the other start a VM, for example a qemu/kvm running alpine as explained in 
+In the other start a VM, for example a qemu/kvm running alpine as explained in
 [the previous tutorial](vde_vm.md).
 ```
 $ qemu-system-x86_64 -cdrom alpine-virt-3.12.0_rc5-x86_64.iso -monitor stdio \
@@ -162,7 +162,7 @@ $# ip route add default via 10.0.1.1
 
 Now there are two virtual networks. From the `vdens --multi` session it is possible to reach both
 10.0.0.254 (the tap interface) and 10.0.1.2 (the other `vdens`).
-From 10.0.1.2 it is not possible to reach 10.0.0.254 as the `vdens --multi` namespace has not been 
+From 10.0.1.2 it is not possible to reach 10.0.0.254 as the `vdens --multi` namespace has not been
 configured as a router yet.
 
 then in the terminal where the `vdens --multi` session is running type the following commands:
