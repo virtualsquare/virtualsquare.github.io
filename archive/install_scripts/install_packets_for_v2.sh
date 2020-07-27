@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get --yes install git python3 build-essential cmake make autogen \
-	autoconf libtool libcap-dev libattr1-dev libfuse-dev \
+	autoconf libtool libcap-dev libattr1-dev libfuse-dev libwolfssl-dev \
 	libexecs-dev libmhash-dev libpam0g-dev libssl-dev netcat\
 	libfuse-dev e2fsprogs comerr-dev e2fslibs-dev xterm \
 	udhcpc x11-utils libpcap-dev libslirp-dev vim \
