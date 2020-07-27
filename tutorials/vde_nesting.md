@@ -21,7 +21,7 @@ The syntax can be further nested: `foo://,,,{bar://...{baz://...}}`
 
 ## VDE clients using a VLAN
 
-The (nesting) plugin named `vlan` implements the VLAN protocol as defined by 802.1q.
+The (nesting) plugin named `vlan` implements the VLAN protocol as defined by IEEE 802.1q.
 
 ![](pictures/vde_vdens_sw_vlan.png)
 
@@ -83,7 +83,7 @@ add suitable IP addresses and enable `vde0` as above.
 
 The encrypted local area cloud is running. 
 
-## VDE and 801.1ad also known as QinQ
+## VDE and IEEE 802.1ad also known as QinQ
 
 ![802.1ad](pictures/vde_nest_qinq.png)
 
