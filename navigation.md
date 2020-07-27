@@ -26,7 +26,7 @@
 	* [VDE namespaces and NFV](tutorials/vde_ns.md)
 	* [VDE Local Area Cloud: vxvde](tutorials/vde_vxvde.md)
 	* [VDE slirp](tutorials/vde_slirp.md)
-	* [VDE nested plugins](tutorials/vde_nested.md)
+	* [VDE nesting plugins](tutorials/vde_nesting.md)
 	* [VDE based Internet of threads](tutorials/vde_ioth.md)
   - - - -
   * # VUOS
