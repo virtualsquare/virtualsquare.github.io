@@ -104,6 +104,6 @@ vdens vlan://4{agno://{vxvde://234.0.0.2}}
 ```
 This is the syntax to join the VLAN4 of the encrypted network.
 
-Note: the sequence of the plugin is very important `agno://{vlan://4{vxvde://234.0.0.2}}` means
+Note: the sequence of the plugins is very important `agno://{vlan://4{vxvde://234.0.0.2}}` means
 that the VLAN 4 is encrypted (other VLANs or untagged packets can be unencrypted or use different
 encryptions).

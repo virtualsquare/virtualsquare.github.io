@@ -27,16 +27,19 @@
 	* [VDE Local Area Cloud: vxvde](tutorials/vde_vxvde.md)
 	* [VDE slirp](tutorials/vde_slirp.md)
 	* [VDE nesting plugins](tutorials/vde_nesting.md)
-	* [VDE based Internet of threads](tutorials/vde_ioth.md)
+  - - - -
+  * # Internet of Threads & VDE
+	* [Internet of Threads (IoTh): intro](tutorials/ioth.md)
+	* [IoTh: vdestack](tutorials/ioth_vdestack.md)
   - - - -
   * # VUOS
-	* [VUOS/umvu basic usage](tutorial/vuosbasics.md)
-	* [vufuse: VUOS FUSE](tutorial/vufuse.md)
-	* [vudev: VUOS virtual devices](tutorial/vudev.md)
-	* [vunet: VUOS virtual networking](tutorial/vunet.md)
-	* [vufs: VUOS virtual filesystems](tutorial/vufs.md)
-	* [VUOS virtual user/group ids](tutorial/umvu_uidgid.md)
-	* [VUOS virtual time, uname etc](tutorial/vumisc.md)
+	* [VUOS/umvu basic usage](tutorials/vuosbasics.md)
+	* [vufuse: VUOS FUSE](tutorials/vufuse.md)
+	* [vudev: VUOS virtual devices](tutorials/vudev.md)
+	* [vunet: VUOS virtual networking](tutorials/vunet.md)
+	* [vufs: VUOS virtual filesystems](tutorials/vufs.md)
+	* [VUOS virtual user/group ids](tutorials/umvu_uidgid.md)
+	* [VUOS virtual time, uname etc](tutorials/vumisc.md)
 
 [Ideas, T&T]()
 
