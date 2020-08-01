@@ -1,0 +1,69 @@
+.\" Copyright (C) 2020 VirtualSquare. Project Leader: Renzo Davoli
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License,
+.\" as published by the Free Software Foundation, either version 2
+.\" of the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+.\" MA 02110-1301 USA.
+.\"
+.\" generated with Ronn-NG/v0.8.0
+.\" http://github.com/apjanke/ronn-ng/tree/0.8.0
+.TH "LIBVDEPLUG_AGNO" "1" "July 2020" "VirtualSquare"
+.SH "NAME"
+\fBlibvdeplug_agno\fR \- vdeplug module: add encryption to ethernet link plug
+.SH "SYNOPSIS"
+libvdeplug_agno\.so
+.SH "DESCRIPTION"
+This is a libvdeplug cryptographic module that implements agnostic encryption over layer 2\. Agnostic encryption is an encryption method that doesn\'t need information about the vde network implementation\.
+.P
+This module of libvdeplug4 can be used in any program supporting vde like \fBvde_plug\fR, \fBvdens\fR, \fBkvm\fR, \fBqemu\fR, \fBuser\-mode\-linux\fR and \fBvirtualbox\fR\.
+.P
+The vde_plug_url syntax of this module is the following:
+.P
+\~ \~ \~ \fBagno://\fR[\fI/path/of/keyfile\fR][\fB[\fR\fIOPTIONS\fR\fB]\fR]\fB{\fR\fIvde nested url\fR\fB}\fR
+.P
+\fI/path/of/keyfile\fR, if present, must be an absolute path or a path relative to the user\'s home (e\.g\. \fB~/example/path\fR)\. If omitted the default path of the keyfile is \fB~/\.vde_agno_key\fR\. The keyfile must contain a 128\-bit key in hexadecimal format\. Only hexadecimal caracters are considered in both uppercase and lowercase, all the others are ignored (e\.g\. white\-spaces, newline characters, non\-hexadecimal letters)\.
+.SH "OPTIONS"
+.TP
+\fBethtype=\fR\fITYPE\fR
+define the type of the Ethernet frame of the encrypted packet\. TYPE can be the an exadecimal number or:
+.IP
+\fBcopy\fR: same type of the non\-encrypted packet
+.IP
+\fBipv4\fR: ipv4 type (0x0800)
+.IP
+\fBipv6\fR: ipv6 type (0x86dd)
+.IP
+\fBrand\fR: random number as type\. The random number will be generated for every Ethernet packet sent\.
+.SH "EXAMPLES"
+\fBagno://{vde:///tmp/myswitch}\fR
+.P
+agno uses the key stored in the default keyfile (~/\.vde_agno_key) location to encrypt the traffic sent to the switch\. The Ethernet frames have agno specific type (0xa6de) as type\.
+.P
+\fBagno:///tmp/my_keyfile[ethtype=copy]{vde:///tmp/myswitch}\fR
+.P
+agno uses the key stored in file /tmp/my_keyfile to encrypt the traffic sent to the switch\. The Ethernet frames will have the same type of the non\-encrypted packet\.
+.P
+\fBvdens agno://[ethtype=rand]{vxvde://234\.0\.0\.1}\fR
+.P
+create a nanespace conencted to a vxvde local area cloud\. agno uses the key stored in the default keyfile (~/\.vde_agno_key) location to encrypt the traffic sent to vxvde\.
+.SH "NOTICE"
+Virtual Distributed Ethernet is not related in any way with www\.vde\.com ("Verband der Elektrotechnik, Elektronik und Informationstechnik" i\.e\. the German "Association for Electrical, Electronic & Information Technologies")\.
+.SH "SEE ALSO"
+\fBvde_plug\fR(1)
+.SH "AUTHOR"
+VirtualSquare\. Project leader: Renzo Davoli

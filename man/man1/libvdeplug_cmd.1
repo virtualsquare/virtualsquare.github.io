@@ -1,0 +1,34 @@
+.TH LIBVDEPLUG_VDE 1 "August 23, 2016" "Virtual Distributed Ethernet"
+.SH NAME
+libvdeplug_cmd - vdeplug module: stream a VDE network through a command
+.SH SYNOPSIS
+libvdeplug_cmd.so
+.SH DESCRIPTION
+This is the standard vdeplug module to stream a VDE network using a command.
+This module of libvdeplug4 can be used in any program supporting vde like
+\fBvde_plug\fR, \fBkvm\fR, \fBqemu\fR, \fBuser-mode-linux\fR and \fBvirtualbox\fR.
+
+The vde_plug_url syntax of this module is the following:
+.RS
+.br
+\fBcmd://\fIcommand\fR
+.RE
+
+.SH EXAMPLES
+Approriate shell quoting is needed.
+
+.B cmd://"ssh remote.host.org vde_plug vxvde://"
+.br
+.B kvm .... -net vde,sock=cmd://"ssh remote.host.org vde_plug vxvde://" ...
+.br
+
+In these cases ssh should have been configured to require no foreground authentication 
+(see how to set up public key authentication: ssh(1) and ssh-keygen(1)).
+
+.SH NOTICE
+Virtual Distributed Ethernet is not related in any way with
+www.vde.com ("Verband der Elektrotechnik, Elektronik und Informationstechnik"
+i.e. the German "Association for Electrical, Electronic & Information
+Technologies").
+.SH SEE ALSO
+\fBvde_plug\fP(1),

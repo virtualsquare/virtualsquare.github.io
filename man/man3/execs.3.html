@@ -1,0 +1,152 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of execs</TITLE>
+</HEAD><BODY>
+<H1>execs</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2014-05-27<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+execs, execsp, execspe - execute a file taking its arguments from a string
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</B>
+
+<BR>
+
+<B>#include &lt;<A HREF="file:///usr/include/execs.h">execs.h</A>&gt;</B>
+
+<P>
+<B>int execs(const char *</B><I>path</I><B>, const char *</B><I>args</I><B>);</B>
+
+<BR>
+
+<B>int execse(const char *</B><I>path</I><B>, const char *</B><I>args</I><B>, char *const </B><I>envp</I><B>[]);</B>
+
+<BR>
+
+<B>int execsp(const char *</B><I>args</I><B>);</B>
+
+<BR>
+
+<B>int execspe(const char *</B><I>args</I><B>, char *const </B><I>envp</I><B>[]);</B>
+
+<P>
+<P>
+<P>
+<B>int eexecs(const char *</B><I>path</I><B>, char *</B><I>args</I><B>);</B>
+
+<BR>
+
+<B>int eexecse(const char *</B><I>path</I><B>, char *</B><I>args</I><B>, char *const </B><I>envp</I><B>[]);</B>
+
+<BR>
+
+<B>int eexecsp(char *</B><I>args</I><B>);</B>
+
+<BR>
+
+<B>int eexecspe(char *</B><I>args</I><B>, char *const </B><I>envp</I><B>[]);</B>
+
+<P>
+These functions are provided by libexecs and libeexecs. Link with <I>-lexecs</I> or <I>-leexecs</I>.
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+This
+group of functions extends the family of <B><A HREF="../man3/exec.3.html">exec</A></B>(3) provided by the libc.
+<BR>
+
+<B>execs</B>, <B>execse</B>, <B>execsp</B> and <B>execspe</B> are similar to
+<B><A HREF="../man3/execv.3.html">execv</A></B>(3), <B><A HREF="../man2/execve.2.html">execve</A></B>(2), <B><A HREF="../man3/execvp.3.html">execvp</A></B>(3) and <B><A HREF="../man3/execvpe.3.html">execvpe</A></B>(3), respectively, but
+take the command line arguments for the file to execute 
+(and the also the command name for <B><A HREF="../man3/execsp.3.html">execsp</A></B>(3) and <B><A HREF="../man3/execspe.3.html">execspe</A></B>(3))
+by parsing a command string <I>args</I>.
+<BR>
+
+Command arguments in <I>args</I> are delimited by space characters (blank, tabs
+or new lines).
+Single or double quotes can be used to delimitate command arguments including
+spaces and a non quoted backslash (<B>\</B>)
+is the escape character to protect the next char.
+<BR>
+
+<B>execs</B>, <B>execse</B>, <B>execsp</B> and <B>execspe</B> do not use
+dynamic allocation but require space on the stack to store an entire
+copy of <I>args</I>.
+<B>eexecs</B>, <B>eexecse</B>, <B>eexecsp</B> and <B>eexecspe</B>
+do not use extra stack space but modify <I>args</I>.
+<P>
+In case the same argv should be used for several exec command, use
+<B><A HREF="../man3/s2argv.3.html">s2argv</A></B>(3) to parse the args just once.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+These functions return only if an error has occurred. The return value
+is always -1. The failure cases and errno values are those specified
+for <B><A HREF="../man2/execve.2.html">execve</A></B>(2).
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The following program demonstrates the use of <B>execs</B>:
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/execs.h">execs.h</A>&gt;
+
+#define BUFLEN 1024
+int main(int argc, char *argv)
+{
+        char buf[BUFLEN];
+        printf(&quot;type in a command and its arguments, e.g. 'ls -l'\n&quot;);
+        if (fgets(buf, BUFLEN, stdin) != NULL) {
+                execsp(buf);
+                printf(&quot;exec error\n&quot;);
+        }
+}
+</PRE>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/exec.3.html">exec</A></B>(3),<B><A HREF="../man3/s2argv.3.html">s2argv</A></B>(3)
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">EXAMPLE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">BUGS</A><DD>
+<DT><A HREF="#lbAI">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:02:53 GMT, August 01, 2020
+</BODY>
+</HTML>

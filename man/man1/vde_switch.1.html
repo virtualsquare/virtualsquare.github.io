@@ -1,0 +1,177 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VDE_SWITCH</TITLE>
+</HEAD><BODY>
+<H1>VDE_SWITCH</H1>
+Section: User Commands  (1)<BR>Updated: December 6, 2006<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vde_switch - Virtual Distributed Ethernet switch
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vde_switch </B>
+
+[ 
+<B>-hub  </B>
+
+] 
+[ 
+<B>-sock</B>
+
+<I>commdirpath  </I>
+
+]  
+[ 
+<B>-mod</B>
+
+<I>octal-mode  </I>
+
+]  
+[ 
+<B>-group</B>
+
+<I>NAME</I>
+
+]  
+[ 
+<B>-tap</B>
+
+<I>interface  </I>
+
+] 
+[
+<B>-daemon</B>
+
+]
+<BR>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+A
+<B>vde_switch</B> 
+is a virtual switch for the vde architecture.
+<BR>
+
+A vde network can include several vde_switches running on different
+(real) computers.
+vde_switches can be connected by vde cables (see
+<B>vde_plug (1)</B>
+).
+<BR>
+
+Supported architecture for VDE end nodes include: 
+real linux boxes (through the tuntap interface),
+bochs, qemu and MPS virtual machines.
+<BR>
+
+VDE is useful to create networks of heterogeneous virtual machines as
+well as as a general tunneling tool -- all the ethernet based protocols work
+by this kind of tunnel -- and also as a tool for mobility.
+In fact VDE creates an overlay network where users can keep their IP
+addresses despite of the change of IP addresses on the interfaces.
+<P>
+vde_switch needs root privileges to open a tap interface, can be run by
+users when no -tap option is specified.
+<P>
+vde-2 has several features: VLAN, Fast Spanning Tree Protocol, command line management
+(on console for foreground switches, on a terminal for daemonized switches).
+If a vde_switch run in foreground mode simply type return to have the prompt.
+For daemons there is the -M option to specify the management socket. Unixterm is the tool
+to start a terminal for the management.
+Type &quot;help&quot; at the prompt for a list of possible options.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-hub </B>
+
+<DD>
+turn off the switch engine. It operates as a hub.
+<DT><B>-sock </B><I>commdirpath</I>
+
+<DD>
+specify the directory when comm socket are created.
+The default value is &quot;/tmp/vde.ctl&quot;
+<DT><B>-mod </B><I>octalmode</I>
+
+<DD>
+specify the octal permissions for the comm sockets.
+<DT><B>-group </B><I>NAME</I>
+
+<DD>
+specify the group owner for the comm socket.
+The default value is the current user's primary group
+<DT><B>-tap </B><I>interface</I> 
+
+<DD>
+connect the specified tuntap interface to this vde_switch (needs root privileges)
+It is possible to specify several tap interfaces, comma separated.
+<DT><B>-daemon</B>
+
+<DD>
+Run as a daemon. Use syslog for logging.
+<DT><B>-f rcfile</B>
+
+<DD>
+rc file to set the initial switch configuration. This rc file has the same syntax of
+the command line interface.
+<DT><B>-h </B>
+
+<DD>
+help. Please use it for a more complete list of options.
+vde_switch is a modular program, options vary depending of the compiled-in modules.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<B><A HREF="../man1/vde_plug2tap.1.html">vde_plug2tap</A></B>(1),
+<B><A HREF="../man1/vdeq.1.html">vdeq</A></B>(1),
+<B><A HREF="../man1/dpipe.1.html">dpipe</A></B>(1),
+<B><A HREF="../man1/unixterm.1.html">unixterm</A></B>(1).
+<BR>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<BR>
+
+VDE started as an enhancement of uml_switch by Jeff Dike and others.
+VDE-2 has been almost completely rewritten but maybe some statements
+come from the historical source. So, some copyright and thanks also for Dike&amp;Co.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">NOTICE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

@@ -1,0 +1,106 @@
+.\"* system_nosh: system replacement not using any shell
+.\" Copyright (C) 2014 Renzo Davoli. University of Bologna. <renzo@cs.unibo.it>
+.\" 
+.\" This library is free software; you can redistribute it and/or
+.\" modify it under the terms of the GNU Lesser General Public
+.\" License as published by the Free Software Foundation; either
+.\" version 2.1 of the License, or (at your option) any later version.
+.\" 
+.\" This library is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+.\" Lesser General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU Lesser General Public
+.\" License along with this library; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.TH system_nosh 3 2014-05-27 "VirtualSquare" "Linux Programmer's Manual"
+.SH NAME
+
+system_nosh, system_execs \- execute a command with its arguments from a string without using a shell
+.SH SYNOPSIS
+.B #include <stdlib.h>
+.br
+.B #include <execs.h>
+.sp
+.BI "int system_nosh(const char *" command ");"
+.br
+.BI "int system_execsp(const char *" command ");"
+.sp
+.BI "int system_execsa(const char *" command ");"
+.br
+.BI "int system_execs(const char *" path ", char const *" command ");"
+.sp
+.BI "int system_execsrp(const char *" command ", int " redir "[3]);"
+.sp
+.BI "int system_execsra(const char *" command ", int " redir "[3]);"
+.br
+.BI "int system_execsr(const char *" path ", char const *" command ", int " redir "[3]);"
+.sp
+These functions are provided by libexecs. Link with \fI-lexecs\fR.
+.SH DESCRIPTION
+\fBsystem_nosh\fR is an almost drop in replacement for \fBsystem\fR(3)
+provided by the libc. \fBsystem_nosh\fR parses the command string
+and runs the command directly, without using a shell.
+(\fBsystem_execsp\fR and \fBsystem_nosh\fR are synonyms).
+.br
+Command arguments in \fIargs\fR are delimited by space characters (blank, tabs
+or new lines).
+Single or double quotes can be used to delimitate command arguments including
+spaces and a non quoted backslash (\fB\e\fP)
+is the escape character to protect the next char. The executable file
+is sought using the PATH environment variable as explained for \fBexeclp\fR(3).
+.br
+\fBsystem_execs\fR requires the path of the executable to be specified
+as its first parameter so it does not use the PATH environment variable.
+.br
+\fBsystem_execsa\fR does not use the PATH variable, argv[0] must be
+specified as a full pathname.
+.br
+\fBsystem_execsrp\fR and \fBsystem_execsr\fR works as their couterparts
+without the 'r', but they permit the redirection of standard input, output
+and error streams. Their last parameter is an array of three integers.
+The standard input of the command will be redirected to \fBredir[0]\fR 
+if it is positive, the standard output to \fBredir[1]\fR if it is not
+negative and different from 1, the standard error to \fBredir[2]\fR if 
+it is not negative and different from 2.
+.br
+\fBsystem_execsra\fR does not use the PATH variable, argv[0] must be
+specified as a full pathname.
+.br
+All these functions can run sequences of commands separated by semicolons (\fB;\fR).
+The first command returning a non-zero exit status breaks the sequence.
+.SH RETURN VALUE
+These functions have the same return values of \fBsystem\fR(3). When
+running a sequence of commands, it returns the exit status of the first
+command returning a non-zero value. If the return value is zero it means
+that all the commands of the sequence succeeded.
+.SH EXAMPLE
+The following program shows the usage of \fBsystem_nosh\fR:
+.BR
+.sp
+\&
+.nf
+#include <stdio.h>
+#include <unistd.h>
+#include <execs.h>
+
+#define BUFLEN 1024
+int main(int argc, char *argv)
+{
+	char buf[BUFLEN];
+	printf("type in a command and its arguments, e.g. 'ls -l'\\n");
+	while (fgets(buf, BUFLEN, stdin) != NULL) {
+		printf("Command: '%s' \\n",buf);
+		system_nosh(buf);
+		printf("Command done\\n");
+	}
+}
+.fi
+.SH SEE ALSO
+.BR system (3), execs (3), s2argv (3)
+.SH BUGS
+Bug reports should be addressed to <info@virtualsquare.org>
+.SH AUTHOR
+Renzo Davoli <renzo@cs.unibo.it>
+

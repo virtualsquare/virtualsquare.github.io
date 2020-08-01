@@ -1,0 +1,120 @@
+.\" Copyright (C) 2019 VirtualSquare. Project Leader: Renzo Davoli
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License,
+.\" as published by the Free Software Foundation, either version 2
+.\" of the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+.\" MA 02110-1301 USA.
+.\"
+.\" generated with Ronn-NG/v0.8.0
+.\" http://github.com/apjanke/ronn-ng/tree/0.8.0
+.TH "LIBVDEPLUG_SLIRP" "1" "December 2019" "VirtualSquare"
+.SH "NAME"
+\fBlibvdeplug_slirp\fR \- slirp vdeplug module
+.SH "SYNOPSIS"
+libvdeplug_slirp\.so
+.SH "DESCRIPTION"
+This is the libvdeplug module to join TCP\-IP networks using the slirp emulator\.
+.P
+This module of libvdeplug4 can be used in any program supporting vde like \fBvde_plug\fR, \fBvdens\fR, \fBkvm\fR, \fBqemu\fR, \fBuser\-mode\-linux\fR and \fBvirtualbox\fR\.
+.P
+The vde_plug_url syntax of this module is the following: ``` slirp://[/OPTION][/OPTION]
+.SH "OPTIONS"
+.TP
+\fBv4\fR \fBv6\fR
+provide IPv4 or IPv6 service \fIonly\fR\. Both family of protocols are enabled if both \fBv4\fR and \fBv6\fR options are present of if neither of them have been specified\.
+.TP
+\fBaddr\fR=\fIIPv4Addr\fR/\fIprefix\fR or \fBhost\fR=\fIIPv4addr\fR/\fIprefix\fR
+Set the IPv4 address of slirp (default value 10\.0\.2\.2/24)\.
+.TP
+\fBaddr6\fR=\fIIPv6Addr\fR/\fIprefix\fR or \fBhost6\fR=\fIIPv6addr\fR/\fIprefix\fR
+Set the IPv6 address of slirp (default value fd00::2/64)\.
+.TP
+\fBhostname\fR=\fIname\fR
+define the hostname (default value: slirp)
+.TP
+\fBtftp_server_name\fR=\fIname\fR
+define the hostname of the dhcp server
+.TP
+\fBtftp_path\fR=\fIpath\fR
+define the path of the directory whose contents are available by the tftp service
+.TP
+\fBbootfile\fR=\fIpath\fR
+define the path of the bootfile (for bootp)
+.TP
+\fBdhcp\fR=\fIdhcpIPv4addr\fR
+set the lowest IP address assigned by dhcp
+.TP
+\fBvnameserver\fR=\fIIPv4Addr\fR
+set the address of the IPv4 DNS proxy
+.TP
+\fBvnameserver6\fR=\fIIPv6Addr\fR
+set the address of the IPv6 DNS proxy
+.TP
+\fBvdnssearch\fR=\fIlist of domains\fR
+set the default domains for the neame resolution e\.g\. \fBvdnssearch=foo\.com,bar\.org\fR
+.TP
+\fBvdomainname\fR=\fIname\fR
+set the domain name
+.TP
+\fBmtu\fR=\fIint_value\fR
+define the MTU
+.TP
+\fBmru\fR==\fIint_value\fR
+define the MRU
+.TP
+\fBdisable_host_loopback\fR
+disable loopback
+.TP
+\fBtcpfwd\fR=[\fIhostIP\fR\fB:\fR]\fIhostport\fR\fB:\fR\fIguestIP\fR\fB:\fR\fIguestport\fR\fB[,\fR[\fIhostIP\fR\fB:\fR]\fIhostport\fR\fB:\fR\fIguestIP\fR\fB:\fR\fIguestport\fR]\|\.\|\.\|\.]
+forward TCP port(s)\.
+.TP
+\fBudpfwd\fR=[\fIhostIP\fR\fB:\fR]\fIhostport\fR\fB:\fR\fIguestIP\fR\fB:\fR\fIguestport\fR\fB[,\fR[\fIhostIP\fR\fB:\fR]\fIhostport\fR\fB:\fR\fIguestIP\fR\fB:\fR\fIguestport\fR]\|\.\|\.\|\.]
+forward UDP port(s)\.
+.TP
+\fBunixfwd\fR=[\fIslirpIP\fR\fB:\fR]\fIslirpport\fR\fB:\fR\fIpath\fR\fB[,\fR[\fIslirpIP\fR\fB:\fR]\fIslirpport\fR\fB:\fR\fIpath\fR\|\.\|\.\|\.]
+forward TCP port(s) (from the virtual network) to PF_UNIX socket(s) (commonly used to forward ports to a X server) \fIstill unsupported by libslirp\fR\.
+.TP
+\fBcmdfwd\fR=[\fIslirpIP\fR\fB:\fR]\fIslirpport\fR\fB:\fR\fIcmd\fR\fB[,\fR[\fIslirpIP\fR\fB:\fR]\fIslirpport\fR\fB:\fR\fIpath\fR\|\.\|\.\|\.]
+forward TCP port(s) (from the virtual network) to external command(s)\.
+.TP
+\fBverbose\fR
+print a table of slirp service configuration\.
+.SH "EXAMPLES"
+This vde_plug_url enables both IPv4 and IPv6 (using the default configuration)
+.P
+\fBslirp://\fR
+.P
+Like the previous example but it prints the table of the configuration options
+.P
+\fBslirp:///verbose\fR
+.P
+When a program uses the following vde_plug_url:
+.P
+\fBslirp:///tcpfwd=8080:10\.0\.2\.15:80\fR
+.P
+tcp connections to the host computer port 8080 (any interface) are forwarded to 10\.0\.2\.15 port 80
+.P
+\fBslirp:///tcpfwd=8080:10\.0\.2\.15:80/cmdfwd=10\.0\.2\.5:6000:\'socat STDIO UNIX:"/tmp/\.X11\-unix/X0"\'\fR
+.P
+like the previous one plus this uses socat to forward all X\-windows requests to 10\.0\.2\.5:0 (port 6000) to the local server of the display \fB:0\fR\.
+.SH "NOTICE"
+Virtual Distributed Ethernet is not related in any way with www\.vde\.com ("Verband der Elektrotechnik, Elektronik und Informationstechnik" i\.e\. the German "Association for Electrical, Electronic & Information Technologies")\.
+.SH "SEE ALSO"
+\fBvde_plug\fR(1)
+.SH "AUTHOR"
+VirtualSquare\. Project leader: Renzo Davoli

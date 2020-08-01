@@ -1,0 +1,172 @@
+.\"* libuserbindmount: bind mount in user namespaces
+.\" Copyright (C) 2017 Renzo Davoli. University of Bologna. <renzo@cs.unibo.it>
+.\" 
+.\" This library is free software; you can redistribute it and/or
+.\" modify it under the terms of the GNU Lesser General Public
+.\" License as published by the Free Software Foundation; either
+.\" version 2.1 of the License, or (at your option) any later version.
+.\" 
+.\" This library is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+.\" Lesser General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU Lesser General Public
+.\" License along with this library; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+.TH LIBUSERBINDMOUNT 3 2017-08-22 "VirtualSquare" "Linux Programmer's Manual"
+.SH NAME
+userbindmount, userbindmount_unshare, userbindmount_set_cap_sysadm,
+userbindmount_string, userbindmount_data, userbindmount_fd \- bind-mount in user-namespaces
+.SH SYNOPSIS
+.B #include <userbindmount.h>
+.br
+.BI "int userbindmount(const char *" source ", const char *" target ");"
+.br
+.BI "int userbindmount_unshare(void);"
+.br
+.BI "int userbindmount_set_cap_sysadm(void);"
+.br
+.BI "int userbindmount_string(const char *" string ", const char *" target ", mode_t " mode ");"
+.br
+.BI "int userbindmount_data(const void *" data ", size_t " count ", const char *" target ", mode_t " mode ");"
+.br
+.BI "int userbindmount_fd(int " fd ", const char *" target ", mode_t " mode ");"
+.sp
+These functions are provided by libuserbindmount. Link with \fI-luserbindmount\fR.
+.SH DESCRIPTION
+Libuserbindmount is a library providing support for bind mount in user userspaces.
+
+\fBuserbindmount\fR bind mounts \fIsource\fR on \fIdestination\fR. 
+If it is not permitted in the current namespace it creates (unshare) a new user-namespace.
+
+\fBuserbindmount_unshare\fR creates a new user-namespace where bind mount is allowed.
+
+\fBuserbindmount_set_cap_sysadm\fR add the CAP_SYS_ADMIN ambient capability to the current namespace so that the 
+ability of bind mount files and directories can be exported to new programs (ambient capabilities survive to execve(2)).
+
+\fBuserbindmount_string\fR bind-mounts on \fIdestination\fR a temporary file whose (text) contents is provided
+by \fIstring\fR. The temporary file is automatically deleted when the namespace is closed or
+the file/directory unmounted.
+
+\fBuserbindmount_data\fR bind-mounts on \fIdestination\fR a temporary file whose (binary) contents is provided
+by \fIdata\fR and has the size of \fIcount\fR bytes. The temporary file is automatically deleted when 
+the namespace is closed or the file/directory unmounted.
+
+\fBuserbindmount_fd\fR bind-mounts on \fIdestination\fR a temporary file whose contents is read
+from the by the file descriptor \fIfd\fR (up to the end of file). The temporary file is automatically 
+deleted when the namespace is closed or the file/directory unmounted.
+
+.SH RETURN VALUE
+
+All the functions provided by libuserbindmount return 0 in case of success.  
+-1 is returned elseways and errno is set appropriately.
+
+.SH NOTES
+Libuserbindmount fails if user namespaces have not been configured in the running kernel and enabled for users. 
+In Debian the sysctl knob \fBkernel.unprivileged_userns_clone\fR must be set to 1.
+
+.SH EXAMPLES
+The following excerpts of C code shows the use of \fBlibuserbindmount\fR: 
+the inclusion of the header file for this library is required:
+.RS
+.nf
+#include <usrbindmount.h>
+.fi
+.RE
+
+.sp
+Bind-mount /tmp/resolv.conf on /etc/resolv.conf:
+\&
+.RS
+.nf
+userbindmount("/tmp/resolv.conf", "/etc/resolv.conf");
+.fi
+.RE
+
+.sp
+Bind-mount a string on /etc/resolv.conf:
+\&
+.RS
+.nf
+userbindmount_string("nameserver 9.9.9.9\n", "/etc/resolv.conf", 0600);
+.fi
+.RE
+
+.sp
+Bind-mount a binary data on /proc/self/cmdline:
+\&
+.RS
+.nf
+static char fakeargv[] = {'c','m','d',0,
+	'a','r','g','1',0,
+	'a','r','g','2',0,
+	0};
+userbindmount_data(fakeargv, sizeof(fakeargv), "/proc/self/cmdline", 0600);
+.fi
+.RE
+
+Bind-mount the data read from a file descriptor on /etc/resolv.conf:
+\&
+.RS
+.nf
+userbindmount_fd(STDIN_FILENO, "/etc/resolv.conf", 0600);
+.fi
+.RE
+
+.sp
+Bind-mount several files or directories:
+\&
+.RS
+.nf
+userbindmount("/tmp/resolv.conf", "/etc/resolv.conf");
+userbindmount("/tmp/passwd", "/etc/passwd");
+userbindmount("/tmp/hosts", "/etc/hosts");
+.fi
+.RE
+Only the first userbindmount creates a new namespace if needed.
+
+.sp
+The following program creates a namespace and runs a program in it.
+In the new namespace bind-mount is allowed.
+\&
+.RS
+.nf
+#include <stdio.h>
+#include <unistd.h>
+#include <userbindmount.h>
+
+int main(int argc, char *argv[]) {
+	userbindmount_unshare();
+	userbindmount_set_cap_sysadm();
+	execvp(argv[1], argv+1);
+}
+.fi
+.RE
+.sp
+It can be compiled and tested in the following way:
+\&
+.RS
+.nf
+$ gcc -o unshare_sysadm unshare_sysadm.c -luserbindmount
+$ unshare_sysadm bash
+$ cat /etc/resolv.conf 
+nameserver 127.0.0.1
+$ echo "nameserver 9.9.9.9" > /tmp/resolv.conf
+$ busybox mount --bind /tmp/resolv.conf /etc/resolv.conf 
+$ cat /etc/resolv.conf
+nameserver 9.9.9.9
+$ exit
+$
+.fi
+.RE
+please note that in the example the mount command by busybox has been used instead of the standard mount by util-linux. In fact the standard mount command has not been updated to support the capabilities, and forbids the access to the mount system call if the effective user is not root, denying in this way a legal operation.
+
+.SH SEE ALSO
+.BR "mount"(2), " mount"(8), " user_namespaces"(7)
+
+.SH BUGS
+Bug reports should be addressed to <info@virtualsquare.org>
+.SH AUTHORS
+Renzo Davoli <renzo@cs.unibo.it>

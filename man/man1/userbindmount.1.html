@@ -1,0 +1,193 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of USERBINDMOUNT</TITLE>
+</HEAD><BODY>
+<H1>USERBINDMOUNT</H1>
+Section: User Commands  (1)<BR>Updated: August 22, 2017<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+userbindmount - bind-mount utility for user-namespaces
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>userbindmount</B>
+
+[options] [<I>source</I> <I>target</I> [<I>source</I> <I>target</I> [...]]] [ <I>--</I> [<I>cmd</I> [<I>args</I>]]]
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+userbindmount is a utility command based on libuserbindmount.
+<P>
+It can be used to perform one or more bind-mount operation and to create a user-namespace where
+bind-mount is allowed.
+<P>
+This command does not need root access or specific capabilities to run (provided user-namespaces are supported,
+see NOTES).
+<P>
+The command line arguments are a list of <I>source</I>-<I>target</I> pairs (one for each
+bind-mount operation). 
+A new namespace is created if requested by the specific option (-n or
+--newns) or if there is -- as an option in the command line.
+If <I>source</I> is a double quoted string, the value of the string will be the content
+of the file mounted on <I>target</I>.
+The trailing -- followed by a command and its argument define the command
+to run in the new namespace. ($SHELL is launched if the command is omitted)
+<P>
+The contents of the file to be mounted on <I>target</I> is read from
+the standard input if the correspondent <I>source</I> is the tag &quot;-&quot;.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<I>userbindmount</I>
+
+accepts the following options.
+<P>
+<DL COMPACT>
+<DT><B>-n <DD>
+
+--newns
+create a new user-namespace
+<P>
+<DT>-s <DD>
+
+--sysadm 
+add the CAP_SYS_ADMIN ambient capability to the current of newly created userspace
+<P>
+<DT>-v <DD>
+
+--verbose 
+verbose mode: print debugging information on the actions taken by the program.
+<P>
+</DL>
+</B><A NAME="lbAF">&nbsp;</A>
+<H2>NOTES</H2>
+
+User namespaces require a kernel that is configured with the CONFIG_USER_NS option.
+In some distributions (e.g. Debian) user namespaces must be enabled by writing 1 to
+/proc/sys/kernel/unprivileged_userns_clone.
+<A NAME="lbAG">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+The following example mounts the file /tmp/resolv.conf instead of /etc/resolv.conf: the purpose of 
+this example is to redefine the name servers for the name resolution.
+<DL COMPACT><DT><DD>
+<PRE>
+$ cat /etc/resolv.conf
+nameserver 127.0.0.1
+$ echo &quot;nameserver 9.9.9.9&quot; &gt; /tmp/resolv.conf
+$ userbindmount -v /tmp/resolv.conf /etc/resolv.conf -- bash
+creating a user_namespace
+mounting /tmp/resolv.conf on /etc/resolv.conf
+starting bash
+$ cat /etc/resolv.conf 
+nameserver 9.9.9.9
+$ exit
+$
+</PRE>
+
+</DL>
+
+<P>
+<P>
+The following example creates a namespace where bind-mount is allowed and then mounts /tmp/resolv.conf on
+/etc/resolv.conf. (It uses busybox instead of <A HREF="../man8/mount.8.html">mount</A>(8) as the latter does not support the capabilities, yet).
+<DL COMPACT><DT><DD>
+<PRE>
+$ userbindmount -s -- bash
+$ cat /etc/resolv.conf 
+nameserver 127.0.0.1
+$ echo &quot;nameserver 9.9.9.9&quot; &gt; /tmp/resolv.conf
+$ busybox mount --bind /tmp/resolv.conf /etc/resolv.conf 
+$ cat /etc/resolv.conf
+nameserver 9.9.9.9
+$ exit
+$
+</PRE>
+
+</DL>
+
+Alternative equivalent commands for &quot;userbindmount -s -- bash&quot; are &quot;userbindmount -sn&quot; or &quot;userbindmount -s --&quot;.
+<P>
+<P>
+Several bind-mounts can be done in a user-namespace started with the -s option. 
+No more namespaces are needed in this case.
+The contents of the file to mount can be taken from stdin if source is &quot;-&quot;.
+<DL COMPACT><DT><DD>
+<PRE>
+$ userbindmount -sn
+$ echo &quot;nameserver 9.9.9.9&quot; | userbindmount - /etc/resolv.conf
+$ cat /etc/resolv.conf
+nameserver 9.9.9.9
+$ exit
+</PRE>
+
+</DL>
+
+<P>
+<P>
+It is possible to set the contents of a mounted file directly in the command line:
+<DL COMPACT><DT><DD>
+<PRE>
+$ userbindmount $'&quot;nameserver 9.9.9.9\n&quot;' /etc/resolv.conf -- bash
+$ cat /etc/resolv.conf
+nameserver 9.9.9.9
+$ exit
+</PRE>
+
+</DL>
+
+<P>
+<P>
+Please note that the following command:
+<DL COMPACT><DT><DD>
+<PRE>
+$ echo &quot;nameserver 9.9.9.9&quot; | userbindmount - /etc/resolv.conf -- bash
+</PRE>
+
+</DL>
+
+works but the bash running in the new namespace terminates immediately as it reads the end-of-file on its
+standard input.
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/libuserbindmount.3.html">libuserbindmount</A>(3),</B> <A HREF="../man8/mount.8.html">mount</A>(8),<B> <A HREF="../man7/user_namespaces.7.html">user_namespaces</A>(7),</B> <A HREF="../man7/capabilities.7.html">capabilities</A>(7)
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAJ">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">NOTES</A><DD>
+<DT><A HREF="#lbAG">EXAMPLES</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">BUGS</A><DD>
+<DT><A HREF="#lbAJ">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

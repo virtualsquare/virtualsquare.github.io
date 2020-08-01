@@ -1,0 +1,166 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VUDEBUG</TITLE>
+</HEAD><BODY>
+<H1>VUDEBUG</H1>
+Section: User Commands  (1)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<B>vudebug</B> - debug utility for umvu
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vudebug</B> --help
+<P>
+
+<B>vudebug</B> [<I>debarg</I> [<I>debarg</I> ...]] [ -- <I>command</I> [<I>args</I>]]
+<P>
+
+where <I>debarg</I> has the following syntax:
+<P>
+
+<B>+</B>[<I>tag</I>[<I>tag</I> ...]][<B>:</B><I>colorspec</I>]
+<P>
+
+or
+<P>
+
+<B>-</B>[<I>tag</I>[<I>tag</I> ...]]
+<P>
+
+or
+<P>
+
+<B>?</B>[<I>tag</I>[<I>tag</I> ...]]
+<P>
+
+and <I>colorspec</I> is a combination of the following characters: <B>nwrgbcmyNWRGBCMY+-_*#</B>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+vudebug enables or disables debug log messages. Log messages are classified into categories. Each category is identified by a <I>tag</I> (one alphanumeric character). By convention lowercase letters are for logging messages of the hypervisor, while capital letters are for modules.
+<P>
+
+When <B>vudebug</B> command line ends with <B>--</B> followed by a command and its command line arguments, logging is enabled for the execution of that command (and for all the subprocesses it eventually creates). Otherwise <B>vudebug</B> changes the categories to log globally, for all the processes.
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>--help</B><DD>
+Print a short help message and exit.
+<DT><I>debarg</I><DD>
+each debug argument begins by <B>+</B>, <B>-</B> or <B>?</B> followed by zero, one or more debug tags. (<B>+</B> enables log messages, <B>-</B> disables log messages, <B>?</B> check if the log messages are enabled). When the debug argument has no tags, it is applied to all the tags. Log messages of different categories can be shown in different colors and font effects. When <B>vudebug</B> is used to enable/re-enable tags (<B>+</B>) each <I>debarg</I> can be followed by a semicolon (<B>:</B>) and a color specification. A color specification is a string composed by the following characters:
+<DT><DD>
+<B>n w r g b c m y</B>: set foreground color (black, white, red, green, blue, cyan, magenta or yellow)
+<DT><DD>
+<B>N W R G B C M Y</B>: set background color (black, white, red, green, blue, cyan, magenta or yellow)
+<DT><DD>
+<B>+ - _ * #</B>: font effect (bright, dim,underlined, blinking, reverse video).
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+Get a list of available logging categories:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vudebug ?
+D -   VUDEV
+F -   VUFUSE
+N -   VUNET
+a -   ACTION
+c -   CHOICE
+f -   FILETABLE
+m -   MODULE
+n -   NESTED
+p -   PATH
+s -   SYSCALL
+v -   VNODE
+</PRE>
+
+<DT><DD>
+</DL>
+<P>
+
+the list may vary depending on the version of the hypervisor and the modules currently loaded.
+<P>
+
+Enable path resolution logging:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vudebug +p
+</PRE>
+
+<DT><DD>
+</DL>
+<P>
+
+List some categories to see which ones are active:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vudebug ?ps
+p +   PATH
+s -   SYSCALL
+</PRE>
+
+<DT><DD>
+</DL>
+<P>
+
+PATH is active, SYSCALL is not active.
+<P>
+
+Disable all the categories:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vudebug -
+</PRE>
+
+<DT><DD>
+</DL>
+<P>
+
+Launch a bash and log syscall requests in red, path resolution in bold-blue, module choice in reverse green:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vudebug +s:r +p:b+ +c:g# -- bash
+</PRE>
+
+<DT><DD>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="../man1/umvu.1.html">umvu</A>(1)
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

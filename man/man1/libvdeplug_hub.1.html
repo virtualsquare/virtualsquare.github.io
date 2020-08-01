@@ -1,0 +1,100 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of LIBVDEPLUG_HUB</TITLE>
+</HEAD><BODY>
+<H1>LIBVDEPLUG_HUB</H1>
+Section: User Commands  (1)<BR>Updated: April 30, 2017<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+libvdeplug_hub - multiplexing vdeplug module: hub
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+libvdeplug_hub.so
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+This is a libvdeplug multiplex module implementing a virtual networking hub.
+<P>
+This module of libvdeplug4 can be used in any program supporting vde like
+<B>vde_plug</B>, <B>kvm</B>, <B>qemu</B>, <B>user-mode-linux</B> and <B>virtualbox</B>.
+<P>
+The vde_plug_url syntax of this module is the following:
+<DL COMPACT><DT><DD>
+<B>hub://</B>[<I>path</I>]
+
+<BR>
+
+<B>hub://</B>[<I>path</I>]<B>[</B>[<I>OPTION</I>][<B>/</B><I>OPTION</I>][<B>/</B><I>OPTION</I>]...<B>]</B>
+
+<BR>
+
+</DL>
+
+<P>
+If <I>path</I> is omitted the path of the hub is /tmp/vdenode_$USERNAME (e.g. /tmp/vdenode_john
+if the username is john).
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>mode=</B><I>MODE<DD>
+define the permissions for the hub (see chmod). MODE is an octal number.
+The standard permission mask is: 0600 (only processes owning to the same user can join the network).
+<DT></I><B>dirmode=</B><I>DIRMODE<DD>
+define the permissions for the hub control directory(see chmod). MODE is an octal number.
+If omitted, is computed from mode.
+<DT></I><B>grp=</B><I>GROUP<DD>
+define the group ownership of the hub.
+</DL>
+</I><A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<B><A HREF="hub:///tmp/hub">hub:///tmp/hub</A></B>
+
+<BR>
+
+Other virtual machines, namespaces or vde_plug can join this hub using <B><A HREF="vde:///tmp/hub">vde:///tmp/hub</A></B> or simply <B>/tmp/hub</B>
+<BR>
+
+<B><A HREF="hub:///tmp/hub[mode=0666]">hub:///tmp/hub[mode=0666]</A></B>
+
+<BR>
+
+It is the same hub, but everybody is allowed to connect their processes.
+<A NAME="lbAG">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">NOTICE</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 12:37:03 GMT, August 01, 2020
+</BODY>
+</HTML>

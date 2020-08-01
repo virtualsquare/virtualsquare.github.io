@@ -1,0 +1,90 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of LIBVDESLIRPFWD</TITLE>
+</HEAD><BODY>
+<H1>LIBVDESLIRPFWD</H1>
+Section: C Library Functions (3)<BR>Updated: January 2020<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vdeslirp_add_fwd, vdeslirp_remove_fwd, vdeslirp_add_unixfwd, vdeslirp_remove_unixfwd, vdeslirp_add_cmdexec - simple API for slirp, port forwarding
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/libvdeslirp.h">libvdeslirp.h</A>&gt;</B>
+<P>
+
+<B>int vdeslirp_add_fwd(struct vdeslirp *</B><I>slirp</I><B>, int</B> <I>is_udp</I><B>, struct in_addr</B> <I>host_addr</I><B>, int</B> <I>host_port</I><B>, struct in_addr</B> <I>guest_addr</I><B>, int</B> <I>guest_port</I><B>);</B>
+<P>
+
+<B>int vdeslirp_remove_fwd(struct vdeslirp *</B><I>slirp</I><B>, int</B> <I>is_udp</I><B>, struct in_addr</B> <I>host_addr</I><B>, int</B> <I>host_port</I><B>);</B>
+<P>
+
+<B>int vdeslirp_add_unixfwd(struct vdeslirp *</B><I>slirp</I><B>, char *</B><I>path</I><B>, struct in_addr</B> <I>guest_addr</I><B>, int</B> <I>guest_port</I><B>);</B>
+<P>
+
+<B>int vdeslirp_remove_unixfwd(struct vdeslirp *</B><I>slirp</I><B>, struct in_addr</B> <I>guest_addr</I><B>, int</B> <I>guest_port</I><B>);</B>
+<P>
+
+<B>int vdeslirp_add_cmdexec(struct vdeslirp *</B><I>slirp</I><B>, const char *</B><I>cmdline</I><B>, struct in_addr *</B><I>guest_addr</I><B>, int</B> <I>guest_port</I><B>);</B>
+<P>
+
+<B>int vdeslirp_remove_cmdexec(struct vdeslirp *</B><I>slirp</I><B>, struct in_addr</B> <I>guest_addr</I><B>, int</B> <I>guest_port</I><B>);</B>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Slirp, see <A HREF="../man3/libvdelirp.3.html">libvdelirp</A>(3), is a TCP/IP emulator. Slirp generates a virtual network using standard user privileges (no need for root access of CAP_NET_ADMIN). These functions manage port forwarding services.
+<P>
+
+<B>vdeslirp_add_fwd</B> and <B>vdeslirp_remove_fwd</B> respectively add and remove udp or tcp port forwarding services (depending upon the value of is_udp). <I>host_addr</I> and <I>host_port</I> are the IP address and port number bound for the service in the host system. All the connections or datagrams to <I>host_addr</I> and <I>host_port</I> will be diverted to <I>guest_addr</I> and <I>guest_port</I> in the slirp virtual network.
+<P>
+
+<B>vdeslirp_add_unixfwd</B> and <B>vdeslirp_remove_unixfwd</B> respectively add and remove a forwarding service towards a <B>PF_UNIX</B> stream socket on the hosting system. All the connections from a node of the virtual network to <I>guest_addr</I> and <I>guest_port</I> will be diverted to the <B>PF_UNIX</B> bound to the pathname path. This feature is commonly used to run X-window clients in the virtual network (e.g. the value of path could be <B>/tmp/.X11-unix/X0</B>).
+<P>
+
+If libslirp does not support <B>slirp_add_unix</B>, <B>vdeslirp_add_unixfwd</B> is implemented by a workaround based on <B><A HREF="../man1/nc.1.html">nc</A></B>(1).
+<P>
+
+<B>vdeslirp_cmd_fwd</B> adds a forwarding service to a command. A TCP connection to <I>guest_addr</I> and <I>guest_port</I> activates the command <I>cmdline</I>. Data exchanged on the TCP connection is forwarded as stdin/stdout to the command.
+<P>
+
+<B>vdeslirp_remove_cmdexec</B> removes a command forwarding service.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+All these functions return 0 in case of success, -1 otherwise (and <B>errno</B> is set consequently). <B>vdeslirp_remove_cmdexec</B> and <B>vdeslirp_remove_unixfwd</B> return -1 and set errno to <B>ENOSYS</B> if libslirp does not support <B>slirp_remove_guestfwd</B>.
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/libvdeslirp.3.html">libvdeslirp</A></B>(3), <B><A HREF="../man3/libvdeslirpcfg.3.html">libvdeslirpcfg</A></B>(3)
+<A NAME="lbAG">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+<DT><A HREF="#lbAG">BUGS</A><DD>
+<DT><A HREF="#lbAH">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

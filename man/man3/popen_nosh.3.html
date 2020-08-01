@@ -1,0 +1,91 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of popen_nosh</TITLE>
+</HEAD><BODY>
+<H1>popen_nosh</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2014-05-27<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<P>
+popen_nosh, pclose_nosh, popen_execs, pclose_execs, - pipe stream to or from a process without using a shell
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;</B>
+
+<BR>
+
+<B>#include &lt;<A HREF="file:///usr/include/execs.h">execs.h</A>&gt;</B>
+
+<P>
+<B>FILE *popen_nosh(const char *</B><I>command</I><B>, const char *</B><I>type</I><B>);</B>
+
+<BR>
+
+<B>int pclose_nosh(FILE *</B><I>stream</I><B>);</B>
+
+<P>
+<B>FILE *popen_execsp(const char *</B><I>command</I><B>, const char *</B><I>type</I><B>);</B>
+
+<BR>
+
+<B>int pclose_execsp(FILE *</B><I>stream</I><B>);</B>
+
+<P>
+<B>FILE *popen_execs(const char *</B><I>path</I><B>,const char *</B><I>command</I><B>, const char *</B><I>type</I><B>);</B>
+
+<BR>
+
+<B>int pclose_execs(FILE *</B><I>stream</I><B>);</B>
+
+<P>
+These functions are provided by libexecs. Link with <I>-lexecs</I>.
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>popen_nosh</B>, <B>popen_execsp</B> and <B>pclose_nosh</B> are almost drop in replacement for <B><A HREF="../man3/popen.3.html">popen</A></B>(3) and <B><A HREF="../man3/pclose.3.html">pclose</A></B>(3)
+provided by the libc. <B>popen_nosh</B> and <B>popen_execsp</B> are synonyms: they parse the command string
+and run the command directly, without using a shell.
+<BR>
+
+Command arguments in <I>args</I> are delimited by space characters (blank, tabs
+or new lines).
+Single or double quotes can be used to delimitate command arguments including
+spaces and a non quoted backslash (<B>\</B>)
+is the escape character to protect the next char. The executable file
+is sought using the PATH environment variable as explained for <B><A HREF="../man3/execlp.3.html">execlp</A></B>(3).
+<BR>
+
+<B>pclose_nosh</B> closes a stream opened by <B>popen_nosh</B>.
+<BR>
+
+<B>popen_execs</B> requires the path of the executable to be specified
+as its first parameter so it does not use the PATH environment variable.
+<B>pclose_execs</B> closes a stream opened by <B>popen_execs</B>.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+These functions have the same return values of <B><A HREF="../man3/popen.3.html">popen</A></B>(3) and <B><A HREF="../man3/pclose.3.html">pclose</A></B>(3).
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:02:53 GMT, August 01, 2020
+</BODY>
+</HTML>

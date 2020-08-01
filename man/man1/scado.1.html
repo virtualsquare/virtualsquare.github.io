@@ -1,0 +1,204 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of SCADO</TITLE>
+</HEAD><BODY>
+<H1>SCADO</H1>
+Section: User Commands  (1)<BR>Updated: June 23, 2016<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+scado - Script Capability Ambient DO
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>scado</B>
+
+<B>-D</B>
+
+|
+<B>-e</B>
+
+|
+<B>-l</B>
+
+<BR>
+
+<B>scado</B>
+
+<B>-u</B>
+
+<I>command</I>
+
+|
+<B>-U</B>
+
+<BR>
+
+<B>scado</B>
+
+<B>-h</B>
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<B><A HREF="../man1/cado.1.html">cado</A>(1)</B> allows the system administrator to delegate capabilities to users.
+Users can grant a subset of these ambient capabilities to trusted programs.
+Each user can define their own list of trusted programs and which capabilities to grant, using a scado file.
+<B>cado -S</B> or <B>cado --scado</B> run those trusted programs without any further authentication.
+In this way it is also possible to run programs requiring specific capabilities within a bash script.
+<P>
+<B>Scado</B> is the command a user can run to create, edit, check or delete their own scado file.
+<P>
+Each line of a scado file file has the following syntax:
+<BR>
+
+<DL COMPACT><DT><DD>
+<I>path_of_the_executable_file : capability_list</I>
+
+</DL>
+
+<BR>
+
+or
+<BR>
+
+<DL COMPACT><DT><DD>
+<I>path_of_the_executable_file : capability_list : sha256_digest_of_the_executable</I>
+
+</DL>
+
+<BR>
+
+(See the EXAMPLES section at the end of the man page for more info. All the trailing part of a line following a # sign is a comment.).
+<P>
+The <I>path_of_the_executable_file</I> must be absolute.
+<P>
+The <I>capability_list</I> is a comma separated list of capability names or capability
+masks.  For brevity, the <B>cap_</B> prefix of capabilities names can be omitted
+(e.g. <B>net_admin</B> and <B>cap_net_admin</B> have the same meaning).
+<P>
+The <I>sha256_digest_of_the_executable</I> prevents <I>TOCTTOU</I> attacks. When a user
+wants to run the file at <I>path_of_the_executable_file</I> granting it some of
+the capabilities in the <I>capability_list</I>, the permission is denied if
+its sha256 digest does not match <I>sha256_digest_of_the_executable</I>.
+<P>
+If there are only two colon (<B>:</B>) separated fields in a line, it means that
+the user trusts a priori the integrity of the file whose pathname is <I>path_of_the_executable_file</I>.
+It can be, for example, a program in /bin or /usr/bin not modifiable by users.
+<P>
+If there are three fields (i.e. two colon characters), it means that the user wants the
+cryptographic digest check on the executable file integrity.
+When a user edits their scado file, if the field (<I>sha256_digest_of_the_executable</I>) is empty, <B>scado</B> 
+computes it automatically when the scado file is saved.
+<P>
+<B>Scado</B> asks for user authentication by PAM to confirm any modification of the scado file.
+<P>
+There is also a <I>TOCTTOU</I> protection at running time: cado -S copies the executable file 
+in a safe place, where the user cannot change it, and runs it only if the integrity check on it succeeds.
+The user (or a malicious intruder acting as the user) cannot modify the file after the integrity check has completed
+and before the program is loaded.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<I>scado</I>
+
+accepts the following options:
+<DL COMPACT>
+<DT><B>-l<DD>
+
+--list
+Display the current scado file. The actual file in the file system is not accessible by unprivileged users, for security reasons.
+<DT>-e<DD>
+
+--edit
+Edit the scado file of the current user using the editor specified by either the
+VISUAL</B> or the <B>EDITOR</B> environment variable (checked in that order).
+After you exit from the editor, the modified file will be installed automatically.
+<DT><B>-D<DD>
+
+--delete
+Delete the current user's scado file.
+<DT>-u</B> <I>command</I><DD>
+
+<B>--update</B> <I>command</I>
+Recompute the hash of the line which starts with <I>command</I>.
+<DT><B>-U<DD>
+
+--update-all
+Update all the digest entries.
+<DT>-h<DD>
+
+--help
+print a short usage banner and exit.
+<P>
+</DL>
+</B><A NAME="lbAF">&nbsp;</A>
+<H2>EXCEPTIONS FILES EXAMPLES</H2>
+
+<P>
+<P>
+
+Allow <B>cado -S</B> to run /bin/ping providing it with the cap_net_raw capability, without any integrity check: 
+<DL COMPACT><DT><DD>
+/bin/ping : cap_net_raw
+</DL>
+
+<P>
+<P>
+
+Allow the activation of ping with cap_net_raw provided it has a specific SHA256 digest
+<DL COMPACT><DT><DD>
+/bin/ping : cap_net_raw : dcb237f1cb20ee7b1550900d1b524c554063fd17fc673c56d341736ced6bed4b
+</DL>
+
+<P>
+<P>
+
+Compute the SHA256 digest of (the current version of) ping so,
+allow the activation of ping with cap_net_raw provided it has not been modified.
+<DL COMPACT><DT><DD>
+/bin/ping : cap_net_raw :
+</DL>
+
+<P>
+<P>
+
+If one of the example lines here above has been inserted in the user scado file using
+<B>scado -e</B>, it is possible to execute ping as follows:
+<DL COMPACT><DT><DD>
+cado -S cap_net_raw /bin/ping
+</DL>
+
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/cado.1.html">cado</A></B>(1),
+<B><A HREF="../man7/capabilities.7.html">capabilities</A></B>(7)
+<P>
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXCEPTIONS FILES EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

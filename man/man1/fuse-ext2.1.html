@@ -1,0 +1,156 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of FUSE-EXT2</TITLE>
+</HEAD><BODY>
+<H1>FUSE-EXT2</H1>
+Section: User Commands (1)<BR>Updated: September 2009<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+FUSE-EXT2 - FUSE module for Second Extended File System
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>fuse-ext2</B>
+
+[<I>OPTION</I>]...
+
+<I>imagefile mountpoint</I>
+
+<P>
+
+<B>fuse-ext2</B>
+
+<I>imagefile mountpoint</I>
+
+[<I>OPTION</I>]...
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Fuse-ext2 mounts an ext2/ext3/ext4 partition or image file. It uses Fuse support
+(Filesystem in Userspace) included in modern Linux kernels.
+The same module is available for view-os (<A HREF="../man1/umview.1.html">umview</A>(1), <A HREF="../man1/kmview.1.html">kmview</A>(1)) under
+the name <B>umfuseext2</B>.
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<A NAME="lbAF">&nbsp;</A>
+<H3>General options</H3>
+
+<DL COMPACT>
+<DT><B>-o</B> opt,[opt...]<DD>
+mount options
+<DT><B>-h</B>   <B>--help</B><DD>
+print help
+<DT><B>-V</B>   <B>--version</B><DD>
+print version
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H3>FUSE-EXT2 options:</H3>
+
+<DL COMPACT>
+<DT><B>-o</B> force<DD>
+force read-write mount (<B>EXPERIMENTAL</B>, the option <B>rw</B> without <B>force</B>
+mounts the file system in read-only mode, with a warning).
+<DT><B>-o</B> rw+<DD>
+enable read-write mount (<B>EXPERIMENTAL</B>, is a shortcut for -o rw,force)
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H3>FUSE options:</H3>
+
+<P>
+<DL COMPACT>
+<DT><B>-d, -o debug</B><DD>
+enable debug output (implies <B>-f</B>)
+<DT><B>-f</B><DD>
+foreground operation
+<DT><B>-s</B><DD>
+disable multi-threaded operation
+<DT><B>-o allow_other</B><DD>
+allow access to other users
+<DT><B>-o allow_root</B><DD>
+allow access to root
+<DT><B>-o nonempty</B><DD>
+allow mounts over non-empty file/dir
+<DT><B>-o default_permissions</B><DD>
+enable permission checking by kernel
+<DT><B>-o fsname=</B><I>NAME</I><DD>
+set filesystem name
+<DT><B>-o large_read</B><DD>
+issue large read requests (2.4 only)
+<DT><B>-o max_read=</B><I>N</I><DD>
+set maximum size of read requests
+<DT><B>-o hard_remove</B><DD>
+immediate removal (don't hide files)
+<DT><B>-o use_ino</B><DD>
+let filesystem set inode numbers
+<DT><B>-o readdir_ino</B><DD>
+try to fill in d_ino in readdir
+<DT><B>-o direct_io</B><DD>
+use direct I/O
+<DT><B>-o kernel_cache</B><DD>
+cache files in kernel
+<DT><B>-o [no]auto_cache</B><DD>
+enable caching based on modification times
+<DT><B>-o umask=</B><I>M</I><DD>
+set file permissions (octal)
+<DT><B>-o uid=</B><I>N</I><DD>
+set file owner
+<DT><B>-o gid=</B><I>N</I><DD>
+set file group
+<DT><B>-o entry_timeout=</B><I>T</I><DD>
+cache timeout for names (1.0s)
+<DT><B>-o negative_timeout=</B><I>T</I><DD>
+cache timeout for deleted names (0.0s)
+<DT><B>-o attr_timeout=</B><I>T</I><DD>
+cache timeout for attributes (1.0s)
+<DT><B>-o ac_attr_timeout=</B><I>T</I><DD>
+auto cache timeout for attributes (attr_timeout)
+<DT><B>-o intr</B><DD>
+allow requests to be interrupted
+<DT><B>-o intr_signal=</B><I>NUM</I><DD>
+signal to send on interrupt (10)
+<DT><B>-o max_write=</B><I>N</I><DD>
+set maximum size of write requests
+<DT><B>-o max_readahead=</B><I>N</I><DD>
+set maximum readahead
+<DT><B>-o async_read</B><DD>
+perform reads asynchronously (default)
+<DT><B>-o sync_read</B><DD>
+perform reads synchronously
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+<DL COMPACT>
+<DT>Alper Akcan &lt;<A HREF="mailto:alper.akcan@gmail.com">alper.akcan@gmail.com</A>&gt;<DD>
+<DT>Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;<DD>
+<DT>See <I><A HREF="http://github.com/alperkacan/fuse-ext2/,">http://github.com/alperkacan/fuse-ext2/,</A> <A HREF="http://www.virtualsquare.org">http://www.virtualsquare.org</A></I>.<DD>
+<P>
+</DL>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DL>
+<DT><A HREF="#lbAF">General options</A><DD>
+<DT><A HREF="#lbAG">FUSE-EXT2 options:</A><DD>
+<DT><A HREF="#lbAH">FUSE options:</A><DD>
+</DL>
+<DT><A HREF="#lbAI">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

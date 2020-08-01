@@ -1,0 +1,302 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of WIREFILTER</TITLE>
+</HEAD><BODY>
+<H1>WIREFILTER</H1>
+Section: User Commands  (1)<BR>Updated: December 6, 2006<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+wirefilter - Wire packet filter for Virtual Distributed Ethernet
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>wirefilter</B>
+
+<P>
+[<B>-f</B><I> rcfile</I>]
+[<B>-l</B><I> loss</I>]
+[<B>-l</B><I> lostburst</I>]
+[<B>-d</B><I> delay</I>]
+[<B>-D</B><I> dup</I>]
+[<B>-b</B><I> bandwidth</I>]
+[<B>-s</B><I> interface_speed</I>]
+[<B>-c</B><I> channel_bufsize</I>]
+[<B>-n</B><I> noise_factor</I>]
+[<B>-m</B><I> mtu_size</I>]
+[<B>-M</B><I> mgmt socket</I>]
+[<B>-v</B><I> vde_plug1:vde_plug2</I>]
+[<B>--daemon</B><I>]
+[</I><B>--pidfile</B><I> pidfile_path]
+[</I><B>--blink</B><I> blink]
+[</I><B>--blinkid</B><I> blink_identifier]
+[</I><B>-N</B>]
+<BR>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+A
+<B>wirefilter</B> 
+is able to emulate delays and packet loss on virtual wires.
+e.g.:
+<P>
+<B>dpipe vde_plug /tmp/s1 = wirefilter -l 10 = vde_plug /tmp/s2</B>
+
+<P>
+creates a wire between two vde_switches (with sockets /tmp/s1 and /tmp/s2
+respectively). This cable looses 10% of the packets in each direction.
+<P>
+The same cable can be created using:
+<P>
+<B>wirefilter -v /tmp/s1:/tmp/s2 -l 10</B>
+
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-f </B><I>rcfile</I>
+
+<DD>
+use a startup configuration file. It is useful for complex defitions
+such as those for the Markov mode (see below).
+The startup configuration file has the same syntax of the management
+interface, in other word it is a script of management commands executed
+before the first packet is forwarded.
+<DT><B>-l </B><I>loss</I>
+
+<DD>
+percentage of loss as a floating point number. It is possible to specify
+different loss percentage for the two channels: LR20.5 means 20.5% of packet
+flowing left to right are lost, RL10 means 10% from right to left.
+<DT><B>-L </B><I>lostburst</I>
+
+<DD>
+when this is not zero, wirefilter uses the Gilbert model for bursty errors.
+This is the mean length of lost packet bursts. (it is a two state Markov
+chain: the probability to exit from the faulty state is <I>1/lostburst</I>, the
+probability to enter the faulty state is <I>loss/(lostburst-(1-loss))</I>. The
+loss rate converges to the value <I>loss</I>.
+<DT><B>-d </B><I>delay</I> 
+
+<DD>
+Extra delay (in milliseconds). This delay is added to the
+real communication delay.  Packets are temporarily stored and resent after the
+delay.  It is possible to specify different values for LR and RL like in the
+previous option.  When the delay is specified as two numbers with a + in
+between, the first is the standard delay and the second is a random variation.
+1000+500 means that the delay can be randomly chosen between half second and
+1.5 seconds. It is possible to add 'U' or 'N' at the end. 1000+500U means that
+the dealys are uniformly distributed, 1000+500N means that the delays follow
+a Gaussian normal distribution (more than 98% of the values are inside the
+limits).
+<DT><B>-D </B><I>dup</I>
+
+<DD>
+percentage of dup packet. It has the same syntax of -l. Do not use dup factor 100% 
+because it means that each packet is sent infinite times. 
+<DT><B>-b </B><I>bandwidth</I>
+
+<DD>
+Channel bandwidth in Bytes/sec. It has the same syntax of -d. It is also possible to
+use suffixes K,M,G to abbreviate 2^10, 2^20, 2^30.
+128K means 128KBytes/sec. 128+64K means 64i to 196KBytes/sec.
+Sender is not prevented from sending packets, delivery is delayed to limit the bandwidth
+to the desired value. (Like a bottleneck along the path)
+U and N after the values (e.g. 128+64KN) set the statistic distribution to
+use (uniform or normal).
+<DT><B>-s </B><I>speed</I>
+
+<DD>
+Interface speed in Bytes/sec. It has the same syntax of -b. Input is blocked for
+the tramission time of the packet, thus the sender is prevented from sending too fast.
+<DT><B>-c </B><I>channel_bufsize</I>
+
+<DD>
+Channel buffer size (in Bytes): maximum size of the packet queue. Exceeding packets 
+are discarded. 
+<DT><B>-n </B><I>noise factor</I>
+
+<DD>
+Number of bits damaged/one megabyte. 
+<DT><B>-m </B><I>mtu size</I>
+
+<DD>
+Packets longer than mtu_size are discarded.
+<DT><B>-N </B>
+
+<DD>
+nofifo. with -N packets can be reordered.
+<DT><B>-M </B><I>mgmt socket</I> 
+
+<DD>
+the unix socket where the parameters (loss percentage, delay etc) can be checked and
+changed runtime. <A HREF="../man1/unixterm.1.html">unixterm</A>(1) can be used as a remote terminal for wirefilter.
+<DT><B>-v </B><I>vde_plug1:vde_plug2</I>
+
+<DD>
+If this option is used, the two local vde_plugs (vde_plug1 and vde_plug2) will be connected each other instead of stdin/stdout,
+using the libvdeplug libraries. This option activates an interactive 
+management session on console (stdin/stdout).
+<DT><B>--mgmtmode </B><I>mode</I> 
+
+<DD>
+this option sets the access mode of the mgmt socket.
+The command syntax is quite simple. <B>help</B> provides the
+list of commands.
+It is possible to load a script file using the <B>load</B> management command.
+<DT><B>--daemon</B> 
+
+<DD>
+wirefilter becomes a daemon
+<DT><B>--pidfile </B><I>pathnamefP</I>
+
+<DD>
+wirefilter saves its pid into the  file.
+<DT><B>--blinkid </B><I>name</I>                       
+
+<DD>
+This option defines the id sent for each packet to the blink server 
+(see the --blink option below).
+The stardard identifier for a wirefilter is the process pid.
+<DT><B>--blink </B><I>socket</I>        
+
+<DD>
+wirefilter sends a log message to the specified PF_UNIX/DATAGRAM socket 
+for each packet sent. Each packet has the format: id direction length.
+e.g:
+<P>
+
+<PRE>
+6768 LR 44
+6768 LR 44
+6768 RL 100
+6768 LR 100
+6768 LR 44
+</PRE>
+
+
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>Markov mode</H2>
+
+wirefilter provides also a more complex set of parameters using a Markov
+chain to emulate different states of the link and the tranistions between
+states. Each state is represented by a node.
+Markov chain parameters can be set with management commands or rc files only.
+In fact, due to the large number of parameters the command line would have
+been unreadable.
+<DL COMPACT>
+<DT><B>markov-numnodes </B><I>n</I>
+
+<DD>
+defines the number of different states. All the parameters of the connection
+can be defined node by node. Nodes are numbered starting from zero (to n-1).
+e.g.:
+<P>
+
+<PRE>
+delay 100+10N[4]
+loss 10[2]
+</PRE>
+
+
+<P>
+these command define a delay of 90-110 ms (normal distribution) for the node
+number 4 and a 10 loss for the node 2.
+It is possible to resize the Markov chain at run-time.
+New nodes are unreachable and do not have any edge to other states (i.e.
+each new node has a loopback edge to the node itself with 100% probability).
+When reducing the number of nodes, the weight of the edges towards deleted
+nodes is added to the loopback edge. When the current node of the 
+emulation is deleted, node 0 becomes the current node.
+(The emulation always starts from node 0).
+<DT><B>markov-time </B><I>ms</I>
+
+<DD>
+time period (ms) for the markov chain computation. Each <I>ms</I> microseconds
+a random number generator decides which is the next state (default value=100ms).
+<DT><B>markov-name </B><I>n,name</I>
+
+<DD>
+assign a name to a node of the markov chain. 
+<DT><B>markov-setnode </B><I>n</I>
+
+<DD>
+manually set the current node to the node <I>n</I>.
+<DT><B>setedge </B><I>n1,n2,w</I>
+
+<DD>
+define an edge between <I>n1</I> and <I>n2</I>; <I>w</I> is the weight (probability percentage)
+of the edge.
+The loopback edge (from a node to itself) is always computed as 100% minus
+the sum of the weights of outgoing edges.
+<DT><B>showedges [ </B><I>n</I> ]
+
+<DD>
+list the edges from node <I>n</I> (or from the current node when the command
+has no parameters). Null weight edges are omitted.
+<DT><B>showcurrent</B>
+
+<DD>
+show the current Markov state.
+<DT><B>showinfo [ </B><I>n</I> ]
+
+<DD>
+show status and information on state (node)  <I>n</I>. 
+If the parameter is omitted
+it shows the status and information on the current state.
+<DT><B>markov-debug [ </B><I>n</I> ]
+
+<DD>
+set the debug level for the current management connection. 
+In the actual implementation when n is greater than zero each
+change of markov node causes the output of a debug trace.
+Debug tracing get disabled when <I>n</I> is zero or the parameter is missing.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1),
+<B><A HREF="../man1/vdeq.1.html">vdeq</A></B>(1).
+<B><A HREF="../man1/dpipe.1.html">dpipe</A></B>(1).
+<B><A HREF="../man1/unixterm.1.html">unixterm</A></B>(1).
+<BR>
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">Markov mode</A><DD>
+<DT><A HREF="#lbAG">NOTICE</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

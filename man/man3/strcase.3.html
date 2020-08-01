@@ -1,0 +1,159 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of strcase</TITLE>
+</HEAD><BODY>
+<H1>strcase</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2019-01-11<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+STRCASE, strcase, strcase_tolower - Multiway branch (switch) for short strings
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/strcase.h">strcase.h</A>&gt;</B>
+
+<BR>
+
+<B>STRCASE(</B><I>...</I><B>)</B>
+
+<BR>
+
+<B>static inline uint64_t strcase(const char *</B><I>s</I><B>);</B>
+
+<BR>
+
+<B>static inline uint64_t strcase_tolower(const char *</B><I>s</I><B>);</B>
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<B>strcase.h</B> provides two inline functions <B>strcase</B>, <B>strcase_tolower</B>  and a macro <B>STRCASE</B>, all of them
+convert a <I>string</I> in a <B>uint64_t</B> integer value. Only the <I>first 8 characters</I> are significative.
+<P>
+<B>strcase_tolower</B> works like <B>strcase</B> but it converts uppercase letters as if they were lowercase.
+<P>
+<B>strcase</B> or <B>strcase_tolower</B> can be used in the expression of a switch statement to convert a string
+to an integer type, <B>STRCASE</B> generates at compile time the integer constants for the <I>case</I>
+stanzas of the switch.
+<P>
+Actually <B>STRCASE</B> (C language):
+<P>
+<DL COMPACT>
+<DT>*<DD>
+requires the string to be specified as comma separated characters,
+<DT>*<DD>
+supports &quot;strings&quot; using only literals, digits and underscore. Other symbols can appear using their name, as in:
+<PRE>
+<B>STRCASE(slash, e, t, c)</B>
+</PRE>
+
+<DT><DD>
+
+<P>
+Regardless of its limitations this macro library is quite useful to write switch statements
+in C language using strings (almost) as if it were integers (as in the example below).
+Although <B>STRCASE</B> needs commas between characters the string is still readable, and it
+is simple to add cases or change the tags.
+<P>
+When the string contains only one char, the value of strcase is the code of the character (e.g. the value of
+<B>strcase(&quot;a&quot;)</B> as well as the value of <B>STRCASE(a)</B> is <B>'a'</B>)
+<P>
+Strcase is a portable alternative to multi-character constants in C.
+<P>
+Strcase is available for C++ users, too. STRCASE argument in C++ is a short string.
+<P>
+</DL>
+<A NAME="lbAE">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The following C program shows the use of <B>strcase</B>:
+
+<P>
+
+<PRE>
+     #include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+     #include &lt;<A HREF="file:///usr/include/strcase.h">strcase.h</A>&gt;
+
+     int yes_or_not(const char *s) {
+       switch (strcase_tolower(s)) {
+         case STRCASE(y,e,s):
+         case 'y':
+             return 1;
+         case STRCASE(n,o):
+         case 'n':
+             return 0;
+         default:
+             return -1;
+       }
+     }
+
+     int main(int argc,char *argv[]) {
+       for(argc--, argv++; argc &gt; 0; argc--, argv++)
+         printf(&quot;%s %d\n&quot;, *argv, yes_or_not(*argv));
+     }
+</PRE>
+
+<P>
+The same example can be translated in C++ as follows:
+
+<P>
+
+<PRE>
+     #include &lt;iostream&gt;
+     #include &lt;<A HREF="file:///usr/include/strcase.h">strcase.h</A>&gt;
+
+     using namespace std;
+
+     int yes_or_not(const char *s) {
+       switch (strcase_tolower(s)) {
+         case STRCASE(&quot;yes&quot;):
+         case 'y':
+             return 1;
+         case STRCASE(&quot;no&quot;):
+         case 'n':
+             return 0;
+         default:
+             return -1;
+       }
+     }
+
+     int main(int argc,char *argv[]) {
+       for(argc--, argv++; argc &gt; 0; argc--, argv++)
+         cout &lt;&lt; *argv &lt;&lt; &quot; &quot; &lt;&lt; yes_or_not(*argv) &lt;&lt; endl;
+     }
+</PRE>
+
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">EXAMPLE</A><DD>
+<DT><A HREF="#lbAF">BUGS</A><DD>
+<DT><A HREF="#lbAG">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

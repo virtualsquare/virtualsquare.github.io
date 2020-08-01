@@ -1,0 +1,141 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of FDUSERDATA</TITLE>
+</HEAD><BODY>
+<H1>FDUSERDATA</H1>
+Section: C Library Functions (3)<BR>Updated: November 2019<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+fduserdata_create, fduserdata_destroy, fduserdata_destroy_cb, fduserdata_new, fduserdata_get, fduserdata_put, fduserdata_del - associate file descriptors with user defined data
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/fduserdata.h">fduserdata.h</A>&gt;</B>
+<P>
+
+<B>FDUSERDATA *fduserdata_create(int</B> <I>size</I><B>);</B>
+<P>
+
+<B>void fduserdata_destroy(FDUSERDATA *</B><I>fdtable</I><B>);</B>
+<P>
+
+<B>typedef void (*fduserdata_destr_cb_t)(int fd, void *data, void *arg);</B>
+<BR>
+
+<B>void fduserdata_destroy_cb(FDUSERDATA *</B><I>fdtable</I><B>, fduserdata_destr_cb_t</B> <I>callback</I><B>, void *</B><I>arg</I><B>);</B>
+<P>
+
+<B>void *fduserdata_new(FDUSERDATA *</B><I>fdtable</I><B>, int</B> <I>fd</I><B>,</B> <I>type</I><B>);</B>
+<P>
+
+<B>void *fduserdata_get(FDUSERDATA *</B><I>fdtable</I><B>, int</B> <I>fd</I><B>);</B>
+<P>
+
+<B>void fduserdata_put(void *</B><I>data</I><B>);</B>
+<P>
+
+<B>int fduserdata_del(void *</B><I>data</I><B>);</B>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+This library permits one to associate file descriptors with user defined data, more precisely it manages a data structure whose searching key is a file descriptor.
+<P>
+
+<B>fduserdata_create</B> and <B>fduserdata_destroy</B> are the constructor and destructor of the data structure, respectively. The data structure has been implemented as a hash table, the argument <I>size</I> of <B>fduserdata_create</B> is the size of the hash array. When <I>size</I> is zero the hash array has its default size (64).
+<P>
+
+<B>fduserdata_destroy_cb</B> is an alternative destructor which calls the function <I>callback</I> for each element still in the data structure.
+<P>
+
+<B>fduserdata_new</B> creates a new element. It is a macro: <I>type</I> is the type of the user data.
+<P>
+
+<B>fduserdata_get</B> search the user data associated to the <I>fd</I>.
+<P>
+
+Both <B>fduserdata_new</B> and <B>fduserdata_get</B> lock the access to the element, so that fduserdata is thread safe. <B>fduserdata_put</B> unlocks the element and makes it available for further requests.
+<P>
+
+<B>fduserdata_del</B> can be used instead of <B>fduserdata_put</B> to delete the element.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<B>fduserdata_create</B> returns the descriptor of the data structure (NULL in case of error).
+<P>
+
+<B>fduserdata_new</B> returns the element of type <I>type</I> just created (NULL in case of error).
+<P>
+
+<B>fduserdata_get</B> returns the element or NULL if no data corresponds to the file descriptor <I>fd</I>.
+<P>
+
+<B>fduserdata_del</B> On success, zero is returned. On error, -1 is returned.
+<P>
+
+On error, <I>errno</I> is set appropriately.
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+<PRE>
+fduserdata uses a trivial hash table, the optional arg is the
+size of the hash table: default value = 64
+
+    FDUSERDATA table = fduserdata_create(0);
+
+    struct mydata {
+    // fd data fields ...
+    };
+
+create a struct mydata for the file descriptor fd.
+
+    struct mydata *data = fduserdata_new(table, fd, struct mydata);
+
+.... set user defined data (data-&gt;fields)
+
+    fduserdata_put(data);
+
+search for data
+there is mutual exclusion between new/put, get/put (or new/del, get/del)
+so do not insert time consuming or blocking ops.
+
+    struct mydata *fddata = fduserdata_get(table, fd);
+    if (fddata) {
+
+... read/update user defined data (data-&gt;fields)
+(use fduserdata_del instead of fduserdata_put to delete the element)
+
+          fduserdata_put(data);
+    }
+
+at the end... when table is no longer required
+
+    fduserdata_destroy(table);
+</PRE>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">EXAMPLE</A><DD>
+<DT><A HREF="#lbAG">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

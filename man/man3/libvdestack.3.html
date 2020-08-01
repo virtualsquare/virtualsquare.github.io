@@ -1,0 +1,129 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of LIBVDESTACK</TITLE>
+</HEAD><BODY>
+<H1>LIBVDESTACK</H1>
+Section: C Library Functions (3)<BR>Updated: December 2019<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vde_addstack, vde_delstack, vde_stackcmd, vde_msocket - vde network namespace as a user library
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/vdestack.h">vdestack.h</A>&gt;</B>
+<P>
+
+<B>struct vdestack *vde_addstack(char *</B><I>vdenet</I><B>, char *</B><I>ifname</I><B>);</B>
+<P>
+
+<B>void vde_delstack(struct vdestack *</B><I>stack</I><B>);</B>
+<P>
+
+<B>int vde_stackcmd(struct vdestack *</B><I>stack</I><B>, char *</B><I>stackcmd</I><B>);</B>
+<P>
+
+<B>int vde_msocket(struct vdestack *</B><I>stack</I><B>,int</B> <I>domain</I><B>, int</B> <I>type</I><B>, int</B> <I>protocol</I><B>);</B>
+<P>
+
+<B>void vde_default_stack(struct vdestack *</B><I>stack</I><B>);</B>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Libvdestack implements the idea of Internet of Threads through network namespaces. By libvdestack a program can use one (or even several) private networking protocol stack(s), thus a program can be assigned its own IP address(es), routing etc.
+<P>
+
+<B>vde_addstack</B> creates a private network namespace: <I>vdenet</I> is the URL-like specification of a vde network as described in <B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1). <I>ifname</I> is the name of the interface in the network namespace. When <I>ifname</I> is NULL, the default interface name is vde0.
+<P>
+
+<B>vde_delstack</B> destroys a vdestack when it is no longer needed.
+<P>
+
+<B>vde_stackcmd</B> run a command or a comma separated sequence of commands in the private network namespace. The purpose of this function is to configure the networking parameters and options (e.g. IP address, routing). For security reasons, commands must be specified using full pathnames.
+<P>
+
+<B>vde_msocket</B> has the same semantics of <B><A HREF="../man2/socket.2.html">socket</A></B>(2) except that the socket is defined in the scope of the network namespace whose descriptor is the first argument. The remaining arguments are those defined in <A HREF="../man2/socket.2.html">socket</A>(2).
+<P>
+
+<B>vde_default_stack</B> defines the default stack: any successive <A HREF="../man2/socket.2.html">socket</A>(2) call will use the stack passed as parameter to vde_default_stack. Use NULL to undefine the default stack.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<B>vde_addstack</B> returns a struct vdestack pointer which is used as a descriptor and thus passed as an argument to the other functions of this library. NULL is returned in case of error.
+<P>
+
+<B>vde_stackcmd</B> returns the exit status of the command. If the stackcmd argument is a comma separated sequence of commands, the execution terminates upon the first command whose exit status is not zero, and the exit status of that command is returned. Therefore when vde_stackcmd returns zero the entire sequence was successfully executed.
+<P>
+
+On success, <B>vde_msocket</B> returns a valid file descriptor. -1 is returned elseways and errno is set appropriately as
+<BR>
+
+described in <A HREF="../man2/socket.2.html">socket</A>(2).
+<A NAME="lbAF">&nbsp;</A>
+<H2>NOTES</H2>
+
+Libvdestack fails if user namespaces have not been configured in the running kernel and enabled for users. In Debian the sysctl knob <B>kernel.unprivileged_userns_clone</B> must be set to 1.
+<A NAME="lbAG">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The following excerpt of C code shows the use of libvdestack:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+...
+int fd;
+int exit_status;
+struct vdestack *stack = vde_addstack(&quot;vde://&quot;, NULL);
+if (stack == NULL)
+    ... error management
+exit_status = vde_stackcmd(stack,
+          &quot;/bin/ip link set vde0 up;&quot;
+          &quot;/bin/ip addr add 10.0.0.1/24 dev vde0;&quot;
+          &quot;/bin/ip route add default via 10.0.0.254&quot;);
+if (exit_status != 0)
+   ... error management
+fd = vde_msocket(stack, AF_INET, SOCK_STREAM, 0);
+   ... fd can be used in any context in which a file descriptor returned by <A HREF="../man2/socket.2.html">socket</A>(2) can.
+e.g. bind, accept, connect, read/write, send/recv ...
+vde_delstack(stack);
+</PRE>
+
+<DT><DD>
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/socket.2.html">socket</A></B>(2), <B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1)
+<A NAME="lbAI">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to <I>mailto:<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A></I>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">NOTES</A><DD>
+<DT><A HREF="#lbAG">EXAMPLE</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">BUGS</A><DD>
+<DT><A HREF="#lbAJ">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

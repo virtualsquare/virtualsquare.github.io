@@ -1,0 +1,101 @@
+.\"* execs: convert strings to argv
+.\" Copyright (C) 2014 Renzo Davoli. University of Bologna. <renzo@cs.unibo.it>
+.\" 
+.\" This library is free software; you can redistribute it and/or
+.\" modify it under the terms of the GNU Lesser General Public
+.\" License as published by the Free Software Foundation; either
+.\" version 2.1 of the License, or (at your option) any later version.
+.\" 
+.\" This library is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+.\" Lesser General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU Lesser General Public
+.\" License along with this library; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.TH execs 3 2014-05-27 "VirtualSquare" "Linux Programmer's Manual"
+.SH NAME
+execs, execsp, execspe \- execute a file taking its arguments from a string
+.SH SYNOPSIS
+.B #include <unistd.h>
+.br
+.B #include <execs.h>
+.sp
+.BI "int execs(const char *" path ", const char *" args ");"
+.br
+.BI "int execse(const char *" path ", const char *" args ", char *const " envp "[]);"
+.br
+.BI "int execsp(const char *" args ");"
+.br
+.BI "int execspe(const char *" args ", char *const " envp "[]);"
+.sp
+.sp
+.sp
+.BI "int eexecs(const char *" path ", char *" args ");"
+.br
+.BI "int eexecse(const char *" path ", char *" args ", char *const " envp "[]);"
+.br
+.BI "int eexecsp(char *" args ");"
+.br
+.BI "int eexecspe(char *" args ", char *const " envp "[]);"
+.sp
+These functions are provided by libexecs and libeexecs. Link with \fI-lexecs\fR or \fI-leexecs\fR.
+.SH DESCRIPTION
+This
+group of functions extends the family of \fBexec\fR(3) provided by the libc.
+.br
+\fBexecs\fR, \fBexecse\fR, \fBexecsp\fR and \fBexecspe\fR are similar to
+\fBexecv\fR(3), \fBexecve\fR(2), \fBexecvp\fR(3) and \fBexecvpe\fR(3), respectively, but
+take the command line arguments for the file to execute 
+(and the also the command name for \fBexecsp\fR(3) and \fBexecspe\fR(3))
+by parsing a command string \fIargs\fR.
+.br
+Command arguments in \fIargs\fR are delimited by space characters (blank, tabs
+or new lines).
+Single or double quotes can be used to delimitate command arguments including
+spaces and a non quoted backslash (\fB\e\fP)
+is the escape character to protect the next char.
+.br
+\fBexecs\fR, \fBexecse\fR, \fBexecsp\fR and \fBexecspe\fR do not use
+dynamic allocation but require space on the stack to store an entire
+copy of \fIargs\fR.
+\fBeexecs\fR, \fBeexecse\fR, \fBeexecsp\fR and \fBeexecspe\fR
+do not use extra stack space but modify \fIargs\fR.
+
+In case the same argv should be used for several exec command, use
+\fBs2argv\fR(3) to parse the args just once.
+
+.SH RETURN VALUE
+These functions return only if an error has occurred. The return value
+is always \-1. The failure cases and errno values are those specified
+for \fBexecve\fR(2).
+
+.SH EXAMPLE
+The following program demonstrates the use of \fBexecs\fR:
+.BR
+.sp
+\&
+.nf
+#include <stdio.h>
+#include <unistd.h>
+#include <execs.h>
+
+#define BUFLEN 1024
+int main(int argc, char *argv)
+{
+	char buf[BUFLEN];
+	printf("type in a command and its arguments, e.g. 'ls -l'\\n");
+	if (fgets(buf, BUFLEN, stdin) != NULL) {
+		execsp(buf);
+		printf("exec error\\n");
+	}
+}
+.fi
+.SH SEE ALSO
+.BR exec (3), s2argv (3)
+.SH BUGS
+Bug reports should be addressed to <info@virtualsquare.org>
+.SH AUTHOR
+Renzo Davoli <renzo@cs.unibo.it>
+

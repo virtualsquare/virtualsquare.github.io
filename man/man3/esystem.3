@@ -1,0 +1,74 @@
+.\"* esystem: system replacement not using any shell (iversion for embedded systems)
+.\" Copyright (C) 2014 Renzo Davoli. University of Bologna. <renzo@cs.unibo.it>
+.\" 
+.\" This library is free software; you can redistribute it and/or
+.\" modify it under the terms of the GNU Lesser General Public
+.\" License as published by the Free Software Foundation; either
+.\" version 2.1 of the License, or (at your option) any later version.
+.\" 
+.\" This library is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+.\" Lesser General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU Lesser General Public
+.\" License along with this library; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.TH system_nosh 3 2014-05-27 "VirtualSquare" "Linux Programmer's Manual"
+.SH NAME
+
+esystem, system_eexecsp \- execute a command with its arguments from a string without using a shell
+.SH SYNOPSIS
+.B #include <stdlib.h>
+.br
+.B #include <execs.h>
+.sp
+.BI "int esystem(const char *" command ");"
+.br
+.BI "int system_eexecsp(const char *" command ");"
+.sp
+These functions are provided by libexecs and libeexecs. Link with \fI-lexecs\fR or \fI-leexecs\fR.
+.SH DESCRIPTION
+\fBesystem\fR is an almost drop in replacement for \fBsystem\fR(3)
+provided by the libc. \fBesystem\fR parses the command string
+and runs the command directly, without using a shell.
+(\fBsystem_eexecsp\fR and \fBesystem\fR are synonyms).
+.br
+Command arguments in \fIargs\fR are delimited by space characters (blank, tabs
+or new lines).
+Single or double quotes can be used to delimitate command arguments including
+spaces and a non quoted backslash (\fB\e\fP)
+is the escape character to protect the next char. The executable file
+is sought using the PATH environment variable as explained for \fBexeclp\fR(3).
+.br
+.SH RETURN VALUE
+These functions have the same return values of \fBsystem\fR(3). 
+.SH EXAMPLE
+The following program shows the usage of \fBesystem\fR:
+.BR
+.sp
+\&
+.nf
+#include <stdio.h>
+#include <unistd.h>
+#include <execs.h>
+
+#define BUFLEN 1024
+int main(int argc, char *argv)
+{
+	char buf[BUFLEN];
+	printf("type in a command and its arguments, e.g. 'ls -l'\\n");
+	while (fgets(buf, BUFLEN, stdin) != NULL) {
+		printf("Command: '%s' \\n",buf);
+		esystem(buf);
+		printf("Command done\\n");
+	}
+}
+.fi
+.SH SEE ALSO
+.BR system (3), execs (3), s2argv(3), system_nosh(3)
+.SH BUGS
+Bug reports should be addressed to <info@virtualsquare.org>
+.SH AUTHOR
+Renzo Davoli <renzo@cs.unibo.it>
+

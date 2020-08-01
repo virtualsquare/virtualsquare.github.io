@@ -1,0 +1,235 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VDE_CRYPTCAB</TITLE>
+</HEAD><BODY>
+<H1>VDE_CRYPTCAB</H1>
+Section: User Commands  (1)<BR>Updated: December 6, 2006<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vde_cryptcab - Virtual Distributed Ethernet encrypted cable manager
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vde_cryptcab </B>
+
+[ 
+<B>-p   </B>
+
+<I>portnum  </I>
+
+] 
+[ 
+<B>-s </B>
+
+<I>socketpath  </I>
+
+] 
+[ 
+<B>-c   </B>
+
+<I>[remote_user@]host[:remote_portnum]  </I>
+
+] 
+[ 
+<B>-P </B>
+
+<I>pre_shared.key </I>
+
+]|
+[
+<B>-x</B>
+
+] 
+[
+<B>-v</B>
+
+<I>[v][v][v]</I>
+
+] 
+[
+<B>-k</B>
+
+]
+[
+<B>-d</B>
+
+]
+<BR>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+A
+<B>vde_cryptcab</B> 
+is a distributed cable manager for VDE switches.
+It allows two VDE switches on two machines to communicate
+using a ChaCha encrypted channel.
+<P>
+When used in client mode (i.e., with -c option), it generates a random
+ChaCha key, and uses
+<B>scp (1)</B>
+
+to transfer the key to the remote server.
+<P>
+On the client side, the environment variable SCP_EXTRA_OPTIONS may be set in order 
+to append options to the scp command line (this is useful for example when dropbear or
+another non-standard ssh client is used to transfer the ChaCha key).
+<P>
+After a 4-way handshake phase to verify client credentials, server and 
+client will exchange VDE datagrams encapsulating them into cryptograms
+that are sent via udp to each remote host.
+<P>
+On server side, one could run: 
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vde_cryptcab -s /tmp/vde2.ctl -p 2100</B>
+
+</DL>
+
+To start a multi-peer cryptcab server, accepting udp datagrams on port
+2100, that connects each authenticated remote client to a different 
+port of the switch. In fact, a new instance of 
+<B>vde_plug (1)</B>
+
+is started and connected to the switch through local unix socket.
+<P>
+The command
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vde_cryptcab -s /tmp/vde2.ctl -c <A HREF="mailto:foo@remote.machine.org">foo@remote.machine.org</A>:2100</B>
+
+</DL>
+
+will connect a client to the remote server, running on udp port 2100.
+At this point, on server side a verify for user &quot;foo&quot; credentials is required, 
+typically it could be: host-based authentication, password challenge 
+or public key authentication. See
+<B>ssh (1)</B>
+
+for more details about it.
+<P>
+If the two vde_switches run as daemon and they are connected to tap interfaces
+a level 2 encrypted tunnel is established.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-p </B><I>portnum</I> 
+
+<DD>
+It is possible to decide which local udp port to use.
+When this option is not specified, cryptcab will use default udp port number,
+7667.
+<DT><B>-c </B><I>[remote_user@]host[:remote_portnum]</I> 
+
+<DD>
+run vde_cryptcab in client mode, trying to connect to 
+<B>host .</B>
+
+Both 
+<B>remote_user </B>
+
+and 
+<B>remote_portnum </B>
+
+parameters are not required.
+If not specified, the same user running vde_cryptcab is used for
+authentication on server, and default udp port 7667 is used.
+<DT><B>-s </B><I>socketpath</I>
+
+<DD>
+specify the UNIX socket to be used by local programs for joining the VDE.
+The default value is &quot;/tmp/vde.ctl&quot;.
+<DT><B>-P </B><I>pre_shared.keypath</I>
+
+<DD>
+if specified, vde_cryptcab will run in pre-shared key mode, instead of generating a
+random key to transmit with ssh.
+Given option is the path to the pre-shared symmetric key file to use for data encryption.
+The same key has to be used on both client and server.
+<DT><B>-x</B>
+
+<DD>
+Disable symmetric key encryption.
+<DT><B>-k </B>
+
+<DD>
+Send periodic &quot;keepalive&quot; packets to avoid server timeouts. Useful when you want to keep a low-traffic link available.
+<DT><B>-d </B>
+
+<DD>
+Run as daemon.
+<DT><B>-v</B>
+
+<DD>
+Verbose. (Use -vv -vvv or -vvvv for more verbosity) 
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>KNOWN ISSUES</H2>
+
+Encapsulating IP packets into session+udp layer results in real datagrams larger
+than tap device mtu. Since vde_cryptcab gets confused by packet fragmentation, the 
+tap device mtu must be set to a smaller value than real interface mtu. Use 
+<B><A HREF="../man8/ip.8.html">ip</A></B>(8)
+
+or 
+<B><A HREF="../man8/ifconfig.8.html">ifconfig</A></B>(8)
+
+to set up your tap device mtu.
+<P>
+<P>
+Explicitly disabling encryption leads to obvious security problems. It is advised to avoid unencrypted mode (-x) in non-controlled networks.
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;). 
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1),
+<B><A HREF="../man1/vdeq.1.html">vdeq</A></B>(1),
+<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<B><A HREF="../man1/vde_plug2tap.1.html">vde_plug2tap</A></B>(1),
+<B><A HREF="../man1/scp.1.html">scp</A></B>(1),
+<B><A HREF="../man1/ssh.1.html">ssh</A></B>(1).
+<BR>
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHORS </H2>
+
+VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;.
+<P>
+vde_cryptcab is a VDE component by Daniele Lacamera &lt;<A HREF="mailto:root@danielinux.net">root@danielinux.net</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">KNOWN ISSUES</A><DD>
+<DT><A HREF="#lbAG">NOTICE</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">AUTHORS </A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

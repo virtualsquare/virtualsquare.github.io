@@ -1,0 +1,113 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VDE_ROUTER</TITLE>
+</HEAD><BODY>
+<H1>VDE_ROUTER</H1>
+Section: User Commands  (1)<BR>Updated: December 16, 2011<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vde_router - Virtual Distributed Ethernet Router.
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vde_router</B>
+
+<B>-c</B><I> configfile</I>
+[<B>-d</B><I>]
+[</I><B>-M</B><I> mgmt_socket</I>]
+[<B>-m</B><I> mgmt_mode</I>]
+[<B>-p</B><I> pidfile</I>]
+<BR>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+A
+<B>vde_router</B> 
+<P>
+<P>
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-d</B>
+
+<DD>
+Daemonize the process and put in background.
+<P>
+<DT><B>-r </B><I>configfile</I>
+
+<DD>
+Parse configuration parameters from <B>configfile</B> at startup
+<P>
+<P>
+<DT><B>-M </B><I>mgmt_socket</I>
+
+<DD>
+the unix socket where the parameters (interfaces addresses, routes, etc.) can be checked and
+changed runtime. <B><A HREF="../man1/unixterm.1.html">unixterm</A></B>(1) can be used as a remote terminal for wirefilter.
+<P>
+<DT><B>-m </B><I>mgmt_mode</I>
+
+<DD>
+Specify the permission for the access to <B>mgmt_socket</B>
+<P>
+<DT><B>-p </B><I>pidfile</I>
+
+<DD>
+Save the process id to <B>pidfile</B>
+<P>
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1),
+<B><A HREF="../man1/vdeq.1.html">vdeq</A></B>(1),
+<B><A HREF="../man1/unixterm.1.html">unixterm</A></B>(1),
+<B><A HREF="../man1/vde_cryptcab.1.html">vde_cryptcab</A></B>(1),
+<B><A HREF="../man1/wirefilter.1.html">wirefilter</A></B>(1).
+<BR>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+VDE_ROUTER is a tool by Daniele Lacamera &lt;<A HREF="mailto:root@danielinux.net">root@danielinux.net</A>&gt;
+<P>
+VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+Red-Black Tree used to implement ARP tables is a free port to userspace from the Linux kernel, by Andrea Arcangeli and David Woodhouse. 
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">NOTICE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

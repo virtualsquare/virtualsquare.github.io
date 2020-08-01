@@ -1,0 +1,85 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of CADO.CONF</TITLE>
+</HEAD><BODY>
+<H1>CADO.CONF</H1>
+Section: File Formats (5)<BR>Updated: June 23, 2016<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+cado.conf - Capability Ambient DO: configuration file
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The <B>/etc/cado.conf</B> file is used to configure which ambient cabalities can be provided by <B>cado</B> to users.
+<B>cado</B> uses the capability cap_dac_read_search to access <B>/etc/cado.conf</B>, so this configuration does not
+need to be readable by users.
+<P>
+All lines beginning with the sign '#' are comments.
+<P>
+Non-comment lines have the following syntax
+<PRE>
+       <I>list_of_capabilities</I><B>:</B><I> list_of_users_and_groups</I>
+</PRE>
+
+or
+<PRE>
+       <I>list_of_capabilities</I><B>:</B><I> list_of_users_and_groups</I><B>:</B> <I>list_of_auth_commands</I>
+</PRE>
+
+<P>
+Both <I>list_of_capabilities</I> and <I>list_of_users_and_groups</I> are comma separated lists of identifiers.
+<P>
+Items of <I>list_of_capabilities</I> are capability names or capability masks (exadecimal numbers).
+For brevity, the <B>cap_</B> prefix of capability names can be omitted (e.g. <B>net_admin</B> and <B>cap_net_admin</B>
+have the same meaning).
+<P>
+Items of <I>list_of_users_and_groups</I> are usernames or groupnames (groupnames must be prefexed by '@').
+<P>
+<I>list_of_auth_commands</I> is a command or a list of commands separated by semicolon (;). If present, cado runs
+all the sequence of commands it grants the capabilities as defined in the current line only if all return zero as
+their exit status.
+<P>
+Example of <B>cado.conf</B> file:
+<P>
+<PRE>
+        # Capability Ambient DO configuration file
+        # cado.conf
+        
+        net_admin: @netadmin,renzo: /usr/bin/logger cado net_admin $USER; /bin/echo OK
+        net_admin: @privatenet: /usr/local/lib/cado_autorize_privatenet
+        net_admin,net_bind_service,net_raw,net_broadcast: @vxvdex
+        cap_kill: renzo
+</PRE>
+
+<P>
+In this example the renzo's processes can be granted (by <B>cado</B>) cap_net_admin and cap_kill.
+cap_net_admin can be acquired by processes owned by users belonging to the netadmin group.
+Users in vxvdex can provide their processes with a subset of cap_net_admin, cap_net_bind_service, cap_net_raw and cap_net_broadcast
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/cado.1.html">cado</A></B>(1),
+<B><A HREF="../man1/caprint.1.html">caprint</A></B>(1),
+<B><A HREF="../man7/capabilities.7.html">capabilities</A></B>(7)
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

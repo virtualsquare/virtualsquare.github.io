@@ -1,0 +1,323 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VDEQ</TITLE>
+</HEAD><BODY>
+<H1>VDEQ</H1>
+Section: User Commands  (1)<BR>Updated: December 6, 2006<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vdeq - Virtual Distributed Ethernet wrapper for QEMU/KVM virtual machines
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vdeq</B>
+
+<B>qemu</B>
+
+[
+<B>--mod</B>
+
+<I>octalmode</I>
+
+]
+<I>QEMU_OPTIONS</I>
+
+<B>-net vde[,vlan=n][,sock=socketpath][,port=n]</B>
+
+<I>QEMU_OPTIONS</I>
+
+<BR>
+
+<B>vdeq</B>
+
+<B>kvm</B>
+
+[
+<B>--mod</B>
+
+<I>octalmode</I>
+
+]
+<I>KVM_OPTIONS</I>
+
+<B>-net vde[,vlan=n][,sock=socketpath][,port=n]</B>
+
+<I>KVM_OPTIONS</I>
+
+<BR>
+
+<B>vde</B>{<I>qemu_name</I>}
+
+[
+<B>--mod</B>
+
+<I>octalmode</I>
+
+]
+<I>QEMU_OPTIONS</I>
+
+<B>-net vde[,vlan=n][,sock=socketpath][,port=n]</B>
+
+<I>QEMU_OPTIONS</I>
+
+<BR>
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>OLD SYNOPSIS</H2>
+
+<B>vdeq </B>
+
+<B>qemu</B>
+
+[
+<B>--mod</B>
+
+<I>octalmode</I>
+
+]
+[
+<B>-sock</B>
+
+<I>socketpath</I>
+
+[
+<I>,socketpath</I>
+
+[
+<I>,...</I>
+
+]
+]
+]
+[ qemu_args ]
+<BR>
+
+<B>vde</B>{<I>qemu_name</I>} 
+
+[
+<B>-sock</B>
+
+<I>socketpath</I>
+
+[
+<I>,socketpath</I>
+
+[
+<I>,...</I>
+
+]
+]
+]
+[ qemu_args ]
+<P>
+<BR>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>vdeq</B> 
+is a wrapper to start a QEMU/KVM virtual machine connected to a VDE network.
+It uses the qemu/kvm <B> -tun-fd </B> parameter to set up the connection with
+a vde_switch.
+<P>
+The command
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vdeq qemu -b c -hda=sampledisk</B>
+
+</DL>
+
+starts a qemu machine which boots from the sampledisk image and
+has a ne2000 ethernet interface connected to the standard vde_switch.
+The command
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vdeq kvm -b c -hda=sampledisk</B>
+
+</DL>
+
+starts a kvm machine which boots from the sampledisk image and
+has a ne2000 ethernet interface connected to the standard vde_switch.
+<BR>
+
+<P>
+It is also possible to create symbolic links to the vdeq executable to have
+a simpler command. If the link has a name that begins with vde the remaining part
+of the name is taken as the qemu command. For example if vdeq is linked to
+vdeqemu:
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vdeqemu -b c -hda=sampledisk</B>
+
+</DL>
+
+starts qemu as above. If vdeq is linked to vdekvm:
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vdekvm -b c -hda=sampledisk</B>
+
+</DL>
+
+starts kvm with the same parameters.
+<P>
+The new syntax is consistent with the new Qemu 0.8.0 network parameters.
+Using vdeq is possible to specify a vde interface in the same way as
+user,tap or socket interfaces.
+The <B>sock=</B> parameter can be used to use a specific socket.
+Please note that what qemu names as vlan is not related to the
+802.1q VLAN managed by the vde_switch.
+<B>port=</B> can be used to specify the port of the switch,
+otherwise the first allocatable port is assigned.
+The following command run a qemu VM with two ethernet interface
+connected to the standard switch and
+to the switch with local socket &quot;/tmp/my.ctl&quot;, port 10, respectively
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vde qemu -net nic,vlan=0 -net nic,vlan=1 -net vde,vlan=0 -net vde,vlan=1,sock=/tmp/my.ctl,port=10</B>
+
+</DL>
+
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vdeqemu -net nic,vlan=0 -net nic,vlan=1 -net vde,vlan=0 -net vde,vlan=1,sock=/tmp/my.ctl,port=10</B>
+
+</DL>
+
+The following command run a kvm VM with two ethernet interface
+connected to the standard switch and
+to the switch with local socket &quot;/tmp/my.ctl&quot;, port 10, respectively
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vde kvm -net nic,vlan=0 -net nic,vlan=1 -net vde,vlan=0 -net vde,vlan=1,sock=/tmp/my.ctl,port=10</B>
+
+</DL>
+
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vdekvm -net nic,vlan=0 -net nic,vlan=1 -net vde,vlan=0 -net vde,vlan=1,sock=/tmp/my.ctl,port=10</B>
+
+</DL>
+
+<P>
+The old syntax can be used with Qemu 0.8.0 but all the vde interfaces are assigned to
+vlan 0.
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vdeq qemu -sock /tmp/vde.ctl,/tmp/my.ctl -b c -hda=sampledisk</B>
+
+</DL>
+
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vdeqemu -sock /tmp/vde.ctl,/tmp/my.ctl -b c -hda=sampledisk</B>
+
+</DL>
+
+both start qemu with <B>one</B> ethernet interface connected both to the standard switch and
+to the switch with local socket &quot;/tmp/my.ctl&quot;.
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>--mod</B>
+
+<DD>
+<I>octalmode, </I>
+
+specify the mode for comm socket.
+<BR>
+
+<DT><B>-sock </B>
+
+<DD>
+<I>socketpath, </I>
+
+specify the UNIX socket to be used by local programs for joining the VDE.
+The default value is &quot;/tmp/vde.ctl&quot;
+It is also possible to indicate several socketpath (comma separated, no blanks):
+in this case several interfaces are defined. The first socketpath is connected
+to the first ne2k interface and so on.
+<BR>
+
+<DT><B>-h, -help, --help</B>
+
+<DD>
+print a Usage help.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>NOTE</H2>
+
+Qemu has changed its syntax for networking (cvs Nov.15 2005).
+As a temporary solution use vdeoq and vdeoqemu instead of vdeq and vdeqemu
+if you are running a qemu with the old syntax.
+<BR>
+
+By default qemu uses the same MAC address for every virtual machine, so if
+you plan to use several instances of qemu be sure to explicitly set a different
+MAC address for each virtual machine. While generating your address beware to
+not use broadcast/multicast reserved MACs, ethernet rules say: the multicast
+bit is the low-order bit of the first byte, which is &quot;the first bit on the wire&quot;.
+For example <I>34:12:de:ad:be:ef</I> is an unicast address, <I>35:12:de:ad:be:ef</I>
+is a multicast address (see ETHERNET MULTICAST ADDRESSES section in
+<A HREF="http://www.iana.org/assignments/ethernet-numbers">http://www.iana.org/assignments/ethernet-numbers</A> for more informations).
+<BR>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1),
+<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<B><A HREF="../man1/vde_plug2tap.1.html">vde_plug2tap</A></B>(1),
+<B><A HREF="../man1/dpipe.1.html">dpipe</A></B>(1).
+<BR>
+
+<A NAME="lbAJ">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">OLD SYNOPSIS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">OPTIONS</A><DD>
+<DT><A HREF="#lbAG">NOTE</A><DD>
+<DT><A HREF="#lbAH">NOTICE</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

@@ -1,0 +1,147 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VDE_VXLAN</TITLE>
+</HEAD><BODY>
+<H1>VDE_VXLAN</H1>
+Section: User Commands  (1)<BR>Updated: October 26, 2013<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vde_vxlan - VXLAN tunnel endpoint for VDE
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vde_vxlan</B>
+
+<B>--vxlan-id</B>
+
+<I>vxlan_id</I>
+
+<B>--vxlan-addr</B>
+
+<I>multicast_address</I>
+
+[
+<B>--vxlan-port</B>
+
+<I>udp_port</I>
+
+]
+[
+<B>--vxlan-mttl</B>
+
+<I>multicast_ttl</I>
+
+]
+[
+<B>--sock</B>
+
+<I>vde_socket_dir</I>
+
+]
+[
+<B>--port</B>
+
+<I>vde_port</I>
+
+]
+[
+<B>--daemon</B>
+
+]
+[
+<B>--verbose</B>
+
+]
+<BR>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+A
+<B>vde_vxlan</B> 
+is a Virtual eXtensible LAN (VXLAN) tunnel endpoint for the vde architecture,
+that can connect a <B>vde_switch (1)</B> to a VXLAN segment.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<P>
+<DL COMPACT>
+<DT><B>--vxlan-id</B>
+
+<DD>
+ID of the VXLAN (VNI)
+<DT><B>--vxlan-addr</B>
+
+<DD>
+Multicast address of the VXLAN
+<DT><B>--vxlan-port</B>
+
+<DD>
+Port of the VXLAN (default 4879)
+<DT><B>--vxlan-mttl</B>
+
+<DD>
+Multicast TTL (default 1)
+<DT><B>--sock</B>
+
+<DD>
+Socket directory of the VDE switch
+<DT><B>--port</B>
+
+<DD>
+Port of the VDE switch
+<DT><B>--daemon</B>
+
+<DD>
+Run in background
+<DT><B>--verbose</B>
+
+<DD>
+Show debug output
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1),
+<BR>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+vde_vxlan is a tool by Alessandro Ghedini &lt;<A HREF="mailto:alessandro@ghedini.me">alessandro@ghedini.me</A>&gt;
+<P>
+VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">NOTICE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

@@ -1,0 +1,233 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of LIBUSERBINDMOUNT</TITLE>
+</HEAD><BODY>
+<H1>LIBUSERBINDMOUNT</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2017-08-22<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+userbindmount, userbindmount_unshare, userbindmount_set_cap_sysadm,
+userbindmount_string, userbindmount_data, userbindmount_fd - bind-mount in user-namespaces
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/userbindmount.h">userbindmount.h</A>&gt;</B>
+
+<BR>
+
+<B>int userbindmount(const char *</B><I>source</I><B>, const char *</B><I>target</I><B>);</B>
+
+<BR>
+
+<B>int userbindmount_unshare(void);</B>
+
+<BR>
+
+<B>int userbindmount_set_cap_sysadm(void);</B>
+
+<BR>
+
+<B>int userbindmount_string(const char *</B><I>string</I><B>, const char *</B><I>target</I><B>, mode_t </B><I>mode</I><B>);</B>
+
+<BR>
+
+<B>int userbindmount_data(const void *</B><I>data</I><B>, size_t </B><I>count</I><B>, const char *</B><I>target</I><B>, mode_t </B><I>mode</I><B>);</B>
+
+<BR>
+
+<B>int userbindmount_fd(int </B><I>fd</I><B>, const char *</B><I>target</I><B>, mode_t </B><I>mode</I><B>);</B>
+
+<P>
+These functions are provided by libuserbindmount. Link with <I>-luserbindmount</I>.
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Libuserbindmount is a library providing support for bind mount in user userspaces.
+<P>
+<B>userbindmount</B> bind mounts <I>source</I> on <I>destination</I>. 
+If it is not permitted in the current namespace it creates (unshare) a new user-namespace.
+<P>
+<B>userbindmount_unshare</B> creates a new user-namespace where bind mount is allowed.
+<P>
+<B>userbindmount_set_cap_sysadm</B> add the CAP_SYS_ADMIN ambient capability to the current namespace so that the 
+ability of bind mount files and directories can be exported to new programs (ambient capabilities survive to <A HREF="../man2/execve.2.html">execve</A>(2)).
+<P>
+<B>userbindmount_string</B> bind-mounts on <I>destination</I> a temporary file whose (text) contents is provided
+by <I>string</I>. The temporary file is automatically deleted when the namespace is closed or
+the file/directory unmounted.
+<P>
+<B>userbindmount_data</B> bind-mounts on <I>destination</I> a temporary file whose (binary) contents is provided
+by <I>data</I> and has the size of <I>count</I> bytes. The temporary file is automatically deleted when 
+the namespace is closed or the file/directory unmounted.
+<P>
+<B>userbindmount_fd</B> bind-mounts on <I>destination</I> a temporary file whose contents is read
+from the by the file descriptor <I>fd</I> (up to the end of file). The temporary file is automatically 
+deleted when the namespace is closed or the file/directory unmounted.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<P>
+All the functions provided by libuserbindmount return 0 in case of success.  
+-1 is returned elseways and errno is set appropriately.
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>NOTES</H2>
+
+Libuserbindmount fails if user namespaces have not been configured in the running kernel and enabled for users. 
+In Debian the sysctl knob <B>kernel.unprivileged_userns_clone</B> must be set to 1.
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+The following excerpts of C code shows the use of <B>libuserbindmount</B>: 
+the inclusion of the header file for this library is required:
+<DL COMPACT><DT><DD>
+<PRE>
+#include &lt;<A HREF="file:///usr/include/usrbindmount.h">usrbindmount.h</A>&gt;
+</PRE>
+
+</DL>
+
+<P>
+<P>
+Bind-mount /tmp/resolv.conf on /etc/resolv.conf:
+
+<DL COMPACT><DT><DD>
+<PRE>
+userbindmount(&quot;/tmp/resolv.conf&quot;, &quot;/etc/resolv.conf&quot;);
+</PRE>
+
+</DL>
+
+<P>
+<P>
+Bind-mount a string on /etc/resolv.conf:
+
+<DL COMPACT><DT><DD>
+<PRE>
+userbindmount_string(&quot;nameserver 9.9.9.9, &quot;/etc/resolv.conf&quot;, 0600);
+</PRE>
+
+</DL>
+
+<P>
+<P>
+Bind-mount a binary data on /proc/self/cmdline:
+
+<DL COMPACT><DT><DD>
+<PRE>
+static char fakeargv[] = {'c','m','d',0,
+        'a','r','g','1',0,
+        'a','r','g','2',0,
+        0};
+userbindmount_data(fakeargv, sizeof(fakeargv), &quot;/proc/self/cmdline&quot;, 0600);
+</PRE>
+
+</DL>
+
+<P>
+Bind-mount the data read from a file descriptor on /etc/resolv.conf:
+
+<DL COMPACT><DT><DD>
+<PRE>
+userbindmount_fd(STDIN_FILENO, &quot;/etc/resolv.conf&quot;, 0600);
+</PRE>
+
+</DL>
+
+<P>
+<P>
+Bind-mount several files or directories:
+
+<DL COMPACT><DT><DD>
+<PRE>
+userbindmount(&quot;/tmp/resolv.conf&quot;, &quot;/etc/resolv.conf&quot;);
+userbindmount(&quot;/tmp/passwd&quot;, &quot;/etc/passwd&quot;);
+userbindmount(&quot;/tmp/hosts&quot;, &quot;/etc/hosts&quot;);
+</PRE>
+
+</DL>
+
+Only the first userbindmount creates a new namespace if needed.
+<P>
+<P>
+The following program creates a namespace and runs a program in it.
+In the new namespace bind-mount is allowed.
+
+<DL COMPACT><DT><DD>
+<PRE>
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/userbindmount.h">userbindmount.h</A>&gt;
+
+int main(int argc, char *argv[]) {
+        userbindmount_unshare();
+        userbindmount_set_cap_sysadm();
+        execvp(argv[1], argv+1);
+}
+</PRE>
+
+</DL>
+
+<P>
+It can be compiled and tested in the following way:
+
+<DL COMPACT><DT><DD>
+<PRE>
+$ gcc -o unshare_sysadm unshare_sysadm.c -luserbindmount
+$ unshare_sysadm bash
+$ cat /etc/resolv.conf 
+nameserver 127.0.0.1
+$ echo &quot;nameserver 9.9.9.9&quot; &gt; /tmp/resolv.conf
+$ busybox mount --bind /tmp/resolv.conf /etc/resolv.conf 
+$ cat /etc/resolv.conf
+nameserver 9.9.9.9
+$ exit
+$
+</PRE>
+
+</DL>
+
+please note that in the example the mount command by busybox has been used instead of the standard mount by util-linux. In fact the standard mount command has not been updated to support the capabilities, and forbids the access to the mount system call if the effective user is not root, denying in this way a legal operation.
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man2/mount.2.html">mount</A>(2),</B> <A HREF="../man8/mount.8.html">mount</A>(8),<B> <A HREF="../man7/user_namespaces.7.html">user_namespaces</A>(7)</B>
+
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAJ">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">NOTES</A><DD>
+<DT><A HREF="#lbAG">EXAMPLES</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">BUGS</A><DD>
+<DT><A HREF="#lbAJ">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

@@ -1,0 +1,198 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VDENS</TITLE>
+</HEAD><BODY>
+<H1>VDENS</H1>
+Section: User Commands  (1)<BR>Updated: November 26, 2016<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vdens - create a user namespace connected to a vde network
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vdens</B>
+
+[ options ]
+[
+<I>vde_network</I>
+
+[
+<I>command</I>
+
+[
+<I>args</I>
+
+]
+]
+]
+<P>
+<B>vdens</B>
+
+<B>-m</B>
+
+[ options ]
+<I>vde_network</I>
+
+[
+<I>vde_network ...</I>
+
+]
+[
+<B>--</B>
+
+<I>command</I>
+
+[
+<I>args</I>
+
+]
+]
+<P>
+<B>vdens</B>
+
+<B>--multi</B>
+
+[ options ]
+<I>vde_network</I>
+
+[
+<I>vde_network ...</I>
+
+]
+[
+<B>--</B>
+
+<I>command</I>
+
+[
+<I>args</I>
+
+]
+]
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+vdens creates a user namespace with a private network namespace.
+<P>
+Vdens launches the command indicated as a parameter ($SHELL if omitted) in a private network namespace.
+<P>
+If the vde_network parameter is present (and it does not match one of the
+strings &quot;-&quot; or &quot;no&quot;) the virtual private network namespace will have a virtual
+interface connected to the specified vde network. 
+<P>
+Vdens grants the capabilities CAP_NET_BIND_SERVICE, CAP_NET_BROADCAST, CAP_NET_ADMIN and CAP_NET_RAW to the command to
+permit the configuration of the virtual interface. The scope of these
+capabilities is limited to the user namespace created by vdens. Once the network has been
+configured, the capabilities can be dropped (e.g. using <A HREF="../man1/csdrop.1.html">csdrop</A>(1)) in order to
+increase the security (obeying to the principle of least privilege).
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+OPTIONS
+<I>vdens</I>
+
+accepts the following options.
+<P>
+<DL COMPACT>
+<DT><B>-m<DD>
+
+--multi
+connect the vde namespace to one or more vde networks. A virtual interface is defined
+for each </B><I>vde_network</I>: <B>vde0</B> is connected to the first <I>vde_network</I>,
+<B>vde1</B> is connected to the second and so on. (It is possible to use a different
+prefix for the interface names instead of &quot;vde&quot;, see -i or --iface below).
+<P>
+<DT><B>-i </B><I> interface_prefix<DD>
+
+</I><B>--iface </B><I> interface_prefix
+define the prefix of the interface name. For example use </I><B>--iface eth</B> to
+name the interfaces &quot;eth0&quot;, &quot;eth1&quot;, etc.  (the default value is &quot;vde&quot;)
+<P>
+<DT><B>-R </B><I> ip_addr(s)<DD>
+
+</I><B>--resolvaddr </B><I> ip_addr(s)
+define the address (or addresses) of the domain name servers for the namespace.
+(multiple IPv4 or IPv6 addresses can be separated by commas, e.g. &quot;-R 9.9.9.9,9.9.8.8&quot;)
+<P>
+<DT></I><B>-r </B><I> pathname<DD>
+
+</I><B>--resolvconf </B><I> pathname
+define the pathname of the file which will appear as /etc/config.sys in the user namespace.
+(it is ignored if used together with </I><B>-R</B> or <B>--resolvaddr</B>) 
+<P>
+<DT><B>-s<DD>
+
+--sysadm
+grant also CAP_SYS_ADMIN in the namespace so that it is possible to bind mount files and
+directories.
+<P>
+<DT>-c<DD>
+
+--clone
+Use <A HREF="../man2/clone.2.html">clone</A>(2) to create the private network namespace. Vdens needs one more thread to manage
+the vde communication.
+<P>
+<DT>-u<DD>
+
+--unshare
+Use <A HREF="../man2/unshare.2.html">unshare</A>(2) to create the private network namespace. It may not work if the vde plugin in use
+is multithreaded (e.g. slirp). If neither -c/--clone nor -u/--unshare is set, vdens tries
+unshare first and then it uses clone if unshare fails. (If both are set vdens uses clone).
+<P>
+</DL>
+</B><A NAME="lbAF">&nbsp;</A>
+<H2>ENVIRONMENT VARIABLES</H2>
+
+<DL COMPACT>
+<DT><B>VDE_RESOLVCONF<DD>
+define the default value for the --resolvconf </B> option
+<P>
+<DT><B>VDE_RESOLVADDR<DD>
+define the default value for the --resolvaddr </B> option
+<P>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>NOTES</H2>
+
+Use of user namespaces requires a kernel that is configured with the CONFIG_USER_NS option.
+In some distributions (e.g. Debian) user namespaces must be enabled by writing 1 to
+/proc/sys/kernel/unprivileged_userns_clone.
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<B><A HREF="../man1/cadrop.1.html">cadrop</A></B>(1),
+<B><A HREF="../man1/cado.1.html">cado</A></B>(1),
+<B><A HREF="../man7/capabilities.7.html">capabilities</A></B>(7)
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;, Davide Berardi &lt;<A HREF="mailto:berardi.dav@gmail.com">berardi.dav@gmail.com</A>&gt;.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAG">NOTES</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

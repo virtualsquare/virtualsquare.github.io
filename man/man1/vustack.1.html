@@ -1,0 +1,119 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VUSTACK</TITLE>
+</HEAD><BODY>
+<H1>VUSTACK</H1>
+Section: User Commands  (1)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<B>vustack</B> - set the default networking stack
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vustack</B> [<I>options</I> ...] <I>stack</I> <I>command</I> [<I>args</I>]
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>vunet</B> is the VUOS module for networking virtualization. Networking stacks can be loaded using <B><A HREF="../man1/vumount.1.html">vumount</A></B>(1) and are indentified by a pathname: the mount point. <B>vustack</B> selects the stack to use among those available; <I>command</I> runs using the stack selected <B>vustack</B>.
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-h</B>, <B>--help</B><DD>
+Print a short help message and exit. If combined with <B>-v</B> print also the list of protocol family names.
+<DT><B>-s</B>, <B>--supported</B><DD>
+select the stack only for the protocol families supported by <I>stack</I>.
+<DT><B>-f</B> <I>list</I>, <B>--family</B> <I>list</I>, <B>--families</B> <I>list</I><DD>
+select the stack for the protocol families in <I>list</I>. <I>list</I> is a comma separated list of protocol names or numbers.
+<DT><B>-v</B>, <B>--verbose</B><DD>
+print the list of protocol families object of the stack selection.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+Load <B>vunet</B> and mount a stack:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vu_insmod vunet
+$ vumount -t vunetvdestack vde:// /dev/net/vde
+</PRE>
+
+<DT><DD>
+</DL>
+<P>
+
+Run <I>ip link</I> using the stack mounted in /dev/net/vde:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vustack /dev/net/vde ip link
+1: lo: &lt;LOOPBACK&gt; mtu 65536 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: vde0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 5a:1e:97:fa:ab:a3 brd ff:ff:ff:ff:ff:ff
+</PRE>
+
+<DT><DD>
+</DL>
+<P>
+
+Run <I>ip link set vde0 up</I> selecting /dev/net/vde only for the families supported by vunetvdestack:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vustack -s -v /dev/net/vde ip link set vde0 up
+Using /dev/net/vde for the following address families:
+    <A HREF="../man2/inet.2.html">inet</A>(2) inet6(10) netlink(16) packet(17)
+</PRE>
+
+<DT><DD>
+</DL>
+<P>
+
+mount a null stack and use it to disable netlink:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ vumount -t vunetnull vde:// /dev/net/null
+$ exec vustack -f netlink -v /dev/net/null bash
+Using /dev/net/null for the following address families:
+    netlink(16)
+$ ip addr
+Cannot open netlink socket: Address family not supported by protocol
+</PRE>
+
+<DT><DD>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="../man1/umvu.1.html">umvu</A>(1), <A HREF="../man1/vumount.1.html">vumount</A>(1)
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

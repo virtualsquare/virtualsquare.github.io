@@ -1,0 +1,90 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of RANDMAC</TITLE>
+</HEAD><BODY>
+<H1>RANDMAC</H1>
+Section: User Commands  (1)<BR>Updated: July 2020<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<B>randmac</B> - generate random MAC addresses
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>randmac</B> [<I>options</I>]
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>randmac</B> prints a random MAC address. This utility has been designed to give random MAC addresses to interfaces of virtual machines.
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-l</B>, <B>--local</B><DD>
+Generate a local administered MAC.
+<DT><B>-g</B>, <B>--global</B><DD>
+Generate a global unique MAC.
+<DT><B>-u</B>, <B>--unicast</B><DD>
+Generate a MAC for unicast.
+<DT><B>-m</B>, <B>--multicast</B><DD>
+Generate a MAC for multicast.
+<DT><B>-U</B>, <B>--uppercase</B><DD>
+Print uppercase hex digits.
+<DT><B>-e</B>, <B>--eui64</B><DD>
+Generate an EUI64 address.
+<DT><B>-o</B> <I>oui_addr</I>, <B>--oui</B> <I>oui_addr</I><DD>
+Set the Organizationally Unique Identifier (OUI).
+<DT><B>-v</B> <I>vendor</I>, <B>--vendor</B> <I>vendor</I><DD>
+Set the OUI of a specific vendor.
+<DT><B>-q</B>, <B>--qemu</B><DD>
+Set the standard OUI of qemu/kvm.
+<DT><B>-x</B>, <B>--xen</B><DD>
+Set the standard OUI of xen.
+<DT><B>-h</B>, <B>--help</B><DD>
+Display a short help message and exit.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+Start a kvm VM using a random generated MAC address (while preserving the standard qemu's OUI)
+<DL COMPACT>
+<DT><DD>
+<PRE>
+$ qemu-system-x86_64 -accel kvm ... \
+    -device e1000,netdev=vde0,mac=`randmac -q` \
+    -netdev vde,id=vde0,sock=vde://
+</PRE>
+
+<DT><DD>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="../man1/qemu.1.html">qemu</A>(1)
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

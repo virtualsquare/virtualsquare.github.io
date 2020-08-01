@@ -1,0 +1,166 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of S2ARGV</TITLE>
+</HEAD><BODY>
+<H1>S2ARGV</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2014-05-27<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+s2argv - convert a command string in an argv array
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;</B>
+
+<BR>
+
+<B>#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;</B>
+
+<BR>
+
+<B>#include &lt;<A HREF="file:///usr/include/execs.h">execs.h</A>&gt;</B>
+
+<P>
+<B>char **s2argv(const char *</B><I>args</I><B>);</B>
+
+<BR>
+
+<B>void s2argv_free(char **</B><I>argv</I><B>);</B>
+
+<P>
+<BR>
+
+<B>size_t s2argvlen(char **</B><I>argv</I><B>);</B>
+
+<P>
+<BR>
+
+<B>size_t s2argc(char **</B><I>argv</I><B>);</B>
+
+<P>
+<BR>
+
+<B>typedef char * (* s2argv_getvar_t) (const char *name);</B>
+
+<BR>
+
+<B>extern s2argv_getvar_t s2argv_getvar;</B>
+
+<P>
+These functions are provided by libexecs and libeexecs. Link with <I>-lexecs</I> or <I>-leexecs</I>.
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>s2argv</B>
+
+convert a command string in an argv array for <B><A HREF="../man3/execv.3.html">execv</A></B>(3), 
+<B><A HREF="../man3/execvp.3.html">execvp</A></B>(3) or <B><A HREF="../man3/execvpe.3.html">execvpe</A></B>(3).
+Single or double quotes can be used to delimitate command arguments including
+spaces and a non quoted backslash (<B>\</B>)
+is the escape character to protect the next char.
+<BR>
+
+<B>s2argv</B> can parse several commands separated by semicolons (<B>;</B>).
+The argv of each command is terminated by a NULL element, one further NULL element
+tags the end of the array returned by s2argv.
+<BR>
+
+<B>s2argv</B> supports variables as arguments. When an argument of a command is a dollar
+sign followed by a name (e.g. $USER) <B>s2argv</B> puts the output of the <B>s2argv_getvar</B>
+function instead. (It is possible for example to assign <B>s2argv_getvar=getenv</B>.
+For security reasons, the default value is getvar_null which always returns an empty string.
+Programmers can use their own custom function instead).
+<P>
+<B>s2argv_free</B>
+
+frees the memory that was allocated by <B>s2argv</B>.
+<P>
+<B>s2argvlen</B>
+
+returns the length of the array returned by <B>s2argv</B>.
+<P>
+<B>s2argc</B>
+
+returns the number of arguemnts of the (first) command returned by <B>s2argv</B>.
+(The beginning of the next argv is <B>argv+s2argc(argv)+1</B>).
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<B>s2argv</B>
+
+returns a dynamically allocated argv, ready to be used as an argument to
+<B><A HREF="../man3/execv.3.html">execv</A></B>(3), <B><A HREF="../man3/execvp.3.html">execvp</A></B>(3) or <B><A HREF="../man3/execvpe.3.html">execvpe</A></B>(3).
+The return value of
+<B>s2argv</B>
+
+should be freed by
+<B>s2argv_free</B>
+
+in case the exec command does not succeed.
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The following program demonstrates the use of <B>s2argv</B>:
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/execs.h">execs.h</A>&gt;
+
+#define BUFLEN 1024
+int main(int argc, char *argv)
+{
+        char buf[BUFLEN];
+        printf(&quot;type in a command and its arguments, e.g. 'ls -l'\n&quot;);
+        if (fgets(buf, BUFLEN, stdin) != NULL) {
+                char **argv=s2argv(buf);
+                execvp(argv[0], argv);
+                s2argv_free(argv);
+                printf(&quot;exec error\n&quot;);
+        }
+}
+</PRE>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/exec.3.html">exec</A></B>(3)
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">EXAMPLE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">BUGS</A><DD>
+<DT><A HREF="#lbAI">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:02:53 GMT, August 01, 2020
+</BODY>
+</HTML>

@@ -1,0 +1,132 @@
+.TH USERBINDMOUNT 1 "August 22, 2017" "VirtualSquare Labs"
+.SH NAME
+userbindmount \- bind-mount utility for user-namespaces
+.SH SYNOPSIS
+.B userbindmount
+.RI "[options] [" source " " target " [" source " " target " [...]]] [ " -- " [" cmd " [" args "]]]"
+
+.SH DESCRIPTION
+
+userbindmount is a utility command based on libuserbindmount.
+
+It can be used to perform one or more bind-mount operation and to create a user-namespace where
+bind-mount is allowed.
+
+This command does not need root access or specific capabilities to run (provided user-namespaces are supported,
+see NOTES).
+
+The command line arguments are a list of \fIsource\fR-\fItarget\fR pairs (one for each
+bind-mount operation). 
+A new namespace is created if requested by the specific option (-n or
+--newns) or if there is -- as an option in the command line.
+If \fIsource\fR is a double quoted string, the value of the string will be the content
+of the file mounted on \fItarget\fR.
+The trailing -- followed by a command and its argument define the command
+to run in the new namespace. ($SHELL is launched if the command is omitted)
+
+The contents of the file to be mounted on \fItarget\fR is read from
+the standard input if the correspondent \fIsource\fR is the tag "-".
+
+.SH OPTIONS
+.I userbindmount
+accepts the following options.
+
+.TP
+\fB\-n 
+.TQ
+\fB\-\-newns
+create a new user-namespace
+
+.TP
+\fB\-s 
+.TQ
+\fB\-\-sysadm 
+add the CAP_SYS_ADMIN ambient capability to the current of newly created userspace
+
+.TP
+\fB\-v 
+.TQ
+\fB\-\-verbose 
+verbose mode: print debugging information on the actions taken by the program.
+
+.SH NOTES
+User namespaces require a kernel that is configured with the CONFIG_USER_NS option.
+In some distributions (e.g. Debian) user namespaces must be enabled by writing 1 to
+/proc/sys/kernel/unprivileged_userns_clone.
+.SH EXAMPLES
+The following example mounts the file /tmp/resolv.conf instead of /etc/resolv.conf: the purpose of 
+this example is to redefine the name servers for the name resolution.
+.RS
+.nf
+$ cat /etc/resolv.conf
+nameserver 127.0.0.1
+$ echo "nameserver 9.9.9.9" > /tmp/resolv.conf
+$ userbindmount -v /tmp/resolv.conf /etc/resolv.conf -- bash
+creating a user_namespace
+mounting /tmp/resolv.conf on /etc/resolv.conf
+starting bash
+$ cat /etc/resolv.conf 
+nameserver 9.9.9.9
+$ exit
+$
+.fi
+.RE
+
+.sp
+The following example creates a namespace where bind-mount is allowed and then mounts /tmp/resolv.conf on
+/etc/resolv.conf. (It uses busybox instead of mount(8) as the latter does not support the capabilities, yet).
+.RS
+.nf 
+$ userbindmount -s -- bash
+$ cat /etc/resolv.conf 
+nameserver 127.0.0.1
+$ echo "nameserver 9.9.9.9" > /tmp/resolv.conf
+$ busybox mount --bind /tmp/resolv.conf /etc/resolv.conf 
+$ cat /etc/resolv.conf
+nameserver 9.9.9.9
+$ exit
+$
+.fi
+.RE
+Alternative equivalent commands for "userbindmount -s -- bash" are "userbindmount -sn" or "userbindmount -s --\fR".
+
+.sp
+Several bind-mounts can be done in a user-namespace started with the -s option. 
+No more namespaces are needed in this case.
+The contents of the file to mount can be taken from stdin if source is "-".
+.RS
+.nf
+$ userbindmount -sn
+$ echo "nameserver 9.9.9.9" | userbindmount - /etc/resolv.conf
+$ cat /etc/resolv.conf
+nameserver 9.9.9.9
+$ exit
+.fi
+.RE
+
+.sp
+It is possible to set the contents of a mounted file directly in the command line:
+.RS
+.nf
+$ userbindmount $'"nameserver 9.9.9.9\\n"' /etc/resolv.conf -- bash
+$ cat /etc/resolv.conf
+nameserver 9.9.9.9
+$ exit
+.fi
+.RE
+
+
+Please note that the following command:
+.RS
+.nf
+$ echo "nameserver 9.9.9.9" | userbindmount - /etc/resolv.conf -- bash
+.fi
+.RE
+works but the bash running in the new namespace terminates immediately as it reads the end-of-file on its
+standard input.
+.SH SEE ALSO
+.BR "libuserbindmount"(3), " mount"(8), " user_namespaces"(7), " capabilities"(7)
+.SH BUGS
+Bug reports should be addressed to <info@virtualsquare.org>
+.SH AUTHORS
+Renzo Davoli <renzo@cs.unibo.it>

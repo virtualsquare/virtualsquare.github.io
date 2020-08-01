@@ -1,0 +1,130 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of LIBVDESLIRP</TITLE>
+</HEAD><BODY>
+<H1>LIBVDESLIRP</H1>
+Section: C Library Functions (3)<BR>Updated: December 2019<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vdeslirp_open, vdeslirp_send, vdeslirp_recv, vdeslirp_fd, vdeslirp_close - simple API for slirp
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/libvdeslirp.h">libvdeslirp.h</A>&gt;</B>
+<P>
+
+<B>struct vdeslirp *vdeslirp_open(SlirpConfig *</B><I>cfg</I><B>);</B>
+<P>
+
+<B>ssize_t vdeslirp_send(struct vdeslirp *</B><I>slirp</I><B>, const void *</B><I>buf</I><B>, size_t</B> <I>count</I><B>);</B>
+<P>
+
+<B>ssize_t vdeslirp_recv(struct vdeslirp *</B><I>slirp</I><B>, void *</B><I>buf</I><B>, size_t</B> <I>count</I><B>);</B>
+<P>
+
+<B>int vdeslirp_fd(struct vdeslirp *</B><I>slirp</I><B>);</B>
+<P>
+
+<B>int vdeslirp_close(struct vdeslirp *</B><I>slirp</I><B>);</B>
+<P>
+
+These functions are provided by libvdeslirp. Link with -lvdeslirp.
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Slirp is a TCP/IP emulator. Slirp generates a virtual network using standard user privileges (no need for root access of CAP_NET_ADMIN). This implementation uses libslirp.
+<P>
+
+<B>vdeslirp_open</B> creates a slirp network. The <B>SlirpConfig</B> structure is defined by libslirp and contains the following fields:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+typedef struct SlirpConfig {
+    /* Version must be provided */
+    uint32_t version;
+    /*
+     * Fields introduced in SlirpConfig version 1 begin
+     */
+    int restricted;
+    bool in_enabled;
+    struct in_addr vnetwork;
+    struct in_addr vnetmask;
+    struct in_addr vhost;
+    bool in6_enabled;
+    struct in6_addr vprefix_addr6;
+    uint8_t vprefix_len;
+    struct in6_addr vhost6;
+    const char *vhostname;
+    const char *tftp_server_name;
+    const char *tftp_path;
+    const char *bootfile;
+    struct in_addr vdhcp_start;
+    struct in_addr vnameserver;
+    struct in6_addr vnameserver6;
+    const char **vdnssearch;
+    const char *vdomainname;
+    /* Default: IF_MTU_DEFAULT */
+    size_t if_mtu;
+    /* Default: IF_MRU_DEFAULT */
+    size_t if_mru;
+    /* Prohibit connecting to 127.0.0.1:* */
+    bool disable_host_loopback;
+    /*
+     * Enable emulation code (*warning*: this code isn't safe, it is not
+     * recommended to enable it)
+     */
+    bool enable_emu;
+    /*
+     * Fields introduced in SlirpConfig version 2 begin
+     */
+} SlirpConfig;
+</PRE>
+
+<DT><DD>
+</DL>
+<P>
+
+<B>libvdeslirp</B> provides helper functions to fill in the fields of this structure, see <B><A HREF="../man3/libvdeslirpcfg.3.html">libvdeslirpcfg</A></B>(3).
+<P>
+
+Programs using <B>libvdeslirp</B> can send and receive packets using <B>vdeslirp_send</B> and <B>vdeslirp_recv</B> as if they were connected to host network (commonly the Internet) by a NAT/Masquerading router. <B>vdeslirp_fd</B> provides a valid file descriptor which can be used to wait for incoming packets (using select or poll) and <B>vdeslirp_close</B> terminates a slirp network created be <B>vdeslirp_open</B>.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<B>vdeslirp_open</B> returns the <B>struct vdeslirp</B> pointer in case of success. NULL is returned otherwise. The return value of <B>vdeslirp_open</B> is the descriptor that must be passed as first argument to all the other functions of this man page. <B>vdeslirp_send</B> and <B>vdeslirp_recv</B> return the number of bytes sent or received, -1 in case of error. <B>vdeslirp_fd</B> returns a valid file descriptor which can be used to wait for incoming packets (using select or poll). <B>vdeslirp_close</B> returns zero in case of success, -1 in case of error. In case of failure, <B>errno</B> is set to indicate the type of error.
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/libvdeslirpfwd.3.html">libvdeslirpfwd</A></B>(3), <B><A HREF="../man3/libvdeslirpcfg.3.html">libvdeslirpcfg</A></B>(3)
+<A NAME="lbAG">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+<DT><A HREF="#lbAG">BUGS</A><DD>
+<DT><A HREF="#lbAH">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

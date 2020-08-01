@@ -1,0 +1,110 @@
+.\"* s2argv: convert strings to argv
+.\" Copyright (C) 2014 Renzo Davoli. University of Bologna. <renzo@cs.unibo.it>
+.\" 
+.\" This library is free software; you can redistribute it and/or
+.\" modify it under the terms of the GNU Lesser General Public
+.\" License as published by the Free Software Foundation; either
+.\" version 2.1 of the License, or (at your option) any later version.
+.\" 
+.\" This library is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+.\" Lesser General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU Lesser General Public
+.\" License along with this library; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.TH S2ARGV 3 2014-05-27 "VirtualSquare" "Linux Programmer's Manual"
+.SH NAME
+s2argv \- convert a command string in an argv array
+.SH SYNOPSIS
+.B #include <unistd.h>
+.br
+.B #include <stdlib.h>
+.br
+.B #include <execs.h>
+.sp
+.BI "char **s2argv(const char *" args ");"
+.br
+.BI "void s2argv_free(char **" argv ");"
+.sp
+.br
+.BI "size_t s2argvlen(char **" argv ");"
+.sp
+.br
+.BI "size_t s2argc(char **" argv ");"
+.sp
+.br
+.BI "typedef char * (* s2argv_getvar_t) (const char *name);"
+.br
+.BI "extern s2argv_getvar_t s2argv_getvar;"
+.sp
+These functions are provided by libexecs and libeexecs. Link with \fI-lexecs\fR or \fI-leexecs\fR.
+.sp
+.SH DESCRIPTION
+.BR s2argv
+convert a command string in an argv array for \fBexecv\fR(3), 
+\fBexecvp\fR(3) or \fBexecvpe\fR(3).
+Single or double quotes can be used to delimitate command arguments including
+spaces and a non quoted backslash (\fB\e\fP)
+is the escape character to protect the next char.
+.br
+\fBs2argv\fR can parse several commands separated by semicolons (\fB;\fR).
+The argv of each command is terminated by a NULL element, one further NULL element
+tags the end of the array returned by s2argv.
+.br
+\fBs2argv\fR supports variables as arguments. When an argument of a command is a dollar
+sign followed by a name (e.g. $USER) \fBs2argv\fR puts the output of the \fBs2argv_getvar\fR
+function instead. (It is possible for example to assign \fBs2argv_getvar=getenv\fR.
+For security reasons, the default value is getvar_null which always returns an empty string.
+Programmers can use their own custom function instead).
+.sp
+.BR s2argv_free
+frees the memory that was allocated by \fBs2argv\fR.
+.sp
+.BR s2argvlen
+returns the length of the array returned by \fBs2argv\fR.
+.sp 
+.BR s2argc
+returns the number of arguemnts of the (first) command returned by \fBs2argv\fR.
+(The beginning of the next argv is \fBargv+s2argc(argv)+1\fR).
+.SH RETURN VALUE
+.BR s2argv
+returns a dynamically allocated argv, ready to be used as an argument to
+\fBexecv\fR(3), \fBexecvp\fR(3) or \fBexecvpe\fR(3).
+The return value of
+.BR s2argv
+should be freed by
+.BR s2argv_free
+in case the exec command does not succeed.
+.SH EXAMPLE
+The following program demonstrates the use of \fBs2argv\fR:
+.BR
+.sp
+\&
+.nf
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <execs.h>
+
+#define BUFLEN 1024
+int main(int argc, char *argv)
+{
+	char buf[BUFLEN];
+	printf("type in a command and its arguments, e.g. 'ls -l'\\n");
+	if (fgets(buf, BUFLEN, stdin) != NULL) {
+		char **argv=s2argv(buf);
+		execvp(argv[0], argv);
+		s2argv_free(argv);
+		printf("exec error\\n");
+	}
+}
+.fi
+.SH SEE ALSO
+.BR exec (3)
+.SH BUGS
+Bug reports should be addressed to <info@virtualsquare.org>
+.SH AUTHOR
+Renzo Davoli <renzo@cs.unibo.it>
+

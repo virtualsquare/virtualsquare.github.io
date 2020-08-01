@@ -1,0 +1,75 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VOLSTREAM_OPEN</TITLE>
+</HEAD><BODY>
+<H1>VOLSTREAM_OPEN</H1>
+Section: C Library Functions (3)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<B>volstream_open</B> - create a FILE* stream as a volatile stream buffer
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/volatilestream.h">volatilestream.h</A>&gt;</B>
+<P>
+
+<B>FILE *volstream_open(void);</B>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+A volatile stream is a stdio FILE* stream as a temporary dynamically allocated (and deallocated) memory buffer.
+<P>
+
+The <B>volstream_open</B> function opens a stdio stream as a temporary memory buffer. The buffer is dynamically allocated, grows as needed and it is automatically deallocated when the stream is closed.
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+Upon successful completion volstream_open() returns a FILE pointer. Otherwise, NULL is returned and errno is set to indicate the error.
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The following example writes all the command arguments in a volatile stream, then it rereads the volatile stream one byte at a time:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+int main(int argc, char *argv[]) {
+  FILE *f = volstream_open();
+  int c;
+  for (argv++; *argv; argv++)
+    fprintf(f, &quot;%s\n&quot;, *argv);
+  fseek(f, 0, SEEK_SET);
+  while ((c = getc(f)) != EOF)
+    putchar(c);
+  fclose(f);
+}
+</PRE>
+
+<DT><DD>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">EXAMPLE</A><DD>
+<DT><A HREF="#lbAG">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

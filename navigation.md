@@ -13,6 +13,8 @@
 
   * [V2 repositories](repos.md)
   * [install V2](install.md)
+  - - - -
+  * [man pages](man/index.md)
 
 [Tutorials]()
 

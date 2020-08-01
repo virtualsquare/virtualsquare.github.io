@@ -1,0 +1,113 @@
+#!/bin/bash
+# set -x
+
+# thanks to Giacomo Rizzi: some ideas have been taken from: https://github.com/gufoe/vuos-tutorial
+
+BASE="$(dirname "$0")"
+cd $BASE
+BASE=$(pwd)
+echo "BASE: $BASE"
+
+# User friendly messages on error
+set -E
+set -o functrace
+function handle_error {
+    local retval=$?
+    local line=${last_lineno:-$1}
+    echo "Failed at $line: $BASH_COMMAND"
+    echo "Trace: " "$@"
+    exit $retval
+}
+if (( ${BASH_VERSION%%.*} <= 3 )) || [[ ${BASH_VERSION%.*} = 4.0 ]]; then
+        trap '[[ $FUNCNAME = handle_error ]] || { last_lineno=$real_lineno; real_lineno=$LINENO; }' DEBUG
+fi
+trap 'handle_error $LINENO ${BASH_LINENO[@]}' ERR
+
+function rebuild_man {
+	REPO=$1
+	REPOBASE=${REPO##*/}
+	REPOBASE=${REPOBASE%%.*}
+	PREWD=$(pwd)
+	echo installing $1
+	cd  "$BASE"/gits
+	git clone $1
+	cd $REPOBASE
+	find . -name '*.[1-9]' -exec cp -a "{}" ../newman \;
+	echo $i DONE
+	cd $PREWD
+}
+
+function convert_man_chapter {
+	CHAPTER=$1
+	for manpage in $(cd gits/newman; find . -maxdepth 1 -name "*.$CHAPTER" | sort)
+	do
+		if ! cmp -s gits/newman/$manpage man${CHAPTER}/$manpage ; then
+			cp -a gits/newman/$manpage man${CHAPTER}/$manpage
+			if [ -L gits/newman/$manpage ]
+			then
+				rm -f man${CHAPTER}/$manpage.html
+				ln -s $(readlink gits/newman/$manpage).html man${CHAPTER}/$manpage.html
+			else
+			 	man2html -r man${CHAPTER}/$manpage > man${CHAPTER}/$manpage.html
+			fi
+		fi
+	done
+}
+
+function build_index {
+	CHAPTER=$1
+	OUTFILE=$2
+	test "$(ls -A man$CHAPTER/*.$CHAPTER)" || return 0
+	echo >> $OUTFILE
+	echo "## Section $CHAPTER" >> $OUTFILE
+	echo >> $OUTFILE
+	for page in $(cd man$CHAPTER; find . -maxdepth 1 -name "*.$CHAPTER" | sort)
+	do
+		echo '* ['$page']('man$CHAPTER/$page.html')' >> $OUTFILE
+	done
+}
+
+# Start scanning for man pages
+rm -rf gits
+mkdir gits
+mkdir gits/newman
+
+rebuild_man https://github.com/rd235/s2argv-execs.git
+rebuild_man https://github.com/rd235/strcase.git
+rebuild_man https://github.com/virtualsquare/vde-2.git -enable-experimental
+rebuild_man https://github.com/rd235/vdeplug4.git
+rebuild_man https://github.com/virtualsquare/purelibc.git
+rebuild_man https://github.com/rd235/libvolatilestream.git
+rebuild_man https://github.com/rd235/libstropt.git
+rebuild_man https://github.com/rd235/libfduserdata.git
+rebuild_man https://github.com/rd235/libvpoll-eventfd.git
+rebuild_man https://github.com/rd235/libvdestack.git
+rebuild_man https://github.com/rd235/vdeplug_vlan.git
+rebuild_man https://github.com/virtualsquare/libvdeslirp.git
+rebuild_man https://github.com/virtualsquare/vdeplug_slirp.git
+rebuild_man https://github.com/rd235/cado.git
+rebuild_man https://github.com/alperakcan/fuse-ext2.git
+rebuild_man https://github.com/rd235/vdeplug_agno.git
+rebuild_man https://github.com/rd235/vdeplug_pcap.git
+rebuild_man https://github.com/rd235/userbindmount.git
+rebuild_man https://github.com/rd235/vdens.git
+rebuild_man https://github.com/virtualsquare/vuos.git
+rebuild_man https://github.com/virtualsquare/nlinline.git
+rebuild_man https://github.com/virtualsquare/libnlq.git
+rebuild_man https://github.com/virtualsquare/randmac.git
+rebuild_man https://github.com/rd235/libpam-net.git
+
+cat > index.md << ENFOFHEAD
+VirtualSquare man pages
+====
+
+ENFOFHEAD
+
+for chapter in 1 2 3 4 5 6 7 8 9
+do
+	convert_man_chapter $chapter
+	build_index $chapter index.md
+done
+
+rm -rf gits
+echo 'DONE MAN'

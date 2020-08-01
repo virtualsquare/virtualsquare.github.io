@@ -1,0 +1,120 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VDE_TUNCTL</TITLE>
+</HEAD><BODY>
+<H1>VDE_TUNCTL</H1>
+Section: Maintenance Commands (8)<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME </H2>
+
+vde_tunctl --- create and manage persistent TUN/TAP interfaces 
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS </H2>
+
+<P>
+
+<B>vde_tunctl</B> [<B>-f</B> <I>clone-dev</I>] [<B>-u</B> <I>owner</I>] [<B>-g</B> <I>group</I>] [<B>-n</B>] [<B>-t</B> <I>dev-name</I>]  
+<P>
+
+<B>vde_tunctl</B> [<B>-f</B> <I>clone-dev</I>] <B>-d</B> <I>dev-name</I>  
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION </H2>
+
+<P>
+
+<B>vde_tunctl</B> allows the host sysadmin to 
+preconfigure a TUN/TAP device for use by a particular user.  That 
+user may open and use the device, but may not change any aspects 
+of the host side of the interface. 
+<P>
+
+vde_tunctl is an extension of <B>tunctl</B>.
+<P>
+
+vde_tunctl defines tap interfaces unless <I>dev-name</I> begins by &quot;tun&quot; or
+the option -n appears in the command line. 
+<A NAME="lbAE">&nbsp;</A>
+<H2>USAGE </H2>
+
+<P>
+
+To create an interface for use by a particular user, invoke 
+tunctl without the -d option: 
+<P>
+
+<PRE>
+# <B>vde_tunctl -u someuser</B>  
+Set 'tap0' persistent and owned by uid 500 
+</PRE>
+
+<P>
+
+Then, configure the interface as normal: 
+<P>
+
+<PRE>
+# <B>ifconfig tap0 192.168.0.254 up</B>  
+# <B>route add -host 192.168.0.253 dev tap0</B>  
+# <B>bash -c 'echo 1 &gt; /proc/sys/net/ipv4/conf/tap0/proxy_arp'</B>  
+# <B>arp -Ds 192.168.0.253 eth0 pub</B>        
+</PRE>
+
+<P>
+
+To delete the interface, use the -d option: 
+<P>
+
+<PRE>
+# <B>vde_tunctl -d tap0</B>  
+Set 'tap0' nonpersistent 
+</PRE>
+
+<P>
+To create or destroy a tun interface (instead of tap):
+<PRE>
+# <B>vde_tunctl -n -u someuser</B>
+Set 'tun0' persistent and owned by uid 500
+# <B>vde_tunctl -d tun0</B>
+Set 'tun0' nonpersistent
+</PRE>
+
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO </H2>
+
+<P>
+
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1)
+<B><A HREF="../man1/vde_plug2tap.1.html">vde_plug2tap</A></B>(1)
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR </H2>
+
+<P>
+
+tunctl was written by Jeff Dike <A HREF="mailto:jdike@karaya.com">jdike@karaya.com</A> 
+<P>
+
+This manual page is based on tunctl manual page written by Matt Zimmerman <A HREF="mailto:mdz@debian.org">mdz@debian.org</A> for 
+the <B>Debian GNU/Linux</B> system. 
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME </A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS </A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION </A><DD>
+<DT><A HREF="#lbAE">USAGE </A><DD>
+<DT><A HREF="#lbAF">SEE ALSO </A><DD>
+<DT><A HREF="#lbAG">AUTHOR </A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

@@ -1,0 +1,93 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of CAPRINT</TITLE>
+</HEAD><BODY>
+<H1>CAPRINT</H1>
+Section: User Commands  (1)<BR>Updated: June 23, 2016<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+caprint - Capability Ambient Print
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>caprint</B>
+
+[
+OPTIONS
+]
+[
+<I>pid</I>
+
+]
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>caprint</B> shows the ambient capabilities of a running program (whose pid can be specified as an optional parameter, otherwise <B>caprint</B> 
+shows the capabilities of caprint itself).
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<I>caprint</I>
+
+accepts the following options:
+<DL COMPACT>
+<DT><B>-l<DD>
+
+--long
+run in verbose mode. caprint</B> shows the bitmask for each capability owned by the process and the resulting mask of the capability set.
+<DT><B>-c<DD>
+
+--compact
+emit a compact output (a single line composed of a comma separated list of the capability short names). This output can be copied as a
+capability list for the command <A HREF="../man1/cado.1.html">cado</A></B>(1).
+<DT><B>-p<DD>
+
+--prompt
+this option has been created to provide users with a suitable shell prompt to warn the users of the extra capabilities granted to that shell
+(and of the extra danger in case of running wrong commands).
+As an example, it is possible to set the bash</B> prompt editing the <B>.bashrc</B> in the user's home directory:
+<PRE>
+
+      if which caprint &gt;&amp;/dev/null ; then
+        ambient=$(caprint -p)
+      fi
+
+      PS1='\u@\h:\w\$$ambient'
+
+</PRE>
+
+<DT><B>-h<DD>
+
+--help
+print a short usage banner and exit.
+<P>
+</DL>
+</B><A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/cado.1.html">cado</A></B>(1),
+<B><A HREF="../man7/capabilities.7.html">capabilities</A></B>(7),
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

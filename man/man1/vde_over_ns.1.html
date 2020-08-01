@@ -1,0 +1,127 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VDE_OVER_NS</TITLE>
+</HEAD><BODY>
+<H1>VDE_OVER_NS</H1>
+Section: User Commands  (1)<BR>Updated: May 2, 2007<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vde_over_ns - Steganographic cable over NS protocol for Virtual Distributed Ethernet
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vde_over_ns</B>
+
+[<B>-D</B>]
+[<B>-c</B><I> server_address</I>]
+[<B>-s</B><I> vde_plug</I>]
+[<B>-i</B><I> ip.to.bi.nd</I>]
+<I>domain.name
+<P>
+<BR>
+
+</I><A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+A
+<B>vde_over_ns</B> 
+allows to connect two remote vde_switches through steganographic NS query/response datagrams.
+e.g.:
+<P>
+<B>dpipe vde_plug /tmp/s1 = vde_over_ns tun.mydomain.vde </B>
+
+<P>
+binds to udp port 53 and listen for incoming steganographic NS queries (server mode).
+All the traffic to/from stdout/stdin is redirected to the client via ns responses.
+<P>
+creates a wire between two vde_switches (with sockets /tmp/s1 and /tmp/s2
+respectively). This cable looses 10% of the packets in each direction.
+<P>
+The same vde_over_dns server can be created using:
+<P>
+<B>vde_over_ns -s /tmp/s1 tun.mydomain.vde</B>
+
+<P>
+The syntax is almost identical for the client mode, except that
+to have a vde_over_ns client connect to that server, the <B> -c </B><I>server</I> 
+option must be specified.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-s </B><I>vdeplug</I>
+
+<DD>
+If specified, the vde_over_ns will connect to the local vde socket <I>vdeplug</I>
+instead pf stdin/stdout, using the libvdeplug library.
+<DT><B>-D </B>
+
+<DD>
+Detach console and send the process to background.
+<DT><B>-b </B><I>ip.to.bind</I>
+
+<DD>
+The NS server will bind only to the specified ip, instead of any ip. 
+Only valid in server mode (without -c)
+<DT><B>-c </B><I>server_addr</I>
+
+<DD>
+If specified, client mode is enabled. Vde_over_ns will try to send NS requests to <I>server_addr</I>. If not specified, server mode is enabled by default.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1),
+<B><A HREF="../man1/vdeq.1.html">vdeq</A></B>(1).
+<B><A HREF="../man1/dpipe.1.html">dpipe</A></B>(1).
+<B><A HREF="../man1/unixterm.1.html">unixterm</A></B>(1).
+<BR>
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+VDE_OVER_NS is a tool by Daniele Lacamera &lt;<A HREF="mailto:root@danielinux.net">root@danielinux.net</A>&gt; 
+<P>
+VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+based on nstx, a steganographic ns client/server software by:
+<P>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>Florian Heinz &lt;<A HREF="mailto:sky@sysv.de">sky@sysv.de</A>&gt;<BR>
+<P>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>Julien Oster &lt;<A HREF="mailto:frodo@sysv.de">frodo@sysv.de</A>&gt;<BR>
+<P>
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">NOTICE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

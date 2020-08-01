@@ -1,0 +1,83 @@
+.\"* coprocess: exec extensions for coprocesing
+.\" Copyright (C) 2014 Renzo Davoli. University of Bologna. <renzo@cs.unibo.it>
+.\" 
+.\" This library is free software; you can redistribute it and/or
+.\" modify it under the terms of the GNU Lesser General Public
+.\" License as published by the Free Software Foundation; either
+.\" version 2.1 of the License, or (at your option) any later version.
+.\" 
+.\" This library is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+.\" Lesser General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU Lesser General Public
+.\" License along with this library; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.TH coprocess 3 2014-05-27 "VirtualSquare" "Linux Programmer's Manual"
+.SH NAME
+
+coprocv, coprocvp, coprocvpe, coprocs, coprocsp \- execute a command in coprocessing mode
+.SH SYNOPSIS
+.B #include <execs.h>
+.sp
+.BI "pid_t coprocv(const char *" path ", char *const " argv "[], int " pipefd "[2]);"
+.br
+.BI "pid_t coprocve(const char *" path ", char *const " argv "[],"
+.br
+.BI "                           char *const " envp "[], int " pipefd "[2]);"
+.br
+.BI "pid_t coprocvp(const char *" file ", char *const " argv "[], int " pipefd "[2]);
+.br
+.BI "pid_t coprocvpe(const char *" file ", char *const " argv "[],"
+.br
+.BI "                           char *const " envp "[], int " pipefd "[2]);
+.sp
+.BI "pid_t coprocs(const char *" path ", const char *" command ", int " pipefd "[2]);
+.br
+.BI "pid_t coprocse(const char *" path ", const char *" command ","
+.br
+.BI "                           char *const " envp "[], int " pipefd "[2]);
+.br
+.BI "pid_t coprocsp(const char *" command ", int " pipefd "[2]);
+.br
+.BI "pid_t coprocspe(const char *" command ", char *const " envp "[],"
+.br
+.BI "                           int " pipefd "[2]);
+.sp
+These functions are provided by libexecs. Link with \fI-lexecs\fR.
+.SH DESCRIPTION
+These functions run commands in coprocessing mode. 
+They differs in the way to specify the executable file to run and its 
+parameters. 
+All of them define two pipes (by \fBpipe\fR(2)), create a new process by 
+\fBfork\fR(2), redirect the standard input and output of the new process 
+in the two pipes, and exec a program by one of the \fBexec\fR(3) functions.
+.sp
+The calling program controls both the standard input and the standard output
+of the called process: writing to \fBpipefd[1]\fR provides input to the
+coprocess while the coprocess output can be retrieved from \fBpipefd[0]\fR.
+.sp
+\fBcoprocv\fR,
+\fBcoprocve\fR,
+\fBcoprocvp\fR,
+\fBcoprocvpe\fR,
+\fBcoprocs\fR,
+\fBcoprocse\fR,
+\fBcoprocsp\fR,
+and \fBcoprocsp\fR
+differ as they define the executable file to run and its arguments as
+\fBexecv\fR,
+\fBexecve\fR,
+\fBexecvp\fR,
+\fBexecvpe\fR,
+\fBexecs\fR,
+\fBexecse\fR,
+\fBexecsp\fR,
+and \fBexecsp\fR, repectively.
+
+.SH BUGS
+Bug reports should be addressed to <info@virtualsquare.org>
+.SH AUTHOR
+Renzo Davoli <renzo@cs.unibo.it>
+

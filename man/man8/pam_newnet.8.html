@@ -1,0 +1,129 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of PAM_NEWNET</TITLE>
+</HEAD><BODY>
+<H1>PAM_NEWNET</H1>
+Section: Maintenance Commands (8)<BR>Updated: October 5, 2019<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+pam_newnet - create a new network namespace at login
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>pam_newnet.so</B>
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The pam_newnet PAM module creates a new network namespace at login for users in the
+<I>newnet</I> group.
+<P>
+Users in the <I>newnet</I> group can log-in through a
+network connection (e.g. by ssh) but their processes cannot communicate.
+The only interface they can see is the localhost of the namespace created
+at login time.
+<P>
+When pam_newnet is used together with a specific <B><A HREF="../man1/cado.1.html">cado</A>(1)</B> configuration
+users can configure their own networking services. (see <A HREF="https://github.com/rd235/cado)">https://github.com/rd235/cado)</A>
+<P>
+The nsutils tools, and more specfically <B><A HREF="../man1/netnsjoin.1.html">netnsjoin</A>(1)</B>, allow users to
+assign placeholders to keep namespaces alive, assign meaningful tags for an easier management,
+and later join any of their own namespaces (see <A HREF="https://github.com/rd235/nsutils)">https://github.com/rd235/nsutils)</A>
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<P>
+
+<B>group=</B><B></B><I>groupname</I>
+<DL COMPACT><DT><DD>
+the module operates on users in the group <I>groupname</I> instead of <I>newnet</I>.
+</DL>
+
+<P>
+
+<B>lodown</B>
+<DL COMPACT><DT><DD>
+leave the localhost <I>lo</I> interface in the state DOWN.
+</DL>
+
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>RETURN VALUES</H2>
+
+<P>
+
+PAM_IGNORE
+<DL COMPACT><DT><DD>
+User does not belong to the <I>newnet</I> group.
+</DL>
+
+<P>
+
+PAM_ABORT
+<DL COMPACT><DT><DD>
+Error in retrieving the user id or in the namespace creation.
+</DL>
+
+<P>
+
+PAM_SUCCESS
+<DL COMPACT><DT><DD>
+Success.
+</DL>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<P>
+
+Add the following lines to
+/etc/pam.d/sshd
+or /etc/pam.d/login
+<P>
+<DL COMPACT><DT><DD>
+session   required  pam_newnet.so
+<P>
+session   required  pam_newnet.so group=lonet lodown
+</DL>
+
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<P>
+
+<B><A HREF="../man5/pam.conf.5.html">pam.conf</A></B>(5),
+<B><A HREF="../man5/pam.d.5.html">pam.d</A></B>(5),
+<B><A HREF="../man7/pam.7.html">pam</A></B>(7)
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+<P>
+
+pam_newnet was written by Renzo Davoli and Eduard Caizer, University of Bologna
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">RETURN VALUES</A><DD>
+<DT><A HREF="#lbAG">EXAMPLES</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

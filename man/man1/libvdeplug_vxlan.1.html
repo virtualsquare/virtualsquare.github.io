@@ -1,0 +1,107 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of LIBVDEPLUG_VXLAN</TITLE>
+</HEAD><BODY>
+<H1>LIBVDEPLUG_VXLAN</H1>
+Section: User Commands  (1)<BR>Updated: August 23, 2016<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+libvdeplug_vxlan - vxlan vdeplug module
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+libvdeplug_vxlan.so
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+This is the libvdeplug module to join vxlan networks.
+Only one process per host can join each vxlan network.
+<P>
+This module of libvdeplug4 can be used in any program supporting vde like
+<B>vde_plug</B>, <B>kvm</B>, <B>qemu</B>, <B>user-mode-linux</B> and <B>virtualbox</B>.
+<P>
+The vde_plug_url syntax of this module is the following:
+<DL COMPACT><DT><DD>
+<BR>
+
+<B>vxlan://</B>[<I>multicast_addr</I>][<B>/</B><I>OPTION</I>][<B>/</B><I>OPTION</I>]
+</DL>
+
+<P>
+If <I>multicast_addr</I> is omitted libvdeplug_vxlan uses the default addresses:
+<B>239.0.0.1</B> for IPv4 and <B>ff05:56de::1</B> for IPv6.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>v4</B><DD>
+use IPv4
+<DT><B>v6</B><DD>
+use IPv6
+<DT><B>port=</B> <I>PORT<DD>
+define the multicast port (default value 4789)
+<DT></I><B>vni=</B> <I>VNI<DD>
+define the virtual network identifier (default value 1)
+<DT></I><B>ttl=</B> <I>TTL<DD>
+define the time-to-live (default value 1). 
+</I><B>hashsize=</B><I>HASHSIZE
+set the size of the hash table for packet switching
+<DT></I><B>expiretime=</B><I>EXPIRETIME<DD>
+set the maximum age in seconds of valid packet switching entries
+<DT></I><B>if=</B><I>INTERFACE<DD>
+set the (real) network interface to use.
+<P>
+</DL>
+</I><A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<B><A HREF="vxlan://239.0.0.1">vxlan://239.0.0.1</A></B>
+
+<BR>
+
+This vde_plug_url refers to the vxlan network defined on the multicast address 239.0.0.1, vni=1.
+<P>
+Programs using
+<BR>
+
+<B><A HREF="vxlan://ff15::3/port=12345/vni=42">vxlan://ff15::3/port=12345/vni=42</A></B>
+
+<BR>
+
+join the same vxlan network defined by the multicast addres ff15::1, port 12345, vni is 42.
+<A NAME="lbAG">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">NOTICE</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 12:37:03 GMT, August 01, 2020
+</BODY>
+</HTML>

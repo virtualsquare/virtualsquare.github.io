@@ -1,0 +1,135 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of libvdeplug</TITLE>
+</HEAD><BODY>
+<H1>libvdeplug</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2017-05-21<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+vde_open, vde_recv, vde_send, vde_send, vde_recv, vde_close - connect clients to a VDE (virtual distributed ethernet) network
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/libvdeplug.h">libvdeplug.h</A>&gt;</B>
+
+<BR>
+
+<B>VDECONN *vde_open(char *vde_url,char *descr, struct vde_open_args *open_args);</B>
+
+<BR>
+
+<B>ssize_t vde_recv(VDECONN *conn,void *buf,size_t len,int flags);</B>
+
+<BR>
+
+<B>ssize_t vde_send(VDECONN *conn,const void *buf,size_t len,int flags);</B>
+
+<BR>
+
+<B>int vde_datafd(VDECONN *conn);</B>
+
+<BR>
+
+<B>int vde_ctlfd(VDECONN *conn);</B>
+
+<BR>
+
+<B>int vde_close(VDECONN *conn);</B>
+
+<P>
+These functions are provided by libvdeplug. Link with <I>-lvdeplug</I>.
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Libvdeplug is the library used by clients to join a VDE network. It is a generic library which can
+use several different implementations for virtual distributed networks. In fact <I>vde_url</I> 
+has the syntax <I>module</I><B>://</B><I>specific_address</I>.
+e.g. <B><A HREF="vde:///home/user/myswitch">vde:///home/user/myswitch</A></B> or <B><A HREF="vxvde://239.0.0.1">vxvde://239.0.0.1</A></B>.
+The default module is <B><A HREF="../man1/libvdeplug_vde.1.html">libvdeplug_vde</A>(1)</B> (connection to a <B><A HREF="../man1/vde_switch.1.html">vde_switch</A>(1)</B>)
+and can be omitted. e.g. <B>/home/user/myswitch</B> means
+<B><A HREF="vde:///home/user/myswitch">vde:///home/user/myswitch</A></B>
+<P>
+<B>vde_open</B> opens a VDE connection: <I>vde_url</I> is the vde network identifier as descibed here above
+and <I>descr</I> is a description of this connection (it can be useful to identify this connection in
+the port list of a switch). open_args has been left for backwards compatibility but can be safely
+set to NULL as all the options previosly defined as fields of <I>struct vde_open_args</I> are now 
+parameters of the VDE modules (can be defined using a module specific syntax in vde_url).
+<P>
+<B>vde_recv</B> receives a packet from the VDE connection.
+<P>
+<B>vde_send</B> sends a packet to the VDE connection.
+<P>
+<B>vde_datafd</B> returns the data file descriptor of the connection: this descriptor can be used in 
+<B><A HREF="../man2/poll.2.html">poll</A>(2)</B> or <B><A HREF="../man2/select.2.html">select</A>(2)</B> (or similar) system calls. When this descriptor signals data available for reading
+<B>vde_recv</B> will not block.
+<P>
+<B>vde_ctlfd</B> returns the control file descriptor of the connection. Not all the modules support control
+descritors, but when it is valid descriptor (greater or equal than 0) can be used to check if the remote 
+endpoint (switch or peer) hanged up. No data can be sent or received using the control file descriptor, 
+it returns an end-of-file condition when the conenction get closed (zero length on reading).
+<P>
+<B>vde_close</B> closes a vde connections.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<B>vde_open</B> returns the descriptor of the VDE connection which is used as a parameter of all the other functions.
+NULL is returned in case of error.
+<P>
+<B>vde_recv</B> returns the length of the packet received. It should never be less then 14 bytes (the length of
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>an ethernet header). It returns -1 in case of error, it may return 1 to notify that a packet has been<BR>
+received but it must be dropped (e.g. the sender was not allowed to send that packet).
+<P>
+<B>vde_send</B> returns the number of bytes sent. It returns -1 in case of error.
+<P>
+<B>vde_datafd</B> and <B>vde_ctlfd</B> returns a file descriptor and  -1 in case of error.
+<P>
+<B>vde_datafd</B> returns 0 in case of success and  -1 in case of error.
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1)
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">NOTICE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">BUGS</A><DD>
+<DT><A HREF="#lbAI">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 12:42:59 GMT, August 01, 2020
+</BODY>
+</HTML>

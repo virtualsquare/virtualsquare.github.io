@@ -1,0 +1,113 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of system_nosh</TITLE>
+</HEAD><BODY>
+<H1>system_nosh</H1>
+Section: Linux Programmer's Manual (3)<BR>Updated: 2014-05-27<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<P>
+esystem, system_eexecsp - execute a command with its arguments from a string without using a shell
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;</B>
+
+<BR>
+
+<B>#include &lt;<A HREF="file:///usr/include/execs.h">execs.h</A>&gt;</B>
+
+<P>
+<B>int esystem(const char *</B><I>command</I><B>);</B>
+
+<BR>
+
+<B>int system_eexecsp(const char *</B><I>command</I><B>);</B>
+
+<P>
+These functions are provided by libexecs and libeexecs. Link with <I>-lexecs</I> or <I>-leexecs</I>.
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>esystem</B> is an almost drop in replacement for <B><A HREF="../man3/system.3.html">system</A></B>(3)
+provided by the libc. <B>esystem</B> parses the command string
+and runs the command directly, without using a shell.
+(<B>system_eexecsp</B> and <B>esystem</B> are synonyms).
+<BR>
+
+Command arguments in <I>args</I> are delimited by space characters (blank, tabs
+or new lines).
+Single or double quotes can be used to delimitate command arguments including
+spaces and a non quoted backslash (<B>\</B>)
+is the escape character to protect the next char. The executable file
+is sought using the PATH environment variable as explained for <B><A HREF="../man3/execlp.3.html">execlp</A></B>(3).
+<BR>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+These functions have the same return values of <B><A HREF="../man3/system.3.html">system</A></B>(3). 
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+The following program shows the usage of <B>esystem</B>:
+
+<P>
+
+<PRE>
+#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
+#include &lt;<A HREF="file:///usr/include/execs.h">execs.h</A>&gt;
+
+#define BUFLEN 1024
+int main(int argc, char *argv)
+{
+        char buf[BUFLEN];
+        printf(&quot;type in a command and its arguments, e.g. 'ls -l'\n&quot;);
+        while (fgets(buf, BUFLEN, stdin) != NULL) {
+                printf(&quot;Command: '%s' \n&quot;,buf);
+                esystem(buf);
+                printf(&quot;Command done\n&quot;);
+        }
+}
+</PRE>
+
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man3/system.3.html">system</A></B>(3),<B><A HREF="../man3/execs.3.html">execs</A></B>(3),<B><A HREF="../man3/s2argv.3.html">s2argv</A>(3),</B><A HREF="../man3/system_nosh.3.html">system_nosh</A>(3)
+
+<A NAME="lbAH">&nbsp;</A>
+<H2>BUGS</H2>
+
+Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">EXAMPLE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">BUGS</A><DD>
+<DT><A HREF="#lbAI">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:02:53 GMT, August 01, 2020
+</BODY>
+</HTML>

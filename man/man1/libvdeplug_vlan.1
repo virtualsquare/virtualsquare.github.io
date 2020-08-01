@@ -1,0 +1,76 @@
+.\" Copyright (C) 2020 VirtualSquare. Project Leader: Renzo Davoli
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License,
+.\" as published by the Free Software Foundation, either version 2
+.\" of the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+.\" MA 02110-1301 USA.
+.\"
+.\" generated with Ronn-NG/v0.8.0
+.\" http://github.com/apjanke/ronn-ng/tree/0.8.0
+.TH "LIBVDEPLUG_VLAN" "1" "July 2020" "VirtualSquare"
+.SH "NAME"
+\fBlibvdeplug_vlan\fR \- vdeplug nested module: VLAN (802\.1Q)
+.SH "SYNOPSIS"
+libvdeplug_vlan\.so
+.SH "DESCRIPTION"
+This is a libvdeplug module implementing VLANs (IEEE 802\.1Q)\.
+.P
+With this plugin VLANs are implemented in a distributed fashion\. The tagging (and untagging) of the packets is done, not by the switch, but by the plugin (attached to the VM)\.
+.P
+This module of libvdeplug4 can be used in any program supporting vde like \fBvde_plug\fR, \fBvdens\fR, \fBkvm\fR, \fBqemu\fR, \fBuser\-mode\-linux\fR and \fBvirtualbox\fR\.
+.P
+The vde_plug_url syntax of this module is the following:
+.P
+\fBvlan://\fR[\fIuntagged_vlan\fR][\fB[\fROPTION[\fB/\fROPTION]\|\.\|\.\|\.\fB]\fR]\fB{\fR\fIvde nested url\fR\fB}\fR
+.P
+\fBuntagged_vlan\fR is the number of the VLAN to which the virtual machine is connected in untagged mode\. The traffic on this VLAN will be seen by the VM as untagged\. If omitted the default value is 0, an invalid VLAN number meaning that the VM is not connected to any VLAN in untagged mode\.
+.SH "OPTIONS"
+.TP
+\fBu\fR, \fBuntag\fR
+Untagged traffic on the network will be seen by the VM as traffic tagged with this tag\. The default value is 0, an invalid VLAN number meaning untagged traffic will not be tagged\.
+.IP
+If we are sure that the traffic going by over the virtual link will only be tagged, untag argument is useless\. If untagged traffic is expected and untag is 0, \efIuntagged_vlan\efR should be 0 too; otherwise there would not be a method to tell untagged traffic from traffic tagged for the untagged VLAN, and errors during send or receive may occur\.
+.TP
+\fBt\fR, \fBtag\fR
+A string used to specify the VLANs to which the VM is connected in tagged mode\. The string is made up of a list of tokens separated by ":" or "\."\. These tokens can have two forms:
+.IP
+(1) A single vlan tag number meaning that the VM is connected to that VLAN in tagged mode\.
+.IP
+(2) Two numbers separated by "\-", meaning that the tagged packets sent out by the VM with the first number as VLAN tag are remapped on the VLAN with the second tag number and the packets received by the VM on the VLAN with the second number are remapped on the VLAN with the first number\.
+.TP
+\fBx\fR, \fBtrunk\fR
+A boolean argument to be used only if the connection uses trunking\. If used the VM will be able to send and receive packets from VLANs not listed in the tag string\.
+.TP
+\fBq\fR, \fBqinq\fR, \fBad\fR
+Use the wthernet type 0x88A8 for the double tagging protool 802\.1ad (also known as QinQ)\.
+.SH "EXAMPLES"
+\fBvlan://3{tap://mytap}\fR
+.P
+The VM is connected to vlan 3 and receives only traffic from here\.
+.P
+\fBvlan://3[untag=4/trunk/tag=10:11\-12:12\-11]{vde:///tmp/myswitch}\fR
+.P
+The VM is connected to vlan 3 in untagged mode and receive untagged traffic with vlan tag 4\. The vlan also receives traffic from VLANs 10, 11 and 12\. VLANs 11 and 12 are switched\.
+.P
+\fBvdens vlan://4{vlan://5/qinq{vxvde://234\.1\.2\.3}}\fR
+.P
+This example uses 802\.1ad: the VDE client is connected to the VLAN 4 of the QinQ VLAN 5\.
+.SH "NOTICE"
+Virtual Distributed Ethernet is not related in any way with www\.vde\.com ("Verband der Elektrotechnik, Elektronik und Informationstechnik" i\.e\. the German "Association for Electrical, Electronic & Information Technologies")\.
+.SH "SEE ALSO"
+\fBvde_plug\fR(1)

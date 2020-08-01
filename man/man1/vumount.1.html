@@ -1,0 +1,78 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of VUMOUNT</TITLE>
+</HEAD><BODY>
+<H1>VUMOUNT</H1>
+Section: User Commands  (1)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<B>vumount</B> - mount a filesystem or a resource
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>vumount</B> [<I>options</I> ...] <I>source</I> <I>destination</I>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Everything is (or can be seen) as a file. It is part of the philosophy of UNIX. The file hierarchy is the global naming facility.
+<P>
+
+VUOS follows this principle: VUOS modules use <B><A HREF="../man2/mount.2.html">mount</A></B>(2) not only to mount virtual filesystems but also to activate other virual services. The mountpoint, <I>destination</I> in the synopsis, is the name that will be used to identify the virtual entity/service.
+<P>
+
+For example, in <B>vudev</B> it is possible to mount devices, in <B>vunet</B> the mountpoint is the name of the networking stack, <B><A HREF="../man1/vustack.1.html">vustack</A></B>(1) uses the path ofthe mountpoint to set the current stack for processes.
+<P>
+
+<B>vumount</B> is just a command interface to <B><A HREF="../man2/mount.2.html">mount</A></B>(2). The <B><A HREF="../man8/mount.8.html">mount</A></B>(8) command is a complex tool which includes several features like the management of /etc/fstab and /etc/mtab. <B><A HREF="../man8/mount.8.html">mount</A></B>(8) is a root setuid executable and performs security checks before the actual <B><A HREF="../man2/mount.2.html">mount</A></B>(2) syscall request. <B><A HREF="../man8/mount.8.html">mount</A></B>(8) can be used in VUOS in place of <B>vumount</B> but it requires the (virtual) real uid of the executing process to be 0 (root). e.g. <B><A HREF="../man1/vusu.1.html">vusu</A></B>(1) can be used to set the virtual real uid to 0. <B>vumount</B> has been designed for VUOS but can be used to run the <B>mount</B> system call directly, without all the other management actions provided by <B><A HREF="../man8/mount.8.html">mount</A></B>(8). <B>vumount</B> is not setuid root.
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-h</B>, <B>--help</B><DD>
+Print a short help message and exit.
+<DT><B>-o</B> <I>list</I>, <B>--options</B> <I>list</I><DD>
+comma-separated list of mount options
+<DT><B>-t</B> <I>fstype</I>, <B>--types</B> <I>fstype</I><DD>
+define the filesystem type
+<DT><B>-r</B>, <B>--read-only</B><DD>
+mount the filesystem read-only (same as -o ro)
+<DT><B>-w</B>, <B>--rw</B>, <B>--read-write</B><DD>
+mount the filesystem read-write (default)
+<DT><B>-B</B>, <B>--bind</B><DD>
+mount a subtree somewhere else (same as -o bind)
+<DT><B>-M</B>, <B>--move</B><DD>
+move a subtree to some other place
+<DT><B>-R</B>, <B>--rbind</B><DD>
+mount a subtree and all submounts somewhere else
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="../man1/umvu.1.html">umvu</A>(1), <A HREF="../man1/vu_insmod.1.html">vu_insmod</A>(1), <A HREF="../man1/vu_lsmod.1.html">vu_lsmod</A>(1), <A HREF="../man1/vu_rmmod.1.html">vu_rmmod</A>(1), <A HREF="../man1/vuumount.1.html">vuumount</A>(1), <A HREF="../man1/vudebug.1.html">vudebug</A>(1)
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VirtualSquare. Project leader: Renzo Davoli
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+<DT><A HREF="#lbAG">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:45:46 GMT, August 01, 2020
+</BODY>
+</HTML>

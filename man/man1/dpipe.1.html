@@ -1,0 +1,182 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of DPIPE</TITLE>
+</HEAD><BODY>
+<H1>DPIPE</H1>
+Section: User Commands  (1)<BR>Updated: August 23, 2016<BR><A HREF="#index">Index</A>
+<A HREF="../index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+dpipe - bi-directional pipe command
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>dpipe </B>
+
+[
+<I>OPTIONS</I>
+
+]
+<I>command</I>
+
+[
+<I>args</I>
+
+]
+<B>=</B>
+
+<I>command</I>
+
+[
+<I>args</I>
+
+]
+[
+<B>=</B>
+
+[
+<I>command</I>
+
+[
+<I>args</I>
+
+]
+]
+]
+...
+<BR>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>dpipe</B> is a general tool to run two commands diverting the
+standard output of the first command into the standard input of the second
+and vice-versa.
+It is the bi-directional
+extension of the <B>|</B> (pipe) syntax used by all the shells.
+The <B>=</B> has been chosen as a metaphor of two parallel communication lines
+between the commands.
+It is also possible to concatenate several tools. Intermediate programs communicate
+using standard input and standard output with the preceding tool and alternate standard input
+and output towards the following tool.
+The number of the file descriptors is use as alternate standard input and output can be retrieved 
+from the envirnonment variables ALTERNATE_STDIN and ALTERNATE_STDOUT using <B><A HREF="../man3/getenv.3.html">getenv</A>(3)</B> or <B><A HREF="../man1/getenv.1.html">getenv</A>(1)</B>.
+If an intermediate tool should process only the data flowing in one direction 
+use <B>{</B> or <B>}</B>
+as suffix for the preceding <B>=</B> and prefix of the following one.
+<BR>
+
+This tool has been written as a tool for the Virtual Distributed Ethernet.
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<B>dpipe</B>
+
+accepts the following options:
+<DL COMPACT>
+<DT><B>-n<DD>
+
+--nowrapproc
+create only one process per command, the last one being the parent of all the others
+(the standard behavior of dpipe is to create a process for dpipe and all the
+processes running the commands are children of dpipe).
+<DT>-d<DD>
+
+--daemon
+run as a daemon.
+<DT>-p</B> <I>PIDFILE<DD>
+
+</I><B>--pidfile</B> <I>PIDFILE
+write the process id of the dpipe process (or the id of the last command if </I><B>-r</B>)
+to the file <I>PIDFILE</I>
+<DT><B>-P</B> <I>PGRPFILE<DD>
+
+</I><B>--pgrpfile</B> <I>PGRPFILE
+write the process group id (negative) including all the processes launched by dpipe
+to the file PGRPFILE</I>
+<DT><B>-N<DD>
+
+--nowrapnoclean
+Like -n but it does not remove PIDFILE or PGRPFILE.
+(when -n</B> is used together with <B>-p</B> or <B>-P</B>, dpipe creates a cleanup process
+to wait for the processes to terminate and remove the files. <B>-N</B> avoids the creation
+of the cleanup process)
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<B>dpipe a = b</B>
+
+<BR>
+
+processes a and b are bidirectionally connected: stdin of a is connected to stdout of b 
+and vice-versa
+<BR>
+
+<B>dpipe a = b = c</B>
+
+<BR>
+
+a and b are connected as above. Alternate stdin of b is connected to stdout of c and
+alternate stdout of b to stdin of c
+<BR>
+
+<B>dpipe a =} b }= c</B>
+
+<BR>
+
+This is a cycle of pipes: stdout of a is connected to stdin of b, stdout of b with stdin
+of c, and stdout of c to stdin of a
+<BR>
+
+<B>dpipe a =} b }={ c {= d = e</B>
+
+<BR>
+
+all the notations can be mixed together.
+this is a -&gt; b -&gt; d -&gt; c and back to a; alternate ports of d are connected to e
+<A NAME="lbAG">&nbsp;</A>
+<H2>NOTICE</H2>
+
+Virtual Distributed Ethernet is not related in any way with
+<A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot;
+i.e. the German &quot;Association for Electrical, Electronic &amp; Information
+Technologies&quot;).
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1),
+<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<B><A HREF="../man1/vde_plug2tap.1.html">vde_plug2tap</A></B>(1),
+<B><A HREF="../man1/vdeq.1.html">vdeq</A></B>(1).
+<B><A HREF="../man1/wirefilter.1.html">wirefilter</A></B>(1).
+<BR>
+
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">NOTICE</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 12:37:03 GMT, August 01, 2020
+</BODY>
+</HTML>
