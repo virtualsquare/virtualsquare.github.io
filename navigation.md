@@ -8,6 +8,7 @@
 
   * [home](index.md)
   * [status](status.md)
+  * [contacts](contacts.md)
 
 [Docs]()
 
@@ -35,7 +36,7 @@
 	* [IoTh: vdestack](tutorials/ioth_vdestack.md)
   - - - -
   * # VUOS
-	* [VUOS/umvu basic usage](tutorials/vuosbasics.md)
+	* [VUOS/umvu basic concepts](tutorials/vuosbasics.md)
 	* [vufuse: VUOS FUSE](tutorials/vufuse.md)
 	* [vudev: VUOS virtual devices](tutorials/vudev.md)
 	* [vunet: VUOS virtual networking](tutorials/vunet.md)
