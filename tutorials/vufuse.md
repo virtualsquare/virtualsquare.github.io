@@ -12,14 +12,11 @@ FUSE). There are notable differences:
 file systems can be seen only by the processes running under the control of the `umvu`
 hypervisor.
 
-Note: ![wip](pictures/wip.png) we are currently porting the support for more file system
-types and we are working on the alignment with the latest developments of FUSE.
-
 ## ext2/3/4 filesystems
 
 The submodule `vufuseext2` supports ext2, etx3 and ext4 file systems.
 
-By the following shell session:
+The following shell session performs these steps:
 
 * create an empty file named `img.ext2`
 * configure the file as an ext2 fiel system
@@ -98,4 +95,7 @@ $$ ls /mnt
 bin  dev  etc  linuxrc  lost+found  proc  root  sbin  sys  usr
 $$
 ```
+## Other file system types
 
+Note: ![wip](pictures/wip.png) we are currently porting the support for more file system
+types and we are working on the alignment with the latest developments of FUSE.

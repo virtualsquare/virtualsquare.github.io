@@ -41,8 +41,8 @@
 	* [vudev: VUOS virtual devices](tutorials/vudev.md)
 	* [vunet: VUOS virtual networking](tutorials/vunet.md)
 	* [vufs: VUOS virtual filesystems](tutorials/vufs.md)
-	* [VUOS virtual user/group ids](tutorials/umvu_uidgid.md)
-	* [VUOS virtual time, uname etc](tutorials/vumisc.md)
+	* [VUOS virtual user/group ids](tutorials/vu_uidgid.md)
+	* [vumisc: VUOS virtual time, etc](tutorials/vumisc.md)
 
 [Ideas, T&T]()
 
