@@ -159,13 +159,13 @@ $$ ls /mnt
 $$
 ```
 
-The default action of the `vufs` module is to _clone_ the view a file or a directory at a specific path. `mount -t vufs /a/b/c /d/e/f` 
+The default action of the `vufs` module is to _clone_ the view a file or a directory at a specific path. `vumount -t vufs /a/b/c /d/e/f` 
 would mean show the contents of a/b/c also as d/e/f.
 Let us use the `vufs` module to mount `/` as `/mnt`.
 
 ```bash
 $$ vu_insmod vufs
-$$ mount -t vufs / /mnt
+$$ vumount -t vufs / /mnt
 $$ ls /mnt
 bin   dev  home  lib32  libx32      media  opt   root  sbin  sys  usr
 boot  etc  lib   lib64  lost+found  mnt    proc  run   srv   tmp  var
@@ -192,7 +192,7 @@ it will be possible to access the entire file system as `/mnt/mnt` too (and `/mn
 will be empty).
 
 ```bash
-$$ mount -t vufs / /mnt
+$$ vumount -t vufs / /mnt
 $$ ls /mnt/mnt
 bin   dev  home  lib32  libx32      media  opt   root  sbin  sys  usr
 boot  etc  lib   lib64  lost+found  mnt    proc  run   srv   tmp  var
@@ -218,7 +218,7 @@ This is an example regarding the note here above;
 ```bash
 $$ ls /unreal
 ls: cannot access '/unreal': No such file or directory
-$$ mount -t vufs / /unreal
+$$ vumount -t vufs / /unreal
 $$ ls /unreal
 bin   dev  home  lib32  libx32      media  opt   root  sbin  sys  usr
 boot  etc  lib   lib64  lost+found  mnt    proc  run   srv   tmp  var
@@ -243,7 +243,7 @@ contents of a file or to add a file.
 $$ cat /etc/resolv.conf
 nameserver 10.0.2.3
 $$ echo nameserver 80.80.80.80 > /tmp/resolv.conf
-$$ mount -t vufs /tmp/resolv.conf /etc/resolv.conf
+$$ vumount -t vufs /tmp/resolv.conf /etc/resolv.conf
 $$ cat /etc/resolv.conf
 nameserver 80.80.80.80
 $$
