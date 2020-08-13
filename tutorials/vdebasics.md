@@ -58,7 +58,7 @@ Examples:
 
 * .... and many others
 
-Note: In order to preerve the backwards compatibility with vde2, a pathname is a legal UVDEL. The path `/a/b/c/d` is equivalent to
+Note: In order to preserve the backwards compatibility with vde2, a pathname is a legal UVDEL. The path `/a/b/c/d` is equivalent to
 `vde:///a/b/c/d`
 
 ### The `vde_plug` tool
