@@ -9,7 +9,7 @@ Once the module is loaded it is possible to pretend to be root or any other user
 
 The following sequence of commands starts a shell which fakes root privileges.
 The key command is `vusu`.
-```bash
+```
 $$ vu_insmod unrealuidgid vufs
 $$ mkdir /tmp/root
 $$ vumount -t vufs /tmp/root /root

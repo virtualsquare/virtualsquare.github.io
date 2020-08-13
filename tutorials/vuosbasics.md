@@ -71,7 +71,7 @@ Note: if you have installed `umvu` on a Linux host and using a graphical session
 to get the same _separation of output_ using the command `umvu xterm`.
 
 Note: In the following examples we'll use `$$` as the prompt of a shell under the VUOS hypervisor control.
-(as if the user has set `PS1='\$\$ '`
+(as if the user has set `PS1='\$\$ '`).
 
 At this point the hypervisor is ready to provide processes with their own _views_ but it requires to load _modules_ and to mount
 _submodules_ in order to configure the requested services. In other words, the hypervisor has been interposed but it transparently forwards 
