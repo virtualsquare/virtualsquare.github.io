@@ -43,7 +43,7 @@ function install_repo {
 		echo CMAKE
 		mkdir -p build
 		cd build
-		cmake ..
+		cmake .. $2
 	else
 		echo UNKNOWN
 		exit 1
@@ -81,7 +81,7 @@ install_repo https://github.com/virtualsquare/vuos.git
 install_repo https://github.com/virtualsquare/nlinline.git
 install_repo https://github.com/virtualsquare/libnlq.git
 install_repo https://github.com/virtualsquare/randmac.git
-install_repo https://github.com/rd235/libpam-net.git
+install_repo https://github.com/rd235/libpam-net.git -DLIBSECURITYDIR=/lib/x86_64-linux-gnu/security/
 
 rm -f /usr/local/lib/vu/modules/vufuseext2.so
 ln -s  /usr/local/lib/umview/modules/umfuseext2.so /usr/local/lib/vu/modules/vufuseext2.so

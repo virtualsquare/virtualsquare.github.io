@@ -44,6 +44,9 @@
 	* [VUOS virtual user/group ids](tutorials/vu_uidgid.md)
 	* [vumisc: VUOS virtual time, etc](tutorials/vumisc.md)
 	* [VUOS virtual chroot](tutorials/vu_chroot.md)
+  - - - -
+  * # Other Projects
+	* [libpam-net](tutorials/libpam-net.md)
 
 [Ideas, T&T]()
 
