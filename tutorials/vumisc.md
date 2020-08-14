@@ -62,7 +62,7 @@ This command:
 ```
 $$ echo 3600 > /mnt/offset
 ```
-add an hour of the virtual time, The hour arm of the virtual `xclock` moves
+adds an hour of the virtual time, The hour arm of the virtual `xclock` moves
 correspondingly.
 
 ![vumisctime offset](pictures/vumisctime_offset.png)
@@ -92,7 +92,7 @@ $$ echo 0.5 > /mnt/frequency
 
 ![vumisctime slow](pictures/vumisctime_slow.png)
 
-if `frequency` is set to a negative number: the virtual time flows backwards.
+If `frequency` is set to a negative number: the virtual time flows backwards.
 `xclock` is not able to show this. it can be shown using the command `date`.
 
 ```

@@ -183,7 +183,7 @@ struct vdestack *net_setup(void) {
 The macro `NLINLINE_LIBMULTICOMP(vde_)` defines all the specific inline functions
 of nlinline for vdestack (e.g. `vde_if_nametoindex`, `vde_linksetupdown`, etc).
 
-This version deos not rely on external commands, is uses only netlink sockets
+This version does not rely on external commands, is uses only netlink sockets
 to configure the stack. This works for `vdestack` but it is compatible with any
 other stack provided it supports its configuration via netlink.
 
