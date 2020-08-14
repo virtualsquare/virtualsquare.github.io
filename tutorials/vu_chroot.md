@@ -33,7 +33,7 @@ and extract the tar archive.
 ## chown root:root .
 ## tar xf /home/user/alpine-minirootfs-3.12.0-x86_64.tar.gz
 ```
-This ls shows that the virtualization of ownership has worked properly:
+This list (`ls`) shows that the virtualization of ownership has worked properly:
 ```
 ## ls -l
 total 68
