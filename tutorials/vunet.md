@@ -128,3 +128,7 @@ Cannot open netlink socket: Address family not supported by protocol
 This is just an example to show the effects of `vunet` mounts.
 If you need a safe environment to deny access to networking please refer to
 [libpam-net](https://github.com/rd235/libpam-net), another VirtualSquare project.
+
+Note: ![wip](pictures/wip.png) we are developing the support for other user-level implemented stacks.
+A `vufs` module for
+[picotcp-ng](https://gitlab.com/insane-adding-machines/picotcp) should be released soon.

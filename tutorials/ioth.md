@@ -24,4 +24,13 @@ physical (or virtual) network.
 The picture here above compares the legacy implementation of TCP-IP stacks (on the left)
 and the IoTh (on the right).
 
+The legacy model is based on the idea that the network stack must be unique and provided
+by the kernel. This implementation protects the physical network from abuses.
 
+IoTh instead has a completely opposite approach, each process can use one or more
+network stacks implemented as libraries, users can own and manage their virtual networks.
+
+Note: ![wip](pictures/wip.png) we are working to support user-level stacks. We are porting
+[picotcp-ng](https://gitlab.com/insane-adding-machines/picotcp) and evaluating
+[lwip](https://savannah.nongnu.org/projects/lwip/) and our old
+[lwipv6](http://wiki.v2.cs.unibo.it/wiki/index.php?title=LWIPV6)
