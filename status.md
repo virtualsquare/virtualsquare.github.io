@@ -1,5 +1,10 @@
 ## News
 
+New: The pages of the tutorials are almost complete. Give it a try, it is the 
+third menu here above!
+
+----
+
 New vde\_plug: `vdesl`.
 
 This vde\_plug creates a virtual point to point ethernet link over a serial line.
@@ -45,7 +50,11 @@ and all the other plugs we can package has to wait in experimental.
 Note: still in experimental, it collides with current vde2 on unstable
 
 ### purelibc
-purelibc 1.0.2 is in sid and testing. SOme work must be done to port on some architectures.
+purelibc 1.0.2 is in sid and testing. Some work must be done to port on some architectures.
+NEW: faccessat emulation added. Debian package needs to be updated.
+
+### libstropt:
+NEW: there is bugfix (on GITHUB). Debian package needs to be updated.
 
 ### vdeplug\_slirp, vdeplug\_vdesl, vdeplug\_vlan
 Ready to be packaged.
@@ -53,16 +62,13 @@ Ready to be packaged.
 Note: can enter experimental only as it needs vdeplug4
 
 ### libpam-net
-Packaged. Need some final checks and can enter the NEW queue.
-
-### libvpoll-eventfd
-Packaged. Some checks needed for the kernel module. Almost ready for the NEW queue.
-
-### lwipv6 (old)
-There is ftbfs with glibc-2.31 (doko). `lwipv6_1.5a-6` is going to be upladed.
+Packaged. ready to enter the NEW queue.
 
 ### randmac
 Packaged, ready for NEW
+
+### libvpoll-eventfd
+Packaged. Some checks needed for the kernel module. Almost ready for the NEW queue.
 
 ### libvdeplug\_vdesl:
 Ready to be packaged.

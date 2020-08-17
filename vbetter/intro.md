@@ -18,6 +18,7 @@ obsolete concepts in programs, libraries and protocols.
 * [iproute: `ip link add` for generic interfaces](iplinkadd.md)
 * [Linux netlink bug: negative ip interfaces](nlnegativeif.md)
 * [qemu/kvm: all interfaces have the same default MAC](qemudefmac.md)
+* [Linux \*at system calls idiosyncrasies](atidiosyncrasies.md)
 
 ## We do V better
 
