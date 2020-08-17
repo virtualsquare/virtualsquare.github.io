@@ -81,8 +81,8 @@
 
 [We do V better!]()
 
-  * [let us fix the World](vbetter/intro.md)
-  - - - -
+  * [We do V better!](vbetter/intro.md)
+  * [let us fix the World](vbetter/fix.md)
 
 [V² for EDU]()
 

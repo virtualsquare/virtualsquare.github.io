@@ -54,7 +54,31 @@ This is just a connectivity test. As a test on a real network service let us try
 # ssh user@your.favourite.host
 ....
 ```
-## A _foreign_ namespace
+
+## Slirp + vdens
+
+This experiment shows how to create a namespace providing user-mode networking.
+
+![vdens + slirp](pictures/vde_vdens_slirp.png)
+
+Just run the following list of commands:
+```
+vdens -R 10.0.2.3 slirp://
+$# /sbin/udhcpc -i vde0
+```
+
+Note: `10.0.2.3` is the default address for the DNS forwarder provided by slirp. Any reachable open/available
+domain name server can be used instead, e.g. `80.80.80.80`,
+
+As above we can use netcat to test the connectivity.
+```
+$# nc -zv google.com 80
+Connection to google.com (216.58.206.46) 80 port [tcp/http] succeeded!
+$# nc -vz 80.80.80.80 53
+Connection to 80.80.80.80 53 port [tcp/domain] succeeded!
+```
+
+## A foreign namespace
 
 This tutorial shows how to set up a `vdens` whose networking connections are routed
 through a remote host.
@@ -94,14 +118,11 @@ $# /sbin/udhcpc -i vde0
 ```
 The namespace _lives_ in a virtual network. All the network traffic is routed through the remote host.
 
-Note: `10.0.2.3` is the default address for the DNS forwarder provided by slirp. Any reachable open/available
-domain name server can be used instead, e.g. `80.80.80.80`,
-
 As above we can use netcat to test the connectivity.
 ```
 $# nc -zv google.com 80
 Connection to google.com (216.58.206.46) 80 port [tcp/http] succeeded!
-$#  nc -vz 80.80.80.80 53
+$# nc -vz 80.80.80.80 53
 Connection to 80.80.80.80 53 port [tcp/domain] succeeded!
 ```
 
