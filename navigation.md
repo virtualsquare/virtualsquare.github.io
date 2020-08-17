@@ -86,9 +86,16 @@
 
 [V² for EDU]()
 
-  * [VirtualSquare for Computer Science Education](v2edu.md)
-   - - -
-  * [µMPS](umps/umps.md)
+  * [VirtualSquare for Computer Science Education](education/v2edu.md)
+  - - - -
+  * # Projects
+  * [µMPS](education/umps.md)
+  * [µARM](education/uarm.md)
+  * [PandOS](education/pandos.md)
+  - - -
+  * # Tutorials
+  * [µMPS - Installation](education/tutorials/umps/installation.md)
+  * [µMPS - Getting started](education/tutorials/umps/getting_started.md)
 
 [V² in distros]()
 
