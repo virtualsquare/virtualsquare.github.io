@@ -48,8 +48,8 @@ Memory content from arbitrary memory regions can be displayed in hexadecimal rep
 
 ## Tutorials
 
-- [How to install µMPS](/tutorials/umps/installation.md)
-- [How to get started using µMPS](/tutorials/umps/getting_started.md)
+- [How to install µMPS](tutorials/umps/installation.md)
+- [How to get started using µMPS](tutorials/umps/getting_started.md)
 
 ---
 
@@ -99,7 +99,7 @@ This third release, the one implemented by the current version of the emulator, 
 - The project building process migrated from the GNU Autotools to CMake
 - The graphical user interface has been updated from Qt4 to Qt5 and slightly modified
 
-The authoritative reference on µMPS, µMPS(2/3) Principles of Operation, was written by Michael Goldweber and Renzo Davoli.
+The authoritative reference on µMPS, *µMPS(2/3) Principles of Operation*, was written by Michael Goldweber and Renzo Davoli.
 
 In addition to the implicit acknowledgments we have given above, the authors would also like to thank the numerous students who have assisted the project by testing it and by giving valuable suggestions.
 
@@ -116,15 +116,15 @@ It is an update to the µMPS3 architecture of earlier editions of this work, tit
 
 ### Articles and Papers
 
-- M. Morsiani, R. Davoli, *Learning Operating Systems Structure and Implementation through the MPS Computer System Simulator*, in *The Proceedings of the Thirtieth SIGCSE Technical Symposium on Computer Science Education*, SIGCSE '99, (New York, NY, USA), pp. 63-67, ACM, March 1999. [[PDF](http://mps.sourceforge.net/pdf/MPSpaper.pdf)]
-- Michael Goldweber, Renzo Davoli, Mauro Morsiani, *The Kaya OS Project and the µMPS Hardware Emulator*, in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 49–53, ACM, June 2005. [[PDF](http://mps.sourceforge.net/pdf/uMPSpaper.pdf)]
+- M. Morsiani, R. Davoli, *Learning Operating Systems Structure and Implementation through the MPS Computer System Simulator*, in *The Proceedings of the Thirtieth SIGCSE Technical Symposium on Computer Science Education*, SIGCSE '99, (New York, NY, USA), pp. 63-67, ACM, March 1999. [PDF](http://mps.sourceforge.net/pdf/MPSpaper.pdf)
+- Michael Goldweber, Renzo Davoli, Mauro Morsiani, *The Kaya OS Project and the µMPS Hardware Emulator*, in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 49–53, ACM, June 2005. [PDF](http://mps.sourceforge.net/pdf/uMPSpaper.pdf)
 - M. Goldweber, R. Davoli, and T. Jonjic,	*Supporting Operating Systems Projects Using the µMPS2 Hardware Simulator*,	in *Proceedings of the 17th ACM Annual Conference on Innovation and Technology in Computer Science Education*, ITiCSE '12, (New York, NY, USA), pp. 63–68, ACM, July 2012.
 
 ### Theses
 
-- Tomislav Jonjic, *Design and Implementation of the uMPS2 Educational Emulator*, November 2012. [[PDF](https://amslaurea.unibo.it/4472/1/jonjic_tomislav_tesi.pdf)]
-- Mattia Biondi, *An Updated Emulated Architecture to Support the Study of Operating Systems*, May 2020. [[PDF](https://raw.githubusercontent.com/mattiabiondi/baccalaureus/master/thesis/biondi_mattia_tesi.pdf)] (not yet uploaded on [AMSLaurea](https://amslaurea.unibo.it/))
+- Tomislav Jonjic, *Design and Implementation of the uMPS2 Educational Emulator*, November 2012. [PDF](https://amslaurea.unibo.it/4472/1/jonjic_tomislav_tesi.pdf)
+- Mattia Biondi, *An Updated Emulated Architecture to Support the Study of Operating Systems*, May 2020. [PDF](https://raw.githubusercontent.com/mattiabiondi/baccalaureus/master/thesis/biondi_mattia_tesi.pdf) (not yet uploaded on [AMSLaurea](https://amslaurea.unibo.it/))
 
 ### How-Tos
 
-- Tomislav Jonjic, *µMPS2 Cross Toolchain Guide*, September 2011. [[PDF](http://mps.sourceforge.net/pdf/umps-cross-toolchain-guide.pdf)]
+- Tomislav Jonjic, *µMPS2 Cross Toolchain Guide*, September 2011. [PDF](http://mps.sourceforge.net/pdf/umps-cross-toolchain-guide.pdf)

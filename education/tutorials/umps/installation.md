@@ -32,7 +32,7 @@ Known prefixes are:
 Please [report any problems](https://github.com/virtualsquare/umps3/issues/new) you run into when building the project.
 
 Get the source code, from the root of the source tree run:
-```sh
+```bash
 $ mkdir build
 $ cd build
 $ cmake ..
@@ -46,7 +46,7 @@ If you want to install it somewhere else (e.g. in `/usr/`) you can pass the path
 ## Uninstallation
 
 From the root of the binary tree run:
-```sh
+```bash
 $ sudo make uninstall
 ```
 N.B.: "install_manifest.txt" is generated during the installation process.
@@ -59,19 +59,19 @@ Here is an example of how to [build from source](#Building_from_source) and inst
 
 #### Install dependencies
 
-```sh
+```bash
 $ sudo apt install git build-essential cmake qtbase5-dev libelf-dev libboost-dev libsigc++-2.0-dev gcc-mipsel-linux-gnu
 ```
 
 #### Get the source code
 
-```sh
+```bash
 $ git clone https://github.com/virtualsquare/umps3
 ```
 
 #### Build and Install
 
-```sh
+```bash
 $ cd umps3
 $ mkdir build
 $ cd build
