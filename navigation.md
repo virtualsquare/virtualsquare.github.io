@@ -86,7 +86,7 @@
 
 [V² for EDU]()
 
-  * [VirtualSquare for Computer Science Education](education)
+  * [VirtualSquare for Computer Science Education](education/index.md)
   - - - -
   * # Projects
   * [µMPS](education/umps.md)
