@@ -59,7 +59,7 @@ Two variations of the executable file format are provided: the *.aout* format is
 
 Before moving on, you need a working µMPS cross toolchain.
 You should already have installed one during the [Installation](installation.md) phase.
-Previously, in older versions of µMPS, the toolchain had to be built from source. [PDF](http://mps.sourceforge.net/pdf/umps-cross-toolchain-guide.pdf)
+Previously, in older versions of µMPS, the toolchain had to be built from source. [PDF](http://mps.sourceforge.net/pdf/umps-cross-toolchain-guide.pdf) [obsolete]
 
 ## Booting in µMPS
 

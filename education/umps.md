@@ -125,6 +125,8 @@ It is an update to the µMPS3 architecture of earlier editions of this work, tit
 - Tomislav Jonjic, *Design and Implementation of the uMPS2 Educational Emulator*, November 2012. [PDF](https://amslaurea.unibo.it/4472/1/jonjic_tomislav_tesi.pdf)
 - Mattia Biondi, *An Updated Emulated Architecture to Support the Study of Operating Systems*, May 2020. [PDF](https://raw.githubusercontent.com/mattiabiondi/baccalaureus/master/thesis/biondi_mattia_tesi.pdf) (not yet uploaded on [AMSLaurea](https://amslaurea.unibo.it/))
 
-### How-Tos
+### Historical documentation
 
-- Tomislav Jonjic, *µMPS2 Cross Toolchain Guide*, September 2011. [PDF](http://mps.sourceforge.net/pdf/umps-cross-toolchain-guide.pdf)
+#### How-Tos
+
+- Tomislav Jonjic, *µMPS2 Cross Toolchain Guide*, September 2011. [PDF](http://mps.sourceforge.net/pdf/umps-cross-toolchain-guide.pdf) [obsolete]
