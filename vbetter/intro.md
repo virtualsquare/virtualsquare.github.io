@@ -10,7 +10,7 @@ VirtualSquare use cases.
 It is implemented by VUOS, integrated with virtual file systems, virtual devices:
 fake (or virtual) special file can have actual virtual drivers.
 * [fakechroot](https://github.com/dex4er/fakechroot) vs. [V² fakechroot](/tutorials/vu_chroot.md):
-In it integrated in VUOS' core hypervisor. There is no need to re-implement large chunks
+It is integrated in VUOS' core hypervisor. There is no need to re-implement large chunks
 of the glibc specifically for faking chroot.
 Based on `ptrace`, in V² implementation it is (a bit) harder to exit from the _sandbox_.
 * [slirp4netns](https://github.com/rootless-containers/slirp4netns).
