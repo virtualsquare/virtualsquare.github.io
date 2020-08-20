@@ -71,9 +71,31 @@ Since writing a boot loader is a non-trivial task for the inexperienced programm
 Now that the emulator and the toolchain are installed, we are ready to compile and run a sample program.
 Following tradition, the program prints the venerable "hello, world" message on a µMPS terminal.
 
-~~Download the example program~~
+[Download the example program](examples/hello-world.tar.gz) [`.tar.gz`], extract and uncompress it with:
 
-*work in progress*
+```bash
+$ tar -xvzf hello-world.tar.gz
+```
+
+The example consists of a single C module, `hello.c`.
+You will have noted that our "hello world" program is significantly more complex than the average version found in programming literature.
+The reason for this is that we obviously have to program the terminal device directly, since we do not have higher-level abstractions at our disposal.
+These details are irrelevant to us at this point, though — we are simply interested in building and running the program.
+
+Use the included Makefile to build the program:
+
+```bash
+$ cd hello-world/
+$ make
+```
+
+There are several things to note about about the Makefile:
+
+- MIPS-specific compiler options are used to tweak code generation as suitable for a standalone, bare-metal program (e.g. an OS).
+- The standard startup module for kernels (`crtso.S`) is used.
+- We use the standard linker script for kernel executables, `umpscore.ldscript`.
+
+All of the above should become clear once you start perusing the available documentation.
 
 ### Running the Program
 
@@ -85,6 +107,8 @@ As it turns out, we do not need to change any settings as the defaults are exact
 You can now power on the machine and start it; the greeting message should appear in the terminal 0 window:
 
 ![hello terminal](pictures/hello-terminal.png)
+
+Note: **Windows** --> **Terminal 0** (or **Alt+0**) to open the "Terminal 0" window
 
 ## Further Reading
 
