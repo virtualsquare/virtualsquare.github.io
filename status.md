@@ -1,5 +1,10 @@
 ## News
 
+New: [fusefatfs/vufusefatfs](https://github.com/virtualsquare): 
+FUSE/VUOS-vufuse module for FAT12/16/32 and exFAT.
+
+----
+
 New: The pages of the tutorials are almost complete. Give it a try, it is the 
 third menu here above!
 

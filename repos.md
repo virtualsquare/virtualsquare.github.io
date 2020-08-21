@@ -70,6 +70,9 @@ VUOS view based o.s.
  * [purelibc](https://github.com/virtualsquare/purelibc)
 A glibc overlay library for process self-virtualization
 
+ * [fusefatfs](https://github.com/virtualsquare/fusefatfs)
+mount FAT file systems using FUSE anf VUOS/vufuse 
+
  * [&#9785; view-os](https://github.com/virtualsquare/view-os)
 View-OS is the previous implementation of VUOS. This repository also includes lwipv6, a hybrid v4/v6 netwrking stack
 implemented as a library.
