@@ -17,14 +17,15 @@ unstable (sid) or a tutorial disk image for qemu/kvm.
 
 ### step one: set up the environment
 
-Install the packets needed to compile and install all the tools from thier repos.
+Install the packets needed to compile and install all the tools from their repos.
 
 This is the list of the packets:
 ```
 git python3 build-essential cmake make autogen
-autoconf libtool libcap-dev libattr1-dev libfuse-dev
-libexecs-dev libmhash-dev libpam-dev libssl-dev
-libfuse-dev e2fsprogs comerr-dev e2fslibs-dev
+autoconf libtool libcap-dev libattr1-dev libfuse-dev libwolfssl-dev
+libexecs-dev libmhash-dev libpam0g-dev libssl-dev netcat
+libfuse-dev e2fsprogs comerr-dev e2fslibs-dev xterm
+udhcpc libpcap-dev libslirp-dev
 ```
 
 Some more packets are userful for some tests, or include some tools which have not yet been rewritten like
