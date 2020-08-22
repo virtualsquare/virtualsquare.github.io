@@ -1,5 +1,10 @@
 ## News
 
+New: [vufusearchive](https://github.com/virtualsquare/vufusearchive)
+A `vufuse module based on libarchive: it supports tar/zip/iso (including compressed archives)
+
+----
+
 New: [fusefatfs/vufusefatfs](https://github.com/virtualsquare): 
 FUSE/VUOS-vufuse module for FAT12/16/32 and exFAT.
 

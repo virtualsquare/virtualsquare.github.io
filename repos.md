@@ -73,6 +73,9 @@ A glibc overlay library for process self-virtualization
  * [fusefatfs](https://github.com/virtualsquare/fusefatfs)
 mount FAT file systems using FUSE anf VUOS/vufuse 
 
+ * [vufusearchive](https://github.com/virtualsquare/vufusearchive)
+A `vufuse module based on libarchive: it supports tar/zip/iso (including compressed archives)
+
  * [&#9785; view-os](https://github.com/virtualsquare/view-os)
 View-OS is the previous implementation of VUOS. This repository also includes lwipv6, a hybrid v4/v6 netwrking stack
 implemented as a library.
