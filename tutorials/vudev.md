@@ -142,7 +142,7 @@ $$
 
 Let us suppose that the disk image is `/tmp/2020-05-27-raspios-buster-lite-armhf.img`.
 
-THis is the recipe:
+This is the recipe:
 ```
 $$ vu_insmod vudev vufuse
 $$ mount -t vudevpartx /tmp/2020-05-27-raspios-buster-lite-armhf.img /dev/hdp

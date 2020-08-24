@@ -71,7 +71,7 @@ VUOS view based o.s.
 A glibc overlay library for process self-virtualization
 
  * [fusefatfs](https://github.com/virtualsquare/fusefatfs)
-mount FAT file systems using FUSE anf VUOS/vufuse 
+mount FAT file systems using FUSE anf VUOS/vufuse
 
  * [vufusearchive](https://github.com/virtualsquare/vufusearchive)
 A `vufuse module based on libarchive: it supports tar/zip/iso (including compressed archives)
@@ -84,6 +84,11 @@ implemented as a library.
 
  * [cado](https://github.com/rd235/cado)
 CADO: Capability DO (like a sudo providing users with just the capabilities they need)
+
+ * [umps](https://github.com/virtualsquare/umps3)
+µMPS is an educational computer system architecture and an accompanying
+emulator designed from the ground up to achieve the right trade-off between
+simplicity and elegance on one side, and realism on the other.
 
  * [strcase](https://github.com/rd235/strcase)
 Multiway branch (switch) for short strings in C (in one header file)
