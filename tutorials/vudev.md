@@ -138,6 +138,21 @@ $$
 
 ![vuos partx + fuse](pictures/vuos_vudevpartx_fuse.png)
 
+## A Practical example: modify config.txt in a Raspbian/RaspPiOS image
+
+Let us suppose that the disk image is `/tmp/2020-05-27-raspios-buster-lite-armhf.img`.
+
+THis is the recipe:
+```
+$$ vu_insmod vudev vufuse
+$$ mount -t vudevpartx /tmp/2020-05-27-raspios-buster-lite-armhf.img /dev/hdp
+$$ mount -t vufusefatfs -o rw+ /dev/hdp1 /mnt
+$$ vi /mnt/config.txt 
+... update the contents of config.txt
+$$ vuumount /mnt
+$$ vuumount /dev/hdp
+```
+
 ## other virtual devices
 
 Note: ![wip](pictures/wip.png) we are currently developing
