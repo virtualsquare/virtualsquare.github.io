@@ -18,6 +18,12 @@ From [*The Student Guide to the PandOS Operating System Project*](#Documentation
 >
 > PandOS is the latest revamping-modernization of this design for implementation on μMPS3.
 
+### Kaya
+
+The Kaya project is the predecessor of PandOS, developed for µMPS and µMPS2.
+
+Being µMPS3 **NOT** backward compatible with software developed for previous versions of the architecture (µMPS and µMPS2), Kaya has been superseded by PandOS and therefore retired.
+
 ---
 
 ## Levels
@@ -85,3 +91,7 @@ why not?
 ## Documentation
 
 - Michael Goldweber, Renzo Davoli, *The Student Guide to the PandOS Operating System Project*, 2020. [PDF](doc/pandos.pdf)
+
+### Historical documentation
+
+- Michael Goldweber, Renzo Davoli, *The Student Guide to the Kaya Operating System Project*, 2011. [PDF](https://www.iro.umontreal.ca/~monnier/2245/h2012/student-guide.pdf)
