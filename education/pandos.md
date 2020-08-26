@@ -26,6 +26,24 @@ Being µMPS3 **NOT** backward compatible with software developed for previous ve
 
 ---
 
+## Downloads
+
+The PandOS project described in the [*The Student Guide to the PandOS Operating System Project*](#Documentation) recommends the use of some test files, sample Makefiles, and some other miscellaneous header files.
+
+- [const.h](src/const.h): This header file contains utility constants & macro definitions
+- [types.h](src/types.h): This header file contains utility types definitions
+
+### Phase 1
+
+- [P1-Makefile](src/P1-Makefile)
+- [p1test.c](src/p1test.c)
+
+### Phase 2
+
+- [p2test.c](src/p2test.c)
+
+---
+
 ## Levels
 
 ### Level 0: The base hardware of μMPS3
