@@ -1,19 +1,19 @@
-# µMPS
+# µMPS3
 
-## What is µMPS?
+## What is µMPS3?
 
-µMPS is an educational computer system architecture and an accompanying emulator designed from the ground up to achieve the right trade-off between simplicity and elegance on one side, and realism on the other.
-This makes µMPS ideally suited for use in education, such as hands-on operating systems or computer architecture university courses.
+µMPS3 is an educational computer system architecture and an accompanying emulator designed from the ground up to achieve the right trade-off between simplicity and elegance on one side, and realism on the other.
+This makes µMPS3 ideally suited for use in education, such as hands-on operating systems or computer architecture university courses.
 
-The µMPS processor implements the MIPS I instruction set, and can therefore be supported out of the box by existing MIPS compilers.
+The µMPS3 processor implements the MIPS I instruction set, and can therefore be supported out of the box by existing MIPS compilers.
 The architecture details a complete set of I/O devices (terminals, disks, flash devices, printers, and network adapters) that feature a clean, consistent, programming interface.
 
 The emulator comes with built-in debugging features and an easy to use graphical user interface.
-Apart from the emulator itself, several support utilities are provided that can get you quickly started in developing programs for µMPS.
+Apart from the emulator itself, several support utilities are provided that can get you quickly started in developing programs for µMPS3.
 
-µMPS is free software, licensed under the [GNU General Public License, version 3](https://www.gnu.org/licenses/gpl-3.0.html).
+µMPS3 is free software, licensed under the [GNU General Public License, version 3](https://www.gnu.org/licenses/gpl-3.0.html).
 
-µMPS is available on GitHub at [https://github.com/virtualsquare/umps3](https://github.com/virtualsquare/umps3).
+µMPS3 is available on GitHub at [https://github.com/virtualsquare/umps3](https://github.com/virtualsquare/umps3).
 
 ---
 
@@ -22,25 +22,25 @@ Apart from the emulator itself, several support utilities are provided that can 
 ### Architecture Features
 
 - **MIPS CPU**:
-The µMPS integer instruction set is a strict superset of MIPS I.
+The µMPS3 integer instruction set is a strict superset of MIPS I.
 The extensions include a *wait for interrupt* instruction (a must for every modern instruction set) and [read-modify-write](https://en.wikipedia.org/wiki/Read-modify-write) primitives.
-While fully compatible at the ISA level with real implementations of MIPS I (R2000/R3000), µMPS somewhat differs from those in the coprocessor interface. Compared to R2000/R3000 CPUs, µMPS provides simplified virtual memory management.
+While fully compatible at the ISA level with real implementations of MIPS I (R2000/R3000), µMPS3 somewhat differs from those in the coprocessor interface. Compared to R2000/R3000 CPUs, µMPS3 provides simplified virtual memory management.
 - **Multiprocessor support**:
 The µMPS3 architecture includes (shared memory) multiprocessor support.
 The multiprocessor hardware interface was designed to cater simple and sophisticated uses alike; it is simple to use for programmers who only need basic multiprocessor support, but also provides advanced features (such as fine grained interrupt distribution control) for systems that require them.
 Up to 16 processors are supported by the architecture.
 - **Peripheral devices**:
-µMPS supports the following hardware devices: disks, flash devices, terminals, network interfaces, and printers.
+µMPS3 supports the following hardware devices: disks, flash devices, terminals, network interfaces, and printers.
 The different device controllers have a simple and consistent memory-mapped I/O interface.
 Devices are backed by regular files by the emulator and non-volatile memory can be retained between emulation runs.
 
 ### Emulator Features
 
 - **Graphical user interface**:
-The µMPS emulator comes with a modern, easy to use graphical user interface, built using the [Qt framework](https://www.qt.io/).
+The µMPS3 emulator comes with a modern, easy to use graphical user interface, built using the [Qt framework](https://www.qt.io/).
 All user interactions with the emulator, from configuration of the emulated machine to debugging, are performed using the GUI.
 - **Built-in debugging features**:
-µMPS also comes with built in debugging support.
+µMPS3 also comes with built in debugging support.
 Most of the features you have come to expect from a debugger are present: breakpoints, memory traces, watchpoints, and a code disassembly view.
 Memory content from arbitrary memory regions can be displayed in hexadecimal representation and edited in-place.
 
@@ -48,30 +48,30 @@ Memory content from arbitrary memory regions can be displayed in hexadecimal rep
 
 ## Tutorials
 
-- [How to install µMPS](tutorials/umps/installation.md)
-- [How to get started using µMPS](tutorials/umps/getting_started.md)
+- [How to install µMPS3](tutorials/umps/installation.md)
+- [How to get started using µMPS3](tutorials/umps/getting_started.md)
 
 ---
 
-## µMPS Versus Related Systems
+## µMPS3 Versus Related Systems
 
-### µMPS versus simple MIPS processor simulators
+### µMPS3 versus simple MIPS processor simulators
 
-We believe µMPS can be a replacement for the simple assembly source-level MIPS processor simulators, such as [SPIM](http://spimsimulator.sourceforge.net/) or [MARS](https://courses.missouristate.edu/KenVollmar/MARS/), that are widely used in introductory computer architecture or similar courses that include an assembly programming component.
-There are, nonetheless, striking differences between these and µMPS:
+We believe µMPS3 can be a replacement for the simple assembly source-level MIPS processor simulators, such as [SPIM](http://spimsimulator.sourceforge.net/) or [MARS](https://courses.missouristate.edu/KenVollmar/MARS/), that are widely used in introductory computer architecture or similar courses that include an assembly programming component.
+There are, nonetheless, striking differences between these and µMPS3:
 
-- Programs such as SPIM and MARS simulate the execution of MIPS programs by interpreting some variant of MIPS assembly language. By contrast, µMPS executes actual MIPS machine code.
-- µMPS emulates a complete computer system, as opposed to the above systems which only simulate a processor, and possibly a console device with an ad-hoc syscall interface.
+- Programs such as SPIM and MARS simulate the execution of MIPS programs by interpreting some variant of MIPS assembly language. By contrast, µMPS3 executes actual MIPS machine code.
+- µMPS3 emulates a complete computer system, as opposed to the above systems which only simulate a processor, and possibly a console device with an ad-hoc syscall interface.
 
-Note that, compared to simulators such as SPIM and MARS, programming for µMPS is somewhat more complex.
+Note that, compared to simulators such as SPIM and MARS, programming for µMPS3 is somewhat more complex.
 The learning curve is not very steep, however, and there is plenty of [documentation](#Documentation) and [tutorials](#Tutorials) to guide you.
 
-### µMPS versus other full system emulators
+### µMPS3 versus other full system emulators
 
 Emulators such as QEMU emulate real computer systems, including their complexities.
-µMPS, on the other hand, was conceived primarily as a pedagogical tool and its architecture can be seen as an idealized and simplified version of existing ones.
+µMPS3, on the other hand, was conceived primarily as a pedagogical tool and its architecture can be seen as an idealized and simplified version of existing ones.
 Also, because these emulators are meant to efficiently run real-world operating systems, they put first and foremost an emphasis on performance, at the cost of code complexity.
-The µMPS code base is, by comparison, significantly less complex and is approachable by less experienced programmers.
+The µMPS3 code base is, by comparison, significantly less complex and is approachable by less experienced programmers.
 
 ---
 
@@ -99,7 +99,7 @@ This third release, the one implemented by the current version of the emulator, 
 - The project building process migrated from the GNU Autotools to CMake
 - The graphical user interface has been updated from Qt4 to Qt5 and slightly modified
 
-The authoritative reference on µMPS, *µMPS(2/3) Principles of Operation*, was written by Michael Goldweber and Renzo Davoli.
+The authoritative reference on µMPS(2/3), *µMPS(2/3) Principles of Operation*, was written by Michael Goldweber and Renzo Davoli.
 
 In addition to the implicit acknowledgments we have given above, the authors would also like to thank the numerous students who have assisted the project by testing it and by giving valuable suggestions.
 
