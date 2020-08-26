@@ -90,6 +90,12 @@ CADO: Capability DO (like a sudo providing users with just the capabilities they
 emulator designed from the ground up to achieve the right trade-off between
 simplicity and elegance on one side, and realism on the other.
 
+ * [picotcp](https://github.com/virtualsquare/picotcp): picoTCP is a small-footprint,
+modular TCP/IP stack designed for embedded systems and the Internet of Things.
+There is also an exprerimental-still unofficial Debian package (on
+[salsa](https://salsa.debian.org/virtualsquare-team/picotcp)) which
+generates/installs a shared library to support IoTh (Internet of Threads).
+
  * [strcase](https://github.com/rd235/strcase)
 Multiway branch (switch) for short strings in C (in one header file)
 
