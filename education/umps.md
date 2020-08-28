@@ -1,15 +1,19 @@
-# µMPS3
+# µMPS
 
-## What is µMPS3?
+## What is µMPS?
 
-µMPS3 is an educational computer system architecture and an accompanying emulator designed from the ground up to achieve the right trade-off between simplicity and elegance on one side, and realism on the other.
-This makes µMPS3 ideally suited for use in education, such as hands-on operating systems or computer architecture university courses.
+µMPS is an educational computer system architecture and an accompanying emulator designed from the ground up to achieve the right trade-off between simplicity and elegance on one side, and realism on the other.
+This makes µMPS ideally suited for use in education, such as hands-on operating systems or computer architecture university courses.
 
-The µMPS3 processor implements the MIPS I instruction set, and can therefore be supported out of the box by existing MIPS compilers.
+The µMPS processor implements the MIPS I instruction set, and can therefore be supported out of the box by existing MIPS compilers.
 The architecture details a complete set of I/O devices (terminals, disks, flash devices, printers, and network adapters) that feature a clean, consistent, programming interface.
 
 The emulator comes with built-in debugging features and an easy to use graphical user interface.
-Apart from the emulator itself, several support utilities are provided that can get you quickly started in developing programs for µMPS3.
+Apart from the emulator itself, several support utilities are provided that can get you quickly started in developing programs for µMPS.
+
+µMPS is now in its third iteration: µMPS3.
+Due to the pedagogically driven changes implemented in µMPS3, this latest version is **NOT** backward compatible with either µMPS2 or µMPS(1).
+All references to µMPS on these VirtualSquare/µMPS web pages are to the current version, µMPS3, unless explicitly stated.
 
 µMPS3 is free software, licensed under the [GNU General Public License, version 3](https://www.gnu.org/licenses/gpl-3.0.html).
 
@@ -22,25 +26,25 @@ Apart from the emulator itself, several support utilities are provided that can 
 ### Architecture Features
 
 - **MIPS CPU**:
-The µMPS3 integer instruction set is a strict superset of MIPS I.
+The µMPS integer instruction set is a strict superset of MIPS I.
 The extensions include a *wait for interrupt* instruction (a must for every modern instruction set) and [read-modify-write](https://en.wikipedia.org/wiki/Read-modify-write) primitives.
-While fully compatible at the ISA level with real implementations of MIPS I (R2000/R3000), µMPS3 somewhat differs from those in the coprocessor interface. Compared to R2000/R3000 CPUs, µMPS3 provides simplified virtual memory management.
+While fully compatible at the ISA level with real implementations of MIPS I (R2000/R3000), µMPS somewhat differs from those in the coprocessor interface. Compared to R2000/R3000 CPUs, µMPS provides simplified virtual memory management.
 - **Multiprocessor support**:
-The µMPS3 architecture includes (shared memory) multiprocessor support.
+The µMPS architecture includes (shared memory) multiprocessor support.
 The multiprocessor hardware interface was designed to cater simple and sophisticated uses alike; it is simple to use for programmers who only need basic multiprocessor support, but also provides advanced features (such as fine grained interrupt distribution control) for systems that require them.
 Up to 16 processors are supported by the architecture.
 - **Peripheral devices**:
-µMPS3 supports the following hardware devices: disks, flash devices, terminals, network interfaces, and printers.
+µMPS supports the following hardware devices: disks, flash devices, terminals, network interfaces, and printers.
 The different device controllers have a simple and consistent memory-mapped I/O interface.
 Devices are backed by regular files by the emulator and non-volatile memory can be retained between emulation runs.
 
 ### Emulator Features
 
 - **Graphical user interface**:
-The µMPS3 emulator comes with a modern, easy to use graphical user interface, built using the [Qt framework](https://www.qt.io/).
+The µMPS emulator comes with a modern, easy to use graphical user interface, built using the [Qt framework](https://www.qt.io/).
 All user interactions with the emulator, from configuration of the emulated machine to debugging, are performed using the GUI.
 - **Built-in debugging features**:
-µMPS3 also comes with built in debugging support.
+µMPS also comes with built in debugging support.
 Most of the features you have come to expect from a debugger are present: breakpoints, memory traces, watchpoints, and a code disassembly view.
 Memory content from arbitrary memory regions can be displayed in hexadecimal representation and edited in-place.
 
@@ -53,25 +57,25 @@ Memory content from arbitrary memory regions can be displayed in hexadecimal rep
 
 ---
 
-## µMPS3 Versus Related Systems
+## µMPS Versus Related Systems
 
-### µMPS3 versus simple MIPS processor simulators
+### µMPS versus simple MIPS processor simulators
 
-We believe µMPS3 can be a replacement for the simple assembly source-level MIPS processor simulators, such as [SPIM](http://spimsimulator.sourceforge.net/) or [MARS](https://courses.missouristate.edu/KenVollmar/MARS/), that are widely used in introductory computer architecture or similar courses that include an assembly programming component.
-There are, nonetheless, striking differences between these and µMPS3:
+We believe µMPS can be a replacement for the simple assembly source-level MIPS processor simulators, such as [SPIM](http://spimsimulator.sourceforge.net/) or [MARS](https://courses.missouristate.edu/KenVollmar/MARS/), that are widely used in introductory computer architecture or similar courses that include an assembly programming component.
+There are, nonetheless, striking differences between these and µMPS:
 
-- Programs such as SPIM and MARS simulate the execution of MIPS programs by interpreting some variant of MIPS assembly language. By contrast, µMPS3 executes actual MIPS machine code.
-- µMPS3 emulates a complete computer system, as opposed to the above systems which only simulate a processor, and possibly a console device with an ad-hoc syscall interface.
+- Programs such as SPIM and MARS simulate the execution of MIPS programs by interpreting some variant of MIPS assembly language. By contrast, µMPS executes actual MIPS machine code.
+- µMPS emulates a complete computer system, as opposed to the above systems which only simulate a processor, and possibly a console device with an ad-hoc syscall interface.
 
-Note that, compared to simulators such as SPIM and MARS, programming for µMPS3 is somewhat more complex.
+Note that, compared to simulators such as SPIM and MARS, programming for µMPS is somewhat more complex.
 The learning curve is not very steep, however, and there is plenty of [documentation](#Documentation) and [tutorials](#Tutorials) to guide you.
 
-### µMPS3 versus other full system emulators
+### µMPS versus other full system emulators
 
 Emulators such as QEMU emulate real computer systems, including their complexities.
-µMPS3, on the other hand, was conceived primarily as a pedagogical tool and its architecture can be seen as an idealized and simplified version of existing ones.
+µMPS, on the other hand, was conceived primarily as a pedagogical tool and its architecture can be seen as an idealized and simplified version of existing ones.
 Also, because these emulators are meant to efficiently run real-world operating systems, they put first and foremost an emphasis on performance, at the cost of code complexity.
-The µMPS3 code base is, by comparison, significantly less complex and is approachable by less experienced programmers.
+The µMPS code base is, by comparison, significantly less complex and is approachable by less experienced programmers.
 
 ---
 
@@ -112,13 +116,14 @@ In addition to the implicit acknowledgments we have given above, the authors wou
 - Michael Goldweber, Renzo Davoli, *µMPS3 Principles of Operation*, Lulu Books, 2020
 
 This book is the definitive reference on the µMPS3 architecture.
-It is an update to the µMPS3 architecture of earlier editions of this work, titled *µMPS Principles of Operation* and *µMPS2 Principles of Operation*.
+It represents an update to the µMPS architecture defined in earlier editions of this work, titled *µMPS Principles of Operation* and *µMPS2 Principles of Operation*.
 
 ### Articles and Papers
 
-- M. Morsiani, R. Davoli, *Learning Operating Systems Structure and Implementation through the MPS Computer System Simulator*, in *The Proceedings of the Thirtieth SIGCSE Technical Symposium on Computer Science Education*, SIGCSE '99, (New York, NY, USA), pp. 63-67, ACM, March 1999. [PDF](http://mps.sourceforge.net/pdf/MPSpaper.pdf)
-- Michael Goldweber, Renzo Davoli, Mauro Morsiani, *The Kaya OS Project and the µMPS Hardware Emulator*, in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 49–53, ACM, June 2005. [PDF](http://mps.sourceforge.net/pdf/uMPSpaper.pdf)
-- M. Goldweber, R. Davoli, and T. Jonjic,	*Supporting Operating Systems Projects Using the µMPS2 Hardware Simulator*,	in *Proceedings of the 17th ACM Annual Conference on Innovation and Technology in Computer Science Education*, ITiCSE '12, (New York, NY, USA), pp. 63–68, ACM, July 2012.
+- M. Morsiani, R. Davoli, [*Learning Operating Systems Structure and Implementation through the MPS Computer System Simulator*](https://dl.acm.org/doi/10.1145/299649.299683), in *The Proceedings of the Thirtieth SIGCSE Technical Symposium on Computer Science Education*, SIGCSE '99, (New York, NY, USA), pp. 63-67, ACM, March 1999. [PDF](http://mps.sourceforge.net/pdf/MPSpaper.pdf)
+- Michael Goldweber, Renzo Davoli, Mauro Morsiani, [*The Kaya OS Project and the µMPS Hardware Emulator*](https://dl.acm.org/doi/10.1145/1067445.1067462), in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 49–53, ACM, June 2005. [PDF](http://mps.sourceforge.net/pdf/uMPSpaper.pdf)
+- M. Goldweber, R. Davoli, [*Virtual square (V^2) in Computer Science Education*](https://dl.acm.org/doi/10.1145/1067445.1067528), in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 301–305, ACM, June 2005.
+- M. Goldweber, R. Davoli, and T. Jonjic,	[*Supporting Operating Systems Projects Using the µMPS2 Hardware Simulator*](https://dl.acm.org/doi/10.1145/2325296.2325315),	in *Proceedings of the 17th ACM Annual Conference on Innovation and Technology in Computer Science Education*, ITiCSE '12, (New York, NY, USA), pp. 63–68, ACM, July 2012.
 
 ### Theses
 
