@@ -99,6 +99,8 @@ All of the above should become clear once you start perusing the available docum
 
 ### Running the Program
 
+Launch µMPS3 via the application menu of your desktop environment or by typing `umps3` at the command line.
+
 To run the above example you need to create a new machine.
 This is performed using the GUI and is easy enough that it should require little explanation: simply create a new machine configuration (giving it any name you like) in the directory where the example program resides.
 
