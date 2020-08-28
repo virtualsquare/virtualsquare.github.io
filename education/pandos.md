@@ -18,6 +18,30 @@ From [*The Student Guide to the PandOS Operating System Project*](#Documentation
 >
 > PandOS is the latest revamping-modernization of this design for implementation on μMPS3.
 
+### Kaya
+
+The Kaya project is the predecessor of PandOS, developed for µMPS and µMPS2.
+
+Being µMPS3 **NOT** backward compatible with software developed for previous versions of the architecture (µMPS and µMPS2), Kaya has been superseded by PandOS and therefore retired.
+
+---
+
+## Downloads
+
+The PandOS project described in the [*The Student Guide to the PandOS Operating System Project*](#Documentation) recommends the use of some test files, sample Makefiles, and some other miscellaneous header files.
+
+- [const.h](src/const.h): This header file contains utility constants & macro definitions
+- [types.h](src/types.h): This header file contains utility types definitions
+
+### Phase 1
+
+- [P1-Makefile](src/P1-Makefile)
+- [p1test.c](src/p1test.c)
+
+### Phase 2
+
+- [p2test.c](src/p2test.c)
+
 ---
 
 ## Levels
@@ -85,3 +109,7 @@ why not?
 ## Documentation
 
 - Michael Goldweber, Renzo Davoli, *The Student Guide to the PandOS Operating System Project*, 2020. [PDF](doc/pandos.pdf)
+
+### Historical documentation
+
+- Michael Goldweber, Renzo Davoli, *The Student Guide to the Kaya Operating System Project*, 2011. [PDF](https://www.iro.umontreal.ca/~monnier/2245/h2012/student-guide.pdf)

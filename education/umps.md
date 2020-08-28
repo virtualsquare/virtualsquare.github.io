@@ -11,9 +11,13 @@ The architecture details a complete set of I/O devices (terminals, disks, flash 
 The emulator comes with built-in debugging features and an easy to use graphical user interface.
 Apart from the emulator itself, several support utilities are provided that can get you quickly started in developing programs for µMPS.
 
-µMPS is free software, licensed under the [GNU General Public License, version 3](https://www.gnu.org/licenses/gpl-3.0.html).
+µMPS is now in its third iteration: µMPS3.
+Due to the pedagogically driven changes implemented in µMPS3, this latest version is **NOT** backward compatible with either µMPS2 or µMPS(1).
+All references to µMPS on these VirtualSquare/µMPS web pages are to the current version, µMPS3, unless explicitly stated.
 
-µMPS is available on GitHub at [https://github.com/virtualsquare/umps3](https://github.com/virtualsquare/umps3).
+µMPS3 is free software, licensed under the [GNU General Public License, version 3](https://www.gnu.org/licenses/gpl-3.0.html).
+
+µMPS3 is available on GitHub at [https://github.com/virtualsquare/umps3](https://github.com/virtualsquare/umps3).
 
 ---
 
@@ -26,7 +30,7 @@ The µMPS integer instruction set is a strict superset of MIPS I.
 The extensions include a *wait for interrupt* instruction (a must for every modern instruction set) and [read-modify-write](https://en.wikipedia.org/wiki/Read-modify-write) primitives.
 While fully compatible at the ISA level with real implementations of MIPS I (R2000/R3000), µMPS somewhat differs from those in the coprocessor interface. Compared to R2000/R3000 CPUs, µMPS provides simplified virtual memory management.
 - **Multiprocessor support**:
-The µMPS3 architecture includes (shared memory) multiprocessor support.
+The µMPS architecture includes (shared memory) multiprocessor support.
 The multiprocessor hardware interface was designed to cater simple and sophisticated uses alike; it is simple to use for programmers who only need basic multiprocessor support, but also provides advanced features (such as fine grained interrupt distribution control) for systems that require them.
 Up to 16 processors are supported by the architecture.
 - **Peripheral devices**:
@@ -48,8 +52,8 @@ Memory content from arbitrary memory regions can be displayed in hexadecimal rep
 
 ## Tutorials
 
-- [How to install µMPS](tutorials/umps/installation.md)
-- [How to get started using µMPS](tutorials/umps/getting_started.md)
+- [How to install µMPS3](tutorials/umps/installation.md)
+- [How to get started using µMPS3](tutorials/umps/getting_started.md)
 
 ---
 
@@ -99,7 +103,7 @@ This third release, the one implemented by the current version of the emulator, 
 - The project building process migrated from the GNU Autotools to CMake
 - The graphical user interface has been updated from Qt4 to Qt5 and slightly modified
 
-The authoritative reference on µMPS, *µMPS(2/3) Principles of Operation*, was written by Michael Goldweber and Renzo Davoli.
+The authoritative reference on µMPS(2/3), *µMPS(2/3) Principles of Operation*, was written by Michael Goldweber and Renzo Davoli.
 
 In addition to the implicit acknowledgments we have given above, the authors would also like to thank the numerous students who have assisted the project by testing it and by giving valuable suggestions.
 
@@ -112,13 +116,14 @@ In addition to the implicit acknowledgments we have given above, the authors wou
 - Michael Goldweber, Renzo Davoli, *µMPS3 Principles of Operation*, Lulu Books, 2020
 
 This book is the definitive reference on the µMPS3 architecture.
-It is an update to the µMPS3 architecture of earlier editions of this work, titled *µMPS Principles of Operation* and *µMPS2 Principles of Operation*.
+It represents an update to the µMPS architecture defined in earlier editions of this work, titled *µMPS Principles of Operation* and *µMPS2 Principles of Operation*.
 
 ### Articles and Papers
 
-- M. Morsiani, R. Davoli, *Learning Operating Systems Structure and Implementation through the MPS Computer System Simulator*, in *The Proceedings of the Thirtieth SIGCSE Technical Symposium on Computer Science Education*, SIGCSE '99, (New York, NY, USA), pp. 63-67, ACM, March 1999. [PDF](http://mps.sourceforge.net/pdf/MPSpaper.pdf)
-- Michael Goldweber, Renzo Davoli, Mauro Morsiani, *The Kaya OS Project and the µMPS Hardware Emulator*, in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 49–53, ACM, June 2005. [PDF](http://mps.sourceforge.net/pdf/uMPSpaper.pdf)
-- M. Goldweber, R. Davoli, and T. Jonjic,	*Supporting Operating Systems Projects Using the µMPS2 Hardware Simulator*,	in *Proceedings of the 17th ACM Annual Conference on Innovation and Technology in Computer Science Education*, ITiCSE '12, (New York, NY, USA), pp. 63–68, ACM, July 2012.
+- M. Morsiani, R. Davoli, [*Learning Operating Systems Structure and Implementation through the MPS Computer System Simulator*](https://dl.acm.org/doi/10.1145/299649.299683), in *The Proceedings of the Thirtieth SIGCSE Technical Symposium on Computer Science Education*, SIGCSE '99, (New York, NY, USA), pp. 63-67, ACM, March 1999. [PDF](http://mps.sourceforge.net/pdf/MPSpaper.pdf)
+- Michael Goldweber, Renzo Davoli, Mauro Morsiani, [*The Kaya OS Project and the µMPS Hardware Emulator*](https://dl.acm.org/doi/10.1145/1067445.1067462), in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 49–53, ACM, June 2005. [PDF](http://mps.sourceforge.net/pdf/uMPSpaper.pdf)
+- M. Goldweber, R. Davoli, [*Virtual square (V^2) in Computer Science Education*](https://dl.acm.org/doi/10.1145/1067445.1067528), in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 301–305, ACM, June 2005.
+- M. Goldweber, R. Davoli, and T. Jonjic,	[*Supporting Operating Systems Projects Using the µMPS2 Hardware Simulator*](https://dl.acm.org/doi/10.1145/2325296.2325315),	in *Proceedings of the 17th ACM Annual Conference on Innovation and Technology in Computer Science Education*, ITiCSE '12, (New York, NY, USA), pp. 63–68, ACM, July 2012.
 
 ### Theses
 
