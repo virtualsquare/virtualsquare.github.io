@@ -54,6 +54,26 @@ function install_repo {
 	cd $PREWD
 }
 
+function install_picotcp {
+        REPO=$1
+        REPOBASE=${REPO##*/}
+        REPOBASE=${REPOBASE%%.*}
+        PREWD=$(pwd)
+        echo installing $1
+        cd  "$BASE"/gits
+        git clone --recurse-submodules $1
+        cd $REPOBASE
+        make gnulib
+        PREFIX=/usr/local
+        BUILD=build
+        cp ${BUILD}/lib/libpicotcp.so ${PREFIX}/lib/
+        mkdir -p ${PREFIX}/include/picotcp
+        cp ${BUILD}/include/*.h ${PREFIX}/include/picotcp/
+        cp -r ${BUILD}/include/arch ${PREFIX}/include/picotcp/
+        ldconfig
+        cd $PREWD
+}
+
 # Start installation
 rm -rf gits
 mkdir gits
@@ -84,6 +104,9 @@ install_repo https://github.com/virtualsquare/randmac.git
 install_repo https://github.com/rd235/libpam-net.git -DLIBSECURITYDIR=/lib/x86_64-linux-gnu/security/
 install_repo https://github.com/virtualsquare/vufusearchive.git
 install_repo https://github.com/virtualsquare/fusefatfs.git
+install_picotcp https://github.com/virtualsquare/picotcp.git
+install_repo https://github.com/virtualsquare/picoxnet.git
+install_repo https://github.com/virtualsquare/vunetpicox.git
 
 rm -f /usr/local/lib/vu/modules/vufuseext2.so /usr/local/lib/vu/modules/vufuseext2.re
 ln -s /usr/local/lib/umview/modules/umfuseext2.so /usr/local/lib/vu/modules/vufuseext2.so
