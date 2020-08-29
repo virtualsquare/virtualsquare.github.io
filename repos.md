@@ -76,6 +76,8 @@ mount FAT file systems using FUSE anf VUOS/vufuse
  * [vufusearchive](https://github.com/virtualsquare/vufusearchive)
 A `vufuse module based on libarchive: it supports tar/zip/iso (including compressed archives)
 
+ * [vunetpicox](https://github.com/virtualsquare/vunetpicox) A VUOS vunet module for picoxnet.
+
  * [&#9785; view-os](https://github.com/virtualsquare/view-os)
 View-OS is the previous implementation of VUOS. This repository also includes lwipv6, a hybrid v4/v6 netwrking stack
 implemented as a library.
@@ -92,9 +94,14 @@ simplicity and elegance on one side, and realism on the other.
 
  * [picotcp](https://github.com/virtualsquare/picotcp): picoTCP is a small-footprint,
 modular TCP/IP stack designed for embedded systems and the Internet of Things.
+This fork is also known as picoTCP-ng.
 There is also an exprerimental-still unofficial Debian package (on
 [salsa](https://salsa.debian.org/virtualsquare-team/picotcp)) which
 generates/installs a shared library to support IoTh (Internet of Threads).
+
+ * [picoxnet](https://github.com/virtualsquare/picoxnet) a stack for the Internet of Threads based on picoTCP-ng.
+picoxnet provides a standard API based on BSD-Sockets, it supports NETLINK for stack configuration. The file descriptors
+defined by picoxnet's functions can be used in event driven system calls like `select`, `poll`, `epoll`, etc.
 
  * [strcase](https://github.com/rd235/strcase)
 Multiway branch (switch) for short strings in C (in one header file)

@@ -6,6 +6,8 @@ There is also an exprerimental-still unofficial Debian package (on
 [salsa](https://salsa.debian.org/virtualsquare-team/picotcp)) which
 generates/installs a shared library to support IoTh (Internet of Threads).
 
+Warning: picotcp is *not* yet ready to enter Debian. We are working on it.
+
 ----
 
 New: [vufusearchive](https://github.com/virtualsquare/vufusearchive)
