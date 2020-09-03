@@ -34,6 +34,7 @@
   * # Internet of Threads & VDE
 	* [Internet of Threads (IoTh): intro](tutorials/ioth.md)
 	* [IoTh: vdestack](tutorials/ioth_vdestack.md)
+	* [picoxnet: a stack for the IoTh](tutorials/ioth_picoxnet.md)
   - - - -
   * # VUOS
 	* [VUOS/umvu basic concepts](tutorials/vuosbasics.md)
