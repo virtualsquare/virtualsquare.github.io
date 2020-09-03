@@ -180,7 +180,7 @@ NLINLINE_LIBMULTI(picox_)
 		int n;
 		char buf[BUFSIZE];
 		// this poll uses a picoxnet socket and stdin
-		struct pollfd pfd[]={{0, POLLIN, 0}, {fd, POLLIN, 0}};
+		struct pollfd pfd[]={ {0, POLLIN, 0}, {fd, POLLIN, 0} };
 		for (;;) {
 			poll(pfd, 2, -1);
 			if (pfd[0].revents) {
@@ -379,7 +379,7 @@ NLINLINE_LIBMULTI(picox_)
 		int n;
 		char buf[BUFSIZE];
 		// this poll uses a picoxnet socket and stdin
-		struct pollfd pfd[]={{0, POLLIN, 0}, {fd, POLLIN, 0}};
+		struct pollfd pfd[]={ {0, POLLIN, 0}, {fd, POLLIN, 0} };
 		for (;;) {
 			poll(pfd, 2, -1);
 			if (pfd[0].revents) {
