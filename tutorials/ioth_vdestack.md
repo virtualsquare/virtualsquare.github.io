@@ -151,32 +151,32 @@ NLINLINE_LIBMULTICOMP(vde_)
 * the `net_setup` has been rewritten to use netlink.
 ```C
 struct vdestack *net_setup(void) {
- struct vdestack *mystack;
- uint8_t ipv4addr[] = {10,0,0,60};
- uint8_t ipv4gw[] = {10,0,0,1};
- uint8_t ipv6addr[16] = {0xfc, 0x00, [13] = 0x1, [15] = 0x60};
- uint8_t ipv6gw[16] = {0xfc, 0x00, [13] = 0x1, [15] = 0x1};
- int ifindex;
+	struct vdestack *mystack;
+	uint8_t ipv4addr[] = {10,0,0,60};
+	uint8_t ipv4gw[] = {10,0,0,1};
+	uint8_t ipv6addr[16] = {0xfc, 0x00, [13] = 0x1, [15] = 0x60};
+	uint8_t ipv6gw[16] = {0xfc, 0x00, [13] = 0x1, [15] = 0x1};
+	int ifindex;
 
- mystack = vde_addstack("vxvde://234.0.0.1", NULL);
- ifindex = vde_if_nametoindex(mystack, "vde0");
- if (ifindex < 0) {
-  perror("nametoindex");
-  exit(1);
- }
+	mystack = vde_addstack("vxvde://234.0.0.1", NULL);
+	ifindex = vde_if_nametoindex(mystack, "vde0");
+	if (ifindex < 0) {
+		perror("nametoindex");
+		exit(1);
+	}
 
- if (vde_linksetupdown(mystack, ifindex, 1) < 0)
-  perror("link up");
- if (vde_ipaddr_add(mystack, AF_INET, ipv4addr, 24, ifindex) < 0)
-  perror("addr ipv4");
- if (vde_iproute_add(mystack, AF_INET, NULL, 0, ipv4gw) < 0)
-  perror("route ipv4");
- if (vde_ipaddr_add(mystack, AF_INET6, ipv6addr, 64, ifindex) < 0)
-  perror("addr ipv6");
- if (vde_iproute_add(mystack, AF_INET6, NULL, 0, ipv6gw) < 0)
-  perror("route ipv6");
+	if (vde_linksetupdown(mystack, ifindex, 1) < 0)
+		perror("link up");
+	if (vde_ipaddr_add(mystack, AF_INET, ipv4addr, 24, ifindex) < 0)
+		perror("addr ipv4");
+	if (vde_iproute_add(mystack, AF_INET, NULL, 0, ipv4gw) < 0)
+		perror("route ipv4");
+	if (vde_ipaddr_add(mystack, AF_INET6, ipv6addr, 64, ifindex) < 0)
+		perror("addr ipv6");
+	if (vde_iproute_add(mystack, AF_INET6, NULL, 0, ipv6gw) < 0)
+		perror("route ipv6");
 
- return mystack;
+	return mystack;
 }
 ```
 
