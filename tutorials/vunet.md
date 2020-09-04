@@ -54,7 +54,7 @@ The command
 ```
 $$ vustack /dev/net/mystack bash
 ```
-starts a new stack using `/dev/net/mystack` as default network.
+starts a new shell (bash) using `/dev/net/mystack` as default network.
 
 Let us configure the new stack:
 ```

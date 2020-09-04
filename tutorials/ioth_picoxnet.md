@@ -106,7 +106,6 @@ void server(int fd) {
 	char buf[BUFSIZE];
 
 	for ( ; ; ) {
-		int n;
 		pthread_t pt;
 		connfd = picox_accept (fd, NULL, NULL);
 		if (connfd < 0)
@@ -306,7 +305,6 @@ void server(int fd) {
 	char buf[BUFSIZE];
 
 	for ( ; ; ) {
-		int n;
 		pthread_t pt;
 		connfd = picox_accept (fd, NULL, NULL);
 		if (connfd < 0)
@@ -460,4 +458,84 @@ connection (the server waits for a long timeout).
 
 ## An IoTh event driven chat server
 
-## A simple IoTh web server
+The complete code of this program is [`picox_chat.c`](/archive/ioth_examples/picox_chat.c)
+
+The program uses `poll` to handle the events using a `struct pollfd` array of MAXFD elements. The first element is used to
+process the `accept` events. Initially this is the only valid element, all the other have their `fd` fields set to `-1`.
+When a client opens a connection `poll` detects a  `POLLIN` event on the first element: an usused element of the poll array is 
+allocated for the new conenction (if available).
+Then an incoming message generates a `POLLIN` event (on an element different from the first). Messages are re-sent to all
+the other connected sockets.
+
+### compile and test
+
+This is the compilation command:
+```
+gcc -o picox_chat picox_chat.c -lpicoxnet
+```
+
+`picox_chat` needs four parameters: vde network, ip address, prefix length and port. For example:
+```
+./picox_chat hub:///tmp/hub 10.0.0.1 24 100
+```
+This chat is connected to the VDE hub `/tmp/hub` the IPv4 address is 10.0.0.1/24 and the chat service uses the port 100.
+
+On another terminal window start a `vdens` connected to the hub, configure it with a suitable IP address and use netcat to
+open a connection to the chat server:
+```
+vdens vde:///tmp/hub
+ip addr add 10.0.0.2/24 dev vde0
+ip link set vde0 up
+nc 10.0.0.1 100
+```
+In a similar way other clients can be started:
+```
+vdens vde:///tmp/hub
+ip addr add 10.0.0.3/24 dev vde0
+ip link set vde0 up
+nc 10.0.0.1 100
+```
+
+Now any message typed on a netcat client appears on all the others.
+
+Note: this example uses IPv4 addresses. The program supports IPv6, too.
+
+## A simple IoTh http server
+
+
+The complete code of this program is [`picox_httpserv.c`](/archive/ioth_examples/picox_httpserv.c)
+
+`picox_httpserv.c` requires three parameters: VDE network, IP addressi (v4 or v6), prefix.
+
+THe main program configures the stack, creates a socket and binds it to the port 80, then for any incomping connection it
+starts a thread which runs the code of the function `handle`.
+
+`handle` implements a trivial parsing of the http request and generates the reply message using:
+
+* `httpserv_senddir` in case of a directory,
+* `httpserv_sendfile` if the path names a regular file,
+* `httpserv_err` to generate a 404 error
+
+### compile and run
+
+
+This is the compilation command:
+```
+gcc -o picox_httpserv picox_httpserv.c -lpicoxnet -lpthread
+```
+
+Then for example `picox_httpserv` canbe executed in this way:
+```
+./picox_httpserv switch:///tmp/mysw 10.0.0.1 24
+```
+
+T complte the test it needs a web browser connected to teh same virtual network.
+e.g. usiign `vdens`:
+```
+vdens vde:///tmp/mysw
+ip addr add 10.0.0.4/24 dev vde0
+ip link set vde0 up
+firefox
+```
+
+Now use `10.0.0.1` as URL. 
