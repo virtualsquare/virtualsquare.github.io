@@ -18,8 +18,8 @@ virtual architecture of this example.
 ![vunetvdestack example](pictures/vuos_vunetvdestack.png)
 
 
-In a VUOS window let us load the `vuet` module and then _mount~ a new TCP-IP
-stack (provided by libvdestack) as `/dev/net/mysstack.
+In a VUOS window let us load the `vuet` module and then _mount_ a new TCP-IP
+stack (provided by libvdestack) as `/dev/net/mystack.
 
 ```
 $$ vu_insmod vunet
@@ -108,6 +108,74 @@ $$ nc fc00::1:1 7000
 
 What is typed in a window appears in the other and vice-versa.
 
+## vunetpicox: a stack entirely in user space
+
+![vunetpicox example](pictures/vuos_vunetpicox.png)
+
+`vunetpicox` can be used in place of `vunetvdestack`: the former uses a stack entirely implemented
+in usr space (`picoxnet`) while the latter uses the implementation of the TCP-IP stack of Linux
+(through the definition of a namespace).
+
+From the user interface point of view there are only marginal differences.
+
+Ina VUOS window let us load `vunet` and  _mount_ a `vunetpicox` stack as `/dev/net/picox`.
+```
+$$ vu_insmod vunet
+$$ vumount -t vunetpicox vxvde://234.0.0.1 /dev/net/picox
+```
+
+Let us start a _bash_ shell using `/dev/net/pixox` as default network and configure our new net:
+```
+$$ vustack /dev/net/picox bash
+$$ ip addr add 10.0.0.80/24 dev vde0
+$$ ip addr add fc00::1:80/64 dev vde0
+$$ ip link set vde0 up
+$$ ip addr
+2090479455: loop: <UP> mtu 1500
+    link/netrom 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+    inet6 ::1/128 scope host dynamic loop
+2090826452: vde0: <UP> mtu 1500
+    link/netrom 80:00:40:79:ef:22 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.0.80/24 scope global dynamic vde0
+    inet6 fc00::1:80/64 scope global dynamic vde0
+    inet6 fe80::8200:40ff:fe79:ef22/64 scope link dynamic vde0
+```
+
+Note: `picoxnet` uses large integers as interface identifiers. It is not an error.
+
+Using another terminal window on the hosting system (not a VUOS session) start and configure a vdens session.
+
+```
+$ vdens vxvde://234.0.0.1
+$# ip addr add 10.0.0.1/24 dev vde0
+$# ip addr add fc00::1:1/64 dev vde0
+$# ip link set vde0 up
+```
+
+Now it is possible to test the reachability using ping, e.g. from the vdens session:
+```
+$# ping -c 2 10.0.0.80
+PING 10.0.0.80 (10.0.0.80) 56(84) bytes of data.
+64 bytes from 10.0.0.80: icmp_seq=1 ttl=64 time=3.32 ms
+64 bytes from 10.0.0.80: icmp_seq=2 ttl=64 time=1.93 ms
+
+--- 10.0.0.80 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 1.926/2.621/3.317/0.695 ms
+$# ping -c 2 fc00::1:80
+PING fc00::1:80(fc00::1:80) 56 data bytes
+64 bytes from fc00::1:80: icmp_seq=1 ttl=64 time=3.30 ms
+64 bytes from fc00::1:80: icmp_seq=2 ttl=64 time=2.41 ms
+
+--- fc00::1:80 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 2.414/2.858/3.302/0.444 ms
+```
+
+Netcat can be used to test connections.
+
+Warning: picoxnet handles IPv4 and IPv6 as independent stacks. So an IPv6 `bind` or `connect` does __not__ manage IPv4
+services.
 
 ## Disable the networking: vdenetnull
 

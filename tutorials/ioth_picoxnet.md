@@ -260,12 +260,12 @@ connection (the server waits for a long timeout).
 
 Note: the server can support several concurrent clients using multiple threads
 
-Note: the client uses a `poll` system call to wait for events from the standard input and from teh picox socket
+Note: the client uses a `poll` system call to wait for events from the standard input and from the picox socket
 
 
 ## IoTh IPv6 client-server
 
-The example presented in the previous section works in IPV6 just by changing the IP addresses and socket types.
+The example presented in the previous section works in IPv6 just by changing the IP addresses and socket types.
 
 ### `picox_server6.c
 
@@ -462,8 +462,8 @@ The complete code of this program is [`picox_chat.c`](/archive/ioth_examples/pic
 
 The program uses `poll` to handle the events using a `struct pollfd` array of MAXFD elements. The first element is used to
 process the `accept` events. Initially this is the only valid element, all the other have their `fd` fields set to `-1`.
-When a client opens a connection `poll` detects a  `POLLIN` event on the first element: an usused element of the poll array is 
-allocated for the new conenction (if available).
+When a client opens a connection `poll` detects a  `POLLIN` event on the first element: an unused element of the poll array is 
+allocated for the new connection (if available).
 Then an incoming message generates a `POLLIN` event (on an element different from the first). Messages are re-sent to all
 the other connected sockets.
 
@@ -502,12 +502,11 @@ Note: this example uses IPv4 addresses. The program supports IPv6, too.
 
 ## A simple IoTh http server
 
-
 The complete code of this program is [`picox_httpserv.c`](/archive/ioth_examples/picox_httpserv.c)
 
 `picox_httpserv.c` requires three parameters: VDE network, IP addressi (v4 or v6), prefix.
 
-THe main program configures the stack, creates a socket and binds it to the port 80, then for any incomping connection it
+THe main program configures the stack, creates a socket and binds it to the port 80, then for any incoming connection it
 starts a thread which runs the code of the function `handle`.
 
 `handle` implements a trivial parsing of the http request and generates the reply message using:
@@ -518,8 +517,8 @@ starts a thread which runs the code of the function `handle`.
 
 ### compile and run
 
-
 This is the compilation command:
+
 ```
 gcc -o picox_httpserv picox_httpserv.c -lpicoxnet -lpthread
 ```
@@ -529,7 +528,7 @@ Then for example `picox_httpserv` canbe executed in this way:
 ./picox_httpserv switch:///tmp/mysw 10.0.0.1 24
 ```
 
-T complte the test it needs a web browser connected to teh same virtual network.
+The test needs a web browser connected to the same virtual network.
 e.g. usiign `vdens`:
 ```
 vdens vde:///tmp/mysw
@@ -538,4 +537,7 @@ ip link set vde0 up
 firefox
 ```
 
-Now use `10.0.0.1` as URL. 
+Now use `http://10.0.0.1` or simply `10.0.0.1` as URL. 
+
+Note: `picox_httpserv` supports IPv6 addresses, e.g. `./picox_httpserv switch:///tmp/mysw fc00::2:1 64`.
+Note that square brackets are required in a URL to specify IPv6 addresses. e.g. : `http://[fc00::2:1]` or simply `[fc00::2:1]`
