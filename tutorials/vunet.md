@@ -177,6 +177,30 @@ Netcat can be used to test connections.
 Warning: picoxnet handles IPv4 and IPv6 as independent stacks. So an IPv6 `bind` or `connect` does __not__ manage IPv4
 services.
 
+## iplink: add/delete vunetpicox interfaces
+
+`iplink` allow users to add or delete interfaces whose types are not supported by `ip-link`(8).
+In fact iproute's `ip link` tool supports many types of interfaces (36 at the time of writing), and it generates a
+netlink request even when the type is not officially supported, but there is no way to send configuration parameters
+to set up a new interface.
+
+So for example in a `umvu` session, using a `vunetpicox` stack the command:
+```
+$$ ip link add vde1 type vde
+```
+creates a vde interface connected to the default VDE network (or pre-defined net as set in `~/.vdeplug/default`).
+
+The command `iplink` has syntax inspired by `ip link` but is support a `data` option:
+
+```
+$$ iplink add vde1 type vde data vxvde://234.0.0.1
+$$ iplink add vde2 type vde data slirp://
+```
+
+Note: For the interested readers, `iplink` uses the `IFLA_LINKINFO` option and
+its `IFLA_INFO_KIND` sub-option to define the type of the interface (exactly as
+`ip link` does). `iplink` can add the `IFLA_INFO_DATA` sub-option to send the configuration options.
+
 ## Disable the networking: vdenetnull
 
 We need to load the module (if not already loaded) and mount the `vunetnull`
