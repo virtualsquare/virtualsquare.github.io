@@ -95,7 +95,7 @@ Now the VM and all the VirtualSquare tools have been installed.
 
 When you want to try more tutorial experiments you can run just the following steps:
 
-* step 2: run the VM
+* step 3: run the VM
 * step 6: login as _user_
 * step 7: The VM is ready!
 * step 8: shut down the VM

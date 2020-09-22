@@ -53,7 +53,7 @@ The main features of VDE are:
 
 * consistent behavior with real ethernet network.
 * It enables interconnection between virtual machines, applications and virtual connectivity tools.
-* Last but not least, it does not requires administrative privileges to run.
+* Last but not least, it does not require administrative privileges to run.
 
 Vde now implements the idea of Local Area Cloud using vxvde: virtual machines, namespaces,
 processes running their own networking stacks, also running on different hosts on a LAN,
