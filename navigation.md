@@ -1,14 +1,16 @@
 <!--
-# Your wiki name
+# VirtualSquare
 -->
 
 [![](v2.png)](index.md)
 
 [VirtualSquare]()
 
+  * # VirtualSquare
   * [home](index.md)
   * [status](status.md)
   * [contacts](contacts.md)
+  * [navigation bar](navigation.md)
 
 [Docs]()
 
