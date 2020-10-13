@@ -1,5 +1,10 @@
 ## News
 
+new: vde-2 new packet is in Debian unstable. Some details still need to be fixed, but now
+vdeplug4 can move from experiemntal to unstable.
+
+----
+
 new: [picotcp](https://github.com/virtualsquare/picotcp): picoTCP is a small-footprint, 
 modular TCP/IP stack designed for embedded systems and the Internet of Things. 
 There is also an exprerimental-still unofficial Debian package (on 
@@ -60,31 +65,23 @@ it is more effective to propose one package per project.
   * libfduserdata
   * libstropt
   * nlinline
+	* randmac
 
 #### in Debian stable
   * libexecs (move to virtualsquare team)
 
-### vde2
-Attention: we are still waiting the new packet to leave the NEW-BYHAND queue (*six monthes!*)
-
-This is a bottleneck for us, `vdeplug4` cannot migrate from experimental to unstable,
-and all the other plugs we can package has to wait in experimental.
+### Removal of obsolete debhelper compat 5 and 6
+	* fuse-umfuse-ext2
 
 ### vdeplug4
-Note: still in experimental, it collides with current vde2 on unstable
+Note: still in experimental, waiting to be promoted to unstable.
 
 ### purelibc
-purelibc 1.0.2 is in sid and testing. Some work must be done to port on some architectures.
-NEW: faccessat emulation added. Debian package needs to be updated.
-
-### libstropt:
-NEW: there is bugfix (on GITHUB). Debian package needs to be updated.
+purelibc 1.0.3 is in sid and testing. Some work must be done to port on some architectures.
+NEW: faccessat emulation added.
 
 ### libpam-net
 Packaged. in the NEW queue.for sid
-
-### randmac
-Packaged, in the NEW queue for sid
 
 ### umps
 Packaged: it should be ready for the NEW queue
@@ -96,9 +93,6 @@ Note: can enter experimental only as it needs vdeplug4
 
 ### libvpoll-eventfd
 Packaged. Some checks needed for the kernel module. Almost ready for the NEW queue.
-
-### libvdeplug\_vdesl:
-Ready to be packaged.
 
 ## Open Suse
 [... add status here]
@@ -133,6 +127,8 @@ could be packaged, it is a useful tool.
 
 ### dnsutils
 
+### mutli-arch support for vuos modules
+
 ## Design stage
 
 ### new vde\_switch
@@ -141,4 +137,4 @@ could be packaged, it is a useful tool.
 
 ### new vdetelweb
 
-### lwipv6 convergence
+### lwip/lwipv6 convergence

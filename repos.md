@@ -53,6 +53,9 @@ several tools that are actual like vde\switch and wirefilter.
  * [&#9785; vdetelweb](https://github.com/virtualsquare/vdetelweb)
 Telnet and web configuration client for vde\_switch and wirefilter
 
+ * [&#9785; vde\_dnsutils](https://github.com/rd235/vde_dnsutils)
+DNS utilities for vde projects (hashdns/fqdndhcp)
+
  * [&#9785; ipn](https://github.com/virtualsquare/ipn)
 inter process networking, a proposal for a multicasting API in Linux (interesting but obsolete)
 
