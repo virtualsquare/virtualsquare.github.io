@@ -46,12 +46,7 @@ creates a 4Mbps ethernet link connecting the two `vdesl0` interfaces.
 ## Debian
 
 Warning: debhelper compat 5 and 6 are now planned for removal. V² packages affected:
-fuse-umfuse-ext2, fuse-umfuse-fat, lwipv6, umview, vdetelweb. vde2: the new package
-waiting in the NEW queue for 8 monthes would solve the compat problem.
-
-Note: we worked on a v2util package including all the small projects (mainly utility
-libraries). Given the experience on complex projects waiting in the WAIT/BYHAND queue
-it is more effective to propose one package per project.
+fuse-umfuse-ext2, vdetelweb, vde2.
 
 ### packaged projects 
 #### Debian unstable/testing
@@ -69,9 +64,6 @@ it is more effective to propose one package per project.
 
 #### in Debian stable
   * libexecs (move to virtualsquare team)
-
-### Removal of obsolete debhelper compat 5 and 6
-	* fuse-umfuse-ext2
 
 ### vdeplug4
 Note: still in experimental, waiting to be promoted to unstable.
