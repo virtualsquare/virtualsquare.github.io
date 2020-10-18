@@ -46,7 +46,17 @@ creates a 4Mbps ethernet link connecting the two `vdesl0` interfaces.
 ## Debian
 
 Warning: debhelper compat 5 and 6 are now planned for removal. V² packages affected:
-fuse-umfuse-ext2, vdetelweb, vde2.
+fuse-umfuse-ext2, vdetelweb.
+
+### TODO:
+  * vde-2: close the bug #965872 (Removal of obsolete debhelper compat 5 and 6). debhelper compat is 10.
+  * fuse-umfuse-ext2, vdetelweb: update debhelper
+  * vdeplug4: promote from experimental to sid/unstable
+  * purelic: FTBFS the latest version on GITHUB should fix the remaining incompatibilities
+  * fuse-umfuse-iso9660:  FTBFS. libumlib is a requirement (in debian/control and configure.ac but it seems it is not needed at all. please ck).
+  * libvpoll-eventfd on salsa is ready to be submitted in new for SID
+  * vdeplug_slirp, vdeplug_vdels, vdeplug_vlan, vdeplug_agno can be packaged 
+  * libexecs: move to the set of virtualsquare team packages
 
 ### packaged projects 
 #### Debian unstable/testing
@@ -60,7 +70,8 @@ fuse-umfuse-ext2, vdetelweb, vde2.
   * libfduserdata
   * libstropt
   * nlinline
-	* randmac
+  * randmac
+  * libpam-net
 
 #### in Debian stable
   * libexecs (move to virtualsquare team)
@@ -72,10 +83,7 @@ Note: still in experimental, waiting to be promoted to unstable.
 purelibc 1.0.3 is in sid and testing. Some work must be done to port on some architectures.
 NEW: faccessat emulation added.
 
-### libpam-net
-Packaged. in the NEW queue.for sid
-
-### umps
+### umps3
 Packaged: it should be ready for the NEW queue
 
 ### vdeplug\_slirp, vdeplug\_vdesl, vdeplug\_vlan
