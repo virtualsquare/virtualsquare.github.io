@@ -50,6 +50,13 @@ Memory content from arbitrary memory regions can be displayed in hexadecimal rep
 
 ---
 
+## Screenshots
+
+![sample screenshot](pictures/umps3-1.png)
+![sample screenshot](pictures/umps3-2.png)
+![sample screenshot](pictures/umps3-3.png)
+
+---
 ## Tutorials
 
 - [How to install µMPS3](tutorials/umps/installation.md)
