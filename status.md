@@ -1,7 +1,10 @@
 ## News
 
-new: vde-2 new packet is in Debian unstable. Some details still need to be fixed, but now
-vdeplug4 can move from experiemntal to unstable.
+new: libpam-net ad umps3 are in Debian unstable.
+
+----
+
+new: vde-2 new packet is in Debian unstable. Now vdeplug4 can move from experiemntal to unstable.
 
 ----
 
@@ -72,6 +75,7 @@ fuse-umfuse-ext2, vdetelweb.
   * nlinline
   * randmac
   * libpam-net
+  * umps3
 
 #### in Debian stable
   * libexecs (move to virtualsquare team)
@@ -81,10 +85,7 @@ Note: still in experimental, waiting to be promoted to unstable.
 
 ### purelibc
 purelibc 1.0.3 is in sid and testing. Some work must be done to port on some architectures.
-NEW: faccessat emulation added.
-
-### umps3
-Packaged: it should be ready for the NEW queue
+NEW: faccessat emulation added. NEW: teh compatibility problems for x32 should have been fixed.
 
 ### vdeplug\_slirp, vdeplug\_vdesl, vdeplug\_vlan
 Ready to be packaged.
