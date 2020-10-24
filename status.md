@@ -1,10 +1,14 @@
 ## News
 
-new: libpam-net ad umps3 are in Debian unstable.
+new: vdeplug4 is now in SID
+
+---
+
+new: libpam-net ad umps3 are in Debian SID.
 
 ----
 
-new: vde-2 new packet is in Debian unstable. Now vdeplug4 can move from experiemntal to unstable.
+new: vde-2 new packet is in Debian SID.
 
 ----
 
@@ -46,6 +50,7 @@ The following command (on both RasPIs):
 
 creates a 4Mbps ethernet link connecting the two `vdesl0` interfaces.
 
+
 ## Debian
 
 Warning: debhelper compat 5 and 6 are now planned for removal. V² packages affected:
@@ -54,15 +59,22 @@ fuse-umfuse-ext2, vdetelweb.
 ### TODO:
   * vde-2: close the bug #965872 (Removal of obsolete debhelper compat 5 and 6). debhelper compat is 10.
   * fuse-umfuse-ext2, vdetelweb: update debhelper
-  * vdeplug4: promote from experimental to sid/unstable
-  * purelic: FTBFS the latest version on GITHUB should fix the remaining incompatibilities
+  * purelibc: FTBFS the latest version on GITHUB should fix the remaining incompatibilities
   * fuse-umfuse-iso9660:  FTBFS. libumlib is a requirement (in debian/control and configure.ac but it seems it is not needed at all. please ck).
   * libvpoll-eventfd on salsa is ready to be submitted in new for SID
-  * vdeplug_slirp, vdeplug_vdels, vdeplug_vlan, vdeplug_agno can be packaged 
-  * libexecs: move to the set of virtualsquare team packages
+  * vdeplug_slirp, vdeplug_vdels, vdeplug_vlan, vdeplug_agno, vdeplug_pcap can be packaged 
+  * libexecs: move to the set of virtualsquare team packages (convert from autotools to cmake + create salsa repo)
+
+  * vuos: fix module/submodule install path to support multi arch. To be packaged
+  * fusefatfs: to be packaged (after vuos?)
+  * vufusearchive: to be packaged (after vuos).
+  * libnlq: docs/man missing, to be packaged
+
+  * nsutils? change cmdline syntax? convert from autotools to cmake. Is this meaningful in Debian? compare with lsns
 
 ### packaged projects 
-#### Debian unstable/testing
+#### Debian SID/testing
+	* vdeplug4
   * cado
   * vdens
   * libvdeplirp
@@ -80,12 +92,9 @@ fuse-umfuse-ext2, vdetelweb.
 #### in Debian stable
   * libexecs (move to virtualsquare team)
 
-### vdeplug4
-Note: still in experimental, waiting to be promoted to unstable.
-
 ### purelibc
 purelibc 1.0.3 is in sid and testing. Some work must be done to port on some architectures.
-NEW: faccessat emulation added. NEW: teh compatibility problems for x32 should have been fixed.
+NEW: faccessat emulation added. NEW: the compatibility problems for x32 should have been fixed.
 
 ### vdeplug\_slirp, vdeplug\_vdesl, vdeplug\_vlan
 Ready to be packaged.
