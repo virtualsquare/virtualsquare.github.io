@@ -72,7 +72,7 @@ In this example the local copy of the project `xxxxx` is in `~/GITHUB/xxxxx/xxxx
 $ cd ~/GITHUB/xxxxx/xxxxx
 $ git checkout master
 $ git remote add salsa git@salsa.debian.org:virtualsquare-team/xxxxx.git
-$ git push -u salsa master:upstream
+$ git push salsa master:upstream
 ```
 and create a tag for the `watch` file (0.1 is just an example):
 
@@ -86,7 +86,7 @@ $ git push --tags
 ```bash
 $ mkdir ~/SALSA/xxxxx
 $ cd ~/SALSA/xxxxx
-$ clone git@salsa.debian.org:virtualsquare-team/xxxxx.git
+$ git clone git@salsa.debian.org:virtualsquare-team/xxxxx.git
 $ cd xxxxx
 ```
 
