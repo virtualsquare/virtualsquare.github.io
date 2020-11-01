@@ -19,7 +19,7 @@ function handle_error {
     exit $retval
 }
 if (( ${BASH_VERSION%%.*} <= 3 )) || [[ ${BASH_VERSION%.*} = 4.0 ]]; then
-        trap '[[ $FUNCNAME = handle_error ]] || { last_lineno=$real_lineno; real_lineno=$LINENO; }' DEBUG
+	trap '[[ $FUNCNAME = handle_error ]] || { last_lineno=$real_lineno; real_lineno=$LINENO; }' DEBUG
 fi
 trap 'handle_error $LINENO ${BASH_LINENO[@]}' ERR
 
@@ -55,23 +55,19 @@ function install_repo {
 }
 
 function install_picotcp {
-        REPO=$1
-        REPOBASE=${REPO##*/}
-        REPOBASE=${REPOBASE%%.*}
-        PREWD=$(pwd)
-        echo installing $1
-        cd  "$BASE"/gits
-        git clone --recurse-submodules $1
-        cd $REPOBASE
-        make gnulib
-        PREFIX=/usr/local
-        BUILD=build
-        cp ${BUILD}/lib/libpicotcp.so ${PREFIX}/lib/
-        mkdir -p ${PREFIX}/include/picotcp
-        cp ${BUILD}/include/*.h ${PREFIX}/include/picotcp/
-        cp -r ${BUILD}/include/arch ${PREFIX}/include/picotcp/
-        ldconfig
-        cd $PREWD
+	REPO=$1
+	REPOBASE=${REPO##*/}
+	REPOBASE=${REPOBASE%%.*}
+	PREWD=$(pwd)
+	echo installing $1
+	cd  "$BASE"/gits
+	git clone --recurse-submodules $1
+	cd $REPOBASE
+	make gnulib
+	PREFIX=/usr/local
+	make GNULIB_INSTALL_PREFIX=${PREFIX} gnulib-install
+	ldconfig
+	cd $PREWD
 }
 
 # Start installation
