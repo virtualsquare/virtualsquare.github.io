@@ -126,13 +126,16 @@ This three node VDE is up and running.
 
 ## Join User-Mode-Linux machines to VDE networks
 
-The command line parameter to create a VDE virtual interface of a User-Mode Linux machine is: `eth`n`=vde,`VNL. For example:
-`eth0=vde:///tmp/mysw` create the virtual interface eth0 connected to the switch `/tmp/mysw`
+The command line parameter to create a VDE virtual interface of a User-Mode Linux machine is:
 
-Attention: User-Mode Linux uses the static version of the VDE plug. So it uses the version of VDE available when the User-Mode
-Linux kernel was compiled. So, the version currently available as Debian package uses VDE version 2, so only pathname can be used
-as VNL, e.g. `eth0=vde:///tmp/mysw`.  As soon as vdeplug4 is entering in Debian SID, User-Mode Linux will be automatically updated at its
-first rebuild.
+**eth** *n* **=vde,** *VNL*.
+
+For example:
+`eth0=vde,vde:///tmp/mysw` creates the virtual interface eth0 connected to the switch `/tmp/mysw`
+
+Note: User-Mode Linux uses the static version of the VDE plug. So it uses the version of VDE available when the User-Mode
+Linux kernel was compiled. Debian Buster(10) or earlier use VDE version 2, so only a pathname can be used
+as a VNL, e.g. `eth0=vde,/tmp/mysw`.  Debian Bullseye and later versions already support VDEplug4 and its full VNL syntax.
 
 ### install User-Mode Linux
 
@@ -144,9 +147,9 @@ $ su -
 # exit
 ```
 
-At the time of writing this package is still using the old library as explained in the box above.
+User-Mode Linux supports all the VDE features described in this tutorial in Debian Bullseye and later versions.
 
-As an alternative to test the new features of VDEplug4, we have build a UM-L kernel `linux_vdeplug4` that can be downloaded from
+Note: As an alternative to test the new features of VDEplug4, we have build a UM-L kernel `linux_vdeplug4` that can be downloaded from
 [the tutorial resource page](tutorial_resources.html). The file can be downloaded using wget, then set the exec permission:
 `chmod +x linux_vdeplug4`.
 
@@ -167,15 +170,15 @@ $ bunzip2 -k BusyBox-1.21.1-amd64-root_fs.bz2
 
 ### Run User-Mode Linux
 
-Now there are all the _ingredients_ to start the UM-L VM. This is the command using the old syntax:
+Now there are all the _ingredients_ to start the UM-L VM. This is the command using the new syntax
+(This syntax enables the support of all the VDEplug4 plugins):
 ```
-$ linux ubd0=cowfile0,BusyBox-1.21.1-amd64-root_fs eth0=vde,/tmp/mysw
+$ linux ubd0=cowfile1,BusyBox-1.21.1-amd64-root_fs eth0=vde,vde:///tmp/mysw
 ```
 The new syntax (if supported by the `linux` command) is:
 ```
-$ ./linux_vdeplug4 ubd0=cowfile1,BusyBox-1.21.1-amd64-root_fs eth0=vde,vde:///tmp/mysw
+$ linux ubd0=cowfile0,BusyBox-1.21.1-amd64-root_fs eth0=vde,/tmp/mysw
 ```
-This latter syntax enables the support of all the VDEplug4 plugins.
 
 Warning: do not start two or more VM using the same disk image.
 The file system structure of the disk image would be corrupted.
@@ -244,7 +247,7 @@ $ su -
 ```
 
 Note: virtualbox is not in the _main_ Debian distribution, it is in the _contribution_. The file `/etc/apt/sources.list`
-must be cofnigure to allow the installation of packages from the _contribution_ repository
+must be configure to allow the installation of packages from the _contribution_ repository
 
 ### configure VirtualBox
 
@@ -255,11 +258,10 @@ The following picture shows an example of configuration of a VDE network interfa
 The Alpine image used for qemu/kvm can be used to test VirtualBox.
 
 Warning: there are compatibility issues. Debian packages are consistent: if you install both VDE and VirtualBOX from
-Debian they are compatible (any version, stable, testing, unstable), but only VDE2 syntax is supported
+Debian they are compatible. Debian Bullseye and later supports the new vde (vdeplug4) so the VNL syntax is supported.
+In Debian Buster(10) or earlier only VDE2 syntax is supported
 (so in the example above `network=/tmp/mysw` must be used instead of `network=vde:///tmp/mysw`.
-VirtualBox does __not__ support VDEplug4 if installed in /usr/local (e.g. if installed from GITHUB).(\*)
-An inelegant workaround that can be used to test VDEplug4 is to copy all the plugins in /usr/lib.
-`mkdir /usr/lib/vdeplug; cp /usr/local/lib/vdeplug/* /usr/lib/vdeplug`
+Moreover VirtualBox does __not__ support VDEplug4 if installed in /usr/local (e.g. if installed from GITHUB).(\*)
 
 Note: (\*) This is a limitation of VirtualBox:
 _"
