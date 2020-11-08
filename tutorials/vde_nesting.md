@@ -9,7 +9,7 @@ encryption or packet encapsulation.
 
 They logically implement a communication layer and can be used with any VDE client and any plugin.
 
-The UVDEL syntax for nesting plugins is the following:
+The VNL (Virtual Network Locator) syntax for nesting plugins is the following:
 
 ![](pictures/vde_nest_syntax.png)
 

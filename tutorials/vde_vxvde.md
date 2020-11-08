@@ -8,7 +8,7 @@ The way to create a VDE using `vxvde` is straightforward simple:
 * run the VDE clients to be connected by the VDE on any Linux host of the LAN (scattered on
 different hosts or all on the same host, it does not matter. Maybe the best cohice is to
 balance the load among the available hosts).
-* Use the same UVDEL for all the VDE client that has to join the same VDE. A `vxvde` network
+* Use the same VNL for all the VDE client that has to join the same VDE. A `vxvde` network
 is identified by a Ip multicast address and a port (the default port 14789 is used if the port is
 omitted). e.g. `vxvde://234.0.0.1`.
 

@@ -21,10 +21,10 @@ plugins play the role of the SFP transceivers and support different implementati
 
 ![VDE plug](pictures/vdeplug.png)
 
-### UVDEL
+### Virtual Network Locator (VNL)
 
-The choice of the plugin and the configuration parameters are given by a string named UVDEL (unified VDE locator).
-The name reminds the web addesses (URLs) as UVDELs use a similar syntax.
+The choice of the plugin and the configuration parameters are given by a string named VNL (Virtual Network Locator)
+The name reminds the web addesses (URLs) as VNLs use a similar syntax.
 
 Examples:
 
@@ -58,14 +58,14 @@ Examples:
 
 * .... and many others
 
-Note: In order to preserve the backwards compatibility with vde2, a pathname is a legal UVDEL. The path `/a/b/c/d` is equivalent to
+Note: In order to preserve the backwards compatibility with vde2, a pathname is a legal VNL. The path `/a/b/c/d` is equivalent to
 `vde:///a/b/c/d`
 
 ### The `vde_plug` tool
 
 `vde_plug` connects two plugins in two different ways:
 
-* when `vde_plug` has two UVDEL arguments it connects them directly:
+* when `vde_plug` has two VNL arguments it connects them directly:
 
   `vdeplug foo://... bar://...`
 

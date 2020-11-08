@@ -59,7 +59,7 @@ $ vde_plug null:// switch:///tmp/mysw
 Note: this is a very simple switch. It does not provide remote management, vlan support, loop avoidance (fast spanning tree).
 VirtualSquare provides `vde_switch` which supports all these features.
 
-Note: The _name_ of the switch is `/tmp/mysw`. All the VDE clients using the UVDEL `vde:///tmp/mysw` will be connected
+Note: The _name_ of the switch is `/tmp/mysw`. All the VDE clients using the VNL `vde:///tmp/mysw` will be connected
 by a virtual ethernet.
 
 Note: The `vde_plug` runs in foreground in the example, so it runs until it is terminated (e.g. typing ctrl-C). `vde_plug` provides
@@ -126,12 +126,12 @@ This three node VDE is up and running.
 
 ## Join User-Mode-Linux machines to VDE networks
 
-The command line parameter to create a VDE virtual interface of a User-Mode Linux machine is: `eth`n`=vde,`UVDEL. For example:
+The command line parameter to create a VDE virtual interface of a User-Mode Linux machine is: `eth`n`=vde,`VNL. For example:
 `eth0=vde:///tmp/mysw` create the virtual interface eth0 connected to the switch `/tmp/mysw`
 
 Attention: User-Mode Linux uses the static version of the VDE plug. So it uses the version of VDE available when the User-Mode
 Linux kernel was compiled. So, the version currently available as Debian package uses VDE version 2, so only pathname can be used
-as UVDEL, e.g. `eth0=vde:/tmp/mysw`.  As soon as vdeplug4 is entering in Debian SID, User-Mode Linux will be automatically updated at its
+as VNL, e.g. `eth0=vde:///tmp/mysw`.  As soon as vdeplug4 is entering in Debian SID, User-Mode Linux will be automatically updated at its
 first rebuild.
 
 ### install User-Mode Linux

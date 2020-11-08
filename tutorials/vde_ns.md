@@ -118,7 +118,7 @@ defines a `vdens` with two controllers (not counting `lo`):
 `vde0` is conencted to the switch `/tmp/mysw` while `vde1` is a point-to-point
 	connection identified by the path `/tmp/myptp`.
 
-In general `vdens --multi` defines as many `vde` controllers as UVDEL arguments in the command line.
+In general `vdens --multi` defines as many `vde` controllers as VNL arguments in the command line.
 As one may expect the number of the controller reflects the sequence of arguments.
 
 ## vdens-multi as VDE router (NFV)
