@@ -1,12 +1,12 @@
 ## News
 
-new: vdeplug4 is now in SID
+new: vdeplug4, libpam-net ad umps3 are now in SID
+
+As a consequence of vdeplug4, user-mode linux and virtualbox available in SID
+can now use the rich set of new vde plugins out of the box... pardon, out of the package.
+(qemu/kvm was already compatible).
 
 ---
-
-new: libpam-net ad umps3 are in Debian SID.
-
-----
 
 new: vde-2 new packet is in Debian SID.
 
@@ -59,13 +59,13 @@ fuse-umfuse-ext2, vdetelweb.
 ### TODO:
   * vde-2: close the bug #965872 (Removal of obsolete debhelper compat 5 and 6). debhelper compat is 10.
   * fuse-umfuse-ext2, vdetelweb: update debhelper
-  * purelibc: FTBFS the latest version on GITHUB should fix the remaining incompatibilities
-  * fuse-umfuse-iso9660:  FTBFS. libumlib is a requirement (in debian/control and configure.ac but it seems it is not needed at all. please ck).
+  * purelibc: FTBFS still pending a FTBFS error for riscv64
   * libvpoll-eventfd on salsa is ready to be submitted in new for SID
-  * vdeplug_slirp, vdeplug_vdels, vdeplug_vlan, vdeplug_agno, vdeplug_pcap can be packaged 
-  * libexecs: move to the set of virtualsquare team packages (convert from autotools to cmake + create salsa repo)
+  * vdeplug_slirp has been packaged on Salsa. It should be ready to be uploaded to SID
+  *	vdeplug_vdels, vdeplug_vlan, vdeplug_agno, vdeplug_pcap can be packaged 
+  * libexecs: The package on salsa is readyi for SID (convert from autotools to cmake + migrate to the virtualsquare team)
 
-  * vuos: fix module/submodule install path to support multi arch. To be packaged
+  *	vuos: fix module/submodule install path to support multi arch. To be packaged
   * fusefatfs: to be packaged (after vuos?)
   * vufusearchive: to be packaged (after vuos).
   * libnlq: docs/man missing, to be packaged
@@ -74,7 +74,7 @@ fuse-umfuse-ext2, vdetelweb.
 
 ### packaged projects 
 #### Debian SID/testing
-	* vdeplug4
+  * vdeplug4
   * cado
   * vdens
   * libvdeplirp
