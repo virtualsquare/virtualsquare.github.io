@@ -65,7 +65,7 @@ Multithreading is supported while the picoxnet stacks cannot be _inherited_ by c
 
 ![picoxnet client-server](pictures/ioth_picoxnet_cs.png)
 
-This exmpample implements a TCP echo server and a _terminal like_ client. Both programs use picoxnet, each one has
+This example implements a TCP echo server and a _terminal like_ client. Both programs use picoxnet, each one has
 its own IP address.
 
 ### `picox_server4.c`
