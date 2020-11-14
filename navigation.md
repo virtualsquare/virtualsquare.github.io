@@ -99,6 +99,7 @@
   * # Tutorials
   * [µMPS - Installation](education/tutorials/umps/installation.md)
   * [µMPS - Getting started](education/tutorials/umps/getting_started.md)
+  * [µMPS - Debugging](education/tutorials/umps/debugging.md)
 
 [V² in distros]()
 

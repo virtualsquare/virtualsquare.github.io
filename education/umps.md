@@ -59,6 +59,7 @@ Memory content from arbitrary memory regions can be displayed in hexadecimal rep
 
 - [How to install µMPS3](tutorials/umps/installation.md)
 - [How to get started using µMPS3](tutorials/umps/getting_started.md)
+- [Debugging features of µMPS3](tutorials/umps/debugging.md)
 
 ---
 
