@@ -34,7 +34,7 @@ By expanding the terminal drawer you will see some superficial information about
 
 ![step button and execution speed](pictures/speed.png "Step button and execution speed")
 
-From here, you can use the *Step* button to move the execution forward one instruction at a time (note: this is one machine instruciton, **not** an entire C code line) or slow the execution speed to a more human value and run the program again to analyze what the terminal device is going through.
+From here, you can use the *Step* button to move the execution forward one instruction at a time (note: this is one machine instruction, **not** an entire C code line) or slow the execution speed to a more human value and run the program again to analyze what the terminal device is going through.
 
 ![terminal execution](pictures/terminal.gif "The terminal at work")
 
@@ -116,4 +116,4 @@ Since the data I am considering is to be printed on a terminal the Ascii represe
 The `log_char` function could easily be expanded to print an entire string in memory instead of a single character. This way the developer can rely on yet another output channel for the operating system, this time one that is not influenced by hardware-related details (interrupts, write times and such).
 
 ### Credits:
-This page has been contributed my Mattia Maldini
+This page has been contributed by Mattia Maldini
