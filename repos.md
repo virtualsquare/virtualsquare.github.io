@@ -19,10 +19,10 @@ Libslirp (A TCP-IP emulator as a library) made easy peasy for Linux (this librar
  * [vdeplug\_slirp](https://github.com/virtualsquare/vdeplug_slirp)
 A slirp plugin for vdeplug4. (this obsoletes the [old vdeplug\_slirp plugin](https://github.com/rd235/vdeplug_slirp) based on the deprecated [old libslirp](https://github.com/rd235/libslirp) library).
 
- * [vdeplug\_agno](https://github.com/rd235/vdeplug_agno)
+ * [vdeplug\_agno](https://github.com/virtualsquare/vdeplug_agno)
 agnostic encryption nested plugin for vdeplug4
 
- * [vdeplug\_vlan](https://github.com/rd235/vdeplug_vlan)
+ * [vdeplug\_vlan](https://github.com/virtualsquare/vdeplug_vlan)
 802.1q (vlan) support nested plugin for vdeplug4
 
  * [libvdestack](https://github.com/rd235/libvdestack)
@@ -31,7 +31,7 @@ Internet of Threads through Network Namespaces
  * [vxvdex](https://github.com/rd235/vxvdex)
 VXVDEX: connect distributed private network namespaces
 
- * [vdeplug\_pcap](https://github.com/rd235/vdeplug_pcap)
+ * [vdeplug\_pcap](https://github.com/virtualsquare/vdeplug_pcap)
 A pcap plugin for vdeplug4
 
  * [vdeplug\_vdesl](https://github.com/virtualsquare/vdeplug_vdesl)
