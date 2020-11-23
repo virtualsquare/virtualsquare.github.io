@@ -37,6 +37,7 @@
 	* [Internet of Threads (IoTh): intro](tutorials/ioth.md)
 	* [IoTh: vdestack](tutorials/ioth_vdestack.md)
 	* [picoxnet: a stack for the IoTh](tutorials/ioth_picoxnet.md)
+	* [libioth: the definitive API for the IoTh](tutorials/ioth_libioth.md)
   - - - -
   * # VUOS
 	* [VUOS/umvu basic concepts](tutorials/vuosbasics.md)

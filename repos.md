@@ -25,6 +25,9 @@ agnostic encryption nested plugin for vdeplug4
  * [vdeplug\_vlan](https://github.com/virtualsquare/vdeplug_vlan)
 802.1q (vlan) support nested plugin for vdeplug4
 
+ * [libioth](https://github.com/virtualsquare/libioth)
+The definitive API for the Internet of Threads
+
  * [libvdestack](https://github.com/rd235/libvdestack)
 Internet of Threads through Network Namespaces
 

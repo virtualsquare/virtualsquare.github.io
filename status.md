@@ -1,5 +1,17 @@
 ## News
 
+new: libioth: The definitive API for the Internet of Threads
+
+* the API is minimal: Berkeley Sockets + msocket + newstack/delstack.
+* the stack implementation can be chosen as a plugin at run time.
+* netlink based stack/interface/ip configuration via _nlinline_.
+* ioth sockets are real file descriptors, poll/select/ppoll/pselect/epoll friendly
+* plug-ins are loaded in private address namespaces: libioth supports several stacks
+of the same type (same plugin) even if the stack implementation library was designed to
+provide just one stack.
+
+---
+
 new: vdeplug4, libpam-net ad umps3 are now in SID
 
 As a consequence of vdeplug4, user-mode linux and virtualbox available in SID
@@ -57,13 +69,12 @@ Warning: debhelper compat 5 and 6 are now planned for removal. V² packages affe
 fuse-umfuse-ext2, vdetelweb.
 
 ### TODO:
-  * vde-2: close the bug #965872 (Removal of obsolete debhelper compat 5 and 6). debhelper compat is 10.
-  * fuse-umfuse-ext2, vdetelweb: update debhelper
+  * fuse-umfuse-ext2, vdetelweb: update debhelper (ready for uploading)
   * purelibc: FTBFS still pending a FTBFS error for riscv64
   * libvpoll-eventfd on salsa is ready to be submitted in new for SID
   * vdeplug_slirp has been packaged on Salsa. It should be ready to be uploaded to SID
-  *	vdeplug_vdels, vdeplug_vlan, vdeplug_agno, vdeplug_pcap can be packaged 
-  * libexecs: The package on salsa is readyi for SID (convert from autotools to cmake + migrate to the virtualsquare team)
+  *	vdeplug_vdels, vdeplug_vlan, vdeplug_agno, vdeplug_pcap: should be ready to be uploaded to SID
+  * libexecs: The package on salsa is ready for SID (convert from autotools to cmake + migrate to the virtualsquare team)
 
   *	vuos: fix module/submodule install path to support multi arch. To be packaged
   * fusefatfs: to be packaged (after vuos?)
@@ -117,9 +128,6 @@ doc is still missing
 
 ### vuos
 freeze a stable relase for packaging.
-
-### vdeplug\_agno
-need porting to cmake and review.
 
 ### vxvdex
 still too experimental
