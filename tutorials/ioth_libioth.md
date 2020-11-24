@@ -10,30 +10,7 @@
 of the same type (same plugin) even if the stack implementation library was designed to
 provide just one stack.
 
-<!--
-## Compile and Install
-
-Pre-requisites: `fduserdata`, `nlinline`.
-
-The `ioth_vdestack` plugin is built only if `libvdestack` is installed.
-
-The `ioth_picox` plugin is built only when picoxnet (and picotcp) are installed.
-
-Libioth uses cmake. The standard building/installing procedure is:
-
-```bash
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
-```
-
-An uninstaller is provided for your convenience. In the build directory run:
-```
-sudo make uninstall
-```
--->
+![ioth-libioth](pictures/ioth_libioth.png)
 
 ## The API
 
