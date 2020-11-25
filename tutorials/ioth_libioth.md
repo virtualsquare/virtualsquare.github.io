@@ -119,7 +119,6 @@ Please note that `iothtest_client.c` uses a `poll`(2) system call to wait for av
 
 * in a third terminal run the client, again the stack implementation can be decided by choosing
 one of the following commands:
-
 ```bash
      ./iothtest_client vdestack vde:///tmp/sw
      ./iothtest_client picox vde:///tmp/sw
