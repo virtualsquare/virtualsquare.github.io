@@ -96,6 +96,7 @@ install_repo https://github.com/rd235/userbindmount.git
 install_repo https://github.com/rd235/vdens.git
 install_repo https://github.com/virtualsquare/vuos.git
 install_repo https://github.com/virtualsquare/nlinline.git
+install_repo https://github.com/virtualsquare/libioth.git
 install_repo https://github.com/virtualsquare/libnlq.git
 install_repo https://github.com/virtualsquare/randmac.git
 install_repo https://github.com/rd235/libpam-net.git -DLIBSECURITYDIR=/lib/x86_64-linux-gnu/security/
@@ -104,7 +105,6 @@ install_repo https://github.com/virtualsquare/fusefatfs.git
 install_picotcp https://github.com/virtualsquare/picotcp.git
 install_repo https://github.com/virtualsquare/picoxnet.git
 install_repo https://github.com/virtualsquare/vunetpicox.git
-install_repo https://github.com/virtualsquare/libioth.git
 
 rm -f /usr/local/lib/vu/modules/vufuseext2.so /usr/local/lib/vu/modules/vufuseext2.re
 ln -s /usr/local/lib/umview/modules/umfuseext2.so /usr/local/lib/vu/modules/vufuseext2.so
