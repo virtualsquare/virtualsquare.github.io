@@ -28,8 +28,9 @@ Being µMPS3 **NOT** backward compatible with software developed for previous ve
 
 ## Downloads
 
-The PandOS project described in the [*The Student Guide to the PandOS Operating System Project*](#Documentation) recommends the use of some test files, sample Makefiles, and some other miscellaneous header files.
+The PandOS project described in the [*The Student Guide to the PandOS Operating System Project*](#Documentation) recommends the use of some test files, sample Makefiles, and some other miscellaneous header files. All these files are available for downloading as an archive file: [PandosDistributionFiles.tgz](doc/PandosDistributionFiles.tgz).
 
+<!--
 - [const.h](src/const.h): This header file contains utility constants & macro definitions
 - [types.h](src/types.h): This header file contains utility types definitions
 
@@ -41,6 +42,7 @@ The PandOS project described in the [*The Student Guide to the PandOS Operating 
 ### Phase 2
 
 - [p2test.c](src/p2test.c)
+-->
 
 ---
 
