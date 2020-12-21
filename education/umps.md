@@ -119,7 +119,7 @@ In addition to the implicit acknowledgments we have given above, the authors wou
 
 ### Books
 
-- Michael Goldweber, Renzo Davoli, *µMPS3 Principles of Operation*, Lulu Books, 2020
+- Michael Goldweber, Renzo Davoli, [*µMPS3 Principles of Operation*, Lulu Books](https://www.lulu.com/en/us/shop/renzo-davoli-and-michael-goldweber/%CE%BCmps3-principles-of-operation/paperback/product-6jvqn4.html), 2020 [PDF](doc/uMPS3princOfOperations.pdf)
 
 This book is the definitive reference on the µMPS3 architecture.
 It represents an update to the µMPS architecture defined in earlier editions of this work, titled *µMPS Principles of Operation* and *µMPS2 Principles of Operation*.
