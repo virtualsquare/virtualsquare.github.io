@@ -89,7 +89,7 @@ a detailed description can be found in `nlinline`(3).
 ## Example: an IPv4 TCP echo server
 
 The complete source code of this example is provided in this git repository:
-[`iothtest_server.c`](https://github.com/virtualsquare/libioth/blob/main/iothtest_server.c).
+[`iothtest_server.c`](https://raw.githubusercontent.com/virtualsquare/libioth/master/test/iothtest_server.c).
 The code creates a virtual stack, activates the interface named `vde0`, sets the interface's address to 192.168.250.50/24 and runs a TCP echo server on port 5000.
 
 When a new connection begins, i.e. when `accept`(2) returns a new file descriptor,
@@ -98,7 +98,7 @@ When a new connection begins, i.e. when `accept`(2) returns a new file descripto
 ## Example: an IPv4 TCP terminal client
 
 The complete source code of this example is provided in this git repository:
-[`iothtest_client.c`](https://github.com/virtualsquare/libioth/blob/main/iothtest_client.c).
+[`iothtest_client.c`](https://raw.githubusercontent.com/virtualsquare/libioth/master/test/iothtest_client.c).
 The code creates a virtual stack, activates the interface named `vde0`, sets the interface's address to 192.168.250.51/24 and runs a TCP terminal emulation client trying to get connected to 192.168.250.50 port 5000.
 
 Please note that `iothtest_client.c` uses a `poll`(2) system call to wait for available input on a ioth socket and on `stdin`.
