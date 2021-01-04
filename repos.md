@@ -28,6 +28,9 @@ agnostic encryption nested plugin for vdeplug4
  * [libioth](https://github.com/virtualsquare/libioth)
 The definitive API for the Internet of Threads
 
+ * [ioth\_picox](https://github.com/virtualsquare/ioth_picox))
+The picoxnet module for libioth
+
  * [libvdestack](https://github.com/rd235/libvdestack)
 Internet of Threads through Network Namespaces
 

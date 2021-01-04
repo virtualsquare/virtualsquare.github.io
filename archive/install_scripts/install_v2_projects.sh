@@ -104,6 +104,7 @@ install_repo https://github.com/virtualsquare/vufusearchive.git
 install_repo https://github.com/virtualsquare/fusefatfs.git
 install_picotcp https://github.com/virtualsquare/picotcp.git
 install_repo https://github.com/virtualsquare/picoxnet.git
+install_repo https://github.com/virtualsquare/ioth_picox.git
 install_repo https://github.com/virtualsquare/vunetpicox.git
 
 rm -f /usr/local/lib/vu/modules/vufuseext2.so /usr/local/lib/vu/modules/vufuseext2.re
