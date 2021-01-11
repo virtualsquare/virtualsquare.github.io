@@ -18,13 +18,11 @@ provide just one stack.
 
 There are four flavours of `ioth_newstack`:
 ```C
-struct ioth *ioth_newstack(const char *stack);
-struct ioth *ioth_newstacki(const char *stack, const char *vnl);
+struct ioth *ioth_newstack(const char *stack, const char *vnl);
 struct ioth *ioth_newstackl(const char *stack, const char *vnl, ... /* (char  *) NULL */);
 struct ioth *ioth_newstackv(const char *stack, const char *vnlv[]);
 ```
-* `ioth_newstack` creates a new stack. This function does not create any interface.
-* `ioth_newstacki` (i = immediate) creates a new stack with a virtual interface connected to the vde network identified by the VNL (Virtual Network Locator, see vdeplug4).
+* `ioth_newstack` creates a new stack without any interface if `vnl` is NULL, otherwise the new stack has a virtual interface connected to the vde network identified by the VNL (Virtual Network Locator, see vdeplug4).
 * `ioth_newstackl` and `ioth_newstackv` (l = list, v = vector) support the creation of a new stack with several interfaces. It is possible to provide the VNLs as a sequence of arguments (as in execl) or as a NULL terminated array of VNLs (as the arguments in execv).
 
 The return value is the ioth stack descriptor, NULL in case of error (errno provides a more detailed description of the error).
