@@ -9,7 +9,7 @@ whose events can be generated as needed.
 This feature needs a kernel support as it is not currently available a system call or another means to generate generic
 events for a file descriptor.
 
-Virtualsquare has developed two proposals for teh kernel support:
+Virtualsquare has developed two proposals for the kernel support:
 
 * a patch to extend the functionalities of the `eventfd` system call
 * a kernel module providing a device (`/dev/vpoll`)
@@ -17,7 +17,7 @@ Virtualsquare has developed two proposals for teh kernel support:
 The former currently requires a specific build of the Linux kernel, the latter can be added as a device module
 on an existing kernel.
 
-A user-level library (`libvpoll`) provides a general purpose interace to this new feature.
+A user-level library (`libvpoll`) provides a general purpose interface to this new feature.
 It detects if a `vpoll` kernel support is available and which one is present.
 If no kernel support is available, `libvpoll` implements an emulated support providing a limited
 set of events (`POLLIN`, `POLLOUT` and an incomplete `POLLHUP`).
