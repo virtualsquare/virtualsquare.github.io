@@ -74,7 +74,7 @@ function install_picotcp {
 rm -rf gits
 mkdir gits
 
-install_repo https://github.com/rd235/s2argv-execs.git
+install_repo https://github.com/virtualsquare/s2argv-execs.git
 install_repo https://github.com/rd235/strcase.git
 install_repo https://github.com/virtualsquare/vde-2.git -enable-experimental
 install_repo https://github.com/rd235/vdeplug4.git
