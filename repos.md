@@ -115,7 +115,7 @@ defined by picoxnet's functions can be used in event driven system calls like `s
  * [strcase](https://github.com/rd235/strcase)
 Multiway branch (switch) for short strings in C (in one header file)
 
- * [s2argv-execs](https://github.com/rd235/s2argv-execs)
+ * [s2argv-execs](https://github.com/virtualsquare/s2argv-execs)
 s2argv converts a command string into an argv array for execv\*, execs is like execv taking a string instead of an argv
 
  * [userbindmount](https://github.com/rd235/userbindmount)
