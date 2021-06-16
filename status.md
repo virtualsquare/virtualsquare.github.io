@@ -1,5 +1,13 @@
 ## News
 
+new (Debian): 
+
+* libvpoll-eventfd, vdeplug-slirp, vdeplug-vdels, vdeplug-vlan, vdeplug-agno, vdeplug-pcap are now in SID.
+* libexecs package has been updated (converted to cmake and migrated to the virtualsquare team management)
+* fuse-umfuse-ext2, vdetelweb: debhelper updated.
+
+We are ready for Bullseye freeze and release as stable.
+
 new: libioth: The definitive API for the Internet of Threads
 
 * the API is minimal: Berkeley Sockets + msocket + newstack/delstack.
@@ -69,12 +77,7 @@ Warning: debhelper compat 5 and 6 are now planned for removal. V² packages affe
 fuse-umfuse-ext2, vdetelweb.
 
 ### TODO:
-  * fuse-umfuse-ext2, vdetelweb: update debhelper (ready for uploading)
   * purelibc: FTBFS still pending a FTBFS error for riscv64
-  * libvpoll-eventfd on salsa is ready to be submitted in new for SID
-  * vdeplug_slirp has been packaged on Salsa. It should be ready to be uploaded to SID
-  *	vdeplug_vdels, vdeplug_vlan, vdeplug_agno, vdeplug_pcap: should be ready to be uploaded to SID
-  * libexecs: The package on salsa is ready for SID (convert from autotools to cmake + migrate to the virtualsquare team)
 
   *	vuos: fix module/submodule install path to support multi arch. To be packaged
   * fusefatfs: to be packaged (after vuos?)
@@ -99,21 +102,21 @@ fuse-umfuse-ext2, vdetelweb.
   * randmac
   * libpam-net
   * umps3
+  * libexecs 
+	* vdeplug-slirp
+	* vdeplug-vdels
+	* vdeplug-vlan
+	* vdeplug-agno
+	* vdeplug-pcap
 
 #### in Debian stable
-  * libexecs (move to virtualsquare team)
+  * libexecs 
 
 ### purelibc
 purelibc 1.0.3 is in sid and testing. Some work must be done to port on some architectures.
 NEW: faccessat emulation added. NEW: the compatibility problems for x32 should have been fixed.
 
-### vdeplug\_slirp, vdeplug\_vdesl, vdeplug\_vlan
-Ready to be packaged.
-
 Note: can enter experimental only as it needs vdeplug4
-
-### libvpoll-eventfd
-Packaged. Some checks needed for the kernel module. Almost ready for the NEW queue.
 
 ## Open Suse
 [... add status here]
