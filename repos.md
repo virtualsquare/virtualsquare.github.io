@@ -31,6 +31,12 @@ The definitive API for the Internet of Threads
  * [ioth\_picox](https://github.com/virtualsquare/ioth_picox)
 The picoxnet module for libioth
 
+ * [iothconf](https://github.com/virtualsquare/iothconf)
+Internet of Threads (IoTh) stack configuration made easy peasy
+
+ * [iothdns](https://github.com/virtualsquare/iothdns)
+Name Resolution support for the Internet of Threads.
+
  * [libvdestack](https://github.com/rd235/libvdestack)
 Internet of Threads through Network Namespaces
 
