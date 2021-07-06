@@ -119,22 +119,25 @@ In addition to the implicit acknowledgments we have given above, the authors wou
 
 ### Books
 
-- Michael Goldweber, Renzo Davoli, [*µMPS3 Principles of Operation*, Lulu Books](https://www.lulu.com/en/us/shop/renzo-davoli-and-michael-goldweber/%CE%BCmps3-principles-of-operation/paperback/product-6jvqn4.html), 2020 [PDF](doc/uMPS3princOfOperations.pdf)
+- Michael Goldweber, Renzo Davoli, [*µMPS3 Principles of Operation*, Lulu Books](https://www.lulu.com/en/us/shop/renzo-davoli-and-michael-goldweber/%CE%BCmps3-principles-of-operation/paperback/product-6jvqn4.html), 2020 [PDF](doc/uMPS3princOfOperations.pdf) ([Amazon](https://www.amazon.com/%C2%B5MPS3-Principles-Operation-Michael-Goldweber/dp/1716476402/))
 
 This book is the definitive reference on the µMPS3 architecture.
 It represents an update to the µMPS architecture defined in earlier editions of this work, titled *µMPS Principles of Operation* and *µMPS2 Principles of Operation*.
 
+- Michael Goldweber, Renzo Davoli, [*Student Guide to the Pandos Project*, Lulu Books](https://www.lulu.com/en/us/shop/renzo-davoli-and-michael-goldweber/student-guide-to-the-pandos-project/paperback/product-n6j96y.html), 2020 [PDF](doc/pandos.pdf) ([Amazon](https://www.amazon.com/Student-Pandos-Project-Michael-Goldweber/dp/171631559X/))
+
 ### Articles and Papers
 
-- M. Morsiani, R. Davoli, [*Learning Operating Systems Structure and Implementation through the MPS Computer System Simulator*](https://dl.acm.org/doi/10.1145/299649.299683), in *The Proceedings of the Thirtieth SIGCSE Technical Symposium on Computer Science Education*, SIGCSE '99, (New York, NY, USA), pp. 63-67, ACM, March 1999. [PDF](http://mps.sourceforge.net/pdf/MPSpaper.pdf)
+- M. Morsiani, R. Davoli, [*Learning Operating Systems Structure and Implementation through the MPS Computer System Simulator*](https://dl.acm.org/doi/10.1145/299649.299683), in *The Proceedings of the Thirtieth SIGCSE Technical Symposium on Computer Science Education*, SIGCSE '99, (New York, NY, USA), pp. 63–67, ACM, March 1999. [PDF](http://mps.sourceforge.net/pdf/MPSpaper.pdf)
 - Michael Goldweber, Renzo Davoli, Mauro Morsiani, [*The Kaya OS Project and the µMPS Hardware Emulator*](https://dl.acm.org/doi/10.1145/1067445.1067462), in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 49–53, ACM, June 2005. [PDF](http://mps.sourceforge.net/pdf/uMPSpaper.pdf)
 - M. Goldweber, R. Davoli, [*Virtual square (V^2) in Computer Science Education*](https://dl.acm.org/doi/10.1145/1067445.1067528), in *Proceedings of the 10th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education*, ITiCSE '05, (New York, NY, USA), pp. 301–305, ACM, June 2005.
-- M. Goldweber, R. Davoli, and T. Jonjic,	[*Supporting Operating Systems Projects Using the µMPS2 Hardware Simulator*](https://dl.acm.org/doi/10.1145/2325296.2325315),	in *Proceedings of the 17th ACM Annual Conference on Innovation and Technology in Computer Science Education*, ITiCSE '12, (New York, NY, USA), pp. 63–68, ACM, July 2012.
+- M. Goldweber, R. Davoli, and T. Jonjic, [*Supporting Operating Systems Projects Using the µMPS2 Hardware Simulator*](https://dl.acm.org/doi/10.1145/2325296.2325315), in *Proceedings of the 17th ACM Annual Conference on Innovation and Technology in Computer Science Education*, ITiCSE '12, (New York, NY, USA), pp. 63–68, ACM, July 2012.
+- M. Goldweber, R. Davoli, M. Biondi, *The Pandos Project and the μMPS3 Emulator*, in *Proceedings of the 26th Annual Conference on Innovation and Technology in Computer Science Education*, ITiCSE '21.
 
 ### Theses
 
-- Tomislav Jonjic, *Design and Implementation of the uMPS2 Educational Emulator*, November 2012. [PDF](https://amslaurea.unibo.it/4472/1/jonjic_tomislav_tesi.pdf)
-- Mattia Biondi, *An Updated Emulated Architecture to Support the Study of Operating Systems*, May 2020. [PDF](https://raw.githubusercontent.com/mattiabiondi/baccalaureus/master/thesis/biondi_mattia_tesi.pdf) (not yet uploaded on [AMSLaurea](https://amslaurea.unibo.it/))
+- Tomislav Jonjic, *Design and Implementation of the uMPS2 Educational Emulator*, November 2012. [PDF](https://amslaurea.unibo.it/4472)
+- Mattia Biondi, *An Updated Emulated Architecture to Support the Study of Operating Systems*, May 2020. [PDF](https://amslaurea.unibo.it/20751/)
 
 ### Historical documentation
 
