@@ -61,6 +61,10 @@ Examples:
 Note: In order to preserve the backwards compatibility with vde2, a pathname is a legal VNL. The path `/a/b/c/d` is equivalent to
 `vde:///a/b/c/d`
 
+Note: Reserved chars can be inserted in a VLN using quotation marks or, likewise for URLs,
+by the percent-encoding (i.e. `%xx`: a percent sign followed by the hexadecimal representation of 
+the ASCII value of the character).
+
 ### The `vde_plug` tool
 
 `vde_plug` connects two plugins in two different ways:
