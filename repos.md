@@ -86,10 +86,12 @@ VUOS view based o.s.
 A glibc overlay library for process self-virtualization
 
  * [fusefatfs](https://github.com/virtualsquare/fusefatfs)
-mount FAT file systems using FUSE anf VUOS/vufuse
+mount FAT file systems using FUSE and VUOS/vufuse
 
  * [vufusearchive](https://github.com/virtualsquare/vufusearchive)
 A `vufuse module based on libarchive: it supports tar/zip/iso (including compressed archives)
+
+ * [vunetioth](https://github.com/virtualsquare/vunetioth) A VUOS vunet module for libioth.
 
  * [vunetpicox](https://github.com/virtualsquare/vunetpicox) A VUOS vunet module for picoxnet.
 

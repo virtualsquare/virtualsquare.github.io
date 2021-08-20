@@ -15,7 +15,7 @@ The VNL (Virtual Network Locator) syntax for nesting plugins is the following:
 
 `foo://....{bar://...}` means that `foo` is the nesting plugin connected to `bar`.
 
-The syntax can be further nested: `foo://,,,{bar://...{baz://...}}`
+The syntax can be further nested: `foo://...{bar://...{baz://...}}`
 
 ![](pictures/vde_nestnest_syntax.png)
 

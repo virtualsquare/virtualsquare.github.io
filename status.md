@@ -1,5 +1,16 @@
 ## News
 
+ioth utilities:
+
+* `iothconf`: Internet of Threads (IoTh) stack configuration made easy peasy: one string configuration for ioth stacks.
+It supports: ethernet MAC assignment or hash computation, static IPv4 IPv6, dhcp v4 or v6, slaac, slaac +
+hash autoconfiguration.
+* `iothdns`: Name Resolution support library for the IoTh stacks.
+It provides  for client programs that need to query DNS servers (inluding `ioth_getaddrinfo` and `ioth_getnameinfo`)
+and for DNS servers, forwarders, filters that need to parse DNS queries, compose and send back appropriate replies
+
+---
+
 new (Debian): 
 
 * libvpoll-eventfd, vdeplug-slirp, vdeplug-vdels, vdeplug-vlan, vdeplug-agno, vdeplug-pcap are now in SID.
