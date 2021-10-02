@@ -57,7 +57,7 @@ the password is ``virtualsquare``
 
 ## step 5: run the `get_v2all` script
 
-This command installs all the packets needed by the virtualsquare projects and then downloads, builds and installs all the altest versions of the projects directly from the development repositories.
+This command installs all the packets needed by the virtualsquare projects and then downloads, builds and installs all the latest versions of the projects directly from the development repositories.
 
 ``` bash
 # ./get_v2all

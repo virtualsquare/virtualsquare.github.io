@@ -137,7 +137,7 @@ Define a tap interface and set up its IP address.
 ```
 $ su -
 # ip tuntap add mode tap name tap0 user user
-# ip addr 10.0.0.254/24 dev tap0
+# ip addr add 10.0.0.254/24 dev tap0
 # ip link set tap0 up
 # exit
 $
@@ -147,7 +147,7 @@ Start the `vdens --multi` at the left hand side of the picture.
 ```
 $ vdens --multi ptp:///tmp/myptp tap://tap0
 $# ip addr add 10.0.1.1/24 dev vde0
-$# ip addr add 10.0.0.1/24 dev vde254
+$# ip addr add 10.0.0.1/24 dev vde1
 $# ip link set vde0 up
 $# ip link set vde1 up
 ```
