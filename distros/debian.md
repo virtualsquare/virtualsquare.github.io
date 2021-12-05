@@ -152,7 +152,7 @@ Check the packages and read carefully the comments from lintian.
 $ debuild -- clean
 ```
 
-In case byproducts of packaging has been left around:
+In case byproducts of packaging have been left around:
 ```bash
 $ git reset --hard
 $ git clean -f -d

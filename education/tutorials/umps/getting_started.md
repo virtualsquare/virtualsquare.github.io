@@ -97,6 +97,15 @@ There are several things to note about about the Makefile:
 
 All of the above should become clear once you start perusing the available documentation.
 
+Note: The Makefile provided in this example uses the toolchain prefix
+`mipsel-linux-gnu-`. You may need to override this definition
+by the command line option `XT_PRG_PREFIX=` to use a different prefix.
+
+e.g. Fedora users might need to use the following command:
+```bash
+$ make XT_PRG_PREFIX=mips64-linux-gnu-
+```
+
 ### Running the Program
 
 Launch µMPS3 via the application menu of your desktop environment or by typing `umps3` at the command line.
