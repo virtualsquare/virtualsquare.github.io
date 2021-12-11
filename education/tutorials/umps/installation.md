@@ -7,6 +7,11 @@ If you create a package for any other distribution, please consider contributing
 
 ## Ubuntu
 
+If you are using **Ubuntu 21.04 Hirsute Hippo**, **21.10 Impish Indri** or **22.04 Jammy Jellyfish**, you can install the [official µMPS3 package](https://packages.ubuntu.com/impish/umps3) using:
+```bash
+$ sudo apt install umps3
+```
+
 If you are using **Ubuntu 20.04 Focal Fossa**, **18.04 Bionic Beaver** or **16.04 Xenial Xerus** ([Checking your Ubuntu Version](https://help.ubuntu.com/community/CheckingYourUbuntuVersion)) or [derivatives](https://wiki.ubuntu.com/DerivativeTeam/Derivatives) (e.g. **Linux Mint**), you need to:
 
 1. enable [Universe](https://help.ubuntu.com/community/Repositories/Ubuntu)
@@ -26,38 +31,16 @@ $ sudo apt install umps3
 
 ## Debian
 
-The [official µMPS3 package](https://ftp-master.debian.org/new/umps3_3.0.1-2.html) is currently waiting in the [NEW queue](https://wiki.debian.org/NewQueue).
-
-In the meantime, you can install µMPS3 by manually adding the [virtualsquare/umps PPA](https://launchpad.net/~virtualsquare/+archive/ubuntu/umps) on your **Debian** system.
-
-### Debian 10 Stable ("buster")
-
-If you are using **Debian 10 ("buster")**, you need to:
-
-1. add the [virtualsquare/umps PPA](https://launchpad.net/~virtualsquare/+archive/ubuntu/umps) for the [Ubuntu 18.04 (Bionic Beaver)](https://releases.ubuntu.com/18.04/) version to your [Apt sources configuration file](https://wiki.debian.org/SourcesList):
-```bash
-$ echo 'deb http://ppa.launchpad.net/virtualsquare/umps/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/virtualsquare-ubuntu-umps-bionic.list
-```
-2. import the [signing key](https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=index&search=0xBB8957296BD01F6CA96B5C88046AB1F65C49333A):
-```bash
-$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 046AB1F65C49333A
-```
-3. re-synchronize the package index files:
-```bash
-$ sudo apt update
-```
-4. install
+If you are using **Debian 11 Stable ("bullseye")**, **Debian 12 Testing ("bookworm")** or **Debian Unstable ("sid")**, you can install the [official µMPS3 package](https://packages.debian.org/bullseye/umps3) using:
 ```bash
 $ sudo apt install umps3
 ```
 
-### Debian 11 Testing ("bullseye") and Unstable ("sid")
+If you are using **Debian 10 Oldstable ("buster")**, you need to:
 
-If you are using **Debian 11 Testing ("bullseye")** or **Unstable ("sid")**, you need to:
-
-1. add the [virtualsquare/umps PPA](https://launchpad.net/~virtualsquare/+archive/ubuntu/umps) for the [Ubuntu 20.04 (Focal Fossa)](https://releases.ubuntu.com/focal/) version to your [Apt sources configuration file](https://wiki.debian.org/SourcesList):
+1. add the [virtualsquare/umps PPA](https://launchpad.net/~virtualsquare/+archive/ubuntu/umps) for the [Ubuntu 18.04 (Bionic Beaver)](https://releases.ubuntu.com/18.04/) version to your [Apt sources configuration file](https://wiki.debian.org/SourcesList):
 ```bash
-$ echo 'deb http://ppa.launchpad.net/virtualsquare/umps/ubuntu focal main' | sudo tee /etc/apt/sources.list.d/virtualsquare-ubuntu-umps-focal.list
+$ echo 'deb http://ppa.launchpad.net/virtualsquare/umps/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/virtualsquare-ubuntu-umps-bionic.list
 ```
 2. import the [signing key](https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=index&search=0xBB8957296BD01F6CA96B5C88046AB1F65C49333A):
 ```bash
@@ -95,8 +78,8 @@ A compiler with C++11 support ([clang-3.3+](https://llvm.org/releases/download.h
 Apart from the dependencies listed above, you will also need a MIPS cross toolchain in your PATH.
 CMakelists.txt will do its best to detect one; if that fails, you can pass the toolchain tool prefix to `cmake` using `-DMIPS_TOOL_PREFIX=PREFIX`.
 Known prefixes are:
-
 - `mips-sde-elf-`
+- `mips64-linux-gnu-`
 - `mips(el)-elf-`
 - `mips(el)-linux-`
 - `mips(el)-linux-gnu-`
