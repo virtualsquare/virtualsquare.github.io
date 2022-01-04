@@ -1,20 +1,26 @@
-`vufuse`: VUOS FUSE
+`fuse`: VUOS virtual `/dev/fuse`
 ====
 
 Using [FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace) it is possible for
 users to run file systems implementation in user space. Using the device `/dev/fuse` a kernel module acts as a _bridge_ to the VFS interface.
 
-`vufuse` provides the same service (and it almost completely source code compatible with
-FUSE). There are notable differences:
+`fuse` virtualizes the Linux kernel support and provides the same protocol on `/dev/fuse`. Any FUSE filesystem implementation program runs _as-is_ on vuos using this module. There are notable differences:
 
-* `vufuse` does not require kernel code,
+* VUOS `fuse` module does not require kernel code,
 * FUSE mounted file systems are _visible_ for all the processes while `vufuse` mounted
 file systems can be seen only by the processes running under the control of the `umvu`
 hypervisor.
 
-## vufuseext2: ext2/3/4 filesystems
+Note: the name of this module is `fuse`. In the source code its name is `vudevfuse`.
 
-The submodule `vufuseext2` supports ext2, etx3 and ext4 file systems.
+vuos provides two mofules to support filesystems in userspace: `fuse` and `vufuse`.
+
+* `fuse` is compatible with the file system implementations developed for Linux FUSE.
+* `vufuse` requires the generation of a specific plugin (a shared library), it is faster.
+
+## fuse-ext2: ext2/3/4 filesystems
+
+This example uses `fuse-ext2`, an implementation of ext2/3/4 filesystems for FUSE.
 
 The following shell session performs these steps:
 
@@ -26,15 +32,15 @@ The following shell session performs these steps:
 * unmount and remount the partition
 * show the contents of `/mnt/greetings`
 * unmount the partition
-* show that the file syste, is correct
+* show that the file system, is correct
 
 Attention: Mounting a file system is a dangerous operation, valuable data could be lost
-in case of erroneous operations of software bugs. So `vufuseext2` requires the flag `rw+`
+in case of erroneous operations of software bugs. So `fuse-ext2` requires the flag `rw+`
 instead of the default `rw` to provide read-write access to the file system.
 Users must be aware of the dangers and voluntarily add that plus sign in the option.
 
 ```bash
-$$ vu_insmod vufuse
+$$ vu_insmod fuse
 $$ truncate -s 10M img.ext2
 $$ /sbin/mkfs.ext2 img.ext2
 mke2fs 1.45.6 (20-Mar-2020)
@@ -48,7 +54,7 @@ Allocating group tables: done
 Writing inode tables: done
 Writing superblocks and filesystem accounting information: done
 
-$$ vumount -t vufuseext2 -o rw+ /home/user/img.ext2 /mnt
+$$ fuse-ext2 -o rw+ /home/user/img.ext2 /mnt
 $$ ls /mnt
 lost+found
 $$ echo ciao > /mnt/greetings
@@ -60,7 +66,7 @@ $$ cat /mnt/greetings
 ciao
 $$ vuumount /mnt/
 $$ ls /mnt
-$$ vumount -t vufuseext2 -o rw+ /home/user/img.ext2 /mnt
+$$ fuse-ext2 -o rw+ /home/user/img.ext2 /mnt
 $$ cat /mnt/greetings
 ciao
 $$ vuumount /mnt
@@ -89,14 +95,14 @@ This file is available in the
 The following sequence of commands mounts that file system image on `/mnt/`.
 
 ```bash
-$$ vu_insmod vufuse
-$$ vumount -t vufuseext2 -o ro /home/user/BusyBox-1.21.1-amd64-root_fs /mnt
+$$ vu_insmod fuse
+$$ fuse-ext2 -o ro /home/user/BusyBox-1.21.1-amd64-root_fs /mnt
 $$ ls /mnt
 bin  dev  etc  linuxrc  lost+found  proc  root  sbin  sys  usr
 $$
 ```
 
-## vufusefatfs: FAT12, FAT16, FAT32 and exFAT.
+## fusefatfs: FAT12, FAT16, FAT32 and exFAT.
 
 This module can mount FAT file systems (up to 10).
 
@@ -104,29 +110,29 @@ For example let us download the installation floppy disk of
 [FreeDOS 1.2](https://www.freedos.org/download/).
 
 ```
-$$ vu_insmod vufuse
+$$ vu_insmod fuse
 $$ wget https://www.freedos.org/download/download/FD12FLOPPY.zip
 ...
 $$ unzip FD12FLOPPY.zip 
 Archive:  FD12FLOPPY.zip
   inflating: FLOPPY.img              
   inflating: README.md               
-$$ vumount -t vufusefatfs -o ro /home/user/FLOPPY.img /mnt
+$$ fusefatfs -o ro /home/user/FLOPPY.img /mnt
 $$ ls /mnt
 AUTOEXEC.BAT  COMMAND.COM  FDCONFIG.SYS  FDSETUP  KERNEL.SYS  SETUP.BAT
 ```
 ...
 ```
-$$ vuumount/mnt
+$$ vuumount /mnt
 ```
 
-## vufusearchive: iso, tar, zip (including compressed archives)
+## archivemount: iso, tar, zip (including compressed archives)
 
-In this exammple the iso image `alpine-virt-3.12.0_rc5-x86_64.iso` is mounted on `/mnt`:
+In this exammple the iso image `alpine-virt-3.12.0-x86_64.iso` is mounted on `/mnt`:
 
 ```bash
-$$ vu_insmod vufuse
-$$ vumount  -t vufusearchive -o ro /home/user/alpine-virt-3.12.0_rc5-x86_64.iso /mnt
+$$ vu_insmod fuse
+$$ archivemount -o ro /home/user/alpine-virt-3.12.0-x86_64.iso /mnt
 $$ ls /mnt
 apks  boot  efi
 ```
@@ -139,8 +145,8 @@ The following example shows how to mount the compressed archive
 `alpine-minirootfs-3.12.0-x86_64.tar.gz`:
 
 ```bash
-$$ vu_insmod vufuse
-$$ vumount  -t vufusearchive -o ro /home/user/alpine-virt-3.12.0_rc5-x86_64.iso /mnt
+$$ vu_insmod fuse
+$$ archivemount -o ro /home/user/alpine-virt-3.12.0_rc5-x86_64.iso /mnt
 $$ ls /mnt
 bin  etc   lib    mnt  proc  run   srv  tmp  var
 dev  home  media  opt  root  sbin  sys  usr
@@ -150,7 +156,22 @@ dev  home  media  opt  root  sbin  sys  usr
 $$ vuumount /mnt
 ```
 
+## sshfs: mount a remote filesystem using ssh
+
+The following example shows how to mount the filesystem of a remote host using ssh/
+
+```bash
+$$ vu_insmod fuse
+$$ sshfs remote.host.com:/ /mnt
+$$ ls /mnt
+bin   etc    initrd.img      lib32   lost+found  opt   run   sys  var
+boot  extra  initrd.img.old  lib64   media       proc  sbin  tmp  vmlinuz
+dev   home   lib             libx32  mnt         root  srv   usr  vmlinuz.old
+```
+...
+```
+$$ vuumount /mnt
+```
 ## Other file system types
 
-Note: ![wip](pictures/wip.png) we are currently porting the support for more file system
-types and we are working on the alignment with the latest developments of FUSE.
+Any FUSE file system implementation should work on VUOS using this module.

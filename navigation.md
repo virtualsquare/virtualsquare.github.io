@@ -41,6 +41,7 @@
   - - - -
   * # VUOS
 	* [VUOS/umvu basic concepts](tutorials/vuosbasics.md)
+	* [fuse: VUOS virtual /dev/fuse](tutorials/vudevfuse.md)
 	* [vufuse: VUOS FUSE](tutorials/vufuse.md)
 	* [vudev: VUOS virtual devices](tutorials/vudev.md)
 	* [vunet: VUOS virtual networking](tutorials/vunet.md)
