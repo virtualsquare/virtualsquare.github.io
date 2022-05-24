@@ -90,7 +90,7 @@ fuse-umfuse-ext2, vdetelweb.
 ### TODO:
   * purelibc: FTBFS still pending a FTBFS error for riscv64
 
-  *	vuos: fix module/submodule install path to support multi arch. To be packaged
+  * vuos: fix module/submodule install path to support multi arch. To be packaged
   * fusefatfs: to be packaged (after vuos?)
   * vufusearchive: to be packaged (after vuos).
   * libnlq: docs/man missing, to be packaged
@@ -98,7 +98,8 @@ fuse-umfuse-ext2, vdetelweb.
   * nsutils? change cmdline syntax? convert from autotools to cmake. Is this meaningful in Debian? compare with lsns
 
 ### packaged projects 
-#### Debian SID/testing
+
+#### Debian stable/Bullseye
   * vdeplug4
   * cado
   * vdens
@@ -114,14 +115,16 @@ fuse-umfuse-ext2, vdetelweb.
   * libpam-net
   * umps3
   * libexecs 
-	* vdeplug-slirp
-	* vdeplug-vdels
-	* vdeplug-vlan
-	* vdeplug-agno
-	* vdeplug-pcap
-
-#### in Debian stable
+  * vdeplug-slirp
+  * vdeplug-vdesl
+  * vdeplug-vlan
+  * vdeplug-agno
+  * vdeplug-pcap
   * libexecs 
+
+<!--
+#### Debian testing/SID
+-->
 
 ### purelibc
 purelibc 1.0.3 is in sid and testing. Some work must be done to port on some architectures.

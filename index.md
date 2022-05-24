@@ -63,13 +63,22 @@ No reconfiguration is required.
 
 ### VUOS (and UMVU)
 
-The motto of this projects is "give each process its own VU" (if you spell v.u. it should sound like *view*). This is the point: each process or even each thread in VUOS can *see* a different *execution environment*: file system contents, networking, devices, user ids etc.
+VUOS is a Virtual Operating System implemented at user space. Currently it implements about 150 Linux-
+compatible system calls providing support for a wide range of applications. Each process or even each
+thread in VUOS can see a different execution environment: file system contents, networking, devices, user ids
+etc.
 
-The VUOS idea is much broaden than what can be implemented by namespaces today. UMVU is a user-mode implementation of VUOS. UMVU is a partial virtual machine: it is a layer between the process and the kernel. System calls can be processed by UMVU to provide processes with a virtual view. On the contrary, system calls can be forwarded to the kernel when non-virtualized access to the system resources is required.
+The VUOS idea is much broaden than what can be implemented by namespaces or containers today.
+UMVU is a user-mode implementation of VUOS. UMVU is a partial virtual machine: it is a layer between the
+process and the kernel. System calls can be processed by UMVU to provide processes with a virtual view.
+Instead, system calls can be forwarded to the kernel when non-virtualized access to the system
+resources is required.
 
-UMVU does not require any privilege to run (i.e. no capability or root access). Long debated features like file system user-mounting in namespaces are supported (without any risk!) by UMVU.
-
-The kernel is unaware of the virtualization provided by UMVU, so the attack surface to the operating system can be reduced (it is possible to run UMVU *namespaces* on linux kernel where the namespace support has been disabled).
+UMVU does not require any privilege to run (i.e. neither specific capabilities nor root access). Long debated
+features like file system user-mounting in namespaces are supported by UMVU (without any risk!).
+The kernel is unaware of the virtualization provided by UMVU, so the attack surface to the operating
+system can be reduced (it is possible to run UMVU *namespaces* on linux kernel where the namespace
+support has been disabled).
 
 ### other projects
 
