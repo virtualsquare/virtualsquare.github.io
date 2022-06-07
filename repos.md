@@ -37,6 +37,13 @@ Internet of Threads (IoTh) stack configuration made easy peasy
  * [iothdns](https://github.com/virtualsquare/iothdns)
 Name Resolution support for the Internet of Threads.
 
+ * [iothnamed](https://github.com/virtualsquare/iothnamed)
+iothnamed is a DNS server/forwarder/cache for the Internet of Threads supporting hash based IPv6 addresses and OTIP, i.e. one time IP.
+
+ * [namedhcp](https://github.com/virtualsquare/namedhcp)
+A dhcpv6 server (and a dhcpv4 server) using the FQDN option (fully qualified domain name) to
+query the DNS for the address to assign. (It can be used with iothnamed for hash based addresses and OTIP).
+
  * [libvdestack](https://github.com/rd235/libvdestack)
 Internet of Threads through Network Namespaces
 
@@ -67,6 +74,7 @@ Telnet and web configuration client for vde\_switch and wirefilter
 
  * [&#9785; vde\_dnsutils](https://github.com/rd235/vde_dnsutils)
 DNS utilities for vde projects (hashdns/fqdndhcp)
+Obsolete: the features of vde\_dnsutils have been reimplemented in iothnamed and namedhcp
 
  * [&#9785; ipn](https://github.com/virtualsquare/ipn)
 inter process networking, a proposal for a multicasting API in Linux (interesting but obsolete)

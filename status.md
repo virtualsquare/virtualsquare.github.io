@@ -1,5 +1,15 @@
 ## News
 
+New ioth utilities (2022 June):
+
+* `iothnamed` is a DNS server/forwarder/cache for the Internet of Threads supporting hash 
+based IPv6 addresses and OTIP, i.e. one time IP.
+
+* `namedhcp` is
+a dhcpv6 server using the FQDN option (fully qualified domain name) to
+query the DNS for the address to assign. (It can be used with iothnamed for hash based addresses and OTIP).
+The repository provides also `namedhcp4` providing the same feature for IPv4.
+
 ioth utilities:
 
 * `iothconf`: Internet of Threads (IoTh) stack configuration made easy peasy: one string configuration for ioth stacks.
