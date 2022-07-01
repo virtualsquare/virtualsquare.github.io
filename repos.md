@@ -44,6 +44,13 @@ iothnamed is a DNS server/forwarder/cache for the Internet of Threads supporting
 A dhcpv6 server (and a dhcpv4 server) using the FQDN option (fully qualified domain name) to
 query the DNS for the address to assign. (It can be used with iothnamed for hash based addresses and OTIP).
 
+ * [otip-utils](https://github.com/virtualsquare/otip-utils)
+One Time IP address (OTIP) utilities: `otip_rproxy` (a reverse proxy to otip-ize tcp and udp
+servers) and `otipaddr` (a simple command to compute the current otip address).
+
+ * [iothradvd](https://github.com/virtualsquare/iothradvd)
+t is a router advertisement deamon library. The server runs as a thread.
+
  * [libvdestack](https://github.com/rd235/libvdestack)
 Internet of Threads through Network Namespaces
 

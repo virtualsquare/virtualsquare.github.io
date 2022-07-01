@@ -1,5 +1,16 @@
 ## News
 
+New ioth utilities (2022 July):
+
+
+* `otip-utils`: One Time IP address (OTIP) utilities: otip\_rproxy (a reverse proxy to
+otip-ize tcp and udp servers and otipaddr (a simple command
+to compute the current otip address).
+
+* `iothradvd`: it is a router advertisement deamon library. The server runs as a thread.
+
+---
+
 New ioth utilities (2022 June):
 
 * `iothnamed` is a DNS server/forwarder/cache for the Internet of Threads supporting hash 

@@ -31,7 +31,7 @@ repositories](repos.md) and to the specific description and tutorial pages,
 ### An open laboratory for Virtuality
 
 All the code written within the Virtual Square project is available on public
-repositories under free software licenses, the most part under GPL (v2 or later
+repositories under free/libre software licenses, the most part under GPL (v2 or later
 		version) . Everyone can download Virtual Square tools and test the
 effectiveness of proposed ideas.
 
@@ -52,7 +52,7 @@ switches and routers, etc.
 The main features of VDE are:
 
 * consistent behavior with real ethernet network.
-* It enables interconnection between virtual machines, applications and virtual connectivity tools.
+* It enables interconnection between virtual machines, namespaces, applications and virtual connectivity tools.
 * Last but not least, it does not require administrative privileges to run.
 
 Vde now implements the idea of Local Area Cloud using vxvde: virtual machines, namespaces,
@@ -70,7 +70,7 @@ etc.
 
 The VUOS idea is much broaden than what can be implemented by namespaces or containers today.
 UMVU is a user-mode implementation of VUOS. UMVU is a partial virtual machine: it is a layer between the
-process and the kernel. System calls can be processed by UMVU to provide processes with a virtual view.
+processes and the kernel. System calls can be processed by UMVU to provide processes with a virtual view.
 Instead, system calls can be forwarded to the kernel when non-virtualized access to the system
 resources is required.
 
