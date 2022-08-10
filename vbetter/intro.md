@@ -25,3 +25,4 @@ mounted file system is limited to the processes running in the VUOS session.
 * [overlay filesystem](https://www.kernel.org/doc/html/latest/filesystems/overlayfs.html?highlight=overlayfs)
 vs. [V² vufs](/tutorials/vufs.md): vufs is entirely implemented in user space,
 `vufs` supports many different merging abstractions: _merge_, _cow_, _mincow_.
+* [libguestfs](https://www.libguestfs.org/) is a set of tools for accessing and modifying virtual machine (VM) disk images. [V² vudev](/tutorials/vudev.md) and [V² fuse](/tutorials/vudevfuse.md) implement the features of libguestfs as an application scenario of a wider virtualization infrastructure using a simpler syntax.

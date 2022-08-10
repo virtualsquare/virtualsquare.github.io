@@ -13,10 +13,10 @@ There are some weird inconsistencies.
 * `faccessat` system call has three args, the complete implementation of the 
 specifications, including the flags is *emulated* by the glibc wrapper function.
 (see [faccessat.c](https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/faccessat.c)).
-This implementation does not seem to support poosix ACL.
+This implementation does not seem to support posix ACL.
 
 * the \*at function for truncate is missing (something like `truncateat` or
-`ftruncateat`.
+`ftruncateat`).
 
 # Workaround
 

@@ -14,7 +14,7 @@ Fully backwards compatible with vdeplug of vde2.
 Create User Namespaces connected to VDE networks
 
  * [libvdeslirp](https://github.com/virtualsquare/libvdeslirp)
-Libslirp (A TCP-IP emulator as a library) made easy peasy for Linux (this library obsolets virtualsquare's [old libslirp](https://github.com/rd235/libslirp)).
+Libslirp (A TCP-IP emulator as a library) made easy peasy for Linux (this library obsoletes virtualsquare's [old libslirp](https://github.com/rd235/libslirp)).
 
  * [vdeplug\_slirp](https://github.com/virtualsquare/vdeplug_slirp)
 A slirp plugin for vdeplug4. (this obsoletes the [old vdeplug\_slirp plugin](https://github.com/rd235/vdeplug_slirp) based on the deprecated [old libslirp](https://github.com/rd235/libslirp) library).
@@ -25,8 +25,23 @@ agnostic encryption nested plugin for vdeplug4
  * [vdeplug\_vlan](https://github.com/virtualsquare/vdeplug_vlan)
 802.1q (vlan) support nested plugin for vdeplug4
 
+ * [vdeplug\_pcap](https://github.com/virtualsquare/vdeplug_pcap)
+A pcap plugin for vdeplug4
+
+ * [vdeplug\_vdesl](https://github.com/virtualsquare/vdeplug_vdesl)
+VDE point to point nets over serial links
+
+ * [vxvdex](https://github.com/rd235/vxvdex)
+VXVDEX: connect distributed private network namespaces
+
  * [libioth](https://github.com/virtualsquare/libioth)
 The definitive API for the Internet of Threads
+
+ * [libnlq](https://github.com/virtualsquare/libnlq)
+Netlink Queue Library: managing network configuration via netlink (client and server side)
+
+ * [nlinline](https://github.com/virtualsquare/nlinline)
+NLINLINE (netlink inline) is a library of inline functions implementing a quick and clean API for networking configuration via netlink.
 
  * [ioth\_picox](https://github.com/virtualsquare/ioth_picox)
 The picoxnet module for libioth
@@ -54,23 +69,8 @@ t is a router advertisement deamon library. The server runs as a thread.
  * [libvdestack](https://github.com/rd235/libvdestack)
 Internet of Threads through Network Namespaces
 
- * [vxvdex](https://github.com/rd235/vxvdex)
-VXVDEX: connect distributed private network namespaces
-
- * [vdeplug\_pcap](https://github.com/virtualsquare/vdeplug_pcap)
-A pcap plugin for vdeplug4
-
- * [vdeplug\_vdesl](https://github.com/virtualsquare/vdeplug_vdesl)
-VDE point to point nets over serial links
-
  * [virtualbricks](https://github.com/virtualsquare/virtualbricks)
 A GTK frontend for VDE and QEMU/KVM. Supports multiple network on the same host, tunneling between hosts networks, a fully featured configuration interface.
-
- * [libnlq](https://github.com/virtualsquare/libnlq)
-Netlink Queue Library: managing network configuration via netlink (client and server side)
-
- * [nlinline](https://github.com/virtualsquare/nlinline)
-NLINLINE (netlink inline) is a library of inline functions implementing a quick and clean API for networking configuration via netlink.
 
  * [&#9785; vde-2](https://github.com/virtualsquare/vde-2)
 The vde-2 vde\_switch is fully compatible with vdeplug4. Although it has not been rewritten yet, it includes
@@ -123,6 +123,9 @@ CADO: Capability DO (like a sudo providing users with just the capabilities they
 µMPS is an educational computer system architecture and an accompanying
 emulator designed from the ground up to achieve the right trade-off between
 simplicity and elegance on one side, and realism on the other.
+
+ * [v2syslog](https://github.com/virtualsquare/v2syslog)
+Syslog library and deamon for virtualsquare projects
 
  * [picotcp](https://github.com/virtualsquare/picotcp): picoTCP is a small-footprint,
 modular TCP/IP stack designed for embedded systems and the Internet of Things.

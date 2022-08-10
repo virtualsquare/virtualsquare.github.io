@@ -34,7 +34,7 @@ workarounds to skip the self received packets.
 
 # Please
 
-...design a way to create ip multicast sockets using tha group port number to receive packets and another port (maybe an ephemeral port) for sending.
+...design a way to create ip multicast sockets using the group port number to receive packets and another port (maybe an ephemeral port) for sending.
 
 # References
 
