@@ -242,7 +242,7 @@ gcc -o picox_client4 picox_client4.c  -lpicoxnet
 ```
 start the switch:
 ```
-vde_plug switch:///tmp/myswitch
+vde_plug null:// switch:///tmp/myswitch
 ```
 in two different terminals start the server
 ```
@@ -267,7 +267,7 @@ Note: the client uses a `poll` system call to wait for events from the standard 
 
 The example presented in the previous section works in IPv6 just by changing the IP addresses and socket types.
 
-### `picox_server6.c
+### `picox_server6.c`
 
 ```C
 #define _GNU_SOURCE

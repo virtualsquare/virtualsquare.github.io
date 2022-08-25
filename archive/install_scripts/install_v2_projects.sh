@@ -102,10 +102,19 @@ install_repo https://github.com/virtualsquare/randmac.git
 install_repo https://github.com/rd235/libpam-net.git -DLIBSECURITYDIR=/lib/x86_64-linux-gnu/security/
 install_repo https://github.com/virtualsquare/vufusearchive.git
 install_repo https://github.com/virtualsquare/fusefatfs.git
+install_repo https://github.com/virtualsquare/iothconf.git
+install_repo https://github.com/virtualsquare/iothdns.git
+install_repo https://github.com/virtualsquare/iothnamed.git
+install_repo https://github.com/virtualsquare/namedhcp.git
+install_repo https://github.com/virtualsquare/otip-utils.git
+install_repo https://github.com/virtualsquare/iothradvd.git
 install_picotcp https://github.com/virtualsquare/picotcp.git
 install_repo https://github.com/virtualsquare/picoxnet.git
-install_repo https://github.com/virtualsquare/ioth_picox.git
+# vunetpicox deprecated. there are still examples in the tutorial
+# it will be removed as soon as the tutorial pages have been updated
 install_repo https://github.com/virtualsquare/vunetpicox.git
+install_repo https://github.com/virtualsquare/vunetioth.git
+install_repo https://github.com/virtualsquare/ioth_picox.git
 
 rm -f /usr/local/lib/vu/modules/vufuseext2.so /usr/local/lib/vu/modules/vufuseext2.re
 ln -s /usr/local/lib/umview/modules/umfuseext2.so /usr/local/lib/vu/modules/vufuseext2.so
