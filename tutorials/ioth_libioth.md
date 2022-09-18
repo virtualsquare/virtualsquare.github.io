@@ -3,11 +3,11 @@
 ## The definitive API for the Internet of Threads
 
 * the API is minimal: Berkeley Sockets + msocket + newstack/delstack.
-* the stack implementation can be chosen as a plugin at run time.
+* the stack implementation can be chosen as a plug-in at run time.
 * netlink based stack/interface/ip configuration via _nlinline_.
 * ioth sockets are real file descriptors, poll/select/ppoll/pselect/epoll friendly
-* plug-ins are loaded in private address namespaces: libioth supports several stacks
-of the same type (same plugin) even if the stack implementation library was designed to
+* plug-ins can be loaded in private address namespaces: libioth supports several stacks
+of the same type (same plug-in) even if the stack implementation library was designed to
 provide just one stack.
 
 ![ioth-libioth](pictures/ioth_libioth.png)
@@ -125,9 +125,9 @@ one of the following commands:
 
 * now whatever is typed in the client is echoed back, the serveer produces a log of open/closed connections and echoed messages.
 
-## The API for plugin development
+## The API for plug-in development
 
-The structure of the source code a `ioth` plugin for the stack `foo` is the following:
+The structure of the source code a `ioth` plug-in for the stack `foo` is the following:
 ```C
 file ioth_foo.c:
 
@@ -170,22 +170,22 @@ int ioth_foo_socket(int domain, int type, int protocol) {
 }
 ```
 
-This plugin can be compiled using the following command:
+This plug-in can be compiled using the following command:
 ```sh
 gcc -o ioth_foo.so -fPIC -shared ioth_foo.c
 ```
-The plugin does not need any ioth specific library.
+The plug-in does not need any ioth specific library.
 
-The plugin `ioth_foo.so` must be installed:
+The plug-in `ioth_foo.so` must be installed:
 
-* in the global plugin directory: `/usr/lib/ioth` or `/usr/local/lib/ioth` or `/usr/lib/x86_64-linux-gnu/ioth` (or similar) depending on where `libioth.so` is installed (`/usr/lib` or `/usr/local/lib` or `/usr/lib/x86_64-linux-gnu` respectively).
+* in the global plug-in directory: `/usr/lib/ioth` or `/usr/local/lib/ioth` or `/usr/lib/x86_64-linux-gnu/ioth` (or similar) depending on where `libioth.so` is installed (`/usr/lib` or `/usr/local/lib` or `/usr/lib/x86_64-linux-gnu` respectively).
 * in the user local directory: the hidden subdirectory named `.ioth` of the user's home directory.
 
-When libioth is required to create a new stack of type `foo`, it loads the plugin named `ioth_foo.so`.
+When libioth is required to create a new stack of type `foo`, it loads the plug-in named `ioth_foo.so`.
 
-When the plugin has been loaded, ioth searches and runs the function `ioth_foo_newstack` passing it two parameters: the array on VNLs to define the virtual interfaces, and a structure whose fields are function pointers: `ioth_functions`.
+When the plug-in has been loaded, ioth searches and runs the function `ioth_foo_newstack` passing it two parameters: the array on VNLs to define the virtual interfaces, and a structure whose fields are function pointers: `ioth_functions`.
 This structure includes `getstackdata`, `newstack`, `delstack` and all the functions of the Berkeley Sockets API.
 
 The function `getstackdata` is provided by libioth and can be saved (all the other function can call `getstackdata()` to retrieve the pointer returned by `ioth_foo_newstack`).
 
-All the other function pointers (except `getstackdata`) can be assigned to their implementation. Alternatively, if the plugin defines functions prefixed by `ioth_foo_`, these are automatically recognized and used.
+All the other function pointers (except `getstackdata`) can be assigned to their implementation. Alternatively, if the plug-in defines functions prefixed by `ioth_foo_`, these are automatically recognized and used.

@@ -91,7 +91,7 @@ This combination of VDE plugins implements the [IEEE 802.1ad protocol](https://e
 VDE networks.
 
 ```
-vdens vdens vlan://4{vlan://5/qinq{vde:///tmp/h}}
+vdens vlan://4{vlan://5/qinq{vxvde://234.0.0.1}}
 ```
 in this example `vdens` is connected to the VLAN 4 of the QinQ VLAN 5.
 
@@ -100,10 +100,10 @@ in this example `vdens` is connected to the VLAN 4 of the QinQ VLAN 5.
 ![VLAN in encrypted VDE](pictures/vde_nest_vlan_agno.png)
 
 ```
-vdens vlan://4{agno://{vxvde://234.0.0.2}}
+vdens vlan://4{agno://{vxvde://234.0.0.1}}
 ```
 This is the syntax to join the VLAN4 of the encrypted network.
 
-Note: the sequence of the plugins is very important `agno://{vlan://4{vxvde://234.0.0.2}}` means
+Note: the sequence of the plugins is very important `agno://{vlan://4{vxvde://234.0.0.1}}` means
 that the VLAN 4 is encrypted (other VLANs or untagged packets can be unencrypted or use different
 encryptions).

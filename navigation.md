@@ -78,7 +78,7 @@
   - - - -
 
   * # Tips&Techniques
-  * [short switch switches in C: strcase](ideas/strcase.md)
+  * [short string switches in C: strcase](ideas/strcase.md)
   * [Netlink client and server support](ideas/nlq.md)
   * [user bind mount](ideas/userbindmount.md)
   * [C streams as volatile buffers: volatilestreams](ideas/volatilestream.md)
