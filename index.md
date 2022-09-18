@@ -61,6 +61,18 @@ do not need any dispatching process (virtual switch).
 Process migration is as simple as stopping a process on one host and restart it on another.
 No reconfiguration is required.
 
+### Internet of Threads (IoTh)
+
+IoTh means the ability to give the role of Internet nodes to processes or even
+to threads.  A process can have its own IP address. While this idea sounds
+hardly exploitable in IPV4 due to the scarcity of addresses, it is a convenient
+usage of the wide IPV6 address space.
+
+A TCP-IP stack can be implemented as a library. In fact a TCP-IP stack implements the
+_link_, _internetwork_ and _transport_ layers. A TCP-IP stack provide connection-oriented
+(TCP) or connectionless (UDP) communications, sending and receiving packets of a
+physical (or virtual) network (e.g. a VDE network).
+
 ### VUOS (and UMVU)
 
 VUOS is a Virtual Operating System implemented at user space. Currently it implements about 150 Linux-

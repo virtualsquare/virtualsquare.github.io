@@ -64,7 +64,7 @@ One Time IP address (OTIP) utilities: `otip_rproxy` (a reverse proxy to otip-ize
 servers) and `otipaddr` (a simple command to compute the current otip address).
 
  * [iothradvd](https://github.com/virtualsquare/iothradvd)
-t is a router advertisement deamon library. The server runs as a thread.
+It is a router advertisement deamon library. The server runs as a thread.
 
  * [libvdestack](https://github.com/rd235/libvdestack)
 Internet of Threads through Network Namespaces

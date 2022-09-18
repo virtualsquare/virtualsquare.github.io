@@ -16,7 +16,7 @@ provide just one stack.
 
 ### newstack
 
-There are four flavours of `ioth_newstack`:
+There are three flavours of `ioth_newstack`:
 ```C
 struct ioth *ioth_newstack(const char *stack, const char *vnl);
 struct ioth *ioth_newstackl(const char *stack, const char *vnl, ... /* (char  *) NULL */);
@@ -38,7 +38,7 @@ This function terminates/deletes a stack. It returns -1 in case of error, 0 othe
 ```C
 int ioth_msocket(struct ioth *iothstack, int domain, int type, int protocol);
 ```
-This is the multi-stack supporting extension of `socket`(2). It behaves exactly as `socket` except for the added heading argument that allows the choice of the stack among those currently available (previously created by a `ioth_newstack*`.
+This is the multi-stack supporting extension of `socket`(2). It behaves exactly as `socket` except for the added heading argument that allows the choice of the stack among those currently available (previously created by a `ioth_newstack*`).
 
 ### for everything else... Berkeley Sockets
 
