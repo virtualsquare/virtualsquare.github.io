@@ -20,7 +20,7 @@ It is approximately 0.45GB.
 ## step 2: uncompress the image:
 
 ```bash
-$ bunzip2 debian-sid-v2-amd64-daily-????????-???.qcow2.bz2
+$ bunzip2 debian-sid-v2-amd64-daily-????????-????.qcow2.bz2
 ```
 
 question marks should be changed with the actual date and version number of the disk image.
@@ -38,7 +38,7 @@ We suggest the following command:
 ``` bash
 $ qemu-system-x86_64 -enable-kvm -smp $(nproc) -m 2G -monitor stdio -cpu host\
     -netdev type=user,id=net,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net \
-    -drive file=$(echo debian-sid-v2-amd64-daily-????????-???.qcow2)
+    -drive file=$(echo debian-sid-v2-amd64-daily-????????-????.qcow2)
 ```
 
 The number of cores (``-smp $(nproc)``) and the amount of memory (``-m 2G``) should be adapted to 

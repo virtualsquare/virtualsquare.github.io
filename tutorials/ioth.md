@@ -31,6 +31,6 @@ IoTh instead has a completely opposite approach, each process can use one or mor
 network stacks implemented as libraries, users can own and manage their virtual networks.
 
 Note: ![wip](pictures/wip.png) we are working to support user-level stacks. We are porting
-[picotcp-ng](https://gitlab.com/insane-adding-machines/picotcp) and evaluating
+[picotcp-ng](https://github.com/virtualsquare/picotcp) and evaluating
 [lwip](https://savannah.nongnu.org/projects/lwip/) and our old
-[lwipv6](http://wiki.v2.cs.unibo.it/wiki/index.php?title=LWIPV6)
+[lwipv6](https://github.com/virtualsquare/view-os/tree/master/lwipv6)

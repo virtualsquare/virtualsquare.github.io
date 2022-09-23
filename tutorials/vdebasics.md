@@ -78,12 +78,12 @@ the ASCII value of the character).
 * when `vde_plug` has only one argument it uses the standard streams (`stdin`, `stdout`) to communicate, so it needs a second `vde_plug` connected
 through a dual pipe (`dpipe` command) to connect the other plugin:
 
-  `dpipe vde_plug foo://... = vde_plug bar://`
+  `dpipe vde_plug foo://... = vde_plug bar://...`
 
   ![plug.r1arg](pictures/vde_plug_1arg.png)
 
   The bidirectional stream can be processed: any tool able to support a bidirectional stream can be used. As an example we could want foo and bar to
 run on different hosts, we can use ssh to forward the stream:
 
-  `dpipe vde_plug foo://... = ssh remote.host vde_plug bar://`
+  `dpipe vde_plug foo://... = ssh remote.host vde_plug bar://...`
 

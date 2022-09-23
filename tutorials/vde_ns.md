@@ -124,7 +124,7 @@ As one may expect the number of the controller reflects the sequence of argument
 ## vdens-multi as VDE router (NFV)
 
 The following example uses a `vdens` as a masquerading router. NAT is just one of the network function which can
-be implemented ina `vdens`: potentially all the NFV action that can be implemented in a linux box, like packet screening
+be implemented in a `vdens`: potentially all the NFV action that can be implemented in a linux box, like packet screening
 and shaping. bridging, traffic prioritization, should work properly in `vdens` using exacly the same commands.
 There are just two differences:
 

@@ -108,7 +108,7 @@ Create the tap interface and assign it to the user `user`.
 ```
 $ su -
 # ip tuntap add mode tap name tap0 user user
-# ip addr 10.0.0.254/24 dev tap0
+# ip addr add 10.0.0.254/24 dev tap0
 # ip link set tap0 up
 #exit
 $
@@ -143,7 +143,7 @@ UM-L can be installed from the Linux distribution:
 ```
 $ su -
 # apt-get update
-# apt-get user-mode-linux
+# apt-get install user-mode-linux
 # exit
 ```
 
