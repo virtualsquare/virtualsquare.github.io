@@ -29,7 +29,7 @@ Cons of `vxvde`:
 
 * there is no access control to the `vxvde` virtual networks. Any user having a standard shell access on the
 hosts of the LAN (and enabled to run programs involving the use of the network) can add VDE clients to the active Local Area Clouds.
-* there is no encrytion
+* there is no encryption
 
 Note: In many scenarios these limitations are not problems. For example in Data Centers providing Virtual Machines to their
 customers (i.e. suppliers of IaaS cloud nodes), only the employees have shell access to the physical hosts and
