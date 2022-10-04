@@ -3,7 +3,7 @@
 Note: repositories tagged with &#9785; are old versions. Many of them include
 convenient features which have not been ported yet to the new codebase.
 
-## VDE and virtual networking projects
+## VDE
 
  * [vdeplug4](https://github.com/rd235/vdeplug4)
 VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud.
@@ -34,14 +34,35 @@ VDE point to point nets over serial links
  * [vxvdex](https://github.com/rd235/vxvdex)
 VXVDEX: connect distributed private network namespaces
 
+ * [virtualbricks](https://github.com/virtualsquare/virtualbricks)
+A GTK frontend for VDE and QEMU/KVM. Supports multiple network on the same host, tunneling between hosts networks, a fully featured configuration interface.
+
+ * [&#9785; vde-2](https://github.com/virtualsquare/vde-2)
+The vde-2 vde\_switch is fully compatible with vdeplug4. Although it has not been rewritten yet, it includes several tools that are actual like vde\switch and wirefilter.
+
+ * [&#9785; vdetelweb](https://github.com/virtualsquare/vdetelweb)
+Telnet and web configuration client for vde\_switch and wirefilter
+
+ * [&#9785; vde\_dnsutils](https://github.com/rd235/vde_dnsutils)
+DNS utilities for vde projects (hashdns/fqdndhcp)
+Obsolete: the features of vde\_dnsutils have been reimplemented in iothnamed and namedhcp
+
+ * [&#9785; ipn](https://github.com/virtualsquare/ipn)
+inter process networking, a proposal for a multicasting API in Linux (interesting but obsolete)
+
+ * [&#9785; kernel-patch-ipn](https://github.com/virtualsquare/kernel-patch-ipn)
+the kernel part of the inter process networking (IPN) implementation.
+
+ * [&#9785; vde-netemu](https://github.com/virtualsquare/vde-netemu)
+An alternative implementation of vde's wirefilter based on a different organization of components
+
+## Internet of Threads
+
  * [libioth](https://github.com/virtualsquare/libioth)
 The definitive API for the Internet of Threads
 
  * [libnlq](https://github.com/virtualsquare/libnlq)
 Netlink Queue Library: managing network configuration via netlink (client and server side)
-
- * [nlinline](https://github.com/virtualsquare/nlinline)
-NLINLINE (netlink inline) is a library of inline functions implementing a quick and clean API for networking configuration via netlink.
 
  * [ioth\_picox](https://github.com/virtualsquare/ioth_picox)
 The picoxnet module for libioth
@@ -69,29 +90,6 @@ It is a router advertisement deamon library. The server runs as a thread.
  * [libvdestack](https://github.com/rd235/libvdestack)
 Internet of Threads through Network Namespaces
 
- * [virtualbricks](https://github.com/virtualsquare/virtualbricks)
-A GTK frontend for VDE and QEMU/KVM. Supports multiple network on the same host, tunneling between hosts networks, a fully featured configuration interface.
-
- * [&#9785; vde-2](https://github.com/virtualsquare/vde-2)
-The vde-2 vde\_switch is fully compatible with vdeplug4. Although it has not been rewritten yet, it includes
-several tools that are actual like vde\switch and wirefilter.
-
- * [&#9785; vdetelweb](https://github.com/virtualsquare/vdetelweb)
-Telnet and web configuration client for vde\_switch and wirefilter
-
- * [&#9785; vde\_dnsutils](https://github.com/rd235/vde_dnsutils)
-DNS utilities for vde projects (hashdns/fqdndhcp)
-Obsolete: the features of vde\_dnsutils have been reimplemented in iothnamed and namedhcp
-
- * [&#9785; ipn](https://github.com/virtualsquare/ipn)
-inter process networking, a proposal for a multicasting API in Linux (interesting but obsolete)
-
- * [&#9785; kernel-patch-ipn](https://github.com/virtualsquare/kernel-patch-ipn)
-the kernel part of the inter process networking (IPN) implementation.
-
- * [&#9785; vde-netemu](https://github.com/virtualsquare/vde-netemu)
-An alternative implementation of vde's wirefilter based on a different organization of components
-
 ## VUOS (and partial virtualization) projects
 
  * [vuos](https://github.com/virtualsquare/vuos)
@@ -108,7 +106,7 @@ A `vufuse module based on libarchive: it supports tar/zip/iso (including compres
 
  * [vunetioth](https://github.com/virtualsquare/vunetioth) A VUOS vunet module for libioth.
 
- * [vunetpicox](https://github.com/virtualsquare/vunetpicox) A VUOS vunet module for picoxnet.
+ * [&#9785; vunetpicox](https://github.com/virtualsquare/vunetpicox) A VUOS vunet module for picoxnet. (vunetioth is a more general vunet module)
 
  * [&#9785; view-os](https://github.com/virtualsquare/view-os)
 View-OS is the previous implementation of VUOS. This repository also includes lwipv6, a hybrid v4/v6 netwrking stack
@@ -118,6 +116,9 @@ implemented as a library.
 
  * [cado](https://github.com/rd235/cado)
 CADO: Capability DO (like a sudo providing users with just the capabilities they need)
+
+ * [nlinline](https://github.com/virtualsquare/nlinline)
+NLINLINE (netlink inline) is a library of inline functions implementing a quick and clean API for networking configuration via netlink.
 
  * [umps](https://github.com/virtualsquare/umps3)
 µMPS is an educational computer system architecture and an accompanying

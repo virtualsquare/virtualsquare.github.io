@@ -33,11 +33,11 @@
 	* [VDE slirp](tutorials/vde_slirp.md)
 	* [VDE nesting plugins](tutorials/vde_nesting.md)
   - - - -
-  * # Internet of Threads & VDE
+  * # Internet of Threads
 	* [Internet of Threads (IoTh): intro](tutorials/ioth.md)
+	* [libioth: the definitive API for the IoTh](tutorials/ioth_libioth.md)
 	* [IoTh: vdestack](tutorials/ioth_vdestack.md)
 	* [picoxnet: a stack for the IoTh](tutorials/ioth_picoxnet.md)
-	* [libioth: the definitive API for the IoTh](tutorials/ioth_libioth.md)
   - - - -
   * # VUOS
 	* [VUOS/umvu basic concepts](tutorials/vuosbasics.md)
