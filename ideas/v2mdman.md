@@ -100,11 +100,11 @@ This Makefile calls pandoc to create the man pages. There is a workaround to cop
 
 where
 ----
-Many projects: libpam-net, vdeplug\_slirp, libvolatilestream, libvpoll-eventfd, libfduserdata, vdeplug\_pcap, vdeplug\_vdesl, nlinline, randmac, libvdeslirp, libstropt, vuos, vdeplug\_vlan, libvdestack, ...
+Many projects: vdeplug\_slirp, libvolatilestream, libvpoll-eventfd, libfduserdata, vdeplug\_pcap, vdeplug\_vdesl, nlinline, randmac, libvdeslirp, libstropt, vuos, vdeplug\_vlan, libvdestack, ...
 
 Note: the markdown source was formerly translated using ronn instead of pandoc. We are currently converting the projects'
 man pages.
 
 references:
 ----
-[pandoc](https://pandoc.org
+[pandoc](https://pandoc.org)
