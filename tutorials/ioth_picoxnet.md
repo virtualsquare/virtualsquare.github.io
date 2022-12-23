@@ -504,7 +504,7 @@ Note: this example uses IPv4 addresses. The program supports IPv6, too.
 
 The complete code of this program is [`picox_httpserv.c`](/archive/ioth_examples/picox_httpserv.c)
 
-`picox_httpserv.c` requires three parameters: VDE network, IP addressi (v4 or v6), prefix.
+`picox_httpserv.c` requires three parameters: VDE network, IP address (v4 or v6), prefix.
 
 THe main program configures the stack, creates a socket and binds it to the port 80, then for any incoming connection it
 starts a thread which runs the code of the function `handle`.

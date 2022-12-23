@@ -1,4 +1,4 @@
-network configuration: must be simple, inlined and via netlin
+network configuration: must be simple, inlined and via netlink
 ====
 
 what
