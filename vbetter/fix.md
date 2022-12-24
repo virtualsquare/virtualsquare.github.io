@@ -16,6 +16,5 @@ obsolete concepts in programs, libraries and protocols.
 * [eBPF for seccomp is useful (and harmless)!](seccomp_ebpf.md)
 * [We need to synthesize poll/select events](vpoll.md)
 * [iproute: `ip link add` for generic interfaces](iplinkadd.md)
-* [Linux netlink bug: negative ip interfaces](nlnegativeif.md)
 * [qemu/kvm: all interfaces have the same default MAC](qemudefmac.md)
 * [Linux \*at system calls idiosyncrasies](atidiosyncrasies.md)

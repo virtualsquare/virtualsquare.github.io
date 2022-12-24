@@ -114,13 +114,20 @@ Please note that `iothtest_client.c` uses a `poll`(2) system call to wait for av
      ./iothtest_server picox vde:///tmp/sw
      vdens vde:// ./iothtest_server kernel
 ```
-
+... or any (future?) stack implementation plug-in, say *mynewstack*:
+```bash
+     ./iothtest_server mynewstack vde:///tmp/sw
+```
 * in a third terminal run the client, again the stack implementation can be decided by choosing
 one of the following commands:
 ```bash
      ./iothtest_client vdestack vde:///tmp/sw
      ./iothtest_client picox vde:///tmp/sw
      vdens vde:// ./iothtest_client kernel
+```
+... or any (future?) stack implementation plug-in, say *mynewstack*:
+```bash
+     ./iothtest_client mynewstack vde:///tmp/sw
 ```
 
 * now whatever is typed in the client is echoed back, the serveer produces a log of open/closed connections and echoed messages.
@@ -151,7 +158,7 @@ void *ioth_foo_newstack(const char *vnlv[], struct ioth_functions *ioth_f) {
     // in such a case the  following assignment is automatic:
     // ioth->bind = ioth_foo_bind;
 
-    // example 2: provide a specific function (explicit assignment)
+    // example 3: provide a specific function (explicit assignment)
     ioth->bind = mybind;
 
     .... and so on for all the other functions

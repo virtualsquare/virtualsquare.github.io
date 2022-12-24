@@ -85,4 +85,4 @@ The discussion about seccomp-eBPF must be reopened.
 
 [LKML thread about seccomp-eBPF](https://lore.kernel.org/netdev/20180226072651.GA27045@ircssh-2.c.rugged-nimbus-611.internal/)
 
-[{LWN article on this problem](https://lwn.net/Articles/796328/)
+[LWN article on this problem](https://lwn.net/Articles/796328/)

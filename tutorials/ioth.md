@@ -30,7 +30,7 @@ by the kernel. This implementation protects the physical network from abuses.
 IoTh instead has a completely opposite approach, each process can use one or more
 network stacks implemented as libraries, users can own and manage their virtual networks.
 
-Note: ![wip](pictures/wip.png) we are working to support user-level stacks. We are porting
-[picotcp-ng](https://github.com/virtualsquare/picotcp) and evaluating
+Note: ![wip](pictures/wip.png) we are working to support user-level stacks. We are
+evaluating the porting of
 [lwip](https://savannah.nongnu.org/projects/lwip/) and our old
 [lwipv6](https://github.com/virtualsquare/view-os/tree/master/lwipv6)
