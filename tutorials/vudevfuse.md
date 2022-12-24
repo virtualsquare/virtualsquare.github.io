@@ -15,8 +15,8 @@ Note: the name of this module is `fuse`. In the source code its name is `vudevfu
 
 vuos provides two mofules to support filesystems in userspace: `fuse` and `vufuse`.
 
-* `fuse` is compatible with the file system implementations developed for Linux FUSE.
-* `vufuse` requires the generation of a specific plugin (a shared library), it is faster.
+* `fuse` (described in this page) is compatible with the file system implementations developed for Linux FUSE.
+* `vufuse` (described [here](vufuse.md)) requires the generation of a specific plugin (a shared library), it is faster.
 
 ## fuse-ext2: ext2/3/4 filesystems
 
