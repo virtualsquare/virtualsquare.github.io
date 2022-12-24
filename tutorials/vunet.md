@@ -9,11 +9,11 @@ VUOS uses the `mount` operation to load virtual stacks, too.
 A network stack appear as a special file, it can be unloaded using `vuumount`,
 it is possbile to select the stack using the command `vustack`.
 
-## vunetioth: a unified solution for virtual networking
+## vunetioth: a unified solution for VUOS virtual networking
 
 The example we are going to build connects a VUOS session to a
 `vdens` using `vxvde` and the stack vdestack (or any other stack supported
-by libioth, just change the string `vdestack` to ssomething else e.g. `picox`).
+by libioth, just change the string `vdestack` to something else e.g. `picox`).
 Here is a graphical sketch of the virtual architecture of this example.
 
 ![vunetvdestack example](pictures/vuos_vunetioth.png)
@@ -107,6 +107,30 @@ $$ nc fc00::1:1 7000
 ```
 
 What is typed in a window appears in the other and vice-versa.
+
+## iplink: add/delete vunetioth interfaces
+
+`iplink` allow users to add or delete interfaces whose types are not supported by `ip-link`(8).
+In fact iproute's `ip link` tool supports many types of interfaces (36 at the time of writing), and it generates a
+netlink request even when the type is not officially supported, but there is no way to send configuration parameters
+to set up a new interface.
+
+So for example in a `umvu` session, using a `vunetioth` stack the command:
+```
+$$ ip link add vde1 type vde
+```
+creates a vde interface connected to the default VDE network (or pre-defined net as set in `~/.vdeplug/default`).
+
+The command `iplink` has syntax inspired by `ip link` but is support a `data` option:
+
+```
+$$ iplink add vde1 type vde data vxvde://234.0.0.1
+$$ iplink add vde2 type vde data slirp://
+```
+
+Note: For the interested readers, `iplink` uses the `IFLA_LINKINFO` option and
+its `IFLA_INFO_KIND` sub-option to define the type of the interface (exactly as
+`ip link` does). `iplink` can add the `IFLA_INFO_SLAVE_KIND` sub-option to send the configuration options.
 
 ## vunetvdestack: a joining link between VUOS and VDE
 
@@ -282,29 +306,7 @@ Netcat can be used to test connections.
 Warning: picoxnet handles IPv4 and IPv6 as independent stacks. So an IPv6 `bind` or `connect` does __not__ manage IPv4
 services.
 
-## iplink: add/delete vunetpicox interfaces
-
-`iplink` allow users to add or delete interfaces whose types are not supported by `ip-link`(8).
-In fact iproute's `ip link` tool supports many types of interfaces (36 at the time of writing), and it generates a
-netlink request even when the type is not officially supported, but there is no way to send configuration parameters
-to set up a new interface.
-
-So for example in a `umvu` session, using a `vunetpicox` stack the command:
-```
-$$ ip link add vde1 type vde
-```
-creates a vde interface connected to the default VDE network (or pre-defined net as set in `~/.vdeplug/default`).
-
-The command `iplink` has syntax inspired by `ip link` but is support a `data` option:
-
-```
-$$ iplink add vde1 type vde data vxvde://234.0.0.1
-$$ iplink add vde2 type vde data slirp://
-```
-
-Note: For the interested readers, `iplink` uses the `IFLA_LINKINFO` option and
-its `IFLA_INFO_KIND` sub-option to define the type of the interface (exactly as
-`ip link` does). `iplink` can add the `IFLA_INFO_DATA` sub-option to send the configuration options.
+Note: `iplink` command described above can be used to add/delete interfaces for `vunetpicox`.
 
 ## Disable the networking: vdenetnull
 
