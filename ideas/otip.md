@@ -53,8 +53,15 @@ proxy forwards the packets to the OTIP unaware server using a local port.
 where
 ----
 
-The current description is a proof-of-concept, we're currently working on a new
-version of *vde_dnsutils* which will be based on `libioth` and `iothdns`.
+The [iothnamed project](https://github.com/virtualsquare/iothnamed) implements a DNS server
+supporting OTIP.
+
+The repository [OTIP-utils](https://github.com/virtualsquare/otip-utils) provides several
+tools for OTIP.
+
+* `otipaddr`: computes the current OTIP address.
+* `hashaddr`: computes the hash based address.
+* `otip_rproxy`: a OTIP enabled reverse proxy. This tool permits to protect TCP or UTP servers using OTIP.
 
 references:
 ----

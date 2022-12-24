@@ -50,8 +50,10 @@ the new node its name. (They have just to _baptize_ the new node)
 
 where
 ----
-[VDE DNS utilities](https://github.com/rd235/vde_dnsutils) project provide 
-tools like `hashdns` and `fqdndhcp` to implement hash based IPv6 addresses.
+[iothnamed project](https://github.com/virtualsquare/iothnamed) implements a dns server
+providing hash based IPv6 addresses, [namedhcp](https://github.com/virtualsquare/namedhcp)
+is a dhcp server able to retrieve IP addresses from a DNS using the fully qualified
+domain name (FQDN) field of the dhcp protocol.
 
 references:
 ----

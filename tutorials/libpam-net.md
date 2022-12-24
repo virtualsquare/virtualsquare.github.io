@@ -57,5 +57,5 @@ $
 ```
 
 This user has only the localhost interface available. This user logged in to the
-system by the network (via ssh) but it is not possible to use the nework from the
+system by the network (via ssh) but it is not possible to use the network from the
 resulting session.
