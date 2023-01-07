@@ -18,7 +18,6 @@ General purpose ideas implemented in VirtualSquare projects.
 * [network function virtualization squared](vdenfv.md)
 * [vpoll: synthesize virtual event for poll/select/ppoll/pselect/ppoll](vpoll.md)
 * [per user networking definition (pam\_net)](pamnet.md)
-* [hybrid library/executable ELF files](hybrid_elf.md)
 * [network configuration: must be simple, inlined and via netlink](nlinline.md)
 * [execs is (was) missing](execs.md)
 

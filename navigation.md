@@ -72,7 +72,6 @@
   * [network function virtualization squared](ideas/vdenfv.md)
   * [vpoll: synthesize virtual event for poll/select/ppoll/pselect/ppoll](ideas/vpoll.md)
   * [per user networking definition (pam\_net)](ideas/pamnet.md)
-  * [hybrid library/executable ELF files](ideas/hybrid_elf.md)
   * [network configuration: must be simple, inlined and via netlink](ideas/nlinline.md)
   * [execs is (was) missing](ideas/execs.md)
   - - - -

@@ -109,7 +109,7 @@ A `vufuse module based on libarchive: it supports tar/zip/iso (including compres
  * [&#9785; vunetpicox](https://github.com/virtualsquare/vunetpicox) A VUOS vunet module for picoxnet. (vunetioth is a more general vunet module)
 
  * [&#9785; view-os](https://github.com/virtualsquare/view-os)
-View-OS is the previous implementation of VUOS. This repository also includes lwipv6, a hybrid v4/v6 netwrking stack
+View-OS is the previous implementation of VUOS. This repository also includes lwipv6, a hybrid v4/v6 networking stack
 implemented as a library.
 
 ## Other projects
