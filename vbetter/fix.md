@@ -18,3 +18,4 @@ obsolete concepts in programs, libraries and protocols.
 * [iproute: `ip link add` for generic interfaces](iplinkadd.md)
 * [qemu/kvm: all interfaces have the same default MAC](qemudefmac.md)
 * [Linux \*at system calls idiosyncrasies](atidiosyncrasies.md)
+* [Linux: dlmopen problems (dlclose does not work)](dlopen_problems.md)
