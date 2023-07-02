@@ -1,5 +1,12 @@
 ## News
 
+Libvpoll kernel module: compatibility with Linux 6.4 (2023 June)
+
+Porting of VUOS to RiscV (2023 April)
+
+New s2argv/libexecs API (SONAME 1) including `system_safe` a safe
+replament for `system`(3) (2023 January)
+
 New ioth utilities (2022 July):
 
 
