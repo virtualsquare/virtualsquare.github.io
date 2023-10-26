@@ -64,7 +64,7 @@ In the first terminal run the following commands:
 ```
 $ su -
 # ip tuntap add mode tap name tap0 user user
-# ip addr 10.0.0.254/24 dev tap0
+# ip addr add 10.0.0.254/24 dev tap0
 # ip link set tap0 up
 # exit
 $ vde_plug tap://tap0 vxvde://234.0.0.1
