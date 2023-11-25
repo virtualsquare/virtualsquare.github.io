@@ -1,4 +1,6 @@
-#![](v2large.png) VirtualSquare
+![](v2large.png)
+
+# VirtualSquare
 
 **_all the virtuality you always wanted but you were afraid to ask_**
 
