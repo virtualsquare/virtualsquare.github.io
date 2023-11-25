@@ -8,10 +8,10 @@ linkat, symlinkat, readlinkat, fchmodat, faccessat, utimensat.
 
 There are some weird inconsistencies.
 
-* `openat` do not support `AT_EMPTY_PATH`. 
+* `openat` do not support `O_EMPTY_PATH`.
 
-* `faccessat` system call has three args, the complete implementation of the 
-specifications, including the flags is *emulated* by the glibc wrapper function.
+* `faccessat` system call has three args, the complete implementation of the
+specifications, including the flags, is *emulated* by the glibc wrapper function.
 (see [faccessat.c](https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/faccessat.c)).
 This implementation does not seem to support posix ACL.
 
@@ -30,9 +30,9 @@ In purelibc `faccessat` must be emulated as in glibc.
 
 # Please
 
-Dear syscall designers, kernel and glibc developers: 
+Dear syscall designers, kernel and glibc developers:
 
-* `openat`: `AT_EMPTY_PATH` should be added, maybe extending the new `openat2`
+* `openat`: `O_EMPTY_PATH` should be added, maybe extending the new `openat2`
 
 * `faccessat`: please add `faccessat2` fully compliant with the POSIX definition
 (so we can get rid of *emulators* and ACL can be supported).
