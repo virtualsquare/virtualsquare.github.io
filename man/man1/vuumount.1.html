@@ -4,40 +4,58 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of VUUMOUNT</TITLE>
 </HEAD><BODY>
 <H1>VUUMOUNT</H1>
-Section: User Commands  (1)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: General Commands Manual (1)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-<B>vuumount</B> - unmount a filesystem or a resource
+<P>
+
+vuumount - unmount a filesystem or a resource
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>vuumount</B> [<I>options</I> ...] <I>source</I> <I>destination</I>
+<P>
+
+vuumount [options ...]
+source destination
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-<B>vuumount</B> is just a command interface to <B><A HREF="../man2/umount.2.html">umount</A></B>(2). It has been designed for VUOS but can be used to run the <B>umount</B> system call directly, without all the other management actions provided by <B><A HREF="../man8/umount.8.html">umount</A></B>(8). <B>vuumount</B> is not setuid root (viceversa <B>umount</B> is setuid root).
+<P>
+
+vuumount is just a command interface to <A HREF="/#/man/man2/umount.2.html">umount</A>(2).
+It has been designed for VUOS but can be used to run the
+umount system call directly, without all the other management
+actions provided by <A HREF="/#/man/man8/umount.8.html">umount</A>(8).
+vuumount is not setuid root (viceversa umount is
+setuid root).
 <A NAME="lbAE">&nbsp;</A>
 <H2>OPTIONS</H2>
 
 <DL COMPACT>
-<DT><B>-h</B>, <B>--help</B><DD>
+<DT>-h, --help<DD>
 Print a short help message and exit.
-<DT><B>-f</B>, <B>--force</B><DD>
-force unmount (e.g. in case of an unreachable NFS system)
-<DT><B>-d</B>, <B>--detach-loop</B><DD>
+<DT>-f, --force<DD>
+force unmount (e.g.&nbsp;in case of an unreachable NFS system)
+<DT>-d, --detach-loop<DD>
 if mounted loop device, also free this loop device
 </DL>
 <A NAME="lbAF">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<A HREF="../man1/umvu.1.html">umvu</A>(1), <A HREF="../man1/vu_insmod.1.html">vu_insmod</A>(1), <A HREF="../man1/vu_lsmod.1.html">vu_lsmod</A>(1), <A HREF="../man1/vu_rmmod.1.html">vu_rmmod</A>(1), <A HREF="../man1/vumount.1.html">vumount</A>(1), <A HREF="../man1/udebug.1.html">udebug</A>(1)
+<P>
+
+<A HREF="/#/man/man1/umvu.1.html">umvu</A>(1), <A HREF="/#/man/man1/vu_insmod.1.html">vu_insmod</A>(1), <A HREF="/#/man/man1/vu_lsmod.1.html">vu_lsmod</A>(1), <A HREF="/#/man/man1/vu_rmmod.1.html">vu_rmmod</A>(1), <A HREF="/#/man/man1/vumount.1.html">vumount</A>(1), <A HREF="/#/man/man1/udebug.1.html">udebug</A>(1)
 <A NAME="lbAG">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli
 <P>
 
 <HR>
@@ -54,6 +72,6 @@ VirtualSquare. Project leader: Renzo Davoli
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

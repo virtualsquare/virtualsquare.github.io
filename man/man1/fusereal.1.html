@@ -1,0 +1,111 @@
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of FUSEREAL</TITLE>
+</HEAD><BODY>
+<H1>FUSEREAL</H1>
+Section: General Commands Manual (1)<BR>Updated: August 2023<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<P>
+
+fusereal, vufusereal - mount a file system tree to another place using
+FUSE and vufuse
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+
+fusereal [-hVdfs] [-o options ]
+olddir newdir
+<P>
+
+in a umvu session:
+<P>
+
+mount -t vufusereal [-o options ]
+olddir newdir
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+fusereal causes the contents of olddir to be
+accessible (also) under newdir.
+<P>
+
+vufusereal is the VUOS/vufuse submodule of fusereal
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<P>
+
+fusereal is build upon FUSE (Filesystem in Userspace) library.
+the complete set of available options depends upon the specific FUSE
+installed.
+Execute fusereal -h to retrieve the actual complete list.
+<A NAME="lbAF">&nbsp;</A>
+<H3>general options</H3>
+
+<DL COMPACT>
+<DT>-o opt,[opt...]<DD>
+FUSE and file specific mount options.
+<DT>-h<DD>
+display a usage and options summary
+<DT>-V &nbsp; --version<DD>
+display version
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H3>main FUSE mount options</H3>
+
+<P>
+
+These options are not valid in VUOS/vufuse.
+<DL COMPACT>
+<DT>-d &nbsp; -o debug<DD>
+enable debug output (implies -f)
+<DT>-f<DD>
+foreground operation
+<DT>-s<DD>
+disable multi-threaded operation
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<P>
+
+<A HREF="/#/man/man8/fuse.8.html">fuse</A>(8), <A HREF="/#/man/man1/umvu.1.html">umvu</A>(1)
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli.
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DL>
+<DT><A HREF="#lbAF">general options</A><DD>
+<DT><A HREF="#lbAG">main FUSE mount options</A><DD>
+</DL>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">AUTHOR</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 15:22:07 GMT, November 27, 2023
+</BODY>
+</HTML>

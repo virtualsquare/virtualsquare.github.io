@@ -5,7 +5,7 @@ Content-type: text/html; charset=UTF-8
 </HEAD><BODY>
 <H1>LIBVDEPLUG_BONDING</H1>
 Section: User Commands  (1)<BR>Updated: April 30, 2017<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
@@ -20,9 +20,9 @@ libvdeplug_bonding.so
 
 This is a libvdeplug multiplex module implementing the bonding of multiple links.
 <P>
-The common usage of this module is to support multiple links between virtual machines or switches. 
+The common usage of this module is to support multiple links between virtual machines or switches.
 This module transmit packets on all the available links in a round-robin manner.
-If the links use several pathes and channels it is possible to reach a higher bandwidth.  
+If the links use several paths and channels it is possible to reach a higher bandwidth.
 <P>
 This module of libvdeplug4 can be used in any program supporting vde like
 <B>vde_plug</B>, <B>kvm</B>, <B>qemu</B>, <B>user-mode-linux</B> and <B>virtualbox</B>.
@@ -66,10 +66,10 @@ define the group ownership of the bonding node.
 Other virtual machines, namespaces or vde_plug can join this bondinglink using <B><A HREF="vde:///tmp/hub">vde:///tmp/hub</A></B> or simply <B>/tmp/hub</B>
 <BR>
 
-Given two virtual machines using <B>bonding:///tmp/vm1</B> and <B>bonding:///tmp/vm2</B> respectively, it is possible to 
-connect them using <B>vde_plug /tmp/vm1 /tmp/vm2</B>. If the second virtual machine is running on a remote hosts; 
+Given two virtual machines using <B>bonding:///tmp/vm1</B> and <B>bonding:///tmp/vm2</B> respectively, it is possible to
+connect them using <B>vde_plug /tmp/vm1 /tmp/vm2</B>. If the second virtual machine is running on a remote hosts;
 <B>ip1.vm2.domain.org</B> and <B>ip2.vm2.domain.org</B> are two ip addresses permitting to reach that remote host using
-different paths, the commands <B>vde_plug /tmp/vm1 = ssh ip1.vm2.domain.org vde_plug /tmp/vm2</B> 
+different paths, the commands <B>vde_plug /tmp/vm1 = ssh ip1.vm2.domain.org vde_plug /tmp/vm2</B>
 and <B>vde_plug /tmp/vm1 = ssh ip2.vm2.domain.org vde_plug /tmp/vm2</B> create two channels between the two virtual machines.
 Packets are sent in turns on one or the other link.
 <BR>
@@ -89,7 +89,7 @@ Technologies&quot;).
 <A NAME="lbAH">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1),
+<B><A HREF="/#/man/man1/vde_plug.1.html">vde_plug</A></B>(1),
 <P>
 
 <HR>
@@ -107,6 +107,6 @@ Technologies&quot;).
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 12:37:03 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

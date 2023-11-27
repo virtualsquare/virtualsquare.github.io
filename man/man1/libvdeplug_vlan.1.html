@@ -4,82 +4,152 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of LIBVDEPLUG_VLAN</TITLE>
 </HEAD><BODY>
 <H1>LIBVDEPLUG_VLAN</H1>
-Section: User Commands  (1)<BR>Updated: July 2020<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: General Commands Manual (1)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-<B>libvdeplug_vlan</B> - vdeplug nested module: VLAN (802.1Q)
+<P>
+
+libvdeplug_vlan - vdeplug nested module: VLAN (802.1Q)
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
+
+<P>
 
 libvdeplug_vlan.so
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
+<P>
+
 This is a libvdeplug module implementing VLANs (IEEE 802.1Q).
 <P>
 
-With this plugin VLANs are implemented in a distributed fashion. The tagging (and untagging) of the packets is done, not by the switch, but by the plugin (attached to the VM).
+With this plugin VLANs are implemented in a distributed fashion.
+The tagging (and untagging) of the packets is done, not by the switch,
+but by the plugin (attached to the VM).
 <P>
 
-This module of libvdeplug4 can be used in any program supporting vde like <B>vde_plug</B>, <B>vdens</B>, <B>kvm</B>, <B>qemu</B>, <B>user-mode-linux</B> and <B>virtualbox</B>.
+This module of libvdeplug4 can be used in any program supporting vde
+like vde_plug, vdens, kvm, qemu,
+user-mode-linux and virtualbox.
 <P>
 
 The vde_plug_url syntax of this module is the following:
 <P>
 
-<B>vlan://</B>[<I>untagged_vlan</I>][<B>[</B>OPTION[<B>/</B>OPTION]...<B>]</B>]<B>{</B><I>vde nested url</I><B>}</B>
+<A HREF="vlan://[untagged_vlan][[OPTION[/OPTION]...]]{vde">vlan://[untagged_vlan][[OPTION[/OPTION]...]]{vde</A>
+nested url}
 <P>
 
-<B>untagged_vlan</B> is the number of the VLAN to which the virtual machine is connected in untagged mode. The traffic on this VLAN will be seen by the VM as untagged. If omitted the default value is 0, an invalid VLAN number meaning that the VM is not connected to any VLAN in untagged mode.
+untagged_vlan is the number of the VLAN to which the virtual
+machine is connected in untagged mode.
+The traffic on this VLAN will be seen by the VM as untagged.
+If omitted the default value is 0, an invalid VLAN number meaning that
+the VM is not connected to any VLAN in untagged mode.
 <A NAME="lbAE">&nbsp;</A>
 <H2>OPTIONS</H2>
 
 <DL COMPACT>
-<DT><B>u</B>, <B>untag</B><DD>
-Untagged traffic on the network will be seen by the VM as traffic tagged with this tag. The default value is 0, an invalid VLAN number meaning untagged traffic will not be tagged.
+<DT>u, untag<DD>
+Untagged traffic on the network will be seen by the VM as traffic tagged
+with this tag.
+The default value is 0, an invalid VLAN number meaning untagged traffic
+will not
+be tagged.
+If we are sure that the traffic going by over the virtual link will only
+be tagged,
+untag argument is useless.
+If untagged traffic is expected and untag is 0, _vlanshould be 0 too;
+otherwise there would not be a method to tell untagged traffic from
+traffic tagged for the
+untagged VLAN, and errors during send or receive may occur.
+<DT>t, tag<DD>
+A string used to specify the VLANs to which the VM is connected in
+tagged mode.
+The string is made up of a list of tokens separated by ":" or
+".".
+These tokens
+can have two forms:
 <DT><DD>
-If we are sure that the traffic going by over the virtual link will only be tagged, untag argument is useless. If untagged traffic is expected and untag is 0, \fIuntagged_vlan\fR should be 0 too; otherwise there would not be a method to tell untagged traffic from traffic tagged for the untagged VLAN, and errors during send or receive may occur.
-<DT><B>t</B>, <B>tag</B><DD>
-A string used to specify the VLANs to which the VM is connected in tagged mode. The string is made up of a list of tokens separated by &quot;:&quot; or &quot;.&quot;. These tokens can have two forms:
+(1) single vlan tag number meaning that the VM is connected to that VLAN
+in tagged mode.
 <DT><DD>
-(1) A single vlan tag number meaning that the VM is connected to that VLAN in tagged mode.
-<DT><DD>
-(2) Two numbers separated by &quot;-&quot;, meaning that the tagged packets sent out by the VM with the first number as VLAN tag are remapped on the VLAN with the second tag number and the packets received by the VM on the VLAN with the second number are remapped on the VLAN with the first number.
-<DT><B>x</B>, <B>trunk</B><DD>
-A boolean argument to be used only if the connection uses trunking. If used the VM will be able to send and receive packets from VLANs not listed in the tag string.
-<DT><B>q</B>, <B>qinq</B>, <B>ad</B><DD>
-Use the wthernet type 0x88A8 for the double tagging protool 802.1ad (also known as QinQ).
+(2) Two numbers separated by "-", meaning that the tagged
+packets sent out by the VM with the first number as VLAN tag are
+remapped on the VLAN with the second tag number and the packets received
+by the VM on the VLAN with the second number are remapped on the VLAN
+with the first number.
+<DT>x, trunk<DD>
+A boolean argument to be used only if the connection uses trunking.
+If used the VM will
+be able to send and receive packets from VLANs not listed in the tag
+string.
+<DT>q, qinq, ad<DD>
+Use the ethernet type 0x88A8 for the double tagging protool 802.1ad
+(also known as QinQ).
 </DL>
 <A NAME="lbAF">&nbsp;</A>
 <H2>EXAMPLES</H2>
 
-<B><A HREF="vlan://3{tap://mytap}">vlan://3{tap://mytap}</A></B>
+<DL COMPACT>
+<DT><DD>
+<PRE>
+
+  <A HREF="vlan://3{tap://mytap}">vlan://3{tap://mytap}</A>
+
+</PRE>
+
+</DL>
 <P>
 
 The VM is connected to vlan 3 and receives only traffic from here.
+<DL COMPACT>
+<DT><DD>
+<PRE>
+
+  <A HREF="vlan://3[untag=4/trunk/tag=10:11-12:12-11]{vde:///tmp/myswitch}">vlan://3[untag=4/trunk/tag=10:11-12:12-11]{vde:///tmp/myswitch}</A>
+
+</PRE>
+
+</DL>
 <P>
 
-<B><A HREF="vlan://3[untag=4/trunk/tag=10:11-12:12-11]{vde:///tmp/myswitch}">vlan://3[untag=4/trunk/tag=10:11-12:12-11]{vde:///tmp/myswitch}</A></B>
+The VM is connected to vlan 3 in untagged mode and receive untagged
+traffic with vlan tag 4.
+The vlan also receives traffic from VLANs 10, 11 and 12.
+VLANs 11 and 12 are switched.
+<DL COMPACT>
+<DT><DD>
+<PRE>
+
+  vdens <A HREF="vlan://4{vlan://5/qinq{vxvde://234.1.2.3}}">vlan://4{vlan://5/qinq{vxvde://234.1.2.3}}</A>
+
+</PRE>
+
+</DL>
 <P>
 
-The VM is connected to vlan 3 in untagged mode and receive untagged traffic with vlan tag 4. The vlan also receives traffic from VLANs 10, 11 and 12. VLANs 11 and 12 are switched.
-<P>
-
-<B>vdens <A HREF="vlan://4{vlan://5/qinq{vxvde://234.1.2.3}}">vlan://4{vlan://5/qinq{vxvde://234.1.2.3}}</A></B>
-<P>
-
-This example uses 802.1ad: the VDE client is connected to the VLAN 4 of the QinQ VLAN 5.
+This example uses 802.1ad: the VDE client is connected to the VLAN 4 of
+the QinQ VLAN 5.
 <A NAME="lbAG">&nbsp;</A>
 <H2>NOTICE</H2>
 
-Virtual Distributed Ethernet is not related in any way with <A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot; i.e. the German &quot;Association for Electrical, Electronic &amp; Information Technologies&quot;).
+<P>
+
+Virtual Distributed Ethernet is not related in any way with <A HREF="http://www.vde.com">www.vde.com</A>
+("Verband der Elektrotechnik, Elektronik und
+Informationstechnik" i.e.&nbsp;the German "Association for
+Electrical, Electronic &amp; Information Technologies").
 <A NAME="lbAH">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1)
+<P>
+
+<A HREF="/#/man/man1/vde_plug.1.html">vde_plug</A>(1)
 <P>
 
 <HR>
@@ -97,6 +167,6 @@ Virtual Distributed Ethernet is not related in any way with <A HREF="http://www.
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

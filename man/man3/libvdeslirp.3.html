@@ -4,45 +4,62 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of LIBVDESLIRP</TITLE>
 </HEAD><BODY>
 <H1>LIBVDESLIRP</H1>
-Section: C Library Functions (3)<BR>Updated: December 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: Library Functions Manual (3)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-vdeslirp_open, vdeslirp_send, vdeslirp_recv, vdeslirp_fd, vdeslirp_close - simple API for slirp
+<P>
+
+vdeslirp_open, vdeslirp_send, vdeslirp_recv, vdeslirp_fd, vdeslirp_close
+- simple API for slirp
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>#include &lt;<A HREF="file:///usr/include/libvdeslirp.h">libvdeslirp.h</A>&gt;</B>
 <P>
 
-<B>struct vdeslirp *vdeslirp_open(SlirpConfig *</B><I>cfg</I><B>);</B>
+#include *libvdeslirp.h*
 <P>
 
-<B>ssize_t vdeslirp_send(struct vdeslirp *</B><I>slirp</I><B>, const void *</B><I>buf</I><B>, size_t</B> <I>count</I><B>);</B>
+struct vdeslirp *vdeslirp_open(SlirpConfig *cfg);
 <P>
 
-<B>ssize_t vdeslirp_recv(struct vdeslirp *</B><I>slirp</I><B>, void *</B><I>buf</I><B>, size_t</B> <I>count</I><B>);</B>
+ssize_t vdeslirp_send(struct vdeslirp *slirp, const void *buf, size_t
+count);
 <P>
 
-<B>int vdeslirp_fd(struct vdeslirp *</B><I>slirp</I><B>);</B>
+ssize_t vdeslirp_recv(struct vdeslirp *slirp, void *buf, size_t
+count);
 <P>
 
-<B>int vdeslirp_close(struct vdeslirp *</B><I>slirp</I><B>);</B>
+int vdeslirp_fd(struct vdeslirp *slirp);
 <P>
 
-These functions are provided by libvdeslirp. Link with -lvdeslirp.
+int vdeslirp_close(struct vdeslirp *slirp);
+<P>
+
+These functions are provided by libvdeslirp.
+Link with -lvdeslirp.
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-Slirp is a TCP/IP emulator. Slirp generates a virtual network using standard user privileges (no need for root access of CAP_NET_ADMIN). This implementation uses libslirp.
 <P>
 
-<B>vdeslirp_open</B> creates a slirp network. The <B>SlirpConfig</B> structure is defined by libslirp and contains the following fields:
+Slirp is a TCP/IP emulator.
+Slirp generates a virtual network using standard user privileges (no
+need for root access or CAP_NET_ADMIN).
+This implementation uses libslirp.
+<P>
+
+vdeslirp_open creates a slirp network.
+The SlirpConfig structure is defined by libslirp and contains
+the following fields:
 <DL COMPACT>
 <DT><DD>
 <PRE>
+
 typedef struct SlirpConfig {
     /* Version must be provided */
     uint32_t version;
@@ -82,32 +99,61 @@ typedef struct SlirpConfig {
      * Fields introduced in SlirpConfig version 2 begin
      */
 } SlirpConfig;
+
 </PRE>
 
-<DT><DD>
 </DL>
 <P>
 
-<B>libvdeslirp</B> provides helper functions to fill in the fields of this structure, see <B><A HREF="../man3/libvdeslirpcfg.3.html">libvdeslirpcfg</A></B>(3).
+libvdeslirp provides helper functions to fill in the fields of
+this structure, see <A HREF="/#/man/man3/libvdeslirpcfg.3.html">libvdeslirpcfg</A>(3).
 <P>
 
-Programs using <B>libvdeslirp</B> can send and receive packets using <B>vdeslirp_send</B> and <B>vdeslirp_recv</B> as if they were connected to host network (commonly the Internet) by a NAT/Masquerading router. <B>vdeslirp_fd</B> provides a valid file descriptor which can be used to wait for incoming packets (using select or poll) and <B>vdeslirp_close</B> terminates a slirp network created be <B>vdeslirp_open</B>.
+Programs using libvdeslirp can send and receive packets using
+vdeslirp_send and vdeslirp_recv as if they were
+connected to host network (commonly the Internet) by a NAT/Masquerading
+router.
+vdeslirp_fd provides a valid file descriptor which can be used
+to wait for incoming packets (using select or poll) and
+vdeslirp_close terminates a slirp network created by
+vdeslirp_open.
 <A NAME="lbAE">&nbsp;</A>
 <H2>RETURN VALUE</H2>
 
-<B>vdeslirp_open</B> returns the <B>struct vdeslirp</B> pointer in case of success. NULL is returned otherwise. The return value of <B>vdeslirp_open</B> is the descriptor that must be passed as first argument to all the other functions of this man page. <B>vdeslirp_send</B> and <B>vdeslirp_recv</B> return the number of bytes sent or received, -1 in case of error. <B>vdeslirp_fd</B> returns a valid file descriptor which can be used to wait for incoming packets (using select or poll). <B>vdeslirp_close</B> returns zero in case of success, -1 in case of error. In case of failure, <B>errno</B> is set to indicate the type of error.
+<P>
+
+vdeslirp_open returns the struct vdeslirp pointer in
+case of success.
+NULL is returned otherwise.
+The return value of vdeslirp_open is the descriptor that must
+be passed as first argument to all the other functions of this man page.
+vdeslirp_send and vdeslirp_recv return the number of
+bytes sent or received, -1 in case of error.
+vdeslirp_fd returns a valid file descriptor which can be used
+to wait for incoming packets (using select or poll).
+vdeslirp_close returns zero in case of success, -1 in case of
+error.
+In case of failure, errno is set to indicate the type of
+error.
 <A NAME="lbAF">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="../man3/libvdeslirpfwd.3.html">libvdeslirpfwd</A></B>(3), <B><A HREF="../man3/libvdeslirpcfg.3.html">libvdeslirpcfg</A></B>(3)
+<P>
+
+<A HREF="/#/man/man3/libvdeslirpfwd.3.html">libvdeslirpfwd</A>(3), <A HREF="/#/man/man3/libvdeslirpcfg.3.html">libvdeslirpcfg</A>(3)
 <A NAME="lbAG">&nbsp;</A>
 <H2>BUGS</H2>
 
-Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<P>
+
+Bug reports should be addressed to *<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>*
 <A NAME="lbAH">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli.
 <P>
 
 <HR>
@@ -125,6 +171,6 @@ VirtualSquare. Project leader: Renzo Davoli.
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

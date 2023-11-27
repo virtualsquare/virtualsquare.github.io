@@ -4,50 +4,86 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of LIBVDEPLUG_PCAP</TITLE>
 </HEAD><BODY>
 <H1>LIBVDEPLUG_PCAP</H1>
-Section: User Commands  (1)<BR>Updated: June 2020<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: General Commands Manual (1)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-<B>libvdeplug_pcap</B> - vdeplug module for vde_switch based networks
+<P>
+
+libvdeplug_pcap - vdeplug module for vde_switch based
+networks
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
+
+<P>
 
 libvdeplug_pcap.so
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-This libvdeplug module interconnects a client to an interface using the packet capture library (pcap): all the data that is received by this plug is injected into interface and everything captured from that interface is sent to the client.
 <P>
 
-Please notice that the pcap library captures and injects packets on the net, packets sent by the host are not captured, injected packets are not received by the host. So several clients using libvdeplug_pcap on the same interface of the same host do not communicate among them (nor they communicate with the host).
+This libvdeplug module interconnects a client to an interface using the
+packet capture library (pcap): all the data that is received by this
+plug is injected into interface and everything captured from that
+interface is sent to the client.
 <P>
 
-This module of libvdeplug4 can be used in any program supporting vde like <B>vde_plug</B>, <B>vdens</B>, <B>kvm</B>, <B>qemu</B>, <B>user-mode-linux</B> and <B>virtualbox</B>.
+Please notice that the pcap library captures and injects packets on the
+net, packets sent by the host are not captured, injected packets are not
+received by the host.
+So several clients using libvdeplug_pcap on the same interface of the
+same host do not communicate among them (nor they communicate with the
+host).
+<P>
+
+This module of libvdeplug4 can be used in any program supporting vde
+like vde_plug, vdens, kvm, qemu,
+user-mode-linux and virtualbox.
 <DL COMPACT>
 <DT>The vde_plug_url syntax of this module is the following:<DD>
-<B>pcap://</B><I>interface_name</I>
+<A HREF="pcap://interface_name">pcap://interface_name</A>
 </DL>
 <A NAME="lbAE">&nbsp;</A>
 <H2>EXAMPLE</H2>
 
-<B>vde_plug vde:// <A HREF="pcap://eth0">pcap://eth0</A></B>
+<DL COMPACT>
+<DT><DD>
+<PRE>
+
+vde_plug vde:// <A HREF="pcap://eth0">pcap://eth0</A>
+
+</PRE>
+
+</DL>
 <P>
 
 connects the standard vde_switch to the interface eth0.
 <A NAME="lbAF">&nbsp;</A>
 <H2>NOTICE</H2>
 
-Virtual Distributed Ethernet is not related in any way with <A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot; i.e. the German &quot;Association for Electrical, Electronic &amp; Information Technologies&quot;).
+<P>
+
+Virtual Distributed Ethernet is not related in any way with <A HREF="http://www.vde.com">www.vde.com</A>
+("Verband der Elektrotechnik, Elektronik und
+Informationstechnik" i.e.&nbsp;the German "Association for
+Electrical, Electronic &amp; Information Technologies").
 <A NAME="lbAG">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1), <B><A HREF="../man1/vdens.1.html">vdens</A></B>(1)
+<P>
+
+<A HREF="/#/man/man1/vde_plug.1.html">vde_plug</A>(1), <A HREF="/#/man/man1/vdens.1.html">vdens</A>(1)
 <A NAME="lbAH">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli
 <P>
 
 <HR>
@@ -65,6 +101,6 @@ VirtualSquare. Project leader: Renzo Davoli
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

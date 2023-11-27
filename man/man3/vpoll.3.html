@@ -4,120 +4,164 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of VPOLL</TITLE>
 </HEAD><BODY>
 <H1>VPOLL</H1>
-Section: C Library Functions (3)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: Library Functions Manual (3)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-vpoll_create, vpoll_ctl, vpoll_close - generate synthetic events for poll/select/ppoll/pselect/epoll
+<P>
+
+vpoll_create, vpoll_ctl, vpoll_close - generate synthetic events for
+poll/select/ppoll/pselect/epoll
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>#include &lt;<A HREF="file:///usr/include/vpoll.h">vpoll.h</A>&gt;</B>
 <P>
 
-<B>int vpoll_create(uint32_t</B> <I>init_events</I><B>, int</B> <I>flags</I><B>);</B>
+#include *vpoll.h*
 <P>
 
-<B>int vpoll_ctl(int</B> <I>fd</I><B>, int</B> <I>op</I><B>, uint32_t</B> <I>events</I><B>);</B>
+int vpoll_create(uint32_t init_events, int
+flags);
 <P>
 
-<B>int vpoll_close(int</B> <I>fd</I><B>);</B>
+int vpoll_ctl(int fd, int
+op, uint32_t events);
+<P>
+
+int vpoll_close(int fd);
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-This library permits one to create a vpoll file descriptor &quot;vpollfd&quot; that can be used in poll/select/ppoll/pselect/<A HREF="../man2/epoll.2.html">epoll</A>(2) system calls. The events reported by a can be controlled by <B>vpoll_ctl</B>. <B>vpoll</B> encodes the events using the same flags EPOLL* defined in <B><A HREF="../man2/epoll_ctl.2.html">epoll_ctl</A>(2)</B>.
 <P>
 
-The library uses the vpoll extension for eventfd if the kernel provides it otherwise it (partially) emulates the feature using <A HREF="../man2/socketpair.2.html">socketpair</A>(2). The emulation supports only <B>EPOLLIN</B>, <B>EPOLLOUT</B> flags and a non standard version of EPOLLHUP/EPOLLRDHUP.
+This library permits one to create a vpoll file descriptor
+"vpollfd" that can be used in poll/select/ppoll/pselect/<A HREF="/#/man/man2/epoll.2.html">epoll</A>(2)
+system calls.
+The events reported by a can be controlled by vpoll_ctl.
+vpoll encodes the events using the same flags EPOLL* defined
+in <A HREF="/#/man/man2/epoll_ctl.2.html">epoll_ctl</A>(2).
+<P>
+
+The library uses the vpoll extension for eventfd if the kernel provides
+it otherwise it (partially) emulates the feature using <A HREF="/#/man/man2/socketpair.2.html">socketpair</A>(2).
+The emulation supports only EPOLLIN, EPOLLOUT flags
+and a non standard version of EPOLLHUP/EPOLLRDHUP.
 <DL COMPACT>
-<DT><B>vpoll_create</B><DD>
-This function creates a &quot;vpollfd&quot;. The argument <I>init_events</I> is used to set the initial state of events. The following value can be included in <I>flags</I>:
+<DT>vpoll_create<DD>
+This function creates a "vpollfd".
+The argument init_events is used to set the initial state of
+events.
+The following value can be included in flags:
 <DT><DD>
-<B>FD_CLOEXEC</B>: Set the close-on-exec flag on the new file descriptor. See the description of the O_CLOEXEC flag in <A HREF="../man2/open.2.html">open</A>(2) for reasons why this may be useful.
-<DT><B>vpoll_ctl</B><DD>
-This function changes the set of pending events reported by a &quot;vpollfd&quot;. The argument <I>op</I> can take the following values:
+FD_CLOEXEC:
+Set the close-on-exec flag on the new file descriptor.
+See the description of the O_CLOEXEC flag in <A HREF="/#/man/man2/open.2.html">open</A>(2) for reasons why
+this may be useful.
+<DT>vpoll_ctl<DD>
+This function changes the set of pending events reported by a
+"vpollfd".
+The argument op can take the following values:
 <DT><DD>
-<B>VPOLL_CTL_ADDEVENTS</B>: the events set in the argument <I>events</I> are added to the set of pending events.
+VPOLL_CTL_ADDEVENTS:
+the events set in the argument events are added to the set of
+pending events.
 <DT><DD>
-<B>VPOLL_CTL_DELEVENTS</B>: the events set in the argument <I>events</I> are deleted from the set of pending events.
+VPOLL_CTL_DELEVENTS:
+the events set in the argument events are deleted from the set
+of pending events.
 <DT><DD>
-<B>VPOLL_CTL_SETEVENTS</B>: the value of the argument <I>events</I> is assigned to the set of pending events.
-<DT><B>vpoll_close</B><DD>
+VPOLL_CTL_SETEVENTS:
+the value of the argument events is assigned to the set of
+pending events.
+<DT>vpoll_close<DD>
 This function closes the vpoll file descritor.
 </DL>
 <A NAME="lbAE">&nbsp;</A>
 <H2>RETURN VALUE</H2>
 
-<B>vpoll_create</B> returns the new file descriptor, or -1 if an error occurred (in which case, errno is set appropriately)
 <P>
 
-<B>vpoll_ctl</B> and <B>vpoll_close</B> return zero in case of success. On error, -1 is returned, and errno is set appropriately.
+vpoll_create returns the new file descriptor, or -1 if an
+error occurred (in which case, errno is set appropriately)
+<P>
+
+vpoll_ctl and vpoll_close return zero in case of
+success.
+On error, -1 is returned, and errno is set appropriately.
 <A NAME="lbAF">&nbsp;</A>
 <H2>EXAMPLE</H2>
 
-<PRE>
-#define _GNU_SOURCE
-#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/unistd.h">unistd.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/fcntl.h">fcntl.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/errno.h">errno.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/sys/epoll.h">sys/epoll.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/vpoll.h">vpoll.h</A>&gt;
-
-int main(int argc, char *argv[]) {
-    int vpollfd = vpoll_create(0, FD_CLOEXEC);
-    int epfd = epoll_create1(EPOLL_CLOEXEC);
-    struct epoll_event reqevents={EPOLLIN | EPOLLRDHUP | EPOLLERR |
-        EPOLLOUT | EPOLLHUP | EPOLLPRI};
-    epoll_ctl(epfd,  EPOLL_CTL_ADD, vpollfd, &amp;reqevents);
-    switch (fork()) {
-        case 0:
-            <A HREF="../man3/sleep.3.html">sleep</A>(3);
-            vpoll_ctl(vpollfd, VPOLL_CTL_ADDEVENTS,  EPOLLIN);
-            <A HREF="../man3/sleep.3.html">sleep</A>(3);
-            vpoll_ctl(vpollfd, VPOLL_CTL_ADDEVENTS,  EPOLLIN);
-            <A HREF="../man3/sleep.3.html">sleep</A>(3);
-            vpoll_ctl(vpollfd, VPOLL_CTL_ADDEVENTS,  EPOLLOUT);
-            <A HREF="../man3/sleep.3.html">sleep</A>(3);
-            vpoll_ctl(vpollfd, VPOLL_CTL_ADDEVENTS,  EPOLLHUP);
-            <A HREF="../man3/sleep.3.html">sleep</A>(3);
-            exit(0);
-        default:
-            while (1) {
-                struct epoll_event ev;
-                int n = epoll_wait(epfd, &amp;ev, 1, 1000);
-                if (n &lt; 0) {
-                    perror(&quot;epoll_wait&quot;);
-                    break;
-                }
-                if (n &gt; 0) {
-                    printf(&quot;GOT event %x\n&quot;, ev.events);
-                    vpoll_ctl(vpollfd, VPOLL_CTL_DELEVENTS, ev.events);
-                    if (ev.events &amp; EPOLLHUP)
-                            break;
-                } else {
-                    printf(&quot;timeout\n&quot;);
-                }
-            }
-            break;
-        case -1:
-            printf(&quot;fork error\n&quot;);
-    }
-    vpoll_close(vpollfd);
-    close(epfd);
-    return 0;
-}
-</PRE>
-
-<P>
-
-On a machine running a Linux Kernel providing eventfd/vpoll the output of this program is:
 <DL COMPACT>
 <DT><DD>
 <PRE>
+
+#define _GNU_SOURCE
+#include *stdio.h*
+#include *stdlib.h*
+#include *unistd.h*
+#include *fcntl.h*
+#include *errno.h*
+#include *sys/epoll.h*
+#include *vpoll.h*
+
+int main(int argc, char *argv[]) {
+  int vpollfd = vpoll_create(0, FD_CLOEXEC);
+  int epfd = epoll_create1(EPOLL_CLOEXEC);
+  struct epoll_event reqevents={EPOLLIN | EPOLLRDHUP | EPOLLERR |
+      EPOLLOUT | EPOLLHUP | EPOLLPRI};
+  epoll_ctl(epfd,  EPOLL_CTL_ADD, vpollfd, &amp;reqevents);
+  switch (fork()) {
+      case 0:
+          <A HREF="/#/man/man3/sleep.3.html">sleep</A>(3);
+          vpoll_ctl(vpollfd, VPOLL_CTL_ADDEVENTS,  EPOLLIN);
+          <A HREF="/#/man/man3/sleep.3.html">sleep</A>(3);
+          vpoll_ctl(vpollfd, VPOLL_CTL_ADDEVENTS,  EPOLLIN);
+          <A HREF="/#/man/man3/sleep.3.html">sleep</A>(3);
+          vpoll_ctl(vpollfd, VPOLL_CTL_ADDEVENTS,  EPOLLOUT);
+          <A HREF="/#/man/man3/sleep.3.html">sleep</A>(3);
+          vpoll_ctl(vpollfd, VPOLL_CTL_ADDEVENTS,  EPOLLHUP);
+          <A HREF="/#/man/man3/sleep.3.html">sleep</A>(3);
+          exit(0);
+      default:
+          while (1) {
+              struct epoll_event ev;
+              int n = epoll_wait(epfd, &amp;ev, 1, 1000);
+              if (n * 0) {
+                  perror(&quot;epoll_wait&quot;);
+                  break;
+              }
+              if (n * 0) {
+                  printf(&quot;GOT event %x\n&quot;, ev.events);
+                  vpoll_ctl(vpollfd, VPOLL_CTL_DELEVENTS, ev.events);
+                  if (ev.events &amp; EPOLLHUP)
+                          break;
+              } else {
+                  printf(&quot;timeout\n&quot;);
+              }
+          }
+          break;
+      case -1:
+          printf(&quot;fork error\n&quot;);
+  }
+  vpoll_close(vpollfd);
+  close(epfd);
+  return 0;
+}
+
+</PRE>
+
+</DL>
+<P>
+
+On a machine running a Linux Kernel providing eventfd/vpoll the output
+of this program is:
+<DL COMPACT>
+<DT><DD>
+<PRE>
+
 timeout
 timeout
 GOT event 1
@@ -130,16 +174,18 @@ GOT event 4
 timeout
 timeout
 GOT event 10
+
 </PRE>
 
-<DT><DD>
 </DL>
 <P>
 
-Instead when the demo program runs using the emulation layer the output is:
+Instead when the demo program runs using the emulation layer the output
+is:
 <DL COMPACT>
 <DT><DD>
 <PRE>
+
 timeout
 timeout
 GOT event 1
@@ -152,17 +198,22 @@ GOT event 4
 timeout
 timeout
 GOT event 2011
+
 </PRE>
 
-<DT><DD>
 </DL>
 <P>
 
-In fact, the emulator uses a socketpair to generate the events. Hangup is emulated by closing the other end of the socketpair: this generates EPOLLHUP as well as EPOLLIN and EPOLLRDHUP.
+In fact, the emulator uses a socketpair to generate the events.
+Hangup is emulated by closing the other end of the socketpair: this
+generates EPOLLHUP as well as EPOLLIN and EPOLLRDHUP.
 <A NAME="lbAG">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli.
 <P>
 
 <HR>
@@ -179,6 +230,6 @@ VirtualSquare. Project leader: Renzo Davoli.
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:08 GMT, November 27, 2023
 </BODY>
 </HTML>

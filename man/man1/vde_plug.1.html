@@ -5,7 +5,7 @@ Content-type: text/html; charset=UTF-8
 </HEAD><BODY>
 <H1>VDE_PLUG</H1>
 Section: User Commands  (1)<BR>Updated: August 23, 2016<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
@@ -14,14 +14,14 @@ vde_plug - Virtual Distributed Ethernet plug (two plugs creates a vde cable)
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>vde_plug </B>
+<B>vde_plug</B>
 
-[ 
-<I>OPTIONS  </I>
-
-] 
 [
-<I>vde_plug_url</I>
+<I>OPTIONS</I>
+
+]
+[
+<I>VNL</I>
 
 ]
 <BR>
@@ -29,19 +29,19 @@ vde_plug - Virtual Distributed Ethernet plug (two plugs creates a vde cable)
 <B>vde_plug</B>
 
 [
-<I>OPTIONS     </I>
+<I>OPTIONS</I>
 
 ]
-<I>vde_plug_url</I>
+<I>VNL</I>
 
-<I>vde_plug_url</I>
+<I>VNL</I>
 
 <BR>
 
 <B>vde_plug</B>
 
 [
-<I>OPTIONS     </I>
+<I>OPTIONS</I>
 
 ]
 <B>=</B>
@@ -57,10 +57,10 @@ vde_plug - Virtual Distributed Ethernet plug (two plugs creates a vde cable)
 <B>vde_plug</B>
 
 [
-<I>OPTIONS  </I>
+<I>OPTIONS</I>
 
-] 
-<I>vde_plug_url</I>
+]
+<I>VNL</I>
 
 <B>=</B>
 
@@ -76,26 +76,26 @@ vde_plug - Virtual Distributed Ethernet plug (two plugs creates a vde cable)
 <H2>DESCRIPTION</H2>
 
 A
-<B>vde_plug</B> 
+<B>vde_plug</B>
 is a plug to be connected into a VDE network.
 <P>
-VDE network sockets are named using the vde_plug_url syntax, i.e.
-<I>module</I><B>://</B><I>specific_address</I>.
+VDE network sockets are named using the Virtual Network Locator (VNL)
+syntax, i.e.  <I>module</I><B>://</B><I>specific_address</I>.
 e.g. <B><A HREF="vde:///home/user/myswitch">vde:///home/user/myswitch</A></B> or <B><A HREF="vxvde://239.0.0.1">vxvde://239.0.0.1</A></B>.
-The default module is <B><A HREF="../man1/libvdeplug_vde.1.html">libvdeplug_vde</A>(1)</B> (connection to a <B><A HREF="../man1/vde_switch.1.html">vde_switch</A>(1)</B>)
+The default module is <B><A HREF="/#/man/man1/libvdeplug_vde.1.html">libvdeplug_vde</A>(1)</B> (connection to a <B><A HREF="/#/man/man1/vde_switch.1.html">vde_switch</A>(1)</B>)
 and can be omitted. e.g. <B>/home/user/myswitch</B> means
 <B><A HREF="vde:///home/user/myswitch">vde:///home/user/myswitch</A></B>
 <P>
-<B>vde_plug</B> can have zero, one or two vde_plug_url arguments.
+<B>vde_plug</B> can have zero, one or two VNL arguments.
 In case of zero or one argument the network communication is converted in
 a byte stream. Packets from the VDE network are sent to stdout and bytes
 from stdin are converted into packets and injected in the VDE network.
-When a vde_plug_url is omitted or it is an empty argument
+When a VNL is omitted or it is an empty argument
 (<B>''</B>) <B>vde_plug</B> tries to connect to a
 default network (defined by the user in <B>$HOME/.vde2/default.switch</B>
 otherwise <B><A HREF="vde:///run/vde.ctl">vde:///run/vde.ctl</A></B> or <B><A HREF="vde:///tmp/vde.ctl">vde:///tmp/vde.ctl</A></B>).
 <P>
-This tool has been designed to be used together with 
+This tool has been designed to be used together with
 <B>dpipe (1)</B>
 
 to interconnect a second vde_plug to another switch, working as a
@@ -113,7 +113,7 @@ connects two local switches: the former is using the standard control socket /tm
 (or /var/run/vde.ctl) while the latter is using /tmp/vde2.ctl.
 <P>
 <B>vde_plug</B> creates a virtual cable between to VDE networks
-when two vde_plug_url arguments are present in the command line. 
+when two VNL arguments are present in the command line.
 The previous command is equivalent to:
 <DL COMPACT><DT><DD>
 <BR>
@@ -144,11 +144,11 @@ connects two remote switches.
 If for example the two vde_switches run as daemon and they are connected to tap interfaces
 a level 2 encrypted tunnel is established.
 <P>
-While <B>dpipe</B> supports more complex vitrual network structures (e.g. including <B><A HREF="../man1/wirefilter.1.html">wirefilter</A>(1)</B> to
-emulate network conditions) <B>vde_plug</B> has been designed to provide simple syntax options 
+While <B>dpipe</B> supports more complex vitrual network structures (e.g. including <B><A HREF="/#/man/man1/wirefilter.1.html">wirefilter</A>(1)</B> to
+emulate network conditions) <B>vde_plug</B> has been designed to provide simple syntax options
 to implement the most common virtual network scenarios.
 It is possible to use an equal sign (<B>=</B>) followed by a command and its optional
-arguments in place of the second vde_plug_url.
+arguments in place of the second VNL.
 In this case the packets from/to the network are converted into a bidirectional byte stream
 provided as stdin and stdout to the command.
 The previous command have the same effect of:
@@ -159,7 +159,7 @@ The previous command have the same effect of:
 
 </DL>
 
-(the first vde_plug_url is omitted).
+(the first VNL is omitted).
 <P>
 This example:
 <DL COMPACT><DT><DD>
@@ -208,8 +208,8 @@ log START/STOP of vde_plug on syslog
 
 --iplog
 log START/STOP of vde_plug and the IP addresses of hosts seen on the stream
-(or on the second vde_plug_url) on syslog.
-<DT>--port &quot;</B><I>portnum</I>&quot; <DD>
+(or on the second VNL) on syslog.
+<DT>--port &quot;</B><I>portnum</I>&quot;<DD>
 Obsolete option, use the syntax of the libvdeplug_vde module instead,
 add the port number in square brackets suffix (e.g. <B><A HREF="vde://tmp/myswitch[10]">vde://tmp/myswitch[10]</A></B>).
 It is possible to decide which port of the switch to use.
@@ -228,19 +228,19 @@ log START/STOP of vde_plug on syslog
 group ownership of the communication socket. For security when more
 want to share a switch it is better to use a unix group to own the comm sockets
 so that the network traffic cannot be sniffed.
-<DT></I><B>-m </B><I>octal-mode</I> <DD>
+<DT></I><B>-m </B><I>octal-mode</I><DD>
 
-<B>--mod </B><I>octal-mode</I> 
+<B>--mod </B><I>octal-mode</I>
 octal chmod like permissions for the comm sockets
 <DT><B>-G -M<DD>
 
---port2 --group2 --mod2 
-These options, valid in the syntax with two vde_plug_urls, have the the same meaning of -p -g -m.
-The uppercase options or the long options with a trailing 2 refer to the second vde_plug_url.
+--port2 --group2 --mod2
+These options, valid in the syntax with two VNLs, have the the same meaning of -p -g -m.
+The uppercase options or the long options with a trailing 2 refer to the second VNL.
 <DT>-D</B> <I>DESCR<DD>
 
 </I><B>--descr</B> <I>DESCR
-set the description of this connection to DESCR</I> (e.g. port/print command on a 
+set the description of this connection to DESCR</I> (e.g. port/print command on a
 vde_switch shows this description).
 <P>
 <P>
@@ -256,9 +256,9 @@ Technologies&quot;).
 <A NAME="lbAG">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="../man1/vde_switch.1.html">vde_switch</A></B>(1),
-<B><A HREF="../man1/vdeq.1.html">vdeq</A></B>(1),
-<B><A HREF="../man1/dpipe.1.html">dpipe</A></B>(1),
+<B><A HREF="/#/man/man1/vde_switch.1.html">vde_switch</A></B>(1),
+<B><A HREF="/#/man/man1/vdeq.1.html">vdeq</A></B>(1),
+<B><A HREF="/#/man/man1/dpipe.1.html">dpipe</A></B>(1),
 <B>libvdeplug_p2p.1</B>,
 <B>libvdeplug_udp.1</B>,
 <B>libvdeplug_vxlan.1</B>,
@@ -288,6 +288,6 @@ VDE is a project by Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 12:37:03 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

@@ -4,38 +4,89 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of VOLSTREAM_OPEN</TITLE>
 </HEAD><BODY>
 <H1>VOLSTREAM_OPEN</H1>
-Section: C Library Functions (3)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: Library Functions Manual (3)<BR>Updated: November 2023<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-<B>volstream_open</B> - create a FILE* stream as a volatile stream buffer
+<P>
+
+volstream_open - create a FILE* stream as a volatile
+stream buffer
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>#include &lt;<A HREF="file:///usr/include/volatilestream.h">volatilestream.h</A>&gt;</B>
 <P>
 
-<B>FILE *volstream_open(void);</B>
+#include &lt;<A HREF="file:///usr/include/volatilestream.h">volatilestream.h</A>&gt;
+<P>
+
+FILE *volstream_open(void);
+<P>
+
+struct volstream;
+<P>
+
+int volstream_trunc(FILE *f, size_tlength);
+<P>
+
+int volstream_getbuf(FILE *f, void **buf, size_t *buflel);
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-A volatile stream is a stdio FILE* stream as a temporary dynamically allocated (and deallocated) memory buffer.
 <P>
 
-The <B>volstream_open</B> function opens a stdio stream as a temporary memory buffer. The buffer is dynamically allocated, grows as needed and it is automatically deallocated when the stream is closed.
+A volatile stream is a stdio FILE* stream as a temporary dynamically
+allocated (and deallocated) memory buffer.
+<P>
+
+The volstream_open function opens a stdio stream as a
+temporary memory buffer.
+The buffer is dynamically allocated, grows as needed and it is
+automatically deallocated when the stream is closed.
+<P>
+
+volstream_trunc truncates the buffer to the requested
+length.
+If the current size of the buffer is larger than length the
+extra data is lost.
+If the buffer is shorter it is extended and the extended part is filled
+with null bytes.
+<P>
+
+volstream_getbuf writes the current address and size of the
+buffer in *buf and *buflen respectively.
+These values remain valid only as long as the caller performs no further
+output on the stream or the stream is closed.
 <A NAME="lbAE">&nbsp;</A>
 <H2>RETURN VALUE</H2>
 
-Upon successful completion volstream_open() returns a FILE pointer. Otherwise, NULL is returned and errno is set to indicate the error.
-<A NAME="lbAF">&nbsp;</A>
-<H2>EXAMPLE</H2>
+<P>
 
-The following example writes all the command arguments in a volatile stream, then it rereads the volatile stream one byte at a time:
+Upon successful completion volstream_open returns a FILE
+pointer.
+Otherwise, NULL is returned and errno is set to indicate the error.
+<P>
+
+volstream_trunc and volstream_getbuf return 0 or -1
+if an error occurred.
+In the event of an error, errno is set to indicate the error.
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<P>
+
+The following example writes all the command arguments in a volatile
+stream, then it rereads the volatile stream one byte at a time:
 <DL COMPACT>
 <DT><DD>
 <PRE>
+
+#include *stdio.h*
+#include *volatilestream.h*
+
 int main(int argc, char *argv[]) {
   FILE *f = volstream_open();
   int c;
@@ -46,14 +97,46 @@ int main(int argc, char *argv[]) {
     putchar(c);
   fclose(f);
 }
+
 </PRE>
 
+</DL>
+<P>
+
+The following example has the same effect but it rereads the arguments
+as a memory buffer.
+<DL COMPACT>
 <DT><DD>
+<PRE>
+
+#include *stdio.h*
+#include *unistd.h*
+#include *volatilestream.h*
+
+int main(int argc, char *argv[]) {
+  FILE *f = volstream_open();
+  int c;
+  for (argv++; *argv; argv++) {
+    fprintf(f, &quot;%s\n&quot;, *argv);
+  }
+  fflush(f);
+  ssize_t s;
+  void *buf;
+  volstream_getbuf(f, &amp;buf, &amp;s);
+  write(STDOUT_FILENO, buf, s);
+  fclose(f);
+}
+
+</PRE>
+
 </DL>
 <A NAME="lbAG">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli.
 <P>
 
 <HR>
@@ -63,13 +146,13 @@ VirtualSquare. Project leader: Renzo Davoli.
 <DT><A HREF="#lbAC">SYNOPSIS</A><DD>
 <DT><A HREF="#lbAD">DESCRIPTION</A><DD>
 <DT><A HREF="#lbAE">RETURN VALUE</A><DD>
-<DT><A HREF="#lbAF">EXAMPLE</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
 <DT><A HREF="#lbAG">AUTHOR</A><DD>
 </DL>
 <HR>
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:08 GMT, November 27, 2023
 </BODY>
 </HTML>

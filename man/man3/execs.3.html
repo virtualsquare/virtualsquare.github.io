@@ -5,7 +5,7 @@ Content-type: text/html; charset=UTF-8
 </HEAD><BODY>
 <H1>execs</H1>
 Section: Linux Programmer's Manual (3)<BR>Updated: 2014-05-27<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
@@ -58,13 +58,13 @@ These functions are provided by libexecs and libeexecs. Link with <I>-lexecs</I>
 <H2>DESCRIPTION</H2>
 
 This
-group of functions extends the family of <B><A HREF="../man3/exec.3.html">exec</A></B>(3) provided by the libc.
+group of functions extends the family of <B><A HREF="/#/man/man3/exec.3.html">exec</A></B>(3) provided by the libc.
 <BR>
 
 <B>execs</B>, <B>execse</B>, <B>execsp</B> and <B>execspe</B> are similar to
-<B><A HREF="../man3/execv.3.html">execv</A></B>(3), <B><A HREF="../man2/execve.2.html">execve</A></B>(2), <B><A HREF="../man3/execvp.3.html">execvp</A></B>(3) and <B><A HREF="../man3/execvpe.3.html">execvpe</A></B>(3), respectively, but
+<B><A HREF="/#/man/man3/execv.3.html">execv</A></B>(3), <B><A HREF="/#/man/man2/execve.2.html">execve</A></B>(2), <B><A HREF="/#/man/man3/execvp.3.html">execvp</A></B>(3) and <B><A HREF="/#/man/man3/execvpe.3.html">execvpe</A></B>(3), respectively, but
 take the command line arguments for the file to execute 
-(and the also the command name for <B><A HREF="../man3/execsp.3.html">execsp</A></B>(3) and <B><A HREF="../man3/execspe.3.html">execspe</A></B>(3))
+(and the also the command name for <B><A HREF="/#/man/man3/execsp.3.html">execsp</A></B>(3) and <B><A HREF="/#/man/man3/execspe.3.html">execspe</A></B>(3))
 by parsing a command string <I>args</I>.
 <BR>
 
@@ -82,14 +82,14 @@ copy of <I>args</I>.
 do not use extra stack space but modify <I>args</I>.
 <P>
 In case the same argv should be used for several exec command, use
-<B><A HREF="../man3/s2argv.3.html">s2argv</A></B>(3) to parse the args just once.
+<B><A HREF="/#/man/man3/s2argv.3.html">s2argv</A></B>(3) to parse the args just once.
 <P>
 <A NAME="lbAE">&nbsp;</A>
 <H2>RETURN VALUE</H2>
 
 These functions return only if an error has occurred. The return value
 is always -1. The failure cases and errno values are those specified
-for <B><A HREF="../man2/execve.2.html">execve</A></B>(2).
+for <B><A HREF="/#/man/man2/execve.2.html">execve</A></B>(2).
 <P>
 <A NAME="lbAF">&nbsp;</A>
 <H2>EXAMPLE</H2>
@@ -118,7 +118,7 @@ int main(int argc, char *argv)
 <A NAME="lbAG">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="../man3/exec.3.html">exec</A></B>(3),<B><A HREF="../man3/s2argv.3.html">s2argv</A></B>(3)
+<B><A HREF="/#/man/man3/exec.3.html">exec</A></B>(3),<B><A HREF="/#/man/man3/s2argv.3.html">s2argv</A></B>(3)
 
 <A NAME="lbAH">&nbsp;</A>
 <H2>BUGS</H2>
@@ -147,6 +147,6 @@ Renzo Davoli &lt;<A HREF="mailto:renzo@cs.unibo.it">renzo@cs.unibo.it</A>&gt;
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:02:53 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

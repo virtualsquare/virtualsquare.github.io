@@ -1,52 +1,49 @@
 Content-type: text/html; charset=UTF-8
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<HTML><HEAD><TITLE>Man page of LIBVDEPLUG_UDP</TITLE>
+<HTML><HEAD><TITLE>Man page of LIBVDEPLUG_MACVTAP</TITLE>
 </HEAD><BODY>
-<H1>LIBVDEPLUG_UDP</H1>
-Section: User Commands  (1)<BR>Updated: August 23, 2016<BR><A HREF="#index">Index</A>
+<H1>LIBVDEPLUG_MACVTAP</H1>
+Section: User Commands  (1)<BR>Updated: August 18, 2023<BR><A HREF="#index">Index</A>
 <A HREF="/#/man/index">Return to Main Contents</A><HR>
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-libvdeplug_udp - vdeplug module for point to point connections using UDP
+libvdeplug_macvtap - vdeplug module: macvtap interface 
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-libvdeplug_udp.so
+libvdeplug_macvtap.so
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-<B>libvdeplug_udp</B> creates a point to point connection between two vde supporting
-tools using UDP.
+This is the standard vdeplug module to connect a MACVTAP interface.
 This module of libvdeplug4 can be used in any program supporting vde like
 <B>vde_plug</B>, <B>kvm</B>, <B>qemu</B>, <B>user-mode-linux</B> and <B>virtualbox</B>.
-<P>
-The network connection created by this module is not encrypted so the data transferred
-can be intercepted by network analyzer programs.
+<B>tunctl</B> or <B>vde_tunctl</B> can be used to  preconfigure a TAP device for use by a particular user.
 <P>
 The vde_plug_url syntax of this module is the following:
 <DL COMPACT><DT><DD>
 <BR>
 
-<B>udp://</B>&quot;[<I>src_address</I><B>:</B>]<I>src_port</I><B>-&gt;</B><I>dest_address</I><B>:</B><I>dest_port</I>&quot;
+<B>macvtap://</B><I>macvtap_interface_name</I>
 </DL>
 
 <P>
 <A NAME="lbAE">&nbsp;</A>
 <H2>EXAMPLES</H2>
 
-<B><A HREF="udp://2000-">udp://2000-</A>&gt;host_b.domain_b.org:3000</B>
+<B>macvtap://macvlan0</B>
 
 <BR>
 
-<B><A HREF="udp://3000-">udp://3000-</A>&gt;host_a.domain_a.org:2000</B>
-
+This vde_plug_url refers the macvtap interface named <B>macvlan0</B>, for instance created by
+the command:
 <BR>
 
-These are the vde_plug_urls to use at host_a.domain_a.org and host_b.domain_b.org respectively to
-create a connection between port 2000 at host_a and port 3000 at port_b.
+<B>ip link add link eth0 name macvlan0 type macvtap mode bridge</B>
+
 <P>
 <A NAME="lbAF">&nbsp;</A>
 <H2>NOTICE</H2>
@@ -58,7 +55,6 @@ Technologies&quot;).
 <A NAME="lbAG">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="/#/man/man1/vde_switch.1.html">vde_switch</A></B>(1),
 <B><A HREF="/#/man/man1/vde_plug.1.html">vde_plug</A></B>(1),
 <P>
 

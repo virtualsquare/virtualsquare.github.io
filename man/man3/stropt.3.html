@@ -4,8 +4,8 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of STROPT</TITLE>
 </HEAD><BODY>
 <H1>STROPT</H1>
-Section: C Library Functions (3)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: C Library Functions (3)<BR>Updated: August 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
@@ -30,12 +30,12 @@ stropt, stroptx, stropt2buf, stropt2str - Parse options from a string (it suppor
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-This small library parses a list of options from a string. Options can be separated by spaces, commas, semicolons, tabs or new line. (e.g. <I>uppercase,bold,underlined</I> ). Options may have arguments (e.g. <I>ro,noatime,uid=0,gid=0</I> ). It is possible to protect symbols and spaces using quote, double quote and backslash (e.g. <I>values='1,2,3,4',equal==</I> )
+This small library parses a list of options from a string. Options can be separated by spaces, commas, semicolons, tabs or new line. (e.g. <I>uppercase,bold,underlined</I> ). Options may have arguments (e.g. <I>ro,noatime,uid=0,gid=0</I> ). It is possible to protect symbols and spaces using quote, double quote and backslash (e.g. <I>values='1,2,3,4',equal=\=</I> )
 <DL COMPACT>
 <DT><B>stropt</B><DD>
-This function parses a list of options from the string <I>input</I>. Options can be separated by commas, semicolons, tabs oe new lines. Options may have arguments in the form <I>keyword=value</I>. <I>buf</I> is a temporary buffer, it must have the same size of the <I>input</I> string (including the NULL terminator). <I>tags</I> and <I>args</I> are the resulting arrays of options and arguments respectively. Both <I>tags</I> and <I>args</I> have one NULL terminator element at the end. When an option has not an argument the corresponding <I>args</I> element is NULL. For example if <I>input</I> is &quot;font=12,typeface=bodoni,italic&quot;, <I>tags[0]</I>=&quot;font&quot;, <I>tags[1]</I>=&quot;typeface&quot;, <I>tags[0]</I>=&quot;italic&quot;, <I>tags[4]</I>=NULL, <I>args[0]</I>=&quot;12&quot;, <I>args[1]</I>=&quot;bodoni&quot;, <I>args[0]</I>=NULL, <I>args[4]</I>=NULL.
+This function parses a list of options from the string <I>input</I>. Options can be separated by commas, semicolons, tabs or new lines. Options may have arguments in the form <I>keyword=value</I>. <I>buf</I> is a temporary buffer, it must have the same size of the <I>input</I> string (including the NULL terminator). <I>tags</I> and <I>args</I> are the resulting arrays of options and arguments respectively. Both <I>tags</I> and <I>args</I> have one NULL terminator element at the end. When an option has not an argument the corresponding <I>args</I> element is NULL. For example if <I>input</I> is &quot;font=12,typeface=bodoni,italic&quot;, <I>tags[0]</I>=&quot;font&quot;, <I>tags[1]</I>=&quot;typeface&quot;, <I>tags[2]</I>=&quot;italic&quot;, <I>tags[3]</I>=NULL, <I>args[0]</I>=&quot;12&quot;, <I>args[1]</I>=&quot;bodoni&quot;, <I>args[2]</I>=NULL, <I>args[3]</I>=NULL.
 <DT><DD>
-When <B>stropt</B> is called with <I>tags</I>, <I>args</I>, and <I>buf</I> all NULL, it parses the input, counting the options. The return value can be used to allocate suitable arrays for <I>tags</I> and <I>args</I>.
+When <B>stropt</B> is called with <I>tags</I>, <I>args</I>, and <I>buf</I> set to <B>NULL</B>, it parses the input, counting the options. The return value can be used to allocate suitable arrays for <I>tags</I> and <I>args</I>.
 <DT><DD>
 It is possible to use the same variable as <I>input</I> and <I>buffer</I>. In this case the original value of <I>input</I> is overwritten.
 <DT><B>stroptx</B><DD>
@@ -75,15 +75,15 @@ This function re-encodes an array of options (and an array of arguments) in a st
 <DT><DD>
 Elements whose option tag (element of <I>tags</I>) value is <B>STROPTX_DELETED_TAG</B> are omitted in output.
 <DT><B>stropt2str</B><DD>
-This is the sibling function of <B>stropt2buf</B>. It uses dynamically allocated memory instead of a buffer provided by the caller. The resulting string must be deallocated using <A HREF="../man3/free.3.html">free</A>(3).
+This is the sibling function of <B>stropt2buf</B>. It uses dynamically allocated memory instead of a buffer provided by the caller. The resulting string must be deallocated using <A HREF="/#/man/man3/free.3.html">free</A>(3).
 </DL>
 <A NAME="lbAE">&nbsp;</A>
 <H2>RETURN VALUE</H2>
 
 <DL COMPACT>
-<DT>&#x25cb;<DD>
+<DT>&bull;<DD>
 <B>stropt</B> and <B>stroptx</B> return the number of options + 1.
-<DT>&#x25cb;<DD>
+<DT>&bull;<DD>
 <B>stropt2buf</B> and <B>stropt2str</B> return the resulting string.
 <DT><DD>
 </DL>
@@ -95,7 +95,7 @@ The following function lists the option tags and arguments (without modyfying th
 <DT><DD>
 <PRE>
 void parse_args(char *input) {
-  int tagc = stropt(input, NULL, NULL, 0);
+  int tagc = stropt(input, NULL, NULL, NULL);
   if(tagc &gt; 0) {
     char buf[strlen(input)+1];
     char *tags[tagc];
@@ -116,7 +116,7 @@ it is possible to use the same input string as the buffer for parsing (the value
 <DT><DD>
 <PRE>
 void parse_args(char *input) {
-  int tagc = stropt(input, NULL, NULL, 0);
+  int tagc = stropt(input, NULL, NULL, NULL);
   if(tagc &gt; 0) {
     char *tags[tagc];
     char *args[tagc];
@@ -136,13 +136,13 @@ when options to parse have no arguments, args can be set to NULL.
 <DT><DD>
 <PRE>
 void parse_args(char *input) {
-  int tagc = stropt(input, NULL, NULL, 0);
+  int tagc = stropt(input, NULL, NULL, NULL);
   if(tagc &gt; 0) {
     char buf[strlen(input)+1];
     char *tags[tagc];
     stropt(input, tags, NULL, buf);
     for (int i=0; i&lt;tagc; i++)
-      printf(&quot;%s\n&quot;,tags[i]);
+      printf(&quot;%s \n&quot;,tags[i]);
   }
 }
 </PRE>
@@ -162,7 +162,7 @@ The following complete program parses and re-encode a string of comma separated 
 #include &lt;<A HREF="file:///usr/include/stropt.h">stropt.h</A>&gt;
 
 char *delete_uppercase_options(const char *input) {
-  int tagc = stroptx(input, &quot;&quot;, &quot;,&quot;,STROPTX_ALLOW_MULTIPLE_SEP, NULL, NULL, 0);
+  int tagc = stroptx(input, &quot;&quot;, &quot;,&quot;,STROPTX_ALLOW_MULTIPLE_SEP, NULL, NULL, NULL);
   if(tagc &gt; 0) {
     char buf[strlen(input)+1];
     char *tags[tagc];
@@ -208,6 +208,6 @@ VirtualSquare. Project leader: Renzo Davoli.
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

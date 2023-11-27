@@ -4,59 +4,93 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of VUMOUNT</TITLE>
 </HEAD><BODY>
 <H1>VUMOUNT</H1>
-Section: User Commands  (1)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: General Commands Manual (1)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-<B>vumount</B> - mount a filesystem or a resource
+<P>
+
+vumount - mount a filesystem or a resource
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>vumount</B> [<I>options</I> ...] <I>source</I> <I>destination</I>
+<P>
+
+vumount [options ...]
+source destination
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-Everything is (or can be seen) as a file. It is part of the philosophy of UNIX. The file hierarchy is the global naming facility.
 <P>
 
-VUOS follows this principle: VUOS modules use <B><A HREF="../man2/mount.2.html">mount</A></B>(2) not only to mount virtual filesystems but also to activate other virual services. The mountpoint, <I>destination</I> in the synopsis, is the name that will be used to identify the virtual entity/service.
+Everything is (or can be seen) as a file.
+It is part of the philosophy of UNIX.
+The file hierarchy is the global naming facility.
 <P>
 
-For example, in <B>vudev</B> it is possible to mount devices, in <B>vunet</B> the mountpoint is the name of the networking stack, <B><A HREF="../man1/vustack.1.html">vustack</A></B>(1) uses the path ofthe mountpoint to set the current stack for processes.
+VUOS follows this principle: VUOS modules use <A HREF="/#/man/man2/mount.2.html">mount</A>(2) not
+only to mount virtual filesystems but also to activate other virual
+services.
+The mountpoint, destination in the synopsis, is the name that
+will be used to identify the virtual entity/service.
 <P>
 
-<B>vumount</B> is just a command interface to <B><A HREF="../man2/mount.2.html">mount</A></B>(2). The <B><A HREF="../man8/mount.8.html">mount</A></B>(8) command is a complex tool which includes several features like the management of /etc/fstab and /etc/mtab. <B><A HREF="../man8/mount.8.html">mount</A></B>(8) is a root setuid executable and performs security checks before the actual <B><A HREF="../man2/mount.2.html">mount</A></B>(2) syscall request. <B><A HREF="../man8/mount.8.html">mount</A></B>(8) can be used in VUOS in place of <B>vumount</B> but it requires the (virtual) real uid of the executing process to be 0 (root). e.g. <B><A HREF="../man1/vusu.1.html">vusu</A></B>(1) can be used to set the virtual real uid to 0. <B>vumount</B> has been designed for VUOS but can be used to run the <B>mount</B> system call directly, without all the other management actions provided by <B><A HREF="../man8/mount.8.html">mount</A></B>(8). <B>vumount</B> is not setuid root.
+For example, in vudev it is possible to mount devices, in
+vunet the mountpoint is the name of the networking stack,
+<A HREF="/#/man/man1/vustack.1.html">vustack</A>(1) uses the path ofthe mountpoint to set the current
+stack for processes.
+<P>
+
+vumount is just a command interface to <A HREF="/#/man/man2/mount.2.html">mount</A>(2).
+The <A HREF="/#/man/man8/mount.8.html">mount</A>(8) command is a complex tool which includes several
+features like the management of /etc/fstab and /etc/mtab.
+<A HREF="/#/man/man8/mount.8.html">mount</A>(8) is a root setuid executable and performs security
+checks before the actual <A HREF="/#/man/man2/mount.2.html">mount</A>(2) syscall request.
+<A HREF="/#/man/man8/mount.8.html">mount</A>(8) can be used in VUOS in place of vumount but
+it requires the (virtual) real uid of the executing process to be 0
+(root).
+e.g.&nbsp;<A HREF="/#/man/man1/vusu.1.html">vusu</A>(1) can be used to set the virtual real uid to 0.
+vumount has been designed for VUOS but can be used to run the
+mount system call directly, without all the other management
+actions provided by <A HREF="/#/man/man8/mount.8.html">mount</A>(8).
+vumount is not setuid root.
 <A NAME="lbAE">&nbsp;</A>
 <H2>OPTIONS</H2>
 
 <DL COMPACT>
-<DT><B>-h</B>, <B>--help</B><DD>
+<DT>-h, --help<DD>
 Print a short help message and exit.
-<DT><B>-o</B> <I>list</I>, <B>--options</B> <I>list</I><DD>
+<DT>-o list, --options list<DD>
 comma-separated list of mount options
-<DT><B>-t</B> <I>fstype</I>, <B>--types</B> <I>fstype</I><DD>
+<DT>-t fstype, --types fstype<DD>
 define the filesystem type
-<DT><B>-r</B>, <B>--read-only</B><DD>
+<DT>-r, --read-only<DD>
 mount the filesystem read-only (same as -o ro)
-<DT><B>-w</B>, <B>--rw</B>, <B>--read-write</B><DD>
+<DT>-w, --rw, --read-write<DD>
 mount the filesystem read-write (default)
-<DT><B>-B</B>, <B>--bind</B><DD>
+<DT>-B, --bind<DD>
 mount a subtree somewhere else (same as -o bind)
-<DT><B>-M</B>, <B>--move</B><DD>
+<DT>-M, --move<DD>
 move a subtree to some other place
-<DT><B>-R</B>, <B>--rbind</B><DD>
+<DT>-R, --rbind<DD>
 mount a subtree and all submounts somewhere else
 </DL>
 <A NAME="lbAF">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<A HREF="../man1/umvu.1.html">umvu</A>(1), <A HREF="../man1/vu_insmod.1.html">vu_insmod</A>(1), <A HREF="../man1/vu_lsmod.1.html">vu_lsmod</A>(1), <A HREF="../man1/vu_rmmod.1.html">vu_rmmod</A>(1), <A HREF="../man1/vuumount.1.html">vuumount</A>(1), <A HREF="../man1/vudebug.1.html">vudebug</A>(1)
+<P>
+
+<A HREF="/#/man/man1/umvu.1.html">umvu</A>(1), <A HREF="/#/man/man1/vu_insmod.1.html">vu_insmod</A>(1), <A HREF="/#/man/man1/vu_lsmod.1.html">vu_lsmod</A>(1), <A HREF="/#/man/man1/vu_rmmod.1.html">vu_rmmod</A>(1), <A HREF="/#/man/man1/vuumount.1.html">vuumount</A>(1), <A HREF="/#/man/man1/vudebug.1.html">vudebug</A>(1)
 <A NAME="lbAG">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli
 <P>
 
 <HR>
@@ -73,6 +107,6 @@ VirtualSquare. Project leader: Renzo Davoli
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

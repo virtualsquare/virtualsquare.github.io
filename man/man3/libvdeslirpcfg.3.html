@@ -4,42 +4,61 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of LIBVDESLIRPCFG</TITLE>
 </HEAD><BODY>
 <H1>LIBVDESLIRPCFG</H1>
-Section: C Library Functions (3)<BR>Updated: December 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: Library Functions Manual (3)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-vdeslirp_init, vdeslirp_setvprefix, vdeslirp_setvprefix6 - simple API for slirp: configuration helpers
+<P>
+
+vdeslirp_init, vdeslirp_setvprefix, vdeslirp_setvprefix6 - simple API
+for slirp: configuration helpers
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>#include &lt;<A HREF="file:///usr/include/libvdeslirp.h">libvdeslirp.h</A>&gt;</B>
 <P>
 
-<B>#define VDE_INIT_DEFAULT 1</B>
+#include *libvdeslirp.h*
 <P>
 
-<B>void vdeslirp_init(SlirpConfig *</B><I>cfg</I><B>, int</B> <I>flags</I><B>);</B>
+#define VDE_INIT_DEFAULT 1
 <P>
 
-<B>void vdeslirp_setvprefix(SlirpConfig *</B><I>cfg</I><B>, int</B> <I>prefix</I><B>);</B>
+void vdeslirp_init(SlirpConfig *cfg, int
+flags);
 <P>
 
-<B>void vdeslirp_setvprefix6(SlirpConfig *</B><I>cfg</I><B>, int</B> <I>prefix6</I><B>);</B>
+void vdeslirp_setvprefix(SlirpConfig *cfg, int
+prefix);
 <P>
 
-These functions are provided by libvdeslirp. Link with -lvdeslirp.
+void vdeslirp_setvprefix6(SlirpConfig *cfg, int
+prefix6);
+<P>
+
+These functions are provided by libvdeslirp.
+Link with -lvdeslirp.
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-These functions are configuration helpers for <B><A HREF="../man3/libvdeslirp.3.html">libvdeslirp</A></B>(3). The fields of the SlirpConfig has been described in the <B><A HREF="../man3/libvdeslirp.3.html">libvdeslirp</A></B>(3) manpage.
 <P>
 
-<B>vdeslirp_init</B> clears the <B>SlirpConfig</B> configuration structure <B>cfg</B> and sets the version number. If <B>flags</B> is set to <B>VDE_INIT_DEFAULT</B> then it sets default values to all the fields of <B>cfg</B>. These default values are suitable for most applications.
+These functions are configuration helpers for <A HREF="/#/man/man3/libvdeslirp.3.html">libvdeslirp</A>(3).
+The fields of the SlirpConfig has been described in the
+<A HREF="/#/man/man3/libvdeslirp.3.html">libvdeslirp</A>(3) manpage.
+<P>
+
+vdeslirp_init clears the SlirpConfig configuration
+structure cfg and sets the version number.
+If flags is set to VDE_INIT_DEFAULT then it sets
+default values to all the fields of cfg.
+These default values are suitable for most applications.
 <DL COMPACT>
 <DT><DD>
 <PRE>
+
 SLIRP configuration
 version       1
 ipv4-enable   1
@@ -63,25 +82,40 @@ MTU(0=def)    0
 MRU(0=def)    0
 disable-lback 0
 enable-emu    0
+
 </PRE>
 
-<DT><DD>
 </DL>
 <P>
 
-The functions <B>vdeslirp_setvprefix</B> and <B>vdeslirp_setvprefix6</B> define the netmasks and prefixes for IPv4 and IPv6. These function are usually called after the redefinition of <B>vhost</B> or <B>vhost6</B>. <B>vdeslirp_setvprefix</B> redefines the network prefix of <B>vnetwork</B>, <B>vdhcp_start</B> and <B>vnameserver</B> while <B>vdeslirp_setvprefix6</B> redefines the network prefix for <B>vprefix_addr6</B> and <B>vnameserver6</B>.
+The functions vdeslirp_setvprefix and
+vdeslirp_setvprefix6 define the netmasks and prefixes for IPv4
+and IPv6.
+These function are usually called after the redefinition of
+vhost or vhost6.
+vdeslirp_setvprefix redefines the network prefix of
+vnetwork, vdhcp_start and vnameserver
+while vdeslirp_setvprefix6 redefines the network prefix for
+vprefix_addr6 and vnameserver6.
 <A NAME="lbAE">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="../man3/libvdeslirp.3.html">libvdeslirp</A></B>(3)
+<P>
+
+<A HREF="/#/man/man3/libvdeslirp.3.html">libvdeslirp</A>(3)
 <A NAME="lbAF">&nbsp;</A>
 <H2>BUGS</H2>
 
-Bug reports should be addressed to &lt;<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>&gt;
+<P>
+
+Bug reports should be addressed to *<A HREF="mailto:info@virtualsquare.org">info@virtualsquare.org</A>*
 <A NAME="lbAG">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli.
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli.
 <P>
 
 <HR>
@@ -98,6 +132,6 @@ VirtualSquare. Project leader: Renzo Davoli.
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

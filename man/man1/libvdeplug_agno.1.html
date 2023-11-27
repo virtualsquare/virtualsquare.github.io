@@ -4,79 +4,122 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of LIBVDEPLUG_AGNO</TITLE>
 </HEAD><BODY>
 <H1>LIBVDEPLUG_AGNO</H1>
-Section: User Commands  (1)<BR>Updated: July 2020<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: General Commands Manual (1)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-<B>libvdeplug_agno</B> - vdeplug module: add encryption to ethernet link plug
+<P>
+
+libvdeplug_agno - vdeplug module: add encryption to
+ethernet link plug
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
+
+<P>
 
 libvdeplug_agno.so
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-This is a libvdeplug cryptographic module that implements agnostic encryption over layer 2. Agnostic encryption is an encryption method that doesn't need information about the vde network implementation.
 <P>
 
-This module of libvdeplug4 can be used in any program supporting vde like <B>vde_plug</B>, <B>vdens</B>, <B>kvm</B>, <B>qemu</B>, <B>user-mode-linux</B> and <B>virtualbox</B>.
+This is a libvdeplug cryptographic module that implements agnostic
+encryption over layer 2.
+Agnostic encryption is an encryption method that doesn't need
+information about the vde network implementation.
+<P>
+
+This module of libvdeplug4 can be used in any program supporting vde
+like vde_plug, vdens, kvm, qemu,
+user-mode-linux and virtualbox.
 <P>
 
 The vde_plug_url syntax of this module is the following:
 <P>
 
-~ ~ ~ <B>agno://</B>[<I>/path/of/keyfile</I>][<B>[</B><I>OPTIONS</I><B>]</B>]<B>{</B><I>vde nested url</I><B>}</B>
+&nbsp; &nbsp; &nbsp;
+<A HREF="agno://[/path/of/keyfile][[OPTIONS]]{vde">agno://[/path/of/keyfile][[OPTIONS]]{vde</A>
+nested url}
 <P>
 
-<I>/path/of/keyfile</I>, if present, must be an absolute path or a path relative to the user's home (e.g. <B>~/example/path</B>). If omitted the default path of the keyfile is <B>~/.vde_agno_key</B>. The keyfile must contain a 128-bit key in hexadecimal format. Only hexadecimal caracters are considered in both uppercase and lowercase, all the others are ignored (e.g. white-spaces, newline characters, non-hexadecimal letters).
+/path/of/keyfile, if present, must be an absolute path or a
+path relative to the user's home
+(e.g.&nbsp;~/example/path).
+If omitted the default path of the keyfile is
+~/.vde_agno_key.
+The keyfile must contain a 128-bit key in hexadecimal format.
+Only hexadecimal characters are considered in both uppercase and
+lowercase, all the others are ignored (e.g.&nbsp;white-spaces, newline
+characters, non-hexadecimal letters).
 <A NAME="lbAE">&nbsp;</A>
 <H2>OPTIONS</H2>
 
 <DL COMPACT>
-<DT><B>ethtype=</B><I>TYPE</I><DD>
-define the type of the Ethernet frame of the encrypted packet. TYPE can be the an exadecimal number or:
+<DT>ethtype=TYPE<DD>
+define the type of the Ethernet frame of the encrypted packet.
+TYPE can be the an exadecimal number or:
 <DT><DD>
-<B>copy</B>: same type of the non-encrypted packet
+copy: same type of the non-encrypted packet
 <DT><DD>
-<B>ipv4</B>: ipv4 type (0x0800)
+ipv4: ipv4 type (0x0800)
 <DT><DD>
-<B>ipv6</B>: ipv6 type (0x86dd)
+ipv6: ipv6 type (0x86dd)
 <DT><DD>
-<B>rand</B>: random number as type. The random number will be generated for every Ethernet packet sent.
+rand: random number as type.
+The random number will be generated for every Ethernet packet sent.
 </DL>
 <A NAME="lbAF">&nbsp;</A>
 <H2>EXAMPLES</H2>
 
-<B><A HREF="agno://{vde:///tmp/myswitch}">agno://{vde:///tmp/myswitch}</A></B>
 <P>
 
-agno uses the key stored in the default keyfile (~/.vde_agno_key) location to encrypt the traffic sent to the switch. The Ethernet frames have agno specific type (0xa6de) as type.
+<A HREF="agno://{vde:///tmp/myswitch}">agno://{vde:///tmp/myswitch}</A>
 <P>
 
-<B><A HREF="agno:///tmp/my_keyfile[ethtype=copy]{vde:///tmp/myswitch}">agno:///tmp/my_keyfile[ethtype=copy]{vde:///tmp/myswitch}</A></B>
+agno uses the key stored in the default keyfile (~/.vde_agno_key)
+location to encrypt the traffic sent to the switch.
+The Ethernet frames have agno specific type (0xa6de) as type.
 <P>
 
-agno uses the key stored in file /tmp/my_keyfile to encrypt the traffic sent to the switch. The Ethernet frames will have the same type of the non-encrypted packet.
+<A HREF="agno:///tmp/my_keyfile[ethtype=copy]{vde:///tmp/myswitch}">agno:///tmp/my_keyfile[ethtype=copy]{vde:///tmp/myswitch}</A>
 <P>
 
-<B>vdens <A HREF="agno://[ethtype=rand]{vxvde://234.0.0.1}">agno://[ethtype=rand]{vxvde://234.0.0.1}</A></B>
+agno uses the key stored in file /tmp/my_keyfile to encrypt the traffic
+sent to the switch.
+The Ethernet frames will have the same type of the non-encrypted packet.
 <P>
 
-create a nanespace conencted to a vxvde local area cloud. agno uses the key stored in the default keyfile (~/.vde_agno_key) location to encrypt the traffic sent to vxvde.
+vdens <A HREF="agno://[ethtype=rand]{vxvde://234.0.0.1}">agno://[ethtype=rand]{vxvde://234.0.0.1}</A>
+<P>
+
+create a nanespace connected to a vxvde local area cloud.
+agno uses the key stored in the default keyfile (~/.vde_agno_key)
+location to encrypt the traffic sent to vxvde.
 <A NAME="lbAG">&nbsp;</A>
 <H2>NOTICE</H2>
 
-Virtual Distributed Ethernet is not related in any way with <A HREF="http://www.vde.com">www.vde.com</A> (&quot;Verband der Elektrotechnik, Elektronik und Informationstechnik&quot; i.e. the German &quot;Association for Electrical, Electronic &amp; Information Technologies&quot;).
+<P>
+
+Virtual Distributed Ethernet is not related in any way with <A HREF="http://www.vde.com">www.vde.com</A>
+("Verband der Elektrotechnik, Elektronik und
+Informationstechnik" i.e.&nbsp;the German "Association for
+Electrical, Electronic &amp; Information Technologies").
 <A NAME="lbAH">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<B><A HREF="../man1/vde_plug.1.html">vde_plug</A></B>(1)
+<P>
+
+<A HREF="/#/man/man1/vde_plug.1.html">vde_plug</A>(1)
 <A NAME="lbAI">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli
 <P>
 
 <HR>
@@ -95,6 +138,6 @@ VirtualSquare. Project leader: Renzo Davoli
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

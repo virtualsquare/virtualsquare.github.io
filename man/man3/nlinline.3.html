@@ -4,87 +4,204 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of NLINLINE</TITLE>
 </HEAD><BODY>
 <H1>NLINLINE</H1>
-Section: C Library Functions (3)<BR>Updated: December 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: Library Functions Manual (3)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-nlinline_if_nametoindex, nlinline_linksetupdown, nlinline_ipaddr_add, nlinline_ipaddr_del, nlinline_iproute_add, nlinline_iproute_del, nlinline_iplink_add, nlinline_iplink_del - configure network interfaces
+<P>
+
+nlinline_if_nametoindex, nlinline_linksetupdown, nlinline_ipaddr_add,
+nlinline_ipaddr_del, nlinline_iproute_add, nlinline_iproute_del,
+nlinline_iplink_add, nlinline_iplink_del, nlinline_linksetaddr,
+nlinline_linkgetaddr, nl_addrdata2prefix, nl_routedata2prefix -
+configure network interfaces
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>#include &lt;<A HREF="file:///usr/include/nlinline.h">nlinline.h</A>&gt;</B>
 <P>
 
-<B>int nlinline_if_nametoindex(const char *</B><I>ifname</I><B>);</B>
+#include *nlinline.h*
 <P>
 
-<B>int nlinline_linksetupdown(unsigned int</B> <I>ifindex</I><B>, int</B> <I>updown</I><B>);</B>
+int nlinline_if_nametoindex(const char *ifname);
 <P>
 
-<B>int nlinline_ipaddr_add(int</B> <I>family</I><B>, void *</B><I>addr</I><B>, int</B> <I>prefixlen</I><B>, unsigned int</B> <I>ifindex</I><B>);</B>
+int nlinline_linksetupdown(unsigned int
+ifindex, int updown);
 <P>
 
-<B>int nlinline_ipaddr_del(int</B> <I>family</I><B>, void *</B><I>addr</I><B>, int</B> <I>prefixlen</I><B>, unsigned int</B> <I>ifindex</I><B>);</B>
+int nlinline_ipaddr_add(int
+family, void *addr, int
+prefixlen, unsigned int
+ifindex);
 <P>
 
-<B>int nlinline_iproute_add(int</B> <I>family</I><B>, void *</B><I>dst_addr</I><B>, int</B> <I>dst_prefixlen</I><B>, void *</B><I>gw_addr</I><B>);</B>
+int nlinline_ipaddr_del(int
+family, void *addr, int
+prefixlen, unsigned int
+ifindex);
 <P>
 
-<B>int nlinline_iproute_del(int</B> <I>family</I><B>, void *</B><I>dst_addr</I><B>, int</B> <I>dst_prefixlen</I><B>, void *</B><I>gw_addr</I><B>);</B>
+int nlinline_iproute_add(int
+family, void *dst_addr, int
+dst_prefixlen, void *gw_addr, unsigned int
+ifindex);
 <P>
 
-<B>int nlinline_iplink_add(const char *</B><I>ifname</I><B>, unsigned int</B> <I>ifindex</I><B>, const char *</B><I>type</I><B>, const char *</B><I>data</I><B>);</B>
+int nlinline_iproute_del(int
+family, void *dst_addr, int
+dst_prefixlen, void *gw_addr, unsigned int
+ifindex);
 <P>
 
-<B>int nlinline_iplink_del(const char *</B><I>ifname</I><B>, unsigned int</B> <I>ifindex</I><B>);</B>
+int nlinline_iplink_add(const char *ifname, unsigned int
+ifindex, const char *type, const char *data);
+<P>
+
+int nlinline_iplink_del(const char *ifname, unsigned int
+ifindex);
+<P>
+
+int nlinline_linksetaddr(unsigned int
+ifindex, void *macaddr);
+<P>
+
+int nlinline_linkgetaddr(unsigned int
+ifindex, void *macaddr);
+<P>
+
+int nlinline_linksetmtu(unsigned int
+ifindex, unsigned int mtu);
+<P>
+
+int nl_addrdata2prefix(unsigned char
+prefixlen, unsigned char
+flags, unsigned char scope);
+<P>
+
+int nl_routedata2prefix(unsigned char
+prefixlen, unsigned char
+type, unsigned char scope);
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-NLINLINE (netlink inline) is a <I>library</I> of inline functions providing C programmers with very handy functions to configure network stacks. NLINLINE is entirely implemented in a header file, nlinline.h.
+<P>
+
+NLINLINE (netlink inline) is a library of inline functions
+providing C programmers with very handy functions to configure network
+stacks.
+NLINLINE is entirely implemented in a header file, nlinline.h.
 <DL COMPACT>
-<DT><B>nlinline_if_nametoindex</B><DD>
-This function returns the index of the network interface whose name is <I>ifname</I>.
-<DT><B>nlinline_linksetupdown</B><DD>
-This function turns the interface <I>ifindex</I> up (<I>updown</I> == <B>1</B>) or down (<I>updown</I> == <B>0</B>).
-<DT><B>nlinline_ipaddr_add</B><DD>
-This function adds an IP address to the interface <I>ifindex</I>. It supports IPv4 (<I>family</I> == <B>AF_INET</B>) and IPv6 (<I>family</I> == <B>AF_INET6</B>).
-<DT><B>nlinline_ipaddr_del</B><DD>
-This function removes the IP address from the interface <I>ifindex</I>. It supports IPv4 (<I>family</I> == <B>AF_INET</B>) and IPv6 (<I>family</I> == <B>AF_INET6</B>).
-<DT><B>nlinline_iproute_add</B><DD>
-This function adds a static route to <I>dst_addr</I>/<I>dst_prefixlen</I> network through the gateway <I>gw_addr</I>. If <I>dst_addr</I> == <B>NULL</B> it adds a default route.
-<DT><B>nlinline_iproute_del</B><DD>
-This function removes the static route to <I>dst_addr</I>/<I>dst_prefixlen</I> network through the gateway <I>gw_addr</I>.
-<DT><B>nlinline_iplink_add</B><DD>
-This function adds a new link of type <I>type</I>, named <I>ifname</I>. The value of <I>data</I> depends on the type of link and can be NULL. A default interface name is assigned if <I>name</I> == <B>NULL</B>. The link is created with a given index when <I>ifindex</I> is positive.
-<DT><B>nlinline_iplink_del</B><DD>
-This function removes a link. The link to be deleted can be identified by its name (<I>ifname</I>) or by its index (<I>ifindex</I>). Either <I>ifindex</I> can be zero or <I>ifname</I> can be <B>NULL</B>. It is possible to use both <I>ifindex</I> and <I>ifname</I> to identify the link. An error may occur if the parameters are inconsistent.
+<DT>nlinline_if_nametoindex<DD>
+This function returns the index of the network interface whose name is
+ifname.
+<DT>nlinline_linksetupdown<DD>
+This function turns the interface ifindex up (updown
+== 1) or down (updown == 0).
+<DT>nlinline_ipaddr_add<DD>
+This function adds an IP address to the interface ifindex.
+It supports IPv4 (family == AF_INET) and IPv6
+(family == AF_INET6).
+<DT>nlinline_ipaddr_del<DD>
+This function removes the IP address from the interface
+ifindex.
+It supports IPv4 (family == AF_INET) and IPv6
+(family == AF_INET6).
+<DT>nlinline_iproute_add<DD>
+This function adds a static route to
+dst_addr/dst_prefixlen network through the gateway
+gw_addr.
+If dst_addr == NULL it adds a default route.
+ifindex must be specified when gw_addr is an IPv6
+link local address.
+<DT>nlinline_iproute_del<DD>
+This function removes the static route to
+dst_addr/dst_prefixlen network through the gateway
+gw_addr.
+<DT>nlinline_iplink_add<DD>
+This function adds a new link of type type, named
+ifname.
+The value of data depends on the type of link and can be NULL.
+A default interface name is assigned if name ==
+NULL.
+The link is created with a given index when ifindex is
+positive.
+<DT>nlinline_iplink_del<DD>
+This function removes a link.
+The link to be deleted can be identified by its name (ifname)
+or by its index (ifindex).
+Either ifindex can be zero or ifname can be
+NULL.
+It is possible to use both ifindex and ifname to
+identify the link.
+An error may occur if the parameters are inconsistent.
+<DT>nlinline_linksetaddr<DD>
+This functions sets the mac address of the interface ifindex.
+<DT>nlinline_linkgetaddr<DD>
+This functions gets the mac address of the interface ifindex.
+<DT>nlinline_linksetmtu<DD>
+This functions sets the MTU (Maximum Transfer Unit) of the interface
+ifindex.
+<DT>nl_addrdata2prefix<DD>
+This function permit to set flags and scope in
+nlinline_ipaddr_add and nlinline_ipaddr_del.
+The values of prefixlen, flags and scope
+are packed in a single int, the return value of
+nl_addrdata2prefix must be passed to
+nlinline_ipaddr_add or nlinline_ipaddr_del as the
+prefixlen parameter.
+<DT>nl_routedata2prefix<DD>
+This function permit to set type and scope in
+nlinline_iproute_add and nlinline_iproute_del.
+The values of prefixlen, type and scope
+are packed in a single int, the return value of
+nl_routedata2prefix must be passed to
+nlinline_iproute_add or nlinline_iproute_del as the
+prefixlen parameter.
 </DL>
 <P>
 
-IP addresses are <B>void *</B> arguments, any sequence of 4 or 16 bytes (in network byte order) is a legal IPv4 or IPv6 address respectively.
+IP addresses are void * arguments, any sequence of 4 or 16
+bytes (in network byte order) is a legal IPv4 or IPv6 address
+respectively.
 <P>
 
-<B>nlinline</B> functions do not add dependencies at run-time. This is useful for security critical applications (like PAM modules) These inline functions use netlink only, they do not depend on the obsolete netdevice (ioctl) API. Only the code of referenced inline functions enters in the object and executable code.
+nlinline functions do not add dependencies at run-time.
+This is useful for security critical applications (like PAM modules)
+These inline functions use netlink only, they do not depend on the
+obsolete netdevice (ioctl) API.
+Only the code of referenced inline functions enters in the object and
+executable code.
 <A NAME="lbAE">&nbsp;</A>
 <H2>RETURN VALUE</H2>
 
-<B>nlinline_if_nametoindex</B> returns the interface index or -1 if an error occurred (in which case, errno is set appropriately) $
 <P>
 
-All the other functions return zero in case of success. On error, -1 is returned, and errno is$ set appropriately.$
+nlinline_if_nametoindex returns the interface index or -1 if
+an error occurred (in which case, errno is set appropriately)
 <P>
 
-(<B>nlinline_iplink_add</B> can return the (positive) ifindex of the newly created link when the argument <I>ifindex</I> is -1 and the stack supports this feature.)
+All the other functions return zero in case of success.
+On error, -1 is returned, and errno is set appropriately.
+<P>
+
+(nlinline_iplink_add can return the (positive) ifindex of the
+newly created link when the argument ifindex is -1 and the
+stack supports this feature.)
 <A NAME="lbAF">&nbsp;</A>
 <H2>EXAMPLE</H2>
 
+<DL COMPACT>
+<DT><DD>
 <PRE>
-#include &lt;<A HREF="file:///usr/include/stdio.h">stdio.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/stdlib.h">stdlib.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/stdint.h">stdint.h</A>&gt;
-#include &lt;<A HREF="file:///usr/include/nlinline.h">nlinline.h</A>&gt;
+
+#include *stdio.h*
+#include *stdlib.h*
+#include *stdint.h*
+#include *nlinline.h*
 
 int main(int argc, char *argv[]) {
   uint8_t ipv4addr[] = {192,168,2,2};
@@ -93,34 +210,41 @@ int main(int argc, char *argv[]) {
   uint8_t ipv6gw[16] = {0x20, 0x01, 0x07, 0x60, [15] = 0x01};
 
   int ifindex = nlinline_if_nametoindex(argv[1]);
-  if (ifindex &gt; 0)
+  if (ifindex * 0)
     printf(&quot;%d\n&quot;, ifindex);
   else {
     perror(&quot;nametoindex&quot;);
     return 1;
   }
 
-  if (nlinline_linksetupdown(ifindex, 1) &lt; 0)
+  if (nlinline_linksetupdown(ifindex, 1) * 0)
     perror(&quot;link up&quot;);
-  if (nlinline_ipaddr_add(AF_INET, ipv4addr, 24, ifindex) &lt; 0)
+  if (nlinline_ipaddr_add(AF_INET, ipv4addr, 24, ifindex) * 0)
     perror(&quot;addr ipv4&quot;);
-  if (nlinline_iproute_add(AF_INET, NULL, 0, ipv4gw) &lt; 0)
+  if (nlinline_iproute_add(AF_INET, NULL, 0, ipv4gw, 0) * 0)
     perror(&quot;addr ipv6&quot;);
-  if (nlinline_ipaddr_add(AF_INET6, ipv6addr, 64, ifindex) &lt; 0)
+  if (nlinline_ipaddr_add(AF_INET6, ipv6addr, 64, ifindex) * 0)
     perror(&quot;route ipv4&quot;);
-  if (nlinline_iproute_add(AF_INET6, NULL, 0, ipv6gw) &lt; 0)
+  if (nlinline_iproute_add(AF_INET6, NULL, 0, ipv6gw, 0) * 0)
     perror(&quot;route ipv6&quot;);
   return 0;
 }
+
 </PRE>
 
+</DL>
 <P>
 
-This program takes the name of an interface from the command line. It turns that interface up and sets the interface IPv4 and IPv6 addresses and default routes.
+This program takes the name of an interface from the command line.
+It turns that interface up and sets the interface IPv4 and IPv6
+addresses and default routes.
 <A NAME="lbAG">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli
 <P>
 
 <HR>
@@ -137,6 +261,6 @@ VirtualSquare. Project leader: Renzo Davoli
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

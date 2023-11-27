@@ -4,67 +4,84 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of VUNAME</TITLE>
 </HEAD><BODY>
 <H1>VUNAME</H1>
-Section: User Commands  (1)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: General Commands Manual (1)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-<B>vuname</B> - print system/view information - set view name.
+<P>
+
+vuname - print system/view information - set view name.
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>vuname</B> [<I>options</I> ...]
+<P>
+
+vuname [options ...]
 <P>
 
 or
 <P>
 
-<B>vuname</B> <I>newname</I>
+vuname newname
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-Print certain system/view information. With no options, and no arguments, same as -s. With no options and exactly one argument: set the VUOS view name.
 <P>
 
-This tool extends <B><A HREF="../man1/uname.1.html">uname</A></B>(1). It should provide the same output of <B>uname</B> except when it runs as a VUOS process (or if <B>--x</B>/<B>--nouname</B> disables this feature). In VUOS the system information is extended with view information.
+Print certain system/view information.
+With no options, and no arguments, same as -s.
+With no options and exactly one argument: set the VUOS view name.
+<P>
+
+This tool extends <A HREF="/#/man/man1/uname.1.html">uname</A>(1).
+It should provide the same output of uname except when it runs
+as a VUOS process (or if --x/--nouname disables this
+feature).
+In VUOS the system information is extended with view information.
 <A NAME="lbAE">&nbsp;</A>
 <H2>OPTIONS</H2>
 
 <DL COMPACT>
-<DT><B>-a</B>, <B>--all</B><DD>
-print all information, in the following order, except omit <B>-p</B> and <B>-i</B> if unknown.
-<DT><B>-s</B>, <B>--kernel-name</B><DD>
+<DT>-a, --all<DD>
+print all information, in the following order, except omit -p
+and -i if unknown.
+<DT>-s, --kernel-name<DD>
 print the kernel name
-<DT><B>-n</B>, <B>--nodename</B><DD>
+<DT>-n, --nodename<DD>
 print the network node hostname
-<DT><B>-r</B>, <B>--kernel-release</B><DD>
+<DT>-r, --kernel-release<DD>
 print the kernel release
-<DT><B>-v</B>, <B>--kernel-version</B><DD>
+<DT>-v, --kernel-version<DD>
 print the kernel version
-<DT><B>-m</B>, <B>--machine</B><DD>
+<DT>-m, --machine<DD>
 print the machine hardware name
-<DT><B>-p</B>, <B>--processor</B><DD>
-print the processor type or &quot;unknown&quot;
-<DT><B>-i</B>, <B>--hardware-platform</B><DD>
-print the hardware platform or &quot;unknown&quot;
-<DT><B>-o</B>, <B>--operating-system</B><DD>
+<DT>-p, --processor<DD>
+print the processor type or "unknown"
+<DT>-i, --hardware-platform<DD>
+print the hardware platform or "unknown"
+<DT>-o, --operating-system<DD>
 print the operating system
-<DT><B>-U</B>, <B>--serverid</B><DD>
+<DT>-U, --serverid<DD>
 print the VUOS server id (it is the process id of the hypervisor)
-<DT><B>-V</B>, <B>--viewname</B><DD>
+<DT>-V, --viewname<DD>
 print the view name
-<DT><B>-P</B>, <B>--prompt</B><DD>
-return a suitable (shell) command prompt: the nodename (<B>-n</B>) if <B>vuname</B> runs outside VUOS else the view name (<B>-V</B>) if it has been defined otherwise the nodename followedby the server id enclosed in square brackets (something like <I>host[42]</I>).
-<DT><B>-x</B>, <B>--nouname</B><DD>
-do not use uname (without this flag the command behaves like uname when it runs on a non VUOS enabled environment).
-<DT><B>-q</B>, <B>--quiet</B><DD>
+<DT>-P, --prompt<DD>
+return a suitable (shell) command prompt: the nodename (-n) if
+vuname runs outside VUOS else the view name (-V) if
+it has been defined otherwise the nodename followedby the server id
+enclosed in square brackets (something like host[42]).
+<DT>-x, --nouname<DD>
+do not use uname (without this flag the command behaves like uname when
+it runs on a non VUOS enabled environment).
+<DT>-q, --quiet<DD>
 quiet mode: error messages suppressed
-<DT><B>--help</B><DD>
+<DT>--help<DD>
 display a help message and exit
-<DT><B>--version</B><DD>
+<DT>--version<DD>
 output version information and exit
-<P>
 <P>
 </DL>
 
@@ -80,6 +97,6 @@ output version information and exit
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>

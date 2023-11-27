@@ -49,6 +49,10 @@ function convert_man_chapter {
 				ln -s $(readlink gits/newman/$manpage).html man${CHAPTER}/$manpage.html
 			else
 			 	man2html -r man${CHAPTER}/$manpage > man${CHAPTER}/$manpage.html
+				sed -i \
+				-e 's/HREF="\.\./HREF="\/#\/man/g' \
+				-e 's/"\/#\/man\/index.html"/"\/#\/man\/index"/' \
+				man${CHAPTER}/$manpage.html
 			fi
 		fi
 	done
@@ -61,7 +65,7 @@ function build_index {
 	echo >> $OUTFILE
 	echo "## Section $CHAPTER" >> $OUTFILE
 	echo >> $OUTFILE
-	for page in $(cd man$CHAPTER; find . -maxdepth 1 -name "*.$CHAPTER" | sort)
+	for page in $(cd man$CHAPTER; find . -maxdepth 1 -name "*.$CHAPTER" -printf "%f\n" | sort)
 	do
 		echo '* ['$page']('man$CHAPTER/$page.html')' >> $OUTFILE
 	done
@@ -69,6 +73,7 @@ function build_index {
 
 # Start scanning for man pages
 rm -rf gits
+rm -f man*/*.[1-9] man*/*.[1-9].html
 mkdir gits
 mkdir gits/newman
 
@@ -110,4 +115,5 @@ do
 done
 
 rm -rf gits
+rm -f man*/*.[1-9]
 echo 'DONE MAN'

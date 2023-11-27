@@ -4,66 +4,139 @@ Content-type: text/html; charset=UTF-8
 <HTML><HEAD><TITLE>Man page of VUSU</TITLE>
 </HEAD><BODY>
 <H1>VUSU</H1>
-Section: User Commands  (1)<BR>Updated: October 2019<BR><A HREF="#index">Index</A>
-<A HREF="../index.html">Return to Main Contents</A><HR>
+Section: General Commands Manual (1)<BR>Updated: December 2022<BR><A HREF="#index">Index</A>
+<A HREF="/#/man/index">Return to Main Contents</A><HR>
+
 
 <A NAME="lbAB">&nbsp;</A>
 <H2>NAME</H2>
 
-<B>vusu</B> - set the default networking stack
+<P>
+
+vusu - set the default networking stack
 <A NAME="lbAC">&nbsp;</A>
 <H2>SYNOPSIS</H2>
 
-<B>vusu</B> [<I>options</I>] [-] [<I>user</I> [&lt;argment...]]
+<P>
+
+vusu [options] [-] [user [*argment...]]
 <A NAME="lbAD">&nbsp;</A>
 <H2>DESCRIPTION</H2>
 
-<B>vusu</B> allows to run commands with a substitute user and group ID (in VUOS). It requires a module loaded in VUOS able to redefine uid/gid, e.g. <B>unrealuidgid</B>.
 <P>
 
-When called without arguments, <B>vusu</B> defaults to running an interactive shell as (virtual) <I>root</I>.
+vusu allows to run commands with a substitute user and group
+ID (in VUOS).
+It requires a module loaded in VUOS able to redefine uid/gid,
+e.g.&nbsp;unrealuidgid.
 <P>
 
-For compatibility with <B><A HREF="../man1/su.1.html">su</A></B>(1), <B>vusu</B> defaults to not change the current directory and to only set the environment variables <B>HOME</B> and <B>SHELL</B> (plus <B>USER</B> and <B>LOGNAME</B> if the target user is not root). It is recommended to always use the <B>--login</B> option (instead of its shortcut -) to avoid side effects caused by mixing environments.
+When called without arguments, vusu defaults to running an
+interactive shell as (virtual) root.
+<P>
+
+For compatibility with <A HREF="/#/man/man1/su.1.html">su</A>(1), vusu defaults to not
+change the current directory and to only set the environment variables
+HOME and SHELL (plus USER and
+LOGNAME if the target user is not root).
+It is recommended to always use the --login option (instead of
+its shortcut -) to avoid side effects caused by mixing environments.
 <A NAME="lbAE">&nbsp;</A>
 <H2>OPTIONS</H2>
 
 <DL COMPACT>
-<DT><B>-c</B> <I>command</I>, <B>--command</B> <I>command</I><DD>
-Pass command to the shell with the <B>-c</B> option.
-<DT><B>-</B>, <B>-l</B>, <B>--login</B><DD>
-Start the shell as a login shell with an environment similar to a real login:
+<DT>-c command, --command command<DD>
+Pass command to the shell with the -c option.
+<DT>-, -l, --login<DD>
+Start the shell as a login shell with an environment similar to a real
+login:
+
+</DL>
+<P>
+
+
+<DL COMPACT>
 <DT><DD>
-o clears all the environment variables except <B>TERM</B>
+- clears all the environment variables except TERM
+
+</DL>
+<P>
+
+
+<DL COMPACT>
 <DT><DD>
-o initializes the environment variables <B>HOME</B>, <B>SHELL</B>, <B>USER</B>, <B>LOGNAME</B>, and <B>PATH</B>
+- initializes the environment variables HOME, SHELL,
+USER, LOGNAME, and PATH
+
+</DL>
+<P>
+
+
+<DL COMPACT>
 <DT><DD>
-o changes to the target user's home directory
+- changes to the target user's home directory
+
+</DL>
+<P>
+
+
+<DL COMPACT>
 <DT><DD>
-o sets argv[0] of the shell to '-' in order to make the shell a login shell
-<DT><B>-m</B>, <B>-p</B>, <B>--preserve-environment</B><DD>
-Preserve the entire environment, i.e. it does not set <B>HOME</B>, <B>SHELL</B>, <B>USER</B> nor <B>LOGNAME</B>. This option is ignored if the option <B>--login</B> is specified.
-<DT><B>-s</B> <I>shell</I>, <B>--shell</B> <I>shell</I><DD>
-Run the specified shell instead of the default. The shell to run is selected according to the following rules, in order:
+- sets argv[0] of the shell to `-' in order to make the shell a login
+shell
+<DT>-m, -p, --preserve-environment<DD>
+Preserve the entire environment, i.e.&nbsp;it does not set HOME,
+SHELL, USER nor LOGNAME.
+This option is ignored if the option --login is specified.
+<DT>-s shell, --shell shell<DD>
+Run the specified shell instead of the default.
+The shell to run is selected according to the following
+rules, in order:
 <DT><DD>
-o the shell specified with <B>--shell</B>
+- the shell specified with --shell
+
+</DL>
+<P>
+
+
+<DL COMPACT>
 <DT><DD>
-o the shell specified in the environment variable <B>SHELL</B>, if the <B>--preserve-environment</B> option is used
+- the shell specified in the environment variable SHELL, if
+the --preserve-environment option is used
+
+</DL>
+<P>
+
+
+<DL COMPACT>
 <DT><DD>
-o the shell listed in the passwd entry of the target user
+- the shell listed in the passwd entry of the target user
+
+</DL>
+<P>
+
+
+<DL COMPACT>
 <DT><DD>
-o /bin/sh
-<DT><B>-h</B>, <B>--help</B><DD>
+- /bin/sh
+<DT>-h, --help<DD>
 Display a short help message and exit.
 </DL>
 <A NAME="lbAF">&nbsp;</A>
 <H2>SEE ALSO</H2>
 
-<A HREF="../man1/umvu.1.html">umvu</A>(1), <A HREF="../man1/su.1.html">su</A>(1)
+<P>
+
+<A HREF="/#/man/man1/umvu.1.html">umvu</A>(1), <A HREF="/#/man/man1/su.1.html">su</A>(1)
 <A NAME="lbAG">&nbsp;</A>
 <H2>AUTHOR</H2>
 
-VirtualSquare. Project leader: Renzo Davoli. (most of this man page is a derivative work from <B><A HREF="../man1/su.1.html">su</A></B>(1) man page)
+<P>
+
+VirtualSquare.
+Project leader: Renzo Davoli.
+(most of this man page is a derivative work from <A HREF="/#/man/man1/su.1.html">su</A>(1) man
+page)
 <P>
 
 <HR>
@@ -80,6 +153,6 @@ VirtualSquare. Project leader: Renzo Davoli. (most of this man page is a derivat
 This document was created by
 <A HREF="/cgi-bin/man/man2html">man2html</A>,
 using the manual pages.<BR>
-Time: 13:45:46 GMT, August 01, 2020
+Time: 15:22:07 GMT, November 27, 2023
 </BODY>
 </HTML>
