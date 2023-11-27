@@ -13,7 +13,7 @@ presented in this Wiki is produced by a research projects and so the latest
 developments are extremely experimental.
 
 Virtualsquare mailing list: [virtualsquare (at)
-cs.unibo.it](http://www.cs.unibo.it/cgi-bin/mailman/listinfo/virtualsquare)
+cs.unibo.it](https://lists.cs.unibo.it/mailman3/postorius/lists/virtualsquare.lists.cs.unibo.it/)
 (click on the address to reach the mailing list info/subscribe page).
 
 ## The Virtual Square

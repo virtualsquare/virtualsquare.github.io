@@ -52,7 +52,9 @@ Memory content from arbitrary memory regions can be displayed in hexadecimal rep
 
 ## Screenshots
 
-<img src="pictures/umps3-1.png" alt="sample screenshot" width="33%"/> <img src="pictures/umps3-2.png" alt="sample screenshot" width="33%"/> <img src="pictures/umps3-3.png" alt="sample screenshot" width="33%"/>
+![sample screenshot](pictures/umps3-1.png)
+![sample screenshot](pictures/umps3-2.png)
+![sample screenshot](pictures/umps3-3.png)
 
 ---
 ## Tutorials
