@@ -5,6 +5,7 @@ Ideas
 -----
 General purpose ideas implemented in VirtualSquare projects.
 
+* [VUOS SCUSE: System Calls in USErspace](scuse.md)
 * [Internet of Threads (IoTh)](ioth.md)
 * [Self Virtualization (purelibc)](selfvirt.md)
 * [Parallel Tracing of Concurrent Threads (guardian angels)](partrace.md)

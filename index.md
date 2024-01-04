@@ -9,7 +9,7 @@ codebase of the VirtualSquare. We have almost completed the task.
 
 Here you'll find almost everything you need to know to get started using
 Virtual Square suite of tools and software. Remember that the software
-presented in this Wiki is produced by a research projects and so the latest
+presented in this Wiki is produced by research projects and so the latest
 developments are extremely experimental.
 
 Virtualsquare mailing list: [virtualsquare (at)

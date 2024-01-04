@@ -31,6 +31,9 @@ A pcap plugin for vdeplug4
  * [vdeplug\_vdesl](https://github.com/virtualsquare/vdeplug_vdesl)
 VDE point to point nets over serial links
 
+ * [vdelxc](https://github.com/virtualsquare/vdelxc)
+VDE support for Linux Containers
+
  * [vxvdex](https://github.com/rd235/vxvdex)
 VXVDEX: connect distributed private network namespaces
 

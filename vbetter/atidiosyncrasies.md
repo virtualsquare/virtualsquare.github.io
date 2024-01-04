@@ -10,17 +10,17 @@ There are some weird inconsistencies.
 
 * `openat` do not support `O_EMPTY_PATH`.
 
-* `faccessat` system call has three args, the complete implementation of the
+* ~~`faccessat` system call has three args, the complete implementation of the
 specifications, including the flags, is *emulated* by the glibc wrapper function.
 (see [faccessat.c](https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/faccessat.c)).
-This implementation does not seem to support posix ACL.
+This implementation does not seem to support posix ACL.~~ Fixed using `faccessat2`.
 
 * the \*at function for truncate is missing (something like `truncateat` or
 `ftruncateat`).
 
 # Workaround
 
-`vufs` is deeply based on the \*at system calls. It uses file descriptors to
+`vufs` implementation is deeply based on \*at system calls. It uses file descriptors to
 identify the root of the mounted tree, of the mountpoint and of the hidden
 tree which stores virtual removed files and virtual file attributes.
 Each `openat` has an exception to manage the root dir.
@@ -33,8 +33,5 @@ In purelibc `faccessat` must be emulated as in glibc.
 Dear syscall designers, kernel and glibc developers:
 
 * `openat`: `O_EMPTY_PATH` should be added, maybe extending the new `openat2`
-
-* `faccessat`: please add `faccessat2` fully compliant with the POSIX definition
-(so we can get rid of *emulators* and ACL can be supported).
 
 * `truncateat`: please add it

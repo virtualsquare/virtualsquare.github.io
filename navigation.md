@@ -50,6 +50,7 @@
   * [Ideas, Tip&Techniques](/ideas/intro.md)
   * ---
   * **Ideas**
+  * [VUOS SCUSE: System Calls in USErspace](scuse.md)
   * [Internet of Threads (IoTh)](/ideas/ioth.md)
   * [Self Virtualization (purelibc)](/ideas/selfvirt.md)
   * [Parallel Tracing of Concurrent Threads (guardian angels)](/ideas/partrace.md)
