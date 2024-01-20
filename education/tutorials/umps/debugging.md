@@ -8,7 +8,7 @@ The µMPS3 GUI integrates built-in debugging support for the emulated processor,
 
 ## Learning By Example
 
-Here is provided a tour of the debugging facilities through a fabricated bug hunt. For this purpose we will be using the [hello world example](examples/hello-world.tar.gz) with a slightly changed `term_puts` function.
+Here is provided a tour of the debugging facilities through a fabricated bug hunt. For this purpose we will be using the [hello world example](/education/tutorials/umps/examples/hello-world.tar.gz ':ignore') with a slightly changed `term_puts` function.
 
 ```C
 static void term_puts(const char *str)

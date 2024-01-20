@@ -121,12 +121,12 @@ In addition to the implicit acknowledgments we have given above, the authors wou
 
 ### Books
 
-- Michael Goldweber, Renzo Davoli, [*µMPS3 Principles of Operation*, Lulu Books](https://www.lulu.com/en/us/shop/renzo-davoli-and-michael-goldweber/%CE%BCmps3-principles-of-operation/paperback/product-6jvqn4.html), 2020 [PDF](doc/uMPS3princOfOperations.pdf) ([Amazon](https://www.amazon.com/%C2%B5MPS3-Principles-Operation-Michael-Goldweber/dp/1716476402/))
+- Michael Goldweber, Renzo Davoli, [*µMPS3 Principles of Operation*, Lulu Books](https://www.lulu.com/en/us/shop/renzo-davoli-and-michael-goldweber/%CE%BCmps3-principles-of-operation/paperback/product-6jvqn4.html), 2020 [PDF](/education/doc/uMPS3princOfOperations.pdf ':ignore') ([Amazon](https://www.amazon.com/%C2%B5MPS3-Principles-Operation-Michael-Goldweber/dp/1716476402/))
 
 This book is the definitive reference on the µMPS3 architecture.
 It represents an update to the µMPS architecture defined in earlier editions of this work, titled *µMPS Principles of Operation* and *µMPS2 Principles of Operation*.
 
-- Michael Goldweber, Renzo Davoli, [*Student Guide to the Pandos Project*, Lulu Books](https://www.lulu.com/en/us/shop/renzo-davoli-and-michael-goldweber/student-guide-to-the-pandos-project/paperback/product-n6j96y.html), 2020 [PDF](doc/pandos.pdf) ([Amazon](https://www.amazon.com/Student-Pandos-Project-Michael-Goldweber/dp/171631559X/))
+- Michael Goldweber, Renzo Davoli, [*Student Guide to the Pandos Project*, Lulu Books](https://www.lulu.com/en/us/shop/renzo-davoli-and-michael-goldweber/student-guide-to-the-pandos-project/paperback/product-n6j96y.html), 2020 [PDF](/education/doc/pandos.pdf ':ignore') ([Amazon](https://www.amazon.com/Student-Pandos-Project-Michael-Goldweber/dp/171631559X/))
 
 ### Articles and Papers
 

@@ -101,5 +101,4 @@ When you want to try more tutorial experiments you can run just the following st
 * step 8: shut down the VM
 
 
-### Note:
-Images before June 17, 2020 may use `virtualsquare` instead of `user` as login name in step 6.
+Note: Images before June 17, 2020 may use `virtualsquare` instead of `user` as login name in step 6.

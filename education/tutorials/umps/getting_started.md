@@ -71,7 +71,8 @@ Since writing a boot loader is a non-trivial task for the inexperienced programm
 Now that the emulator and the toolchain are installed, we are ready to compile and run a sample program.
 Following tradition, the program prints the venerable "hello, world" message on a µMPS terminal.
 
-[Download the example program](examples/hello-world.tar.gz) [`.tar.gz`], extract and uncompress it with:
+[Download the example
+program](/education/tutorials/umps/examples/hello-world.tar.gz ':ignore') [`.tar.gz`], extract and uncompress it with:
 
 ```bash
 $ tar -xvzf hello-world.tar.gz

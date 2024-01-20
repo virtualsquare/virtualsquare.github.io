@@ -28,7 +28,8 @@ Being µMPS3 **NOT** backward compatible with software developed for previous ve
 
 ## Downloads
 
-The PandOS project described in the [*The Student Guide to the PandOS Operating System Project*](#Documentation) recommends the use of some test files, sample Makefiles, and some other miscellaneous header files. All these files are available for downloading as an archive file: [PandosDistributionFiles.tgz](doc/PandosDistributionFiles.tgz).
+The PandOS project described in the [*The Student Guide to the PandOS Operating System Project*](#Documentation) recommends the use of some test files, sample Makefiles, and some other miscellaneous header files. All these files are available for downloading as an archive file:
+[PandosDistributionFiles.tgz](/education/doc/PandosDistributionFiles.tgz ':ignore')
 
 <!--
 - [const.h](src/const.h): This header file contains utility constants & macro definitions
@@ -110,7 +111,7 @@ why not?
 
 ## Documentation
 
-- Michael Goldweber, Renzo Davoli, *The Student Guide to the PandOS Operating System Project*, 2020. [PDF](doc/pandos.pdf)
+- Michael Goldweber, Renzo Davoli, *The Student Guide to the PandOS Operating System Project*, 2020. [PDF](/education/doc/pandos.pdf ':ignore')
 
 ### Historical documentation
 
