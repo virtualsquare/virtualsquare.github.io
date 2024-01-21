@@ -44,7 +44,7 @@ realize that a new abstraction is missing and would be convenient, we design,
 
 ## VirtualSquare *flagship* projects
 
-### Virtual Distributed Ethernet
+### Virtual Distributed Ethernet (VDE)
 
 VDE is one of the tools developed within the Virtual Square project to provide
 an effective communication platform for virtual entities interoperability. In
