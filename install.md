@@ -43,7 +43,7 @@ echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
 service procps restart
 ```
 
-[install\_packets\_for\_v2.sh](/archive/install_scripts/install_packets_for_v2.sh) is a script that runs all the commands required for
+[install\_packets\_for\_v2.sh](https://wiki.virtualsquare.org/archive/install_scripts/install_packets_for_v2.sh) is a script that runs all the commands required for
 this _step one_. You can run it, adapt it to your needs or simply cut/paste the commands.
 
 
@@ -51,7 +51,7 @@ this _step one_. You can run it, adapt it to your needs or simply cut/paste the 
 
 All the projects provide specific installation instructions in the README of their [repositories](repos.md).
 
-We have set up a script named [install\_v2\_projects.sh](/archive/install_scripts/install_v2_projects.sh). It downloads, compiles and installs
+We have set up a script named [install\_v2\_projects.sh](https://wiki.virtualsquare.org/archive/install_scripts/install_v2_projects.sh). It downloads, compiles and installs
 a quite complete collection of VirtualSquare tools. It must run as root.
 
 ## Run a VM using the Tutorial disk
