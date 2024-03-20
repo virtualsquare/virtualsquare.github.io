@@ -35,7 +35,7 @@ $ qemu-system-x86_64 -cdrom alpine-virt-3.12.0_rc5-x86_64.iso -monitor stdio \
 
 Log-in the VM as `root`. The configuration of `eth0` can be done by `dhcp`:
 ```
-# ip link eth0 up
+# ip link set eth0 up
 # udhcpc
 ```
 
@@ -50,7 +50,7 @@ www.google.com (216.58.208.164:80) open
 
 This is just a connectivity test. As a test on a real network service let us try `ssh`.
 ```
-# apk install openssh-client
+# apk add openssh-client
 # ssh user@your.favourite.host
 ....
 ```

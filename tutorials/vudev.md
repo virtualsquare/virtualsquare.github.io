@@ -47,7 +47,7 @@ Allocating group tables: done
 Writing inode tables: done
 Writing superblocks and filesystem accounting information: done
 
-$$ mount -t vufuseext2 -o rw+ /dev/ramdisk /mnt
+$$ vumount -t vufuseext2 -o rw+ /dev/ramdisk /mnt
 $$ ls /mnt
 lost+found
 $$

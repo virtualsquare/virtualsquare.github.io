@@ -31,7 +31,7 @@ of the tcp-ip stack is stored in the kernel).
 
 ![vdestack](pictures/ioth_vdestack.png)
 
-The source code of the TCP echo server is [vdestack6.c](/archive/ioth_examples/vdestack6.c).
+The source code of the TCP echo server is [vdestack6.c](https://raw.githubusercontent.com/virtualsquare/virtualsquare.github.io/master/archive/ioth_examples/vdestack6.c).
 
 The structure of the code is:
 ```C
@@ -134,7 +134,7 @@ The function `vde_stackcmd` is a shortcut for `vdestack` only.
 One goal of VirtualSquare is to provide general and portable solutions able to
 support `vdestack` as well as other TCP-IP stacks implemented as libraries.
 
-[vdestack6nl.c](/archive/ioth_examples/vdestack6nl.c) is the source code of
+[vdestack6nl.c](https://raw.githubusercontent.com/virtualsquare/virtualsquare.github.io/master/archive/ioth_examples/vdestack6nl.c) is the source code of
 the TCP echo server using netlink (the macro library `nlinline`) to configure
 the stack.
 

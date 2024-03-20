@@ -111,7 +111,7 @@ For example let us download the installation floppy disk of
 
 ```
 $$ vu_insmod fuse
-$$ wget https://www.freedos.org/download/download/FD12FLOPPY.zip
+$$ wget http://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.2/official/FD12FLOPPY.zip
 ...
 $$ unzip FD12FLOPPY.zip 
 Archive:  FD12FLOPPY.zip
@@ -146,7 +146,7 @@ The following example shows how to mount the compressed archive
 
 ```bash
 $$ vu_insmod fuse
-$$ archivemount -o ro /home/user/alpine-virt-3.12.0_rc5-x86_64.iso /mnt
+$$ archivemount -o ro /home/user/alpine-minirootfs-3.12.0-x86_64.tar.gz /mnt
 $$ ls /mnt
 bin  etc   lib    mnt  proc  run   srv  tmp  var
 dev  home  media  opt  root  sbin  sys  usr
@@ -158,7 +158,7 @@ $$ vuumount /mnt
 
 ## sshfs: mount a remote filesystem using ssh
 
-The following example shows how to mount the filesystem of a remote host using ssh/
+The following example shows how to mount the filesystem of a remote host using ssh:
 
 ```bash
 $$ vu_insmod fuse

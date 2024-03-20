@@ -458,7 +458,7 @@ connection (the server waits for a long timeout).
 
 ## An IoTh event driven chat server
 
-The complete code of this program is [`picox_chat.c`](/archive/ioth_examples/picox_chat.c)
+The complete code of this program is [`picox_chat.c`](https://raw.githubusercontent.com/virtualsquare/virtualsquare.github.io/master/archive/ioth_examples/picox_chat.c)
 
 The program uses `poll` to handle the events using a `struct pollfd` array of MAXFD elements. The first element is used to
 process the `accept` events. Initially this is the only valid element, all the other have their `fd` fields set to `-1`.
@@ -502,7 +502,7 @@ Note: this example uses IPv4 addresses. The program supports IPv6, too.
 
 ## A simple IoTh http server
 
-The complete code of this program is [`picox_httpserv.c`](/archive/ioth_examples/picox_httpserv.c)
+The complete code of this program is [`picox_httpserv.c`](https://raw.githubusercontent.com/virtualsquare/virtualsquare.github.io/master/archive/ioth_examples/picox_httpserv.c)
 
 `picox_httpserv.c` requires three parameters: VDE network, IP address (v4 or v6), prefix.
 
