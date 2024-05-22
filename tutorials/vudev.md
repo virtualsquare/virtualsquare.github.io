@@ -6,7 +6,7 @@
 The standard way to interact with devices in UNIX is through _special files_
 i.e. entries in the file systems that appear as files. The purpose of _special files_ is
 just to give a pathname that can be used by programs to identify and access the device.
-Special files can _appear_ in the file system using using `vudev` submodules.
+Special files can _appear_ in the file system using `vudev` submodules.
 
 ## vudevramdisk
 
@@ -14,7 +14,7 @@ Special files can _appear_ in the file system using using `vudev` submodules.
 
 The meaning of the shell session below is:
 
-* add the `vudev` and `vufuse` VUOX modules.
+* add the `vudev` and `vufuse` VUOS modules.
 * use `vumount` to create the device
 * show that it effectively appears as a block device
 * the hex-dump shows a 10MB empty area

@@ -12,7 +12,7 @@ FUSE). There are notable differences:
 file systems can be seen only by the processes running under the control of the `umvu`
 hypervisor.
 
-vuos provides two mofules to support filesystems in userspace: `fuse` and `vufuse`.
+vuos provides two modules to support filesystems in userspace: `fuse` and `vufuse`.
 
 * `fuse` (described [here](vudevfuse.md)) is compatible with the file system implementations developed for Linux FUSE.
 * `vufuse` (described in this page) requires the generation of a specific plugin (a shared library), it is faster.

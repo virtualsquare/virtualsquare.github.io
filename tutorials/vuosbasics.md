@@ -67,7 +67,7 @@ and it is under the control of a VUOS hypervisor. This latter method permits to 
 the feedback messages of the hypervisor (errors or debug messages) is printed on one terminal (the one of the hosting computer)
 while the standard output of the programs running in VUOS appears on the other window.
 
-Note: if you have installed `umvu` on a Linux host and using a graphical session (like gnome or kde) it is possible
+Note: if you have installed `umvu` on a Linux host and using a graphical session (like GNOME or KDE) it is possible
 to get the same _separation of output_ using the command `umvu xterm`.
 
 Note: In the following examples we'll use `$$` as the prompt of a shell under the VUOS hypervisor control.

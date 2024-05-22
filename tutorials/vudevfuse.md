@@ -13,7 +13,7 @@ hypervisor.
 
 Note: the name of this module is `fuse`. In the source code its name is `vudevfuse`.
 
-vuos provides two mofules to support filesystems in userspace: `fuse` and `vufuse`.
+vuos provides two modules to support filesystems in userspace: `fuse` and `vufuse`.
 
 * `fuse` (described in this page) is compatible with the file system implementations developed for Linux FUSE.
 * `vufuse` (described [here](vufuse.md)) requires the generation of a specific plugin (a shared library), it is faster.

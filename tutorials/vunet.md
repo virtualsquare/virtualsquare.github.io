@@ -239,7 +239,7 @@ What is typed in a window appears in the other and vice-versa.
 ![vunetpicox example](pictures/vuos_vunetpicox.png)
 
 `vunetpicox` can be used in place of `vunetvdestack`: the former uses a stack entirely implemented
-in usr space (`picoxnet`) while the latter uses the implementation of the TCP-IP stack of Linux
+in user space (`picoxnet`) while the latter uses the implementation of the TCP-IP stack of Linux
 (through the definition of a namespace).
 
 From the user interface point of view there are only marginal differences.
