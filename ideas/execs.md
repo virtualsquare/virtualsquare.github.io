@@ -17,7 +17,7 @@ why
 
 how
 ----
-the syntax is crear and follows the standard scheme of naming for `exec*` functions:
+the syntax is clear and follows the standard naming scheme of `exec*` functions:
 ```C
 int execs(const char *path, const char *args);
 int execse(const char *path, const char *args, char *const envp[]);
@@ -35,8 +35,11 @@ slash (`\`) is the escape character to protect the next char.
 * `execs*` functions do not use dynamic allocation (allocate memory on the stack)
 * `execs*` functions are thread safe
 * the library provides also eexecs functions (using less memory, but modifying args)
-* for lazy programmers, the library includes drop-in replacements for `system(3)` and `popen(3)` 
+* for lazy programmers, the library includes replacements for `system(3)` and `popen(3)` 
 (named `system_nosh` and `popen_nosh` respectively) using execs instead of starting a shell.
+* `system_safe` is a safe version of `system(3)`. It solves the security problems
+of `system`: attacks using environment variables (e.g. PATH), command separators (like
+`;` `||` `&&`) or redirections.
 
 where
 ----
