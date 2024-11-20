@@ -17,6 +17,8 @@ vuos provides two modules to support filesystems in userspace: `fuse` and `vufus
 * `fuse` (described [here](vudevfuse.md)) is compatible with the file system implementations developed for Linux FUSE.
 * `vufuse` (described in this page) requires the generation of a specific plugin (a shared library), it is faster.
 
+Warning: `vufuse` support is being updated from fuse2 to fuse3. Some examples of this tutorial
+could fail. We'll try to complete this migration as soon as possible.
 
 ## vufuseext2: ext2/3/4 filesystems
 
