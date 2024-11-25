@@ -117,7 +117,7 @@ install_repo https://github.com/virtualsquare/vunetioth.git
 install_repo https://github.com/virtualsquare/ioth_picox.git
 
 rm -f /usr/local/lib/vu/modules/vufuseext2.so /usr/local/lib/vu/modules/vufuseext2.re
-ln -s /usr/local/lib/umview/modules/umfuseext2.so /usr/local/lib/vu/modules/vufuseext2.so
-touch /usr/local/lib/vu/modules/vufuseext2.re
+# ln -s /usr/local/lib/umview/modules/umfuseext2.so /usr/local/lib/vu/modules/vufuseext2.so
+# touch /usr/local/lib/vu/modules/vufuseext2.re
 
 echo 'Installation completed'
