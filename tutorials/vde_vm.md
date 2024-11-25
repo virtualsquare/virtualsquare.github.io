@@ -126,6 +126,24 @@ This three node VDE is up and running.
 
 ## Join User-Mode-Linux machines to VDE networks
 
+### New vde support (linux 6.12)
+
+The command line parameter to create a VDE virtual interface of a User-Mode Linux machine is:
+
+**vec** *X* **:transport=vde,vnl=** *VNL*
+
+For example
+
+`vec0:transport=vde,vnl=tap://tap0` use tap0
+
+`vec0:transport=vde,vnl=slirp://` use slirp
+
+`vec0:transport=vde,vnl=vde:///tmp/switch` conect to a vde switch
+
+`vecX:transport=\"vde,vnl=cmd://ssh remote.host //tmp/sshlirp\"` connect to a remote slirp (instant VPN: convert ssh to VPN, it uses sshlirp).
+
+### old vde support (linux 6.12)
+
 The command line parameter to create a VDE virtual interface of a User-Mode Linux machine is:
 
 **eth** *n* **=vde,** *VNL*.
@@ -171,11 +189,16 @@ $ bunzip2 -k BusyBox-1.21.1-amd64-root_fs.bz2
 ### Run User-Mode Linux
 
 Now there are all the _ingredients_ to start the UM-L VM. This is the command using the new syntax
-(This syntax enables the support of all the VDEplug4 plugins):
+(This syntax enables the support of all the VDEplug4 plugins).
+Using the vector support (Linux 6.12)
+```
+$ linux ubd0=cowfile1,BusyBox-1.21.1-amd64-root_fs vec0:transport=vde,vnl=vde:///tmp/mysw
+```
+Using the old non vector support:
 ```
 $ linux ubd0=cowfile1,BusyBox-1.21.1-amd64-root_fs eth0=vde,vde:///tmp/mysw
 ```
-The new syntax (if supported by the `linux` command) is:
+The very old syntax (before vdeplug4) is:
 ```
 $ linux ubd0=cowfile0,BusyBox-1.21.1-amd64-root_fs eth0=vde,/tmp/mysw
 ```
@@ -202,10 +225,13 @@ $  linux root=/dev/root rootflags=/home/user/alpine-root rootfstype=hostfs eth0=
 
 Now at the prompt of the VM it possible to test the VDE networking support:
 ```
-# ip addr add 10.0.0.3/24 dev eth0
-# ip link set eth0 up
+# ip addr add 10.0.0.3/24 dev vec0
+# ip link set vec0 up
 # ping -c 3 10.0.0.254
 ```
+
+(the interface name is `eth0` instead of `vec0` for the non-vector support (before Linux 6.12).
+
 ### A little detour: how to use `BusyBox-1.21.1-amd64-root_fs` with qemu/kvm.
 
 For the sake of completeness it is possible to use the minimal disk image `BusyBox-1.21.1-amd64-root_fs` with `qemu/kvm`.
