@@ -3,6 +3,8 @@
 
 # thanks to Giacomo Rizzi: some ideas have been taken from: https://github.com/gufoe/vuos-tutorial
 
+export CMAKE_INSTALL_ALWAYS=1
+
 BASE="$(dirname "$0")"
 cd $BASE
 BASE=$(pwd)
