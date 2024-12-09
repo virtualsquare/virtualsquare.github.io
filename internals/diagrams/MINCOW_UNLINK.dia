@@ -91,6 +91,7 @@
   <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="false"/>
+  <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="true" active="true">
     <dia:object type="Standard - Line" version="0" id="O0">
       <dia:attribute name="obj_pos">
@@ -720,7 +721,7 @@ real layer#</dia:string>
         <dia:point val="14,14.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="13.9813,13.8863;14,14.6899"/>
+        <dia:rectangle val="14,13.905;14,14.6525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -753,7 +754,7 @@ real layer#</dia:string>
         <dia:point val="21.4824,7.24121"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="21.4124,7.17114;36.3113,18.5701"/>
+        <dia:rectangle val="21.4123,7.17113;36.3113,18.5701"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="21.4824,7.24121"/>
@@ -781,7 +782,7 @@ real layer#</dia:string>
         <dia:point val="4.82599,22.326"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="4.76656,22.2666;34.5594,28.9419"/>
+        <dia:rectangle val="4.76655,22.2666;34.5594,28.9419"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="4.82599,22.326"/>
@@ -806,17 +807,17 @@ real layer#</dia:string>
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O20">
       <dia:attribute name="obj_pos">
-        <dia:point val="22,26"/>
+        <dia:point val="15,27"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="8.75,25.3863;22.0187,28.5899"/>
+        <dia:rectangle val="9.60125,26.405;20.3987,29.5525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#File is marked as deleted in the                
-virtual layer or file does not exist          
-set errno to ENOENT     
+            <dia:string>#File is marked as deleted in the
+virtual layer or file does not exist 
+set errno to ENOENT
 (no such file or dir)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -826,13 +827,13 @@ set errno to ENOENT
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="22,26"/>
+            <dia:point val="15,27"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000ff"/>
           </dia:attribute>
           <dia:attribute name="alignment">
-            <dia:enum val="2"/>
+            <dia:enum val="1"/>
           </dia:attribute>
         </dia:composite>
       </dia:attribute>
@@ -890,11 +891,11 @@ set errno to ENOENT
         <dia:point val="38.4824,20.7412"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="38.4324,20.3794;43.0001,21.103"/>
+        <dia:rectangle val="38.4324,20.3794;43,21.103"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="38.4824,20.7412"/>
-        <dia:point val="42.9501,20.7412"/>
+        <dia:point val="42.95,20.7412"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -915,13 +916,13 @@ set errno to ENOENT
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O23">
       <dia:attribute name="obj_pos">
-        <dia:point val="20.8611,8.86109"/>
+        <dia:point val="20.8611,8.86108"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="20.7904,8.79038;24.7271,12.7271"/>
+        <dia:rectangle val="20.7904,8.79037;24.7271,12.7271"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="20.8611,8.86109"/>
+        <dia:point val="20.8611,8.86108"/>
         <dia:point val="24.6564,12.6564"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -946,7 +947,7 @@ set errno to ENOENT
         <dia:point val="20.826,19.1564"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="20.7554,15.7105;24.6153,19.2271"/>
+        <dia:rectangle val="20.7554,15.7105;24.6153,19.227"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="20.826,19.1564"/>
@@ -974,7 +975,7 @@ set errno to ENOENT
         <dia:point val="13.5,16"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="13.5,15.405;23.045,17.7525"/>
+        <dia:rectangle val="13.5,15.405;23.0625,17.7525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -1009,7 +1010,7 @@ is not marked as deleted#</dia:string>
         <dia:point val="24,21.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="24,20.905;31.6575,21.6525"/>
+        <dia:rectangle val="24,20.905;31.6725,21.6525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -1039,17 +1040,16 @@ is not marked as deleted#</dia:string>
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O27">
       <dia:attribute name="obj_pos">
-        <dia:point val="23.6,11"/>
+        <dia:point val="19.5,11.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="16.4175,10.405;23.6,12.7525"/>
+        <dia:rectangle val="15.5813,10.905;23.4188,12.4525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#The operation fails      
-due to permission   
-errors#</dia:string>
+            <dia:string>#The operation fails
+due to permission errors#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1058,13 +1058,13 @@ errors#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="23.6,11"/>
+            <dia:point val="19.5,11.5"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000ff"/>
           </dia:attribute>
           <dia:attribute name="alignment">
-            <dia:enum val="2"/>
+            <dia:enum val="1"/>
           </dia:attribute>
         </dia:composite>
       </dia:attribute>
@@ -1077,7 +1077,7 @@ errors#</dia:string>
         <dia:point val="25,9"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="25,8.405;29.46,9.9525"/>
+        <dia:rectangle val="25,8.405;29.4675,9.9525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -1111,7 +1111,7 @@ errors#</dia:string>
         <dia:point val="26,18"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="26,17.405;32.315,18.9525"/>
+        <dia:rectangle val="26,17.405;32.325,18.9525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">

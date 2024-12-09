@@ -89,6 +89,7 @@
     </dia:attribute>
   </dia:diagramdata>
   <dia:layer name="Background" visible="true" connectable="false"/>
+  <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="true" active="true">
     <dia:object type="Standard - Line" version="0" id="O0">
       <dia:attribute name="obj_pos">
@@ -577,7 +578,7 @@ the lock#</dia:string>
         <dia:point val="22.6,21.4"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="22.6,20.7863;28.7762,21.5899"/>
+        <dia:rectangle val="22.6,20.805;28.7575,21.5525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -637,7 +638,7 @@ the lock#</dia:string>
         <dia:point val="12,19.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="11.9813,18.8863;12,19.6899"/>
+        <dia:rectangle val="12,18.905;12,19.6525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -667,16 +668,16 @@ the lock#</dia:string>
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O16">
       <dia:attribute name="obj_pos">
-        <dia:point val="17,25"/>
+        <dia:point val="12,26"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="4.1825,24.3863;17.0187,26.7899"/>
+        <dia:rectangle val="7.305,25.405;16.695,27.7525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#If the file exists in the virtual                  
- layer sets errno to EROFS          
+            <dia:string>#If the file exists in the virtual 
+layer sets errno to EROFS
 (read-only file system)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -686,13 +687,13 @@ the lock#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="17,25"/>
+            <dia:point val="12,26"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000ff"/>
           </dia:attribute>
           <dia:attribute name="alignment">
-            <dia:enum val="2"/>
+            <dia:enum val="1"/>
           </dia:attribute>
         </dia:composite>
       </dia:attribute>
@@ -705,7 +706,7 @@ the lock#</dia:string>
         <dia:point val="10,20.4"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="10,19.805;15.3925,20.5525"/>
+        <dia:rectangle val="10,19.805;15.405,20.5525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -738,7 +739,7 @@ the lock#</dia:string>
         <dia:point val="19,25"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="19,24.405;31.555,26.7525"/>
+        <dia:rectangle val="19,24.405;31.56,26.7525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
