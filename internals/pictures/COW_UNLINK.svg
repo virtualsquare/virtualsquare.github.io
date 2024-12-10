@@ -71,9 +71,9 @@
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="696.236" y1="557.67" x2="802.613" y2="466.342"/>
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="808.303,461.457 803.973,471.764 802.613,466.342 797.459,464.177 "/>
     </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="710" y="430">
-      <tspan x="710" y="430">Releases</tspan>
-      <tspan x="710" y="446">the lock</tspan>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="724" y="452">
+      <tspan x="724" y="452">Release</tspan>
+      <tspan x="724" y="468">the lock</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="192" y="428">
       <tspan x="192" y="428">Every other case</tspan>
@@ -86,9 +86,9 @@
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="246.52" y1="246.52" x2="337.506" y2="375.179"/>
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="341.837,381.302 331.981,376.025 337.506,375.179 340.145,370.251 "/>
     </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="40" y="290">
-      <tspan x="40" y="290">File exists in the</tspan>
-      <tspan x="40" y="306">virtual layer</tspan>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="40" y="280">
+      <tspan x="40" y="280">If the file exists in </tspan>
+      <tspan x="40" y="296">the virtual layer</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="280" y="290">
       <tspan x="280" y="290"></tspan>
@@ -101,8 +101,8 @@
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="609.813,555.535 598.992,558.349 602.476,553.977 601.07,548.567 "/>
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="170" y="510">
-      <tspan x="170" y="510">File is marked as deleted</tspan>
-      <tspan xml:space="preserve" x="170" y="526">        sets errno to ENOENT</tspan>
+      <tspan x="170" y="510">If the file is marked as </tspan>
+      <tspan x="170" y="526">deleted set errno to ENOENT</tspan>
       <tspan xml:space="preserve" x="170" y="542">                (no such file or dir)</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="280" y="280">

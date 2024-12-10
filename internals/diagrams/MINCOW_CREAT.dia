@@ -92,6 +92,7 @@
   <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="false"/>
+  <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="true" active="true">
     <dia:object type="Standard - Line" version="0" id="O0">
       <dia:attribute name="obj_pos">
@@ -249,12 +250,12 @@
         <dia:point val="5.2,19.2"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="5.2,18.605;7.9475,20.1525"/>
+        <dia:rectangle val="5.2,18.5863;7.96619,20.1899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Acquires
+            <dia:string>#Acquire
  the lock#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -588,15 +589,15 @@
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O13">
       <dia:attribute name="obj_pos">
-        <dia:point val="37,21.5"/>
+        <dia:point val="38,22.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="37,20.905;39.835,22.4525"/>
+        <dia:rectangle val="38,21.905;40.545,23.4525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Releases
+            <dia:string>#Release
 the lock#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -606,7 +607,7 @@ the lock#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="37,21.5"/>
+            <dia:point val="38,22.5"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000ff"/>
@@ -843,12 +844,12 @@ to permission issues#</dia:string>
         <dia:point val="29.5,21.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="26.8738,20.905;32.1262,23.2525"/>
+        <dia:rectangle val="26.8738,20.8863;32.1449,23.2899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Performs 
+            <dia:string>#Perform
 creation in 
 the virtual layer.#</dia:string>
           </dia:attribute>
@@ -940,13 +941,13 @@ well in the real layer#</dia:string>
         <dia:point val="14,26"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="9.68,25.405;18.32,27.7525"/>
+        <dia:rectangle val="9.745,25.3863;18.2737,27.7899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
             <dia:string>#The file exists in both
-layers sets errno to EEXIST
+layers, set errno to EEXIST
 (file exists)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">

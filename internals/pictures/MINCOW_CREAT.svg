@@ -5,6 +5,7 @@
   <g id="Background"/>
   <g id="Background"/>
   <g id="Background"/>
+  <g id="Background"/>
   <g id="Background">
     <g>
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="109.649" y1="414.824" x2="440.264" y2="414.824"/>
@@ -26,7 +27,7 @@
       </text>
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="104" y="384">
-      <tspan x="104" y="384">Acquires</tspan>
+      <tspan x="104" y="384">Acquire</tspan>
       <tspan xml:space="preserve" x="104" y="400"> the lock</tspan>
     </text>
     <g>
@@ -71,9 +72,9 @@
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="726.236" y1="557.67" x2="832.613" y2="466.342"/>
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="838.303,461.457 833.973,471.764 832.613,466.342 827.459,464.177 "/>
     </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="740" y="430">
-      <tspan x="740" y="430">Releases</tspan>
-      <tspan x="740" y="446">the lock</tspan>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="760" y="450">
+      <tspan x="760" y="450">Release</tspan>
+      <tspan x="760" y="466">the lock</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="300" y="430">
       <tspan x="300" y="430">If the file exists in the real layer but is</tspan>
@@ -103,7 +104,7 @@
       <tspan x="320" y="336">to permission issues</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="590" y="430">
-      <tspan x="590" y="430">Performs </tspan>
+      <tspan x="590" y="430">Perform</tspan>
       <tspan x="590" y="446">creation in </tspan>
       <tspan x="590" y="462">the virtual layer.</tspan>
     </text>
@@ -117,7 +118,7 @@
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="280" y="520">
       <tspan x="280" y="520">The file exists in both</tspan>
-      <tspan x="280" y="536">layers sets errno to EEXIST</tspan>
+      <tspan x="280" y="536">layers, set errno to EEXIST</tspan>
       <tspan x="280" y="552">(file exists)</tspan>
     </text>
   </g>

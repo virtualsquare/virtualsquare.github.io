@@ -24,7 +24,7 @@
       </text>
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="104" y="384">
-      <tspan x="104" y="384">Acquires</tspan>
+      <tspan x="104" y="384">Acquire</tspan>
       <tspan xml:space="preserve" x="104" y="400"> the lock</tspan>
     </text>
     <g>
@@ -70,7 +70,7 @@
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="808.303,461.457 803.973,471.764 802.613,466.342 797.459,464.177 "/>
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="710" y="430">
-      <tspan x="710" y="430">Releases</tspan>
+      <tspan x="710" y="430">Release</tspan>
       <tspan x="710" y="446">the lock</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="192" y="428">
@@ -90,11 +90,11 @@
       <tspan xml:space="preserve" x="12" y="308">         virtual layer</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="280" y="290">
-      <tspan x="280" y="290">Finishes</tspan>
+      <tspan x="280" y="290">Finish</tspan>
       <tspan xml:space="preserve" x="280" y="306">    to copy</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="432" y="432">
-      <tspan x="432" y="432">Operates on virtual layer</tspan>
+      <tspan x="432" y="432">Operate on virtual layer</tspan>
     </text>
   </g>
 </svg>

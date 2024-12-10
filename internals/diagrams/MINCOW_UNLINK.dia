@@ -92,6 +92,7 @@
   <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="false"/>
+  <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="true" active="true">
     <dia:object type="Standard - Line" version="0" id="O0">
       <dia:attribute name="obj_pos">
@@ -249,12 +250,12 @@
         <dia:point val="5.2,19.2"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="5.2,18.605;7.9475,20.1525"/>
+        <dia:rectangle val="5.2,18.5863;7.96619,20.1899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Acquires
+            <dia:string>#Acquire
  the lock#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -591,12 +592,12 @@
         <dia:point val="40,22"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="40,21.405;42.835,22.9525"/>
+        <dia:rectangle val="40,21.3863;42.5637,22.9899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Releases
+            <dia:string>#Release
 the lock#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -1111,12 +1112,12 @@ due to permission errors#</dia:string>
         <dia:point val="26,18"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="26,17.405;32.325,18.9525"/>
+        <dia:rectangle val="26,17.3863;32.3437,18.9899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Unlinks the fail in 
+            <dia:string>#Unlink the fail in 
       the virtual layer#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">

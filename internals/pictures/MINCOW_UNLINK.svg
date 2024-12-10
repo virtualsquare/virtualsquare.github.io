@@ -5,6 +5,7 @@
   <g id="Background"/>
   <g id="Background"/>
   <g id="Background"/>
+  <g id="Background"/>
   <g id="Background">
     <g>
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="109.649" y1="414.824" x2="330.264" y2="414.824"/>
@@ -26,7 +27,7 @@
       </text>
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="104" y="384">
-      <tspan x="104" y="384">Acquires</tspan>
+      <tspan x="104" y="384">Acquire</tspan>
       <tspan xml:space="preserve" x="104" y="400"> the lock</tspan>
     </text>
     <g>
@@ -72,7 +73,7 @@
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="888.303,461.457 883.973,471.764 882.613,466.342 877.459,464.177 "/>
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="800" y="440">
-      <tspan x="800" y="440">Releases</tspan>
+      <tspan x="800" y="440">Release</tspan>
       <tspan x="800" y="456">the lock</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="240" y="430">
@@ -139,7 +140,7 @@
       <tspan xml:space="preserve" x="500" y="196">  goes well</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="520" y="360">
-      <tspan x="520" y="360">Unlinks the fail in </tspan>
+      <tspan x="520" y="360">Unlink the fail in </tspan>
       <tspan xml:space="preserve" x="520" y="376">      the virtual layer</tspan>
     </text>
   </g>

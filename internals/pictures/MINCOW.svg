@@ -5,6 +5,7 @@
   <g id="Background"/>
   <g id="Background"/>
   <g id="Background"/>
+  <g id="Background"/>
   <g id="Background">
     <g>
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="109.649" y1="414.824" x2="440.264" y2="414.824"/>
@@ -25,9 +26,9 @@
         <tspan x="64.8243" y="418.724">START</tspan>
       </text>
     </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="104" y="384">
-      <tspan x="104" y="384">Acquires</tspan>
-      <tspan xml:space="preserve" x="104" y="400"> the lock</tspan>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="108" y="380">
+      <tspan x="108" y="380">Acquire</tspan>
+      <tspan xml:space="preserve" x="108" y="396"> the lock</tspan>
     </text>
     <g>
       <ellipse style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" cx="164.824" cy="204.824" rx="44.8243" ry="44.8243"/>
@@ -71,13 +72,13 @@
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="726.236" y1="557.67" x2="832.613" y2="466.342"/>
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="838.303,461.457 833.973,471.764 832.613,466.342 827.459,464.177 "/>
     </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="740" y="430">
-      <tspan x="740" y="430">Releases</tspan>
-      <tspan x="740" y="446">the lock</tspan>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="760" y="440">
+      <tspan x="760" y="440">Release</tspan>
+      <tspan x="760" y="456">the lock</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="280" y="430">
-      <tspan x="280" y="430">File exists in the virtual layer </tspan>
-      <tspan x="280" y="446">or is marked deleted</tspan>
+      <tspan x="280" y="430">If the file exists in the virtual </tspan>
+      <tspan x="280" y="446">layer or is marked deleted</tspan>
     </text>
     <g>
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="81.9778" y1="373.412" x2="140.319" y2="254.691"/>
@@ -117,7 +118,7 @@
       <tspan x="300" y="196">to permission issues</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="590" y="430">
-      <tspan x="590" y="430">Performs </tspan>
+      <tspan x="590" y="430">Perform </tspan>
       <tspan x="590" y="446">operations in </tspan>
       <tspan x="590" y="462">the virtual layer.</tspan>
     </text>

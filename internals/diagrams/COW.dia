@@ -68,7 +68,7 @@
           <dia:boolean val="true"/>
         </dia:attribute>
         <dia:attribute name="snap-to-grid">
-          <dia:boolean val="true"/>
+          <dia:boolean val="false"/>
         </dia:attribute>
         <dia:attribute name="snap-to-guides">
           <dia:boolean val="true"/>
@@ -88,6 +88,7 @@
       </dia:composite>
     </dia:attribute>
   </dia:diagramdata>
+  <dia:layer name="Background" visible="true" connectable="true"/>
   <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="true" active="true">
     <dia:object type="Standard - Line" version="0" id="O0">
@@ -246,12 +247,12 @@
         <dia:point val="5.2,19.2"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="5.2,18.605;7.9475,20.1525"/>
+        <dia:rectangle val="5.2,18.5863;7.96619,20.1899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Acquires
+            <dia:string>#Acquire
  the lock#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -588,12 +589,12 @@
         <dia:point val="35.5,21.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="35.5,20.905;38.335,22.4525"/>
+        <dia:rectangle val="35.5,20.8863;38.0637,22.4899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Releases
+            <dia:string>#Release
 the lock#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -711,7 +712,7 @@ the lock#</dia:string>
         <dia:point val="0.6,13.8"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="0.6,13.1863;7.94869,15.5899"/>
+        <dia:rectangle val="0.6,13.205;7.93,15.5525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -751,7 +752,7 @@ the lock#</dia:string>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Finishes
+            <dia:string>#Finish
     to copy#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -780,12 +781,12 @@ the lock#</dia:string>
         <dia:point val="21.6,21.6"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="21.6,21.005;29.5825,21.7525"/>
+        <dia:rectangle val="21.6,20.9863;29.2862,21.7899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Operates on virtual layer#</dia:string>
+            <dia:string>#Operate on virtual layer#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>

@@ -23,7 +23,7 @@
       </text>
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="120" y="430">
-      <tspan x="120" y="430">Acquires the lock</tspan>
+      <tspan x="120" y="430">Acquire the lock</tspan>
     </text>
     <g>
       <ellipse style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" cx="464.824" cy="234.824" rx="44.8243" ry="44.8243"/>
@@ -67,9 +67,9 @@
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="696.236" y1="557.67" x2="802.613" y2="466.342"/>
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="808.303,461.457 803.973,471.764 802.613,466.342 797.459,464.177 "/>
     </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="710" y="430">
-      <tspan x="710" y="430">Releases</tspan>
-      <tspan x="710" y="446">the lock</tspan>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="730" y="450">
+      <tspan x="730" y="450">Release</tspan>
+      <tspan x="730" y="466">the lock</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="430" y="430">
       <tspan x="430" y="430">Every other case</tspan>
@@ -84,11 +84,11 @@
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="270" y="300">
       <tspan x="270" y="300">File deleted in the </tspan>
-      <tspan x="270" y="316">virtual layer: tries</tspan>
+      <tspan x="270" y="316">virtual layer: try</tspan>
       <tspan xml:space="preserve" x="270" y="332"> the real one</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="540" y="300">
-      <tspan x="540" y="300">Finishes</tspan>
+      <tspan x="540" y="300">Finish</tspan>
       <tspan xml:space="preserve" x="540" y="316">    operations</tspan>
     </text>
   </g>

@@ -3,6 +3,7 @@
 <svg width="43cm" height="13cm" viewBox="19 366 852 254" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="Background"/>
   <g id="Background"/>
+  <g id="Background"/>
   <g id="Background">
     <g>
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="109.649" y1="412.824" x2="330.264" y2="412.824"/>
@@ -24,7 +25,7 @@
       </text>
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="160" y="430">
-      <tspan x="160" y="430">Acquires the </tspan>
+      <tspan x="160" y="430">Acquire the </tspan>
       <tspan x="160" y="446">lock</tspan>
     </text>
     <g>
@@ -63,12 +64,12 @@
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="696.236" y1="557.67" x2="802.613" y2="466.342"/>
       <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="808.303,461.457 803.973,471.764 802.613,466.342 797.459,464.177 "/>
     </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="710" y="430">
-      <tspan x="710" y="430">Releases</tspan>
-      <tspan x="710" y="446">the lock</tspan>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="730" y="450">
+      <tspan x="730" y="450">Release</tspan>
+      <tspan x="730" y="466">the lock</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="452" y="428">
-      <tspan x="452" y="428">Finishes operations</tspan>
+      <tspan x="452" y="428">Finish operations</tspan>
     </text>
     <g>
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="96.5198" y1="444.52" x2="600.501" y2="557.864"/>
@@ -85,9 +86,9 @@
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="200" y="408">
       <tspan x="200" y="408">Every other case</tspan>
     </text>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="404" y="508">
-      <tspan x="404" y="508">Sets errno to EROFS</tspan>
-      <tspan xml:space="preserve" x="404" y="524">              (read-only file system)</tspan>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="400" y="500">
+      <tspan x="400" y="500">Set errno to EROFS</tspan>
+      <tspan xml:space="preserve" x="400" y="516">               (read-only file system)</tspan>
     </text>
   </g>
 </svg>

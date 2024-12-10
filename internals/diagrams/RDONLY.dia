@@ -88,6 +88,7 @@
       </dia:composite>
     </dia:attribute>
   </dia:diagramdata>
+  <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="true" active="true">
     <dia:object type="Standard - Line" version="0" id="O0">
       <dia:attribute name="obj_pos">
@@ -245,12 +246,12 @@
         <dia:point val="6,21.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="6,20.905;11.4875,21.6525"/>
+        <dia:rectangle val="6,20.8863;11.1812,21.6899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Acquires the lock#</dia:string>
+            <dia:string>#Acquire the lock#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -583,15 +584,15 @@
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O13">
       <dia:attribute name="obj_pos">
-        <dia:point val="35.5,21.5"/>
+        <dia:point val="36.5,22.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="35.5,20.8863;38.3462,22.4899"/>
+        <dia:rectangle val="36.5,21.905;39.045,23.4525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Releases
+            <dia:string>#Release
 the lock#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -601,7 +602,7 @@ the lock#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="35.5,21.5"/>
+            <dia:point val="36.5,22.5"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000ff"/>
@@ -620,7 +621,7 @@ the lock#</dia:string>
         <dia:point val="21.5,21.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="21.5,20.8863;26.9112,21.6899"/>
+        <dia:rectangle val="21.5,20.905;26.905,21.6525"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -708,13 +709,13 @@ the lock#</dia:string>
         <dia:point val="13.5,15"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="13.5,14.405;19.425,16.7525"/>
+        <dia:rectangle val="13.5,14.3863;19.4612,16.7899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
             <dia:string>#File deleted in the 
-virtual layer: tries
+virtual layer: try
  the real one#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -743,12 +744,12 @@ virtual layer: tries
         <dia:point val="27,15"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="27,14.3863;31.2312,15.9899"/>
+        <dia:rectangle val="27,14.3863;31.2362,15.9899"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Finishes
+            <dia:string>#Finish
     operations#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">

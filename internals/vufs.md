@@ -2,7 +2,8 @@
 ====
 
 ## Overview                                                                     
-The Virtual File System (VUFS) provides a mechanism for virtualizing file system operations within the VUOS project. It implements a layered approach to managing file operations based on the mounting mode such as **binding**, **merging**, **copy-on-write (COW)**, and **minimal COW** through an use of automata to manage the various states of operations.
+The Virtual File System (VUFS) provides a mechanism for virtualizing file system operations within the VUOS project. It implements a layered approach to managing file operations based on the mounting mode such as **binding**, **merging**, **copy-on-write (COW)**, and **minimal COW** through an use of automata to manage the various states of operations.  
+For more information about the differences of the mounting modes and how they work check out [the tutorial](../tutorials/vufs.md).
 
 ---  
 
@@ -69,10 +70,9 @@ The `vufsa_select` function determines the appropriate action for a file operati
 
 #### Workflow
 - Checks the file system type (`vufs->flags`).
-- Matches the operation flags (e.g., `O_RDONLY`, `O_CREAT | O_EXCL`) to decide on the action.
+- Matches the operation flags (e.g., `O_RDONLY`, `O_CREAT | O_EXCL`) to decide on the action and returns the correct automata for the situation.
 
 ---
-
 
 ## Error Codes
 The implementation utilizes standard `errno` values for error reporting:
@@ -180,12 +180,12 @@ This section describes the automata managing file system operations in the Virtu
 
 ---
 
-## **5. `vufsa_cow`**  
+### **5. `vufsa_cow`**  
 **Purpose**: Implements Copy-on-Write (COW) operations.
 
 ![COW state machine image](pictures/COW.svg)
 
-### **States and Transitions**  
+#### **States and Transitions**  
 1. **`VUFSA_START`**:  
    - **Action**: Locks `vufs`.  
    - **Conditions**:  
@@ -204,12 +204,12 @@ This section describes the automata managing file system operations in the Virtu
 
 ---
 
-## **6. `vufsa_cow_creat`**  
+### **6. `vufsa_cow_creat`**  
 **Purpose**: Handles file creation under COW semantics.  
 
 ![COW CREATE state machine image](pictures/COW_CREAT.svg)
 
-### **States and Transitions**  
+#### **States and Transitions**  
 1. **`VUFSA_START`**:  
    - **Action**: Locks `vufs`.  
    - **Conditions**:  
@@ -225,12 +225,12 @@ This section describes the automata managing file system operations in the Virtu
 
 ---
 
-## **7. `vufsa_cow_unlink`**  
+### **7. `vufsa_cow_unlink`**  
 **Purpose**: Manages file deletion under COW semantics.
 
 ![COW_UNLINK state machine image](pictures/COW_UNLINK.svg)
 
-### **States and Transitions**  
+#### **States and Transitions**  
 1. **`VUFSA_START`**:  
    - **Action**: Locks `vufs`.  
    - **Conditions**:  
@@ -253,12 +253,12 @@ This section describes the automata managing file system operations in the Virtu
 
 ---
 
-## **8. `vufsa_mincow`**  
+### **8. `vufsa_mincow`**  
 **Purpose**: Optimizes COW operations by reducing unnecessary duplication.
 
 ![MINCOW state machine image](pictures/MINCOW.svg)
 
-### **States and Transitions**  
+#### **States and Transitions**  
 1. **`VUFSA_START`**:  
    - **Action**: Locks `vufs`.  
    - **Conditions**:  
@@ -286,7 +286,7 @@ The implementations of `vufsa_mincow_creat` and `vufsa_mincow_unlink` follow a s
 
 ---
 
-### **9. `vufsa_mincow_creat`*  
+### **9. `vufsa_mincow_creat`**
 **Purpose**: Handles file creation in minimal COW mode.  
 
 ![MINCOW CREATE state machine image](pictures/MINCOW_CREAT.svg)
