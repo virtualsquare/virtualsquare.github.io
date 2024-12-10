@@ -94,4 +94,8 @@
 * V² in distros
   * [V² in Debian](/distros/debian.md)
 
+* V² internals
+  * **VUOS**
+  * [vufs: VUOS virtual filesystem](/internals/vufs.md)
+
 * [*old v2 site*](http://wiki.v2.cs.unibo.it)
