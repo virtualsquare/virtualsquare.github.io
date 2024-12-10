@@ -86,7 +86,7 @@
     </g>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="0" y="300">
       <tspan x="0" y="300">File does not exist </tspan>
-      <tspan x="0" y="316">in the virtual layer</tspan>
+      <tspan x="0" y="316">in the real layer</tspan>
     </text>
     <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="280" y="290">
       <tspan x="280" y="290"></tspan>
