@@ -117,6 +117,7 @@ install_repo https://github.com/virtualsquare/picoxnet.git
 install_repo https://github.com/virtualsquare/vunetpicox.git
 install_repo https://github.com/virtualsquare/vunetioth.git
 install_repo https://github.com/virtualsquare/ioth_picox.git
+install_repo https://github.com/virtualsquare/vufuse2fs.git
 
 rm -f /usr/local/lib/vu/modules/vufuseext2.so /usr/local/lib/vu/modules/vufuseext2.re
 # ln -s /usr/local/lib/umview/modules/umfuseext2.so /usr/local/lib/vu/modules/vufuseext2.so
