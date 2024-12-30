@@ -52,6 +52,8 @@ in `/etc/resolv.conf` can be undefined (e.g. 127.0.0.1) or unreachable. `vdens` 
 to solve this problem. For example use `-R 80.80.80.80` to define 80.80.80.80 as the DNS server. This option uses a mount namespace and
 a file bind mount to redefine the contents of `/etc/resolv.conf`.
 
+Warning: some `ssh` clients fail returning errors like `Bad owner or permissions on /etc/ssh/ssh_config.d/...` due to a pedantic check on configuration file permissions. Often this error is related to some systemd added file. As a workaround for this problem use the ssh option `-F /dev/null`, e.g. `ssh -F /dev/null myhost.cs.unibo.it`.
+
 ## Scenario: two vdens and a switch
 
 ![two vdens + switch](pictures/vde_2vdens_sw.png)
