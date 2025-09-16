@@ -78,8 +78,8 @@ mkdir gits
 
 install_repo https://github.com/virtualsquare/s2argv-execs.git
 install_repo https://github.com/rd235/strcase.git
-install_repo https://github.com/virtualsquare/vde-2.git -DENABLE_EXPERIMENTAL=ON
 install_repo https://github.com/rd235/vdeplug4.git
+install_repo https://github.com/virtualsquare/vde-2.git -DENABLE_EXPERIMENTAL=ON
 install_repo https://github.com/virtualsquare/purelibc.git
 install_repo https://github.com/rd235/libvolatilestream.git
 install_repo https://github.com/rd235/libstropt.git
