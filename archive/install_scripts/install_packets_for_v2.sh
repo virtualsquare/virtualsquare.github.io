@@ -12,4 +12,4 @@ apt-get --yes install git python3 build-essential cmake make autogen \
 
 ln -sf /bin/false /bin/nologin
 echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
-service procps restart
+service procps restart || true
