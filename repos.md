@@ -146,7 +146,7 @@ defined by picoxnet's functions can be used in event driven system calls like `s
 Multiway branch (switch) for short strings in C (in one header file)
 
  * [s2argv-execs](https://github.com/virtualsquare/s2argv-execs)
-s2argv converts a command string into an argv array for execv\*, execs is like execv taking a string instead of an argv
+s2argv converts a command string into an argv array for execv\*, execs is like execv taking a string instead of an argv. This is the source repository for the libexecs library.
 
  * [userbindmount](https://github.com/rd235/userbindmount)
 A library and a utility command providing support for bind mount in user namespaces.
