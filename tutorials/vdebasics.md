@@ -7,11 +7,11 @@ are VDE compatible. So it is like these VMM had a socket for VDE plugs.
 Other programs providing sockets for VDE plugs include user-level TCP/IP stacks like _lwipv6_, _picotcp_, networking namespace monitors
 like _vdens_, namespace implemented TCP/IP stacks (_libvdestack_), educational emulators (_umps, umps3_).
 
-VDEplug4 plugs have a modular design, the actual implementation of VDE used set up the virtual network can be defined by loading a specific
+VDEplug4 plugs have a modular design, the actual implementation of VDE used to set up the virtual network can be defined by loading a specific
 plug-in module.
 
-A good metaphore to understand the structure of the VDE plugs is the Small form-factor pluggable transceiver (SFP).
-Nowadays many (physical) networking appliances have SFP ports. These port can be used to support several different types
+A good metaphor to understand the structure of the VDE plugs is the Small form-factor pluggable transceiver (SFP).
+Nowadays many (physical) networking appliances have SFP ports. These ports can be used to support several different types
 of transceivers, providing connections using different media (e.g. copper or fiber optics) and line speeds.
 
 ![SFP port](pictures/sfp.png)
@@ -24,7 +24,7 @@ plugins play the role of the SFP transceivers and support different implementati
 ### Virtual Network Locator (VNL)
 
 The choice of the plugin and the configuration parameters are given by a string named VNL (Virtual Network Locator)
-The name reminds the web addesses (URLs) as VNLs use a similar syntax.
+The name reminds of the web addresses (URLs) as VNLs use a similar syntax.
 
 Examples:
 
@@ -40,7 +40,7 @@ Examples:
 
   ![tap://](pictures/vdeplug_tap.png)
 
-* `vxvde://234.0.0.1`become a node of a _vxvde_ local area cloud
+* `vxvde://234.0.0.1` become a node of a _vxvde_ local area cloud
 
   ![vxvde://](pictures/vdeplug_vxvde.png)
 
