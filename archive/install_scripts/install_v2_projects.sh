@@ -92,6 +92,7 @@ install_repo https://github.com/virtualsquare/vdeplug_slirp.git
 install_repo https://github.com/rd235/cado.git
 install_repo https://github.com/alperakcan/fuse-ext2.git
 install_repo https://github.com/virtualsquare/vdeplug_agno.git
+install_repo https://github.com/virtualsquare/vdeplug_restart.git
 install_repo https://github.com/virtualsquare/vdeplug_pcap.git
 install_repo https://github.com/virtualsquare/vdeplug_vdesl.git
 install_repo https://github.com/rd235/userbindmount.git
