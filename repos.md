@@ -23,7 +23,10 @@ A slirp plugin for vdeplug4. (this obsoletes the [old vdeplug\_slirp plugin](htt
 agnostic encryption nested plugin for vdeplug4
 
  * [vdeplug\_vlan](https://github.com/virtualsquare/vdeplug_vlan)
-802.1q (vlan) support nested plugin for vdeplug4
+vlan (802.1q) support nested plugin for vdeplug4
+
+ * [vdeplug\_restart](https://github.com/virtualsquare/vdeplug_restart)
+VDE connection self-restarting nested module for vdeplug4
 
  * [vdeplug\_pcap](https://github.com/virtualsquare/vdeplug_pcap)
 A pcap plugin for vdeplug4
