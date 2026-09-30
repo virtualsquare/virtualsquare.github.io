@@ -31,6 +31,7 @@
   * [libioth: the definitive API for the IoTh](/tutorials/ioth_libioth.md)
   * [IoTh: vdestack](/tutorials/ioth_vdestack.md)
   * [picoxnet: a stack for the IoTh](/tutorials/ioth_picoxnet.md)
+  * [iothpy: a Python module for IoTh](/tutorials/ioth_iothpy.md)
   * ---
   * **VUOS**
   * [VUOS/umvu basic concepts](/tutorials/vuosbasics.md)
